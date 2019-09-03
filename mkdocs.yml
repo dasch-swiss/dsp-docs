@@ -1,5 +1,13 @@
 site_name: DaSCH Software Platform Docs
+
 nav:
     - Home: index.md
     - Overview: overview.md
-theme: readthedocs
+
+theme:
+  name: material
+  palette:
+    primary: #5949a7
+    accent: 'blue grey'
+extra_css:
+  - 'stylesheets/theme.css'
