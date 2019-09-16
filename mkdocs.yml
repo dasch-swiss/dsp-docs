@@ -1,13 +1,31 @@
-site_name: DaSCH Software Platform Docs
+site_name: DaSCH Software Documentation
 
 nav:
-    - Home: index.md
-    - Overview: overview.md
+    - User Guide:
+      - Introduction: user-guide/index.md
+      - Project Management: user-guide/project.md
+      - Data Management: user-guide/data.md
+      - Publication: user-guide/publication.md
+    - Developers:
+      - Documentation: developers/documentation.md
+      - Installation / Setup: developers/installation-setup.md
+      - API Reference: developers/api-reference.md
+      - Contribution: developers/contribution.md
+    - Community:
+      - Discuss Forum: community/discuss.md
+      - FAQ: community/faq.md
+      - Product Updates: community/product-updates.md
+      - About us: community/about-us.md
+
 
 theme:
   name: material
+  logo: 'assets/images/dasch-icon-white.svg'
+  favicon: 'assets/images/dasch-favicon.ico'
   palette:
-    primary: #5949a7
-    accent: 'blue grey'
+    primary: 'deep purple'
+    accent: 'deep purple'
+  feature:
+    tabs: true
 extra_css:
-  - 'stylesheets/theme.css'
+  - 'assets/style/theme.css'
