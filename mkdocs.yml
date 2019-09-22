@@ -5,10 +5,10 @@ nav:
       - Introduction: user-guide/index.md
       - Project Management: user-guide/project.md
       - Data Management: user-guide/data.md
-      - Publication: user-guide/publication.md
+      # - Publication: user-guide/publication.md
     - Developers:
       - Documentation: developers/documentation.md
-      - Installation / Setup: developers/installation-setup.md
+      - Getting started: developers/getting-started.md
       - API Reference: developers/api-reference.md
       - Contribution: developers/contribution.md
     - Community:
