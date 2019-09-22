@@ -36,6 +36,7 @@ The documentation consists of three main topics with subordinate themes:
       - Product Updates = List of release notes
       - About us = all about DaSCH and DaSCH developers
 
+Images like screenshots and so on has to be stored in `assets/images`.
 
 
 ## Developers
