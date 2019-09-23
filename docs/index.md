@@ -1,4 +1,4 @@
-# DaSCH Software Documentation
+# DaSCH Software Platform Documentation
 
 Since 2017, the Data and Service Center for humanities (DaSCH) has been a member of the Swiss Academy of Humanities and Social Sciences. The main task of the institution is to operate a platform for humanities research data that ensures access to this data. In addition, the networking of data with other databases is to be promoted (linked open data), thus creating added value for research and the interested public.
 
@@ -14,25 +14,24 @@ In order to fulfill these requirements, DaSCH develops and maintains various sof
 
 ## Documentation
 
-### [For researchers](user-guide/index.md)
+### For researchers
 If you are a researcher you're probably most interested in the usage of the generic web application. In this case please have a look at our [user guide](user-guide/index.md).
 
-### [For developers](developers/index.md)
+### For developers
 The documentation for developers is splited into different groups depending on the software repository.
 
-#### Knora
+- [Knora](developers/knora/documentation/index.md) is the main software framework in the back-end. ...
 
-#### Knora API JS Lib
+- [Knora API JS Lib](developers/knora-api-js-lib/documentation/index.md)
 
-#### Knora-ui Angular modules
+- [Knora-ui Angular modules](developers/knora-ui/documentation/index.md)
 
-#### Knora web app
+- [Knora web app](developers/knora-web-app/documentation/index.md)
 
-#### Sipi
-
-
+- [Sipi](developers/sipi/documentation/index.md)
 
 
-### [For the community](community/index.md)
-In case of further questions, bug reports or if you want to get in contact with us have a look at our [community page](community/index.md).
+
+### For the community
+In case of further questions, bug reports or if you want to get in contact with us have a look at our [community page](community/faq.md).
 

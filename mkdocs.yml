@@ -1,4 +1,4 @@
-site_name: DaSCH Software Documentation
+site_name: DaSCH Software Platform Documentation
 
 nav:
     - User Guide:
@@ -7,12 +7,21 @@ nav:
       - Data Management: user-guide/data.md
       # - Publication: user-guide/publication.md
     - Developers:
-      - Documentation: developers/index.md
-      - Getting started: developers/getting-started.md
-      - API Reference: developers/api-reference.md
-      - Contribution: developers/contribution.md
+      - Getting started: developers/knora/getting-started.md
+      - API Reference: developers/knora/api-reference/index.md
+      - Documentation:
+        - Knora: developers/knora/documentation/index.md
+        - Knora API JS lib: developers/knora-api-js-lib/documentation/index.md
+        - Knora-ui modules: developers/knora-ui/documentation/index.md
+        - Knora web app: developers/knora-web-app/documentation/index.md
+        - Sipi: developers/sipi/documentation/index.md
+      - Contribution:
+        - Knora: developers/knora/contribution/index.md
+        - Knora API JS lib: developers/knora-api-js-lib/contribution/index.md
+        - Knora-ui modules: developers/knora-ui/contribution/index.md
+        - Knora web app: developers/knora-web-app/contribution/index.md
+        - Sipi: developers/sipi/contribution/index.md
     - Community:
-      - Discuss Forum: community/discuss.md
       - FAQ: community/faq.md
       - Product Updates: community/product-updates.md
       - About us: community/about-us.md
