@@ -17,8 +17,20 @@ In order to fulfill these requirements, DaSCH develops and maintains various sof
 ### [For researchers](user-guide/index.md)
 If you are a researcher you're probably most interested in the usage of the generic web application. In this case please have a look at our [user guide](user-guide/index.md).
 
-### [For developers](developers/documentation.md)
-The documentation for developers is splited into different groups:
+### [For developers](developers/index.md)
+The documentation for developers is splited into different groups depending on the software repository.
+
+#### Knora
+
+#### Knora API JS Lib
+
+#### Knora-ui Angular modules
+
+#### Knora web app
+
+#### Sipi
+
+
 
 
 ### [For the community](community/index.md)

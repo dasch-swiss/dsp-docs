@@ -7,7 +7,7 @@ nav:
       - Data Management: user-guide/data.md
       # - Publication: user-guide/publication.md
     - Developers:
-      - Documentation: developers/documentation.md
+      - Documentation: developers/index.md
       - Getting started: developers/getting-started.md
       - API Reference: developers/api-reference.md
       - Contribution: developers/contribution.md
