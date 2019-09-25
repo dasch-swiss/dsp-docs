@@ -1,17 +1,17 @@
 # Project Management
 
-As a project administrator you can define your project, the team members, permission groups and, as most important, define the data model (ontology).
+As a project administrator, you can define your project, the team members, permission groups and, as most important, define the data model (ontology).
 
 ## What is a project?
 Create a new research project, e.g., PhD research, pilot, or proof of concept. Enter basic information like a short project description and institution information.
 
 ## Collaboration
-Add members to the project team and define their permissions roles: Who in the project is able to edit or to see the data? Data includes the research sources and their metadata. Permissions can be set for the entire proejct or for single metadata fields.
+Add members to the project team and define their permissions roles: Who is able to edit or to see the data in the project? Data includes the research sources and their metadata. Permissions can be set for the entire proejct or for single metadata fields.
 
 ## Data model
 &#9888; *NOT YET IMPLEMENTED*
 
-The most important step in the project is the definition of the data model. Knora web app offers a tool to create data models easely. First you have to know about your data and sources you want to work with. The data model can be flexible and customizable. With Knora web app you can comply with the FAIR data standard, but compliance is not required to analyze your data.
+The most important step in the project is the definition of the data model. Knora web app offers a tool to create data models easily. First, you have to know which data and sources you want to work with. The data model can be flexible and customizable. With Knora web app, you can comply with the FAIR data standard, but compliance is not required to analyze your data.
 
 The questions to answer in creating your data model:
 "What kind of data do I have in my project?"
@@ -68,7 +68,7 @@ E.g., For the metadata "Photographer" in source type "Photograph", you should cr
 Data model editor 4: Manage connections between the source types.
 
 ## Lists
-Projects often need to define lists or hierarchies of categories that can be assigned to many different resources.
+Projects often need to define lists or hierarchies of categories that can be assigned to many different sources.
 
 
 

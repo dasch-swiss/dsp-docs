@@ -1,6 +1,6 @@
 # Data management
 
-Once your data model is ready, you're able to add data. The Knora web app app offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
+Once your data model is ready, you're able to add data. The Knora web app offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
 
 ### Start from scratch
 
@@ -15,7 +15,7 @@ Create new source e.g. upload audio file of an interview.
 
 ### Organize data and create additional sources
 
-The workspace of the Knora web app app includes tools to connect different sources even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
+The workspace of the Knora web app includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
 It's possible to collect different sources and to store them in an individual collection. You can define more than one collection. You can share collections and invite other users to collaborate.
 
 ## Find and browse
@@ -23,13 +23,13 @@ It's possible to collect different sources and to store them in an individual co
 
 ### Full-text search
 
-Full-text search performs queries including one or more terms or phrases and returns data that match search conditions. The asterisk * can be used as a wildcard symbol.
+Full-text search performs queries including one or more terms or phrases, and returns data that matches search conditions. The asterisk * can be used as a wildcard symbol.
 
 <!-- ![Search 1: Simple full-text search with a selection to filter by project.](/assets/images/search-fulltext.png) -->
 
 ### Advanced search
 
-The advanced search allows you to filter by project, by source type, or by the metadata of source types. Each filter can be standalone or combined. The metadata field can be precisely filtered with criteria such as "contains", "like", "equals to", "exists" or in case of a date value with "before" or "after".
+The advanced search allows you to filter by project, by source type, or by the metadata of source types. Each filter can be standalone or combined. The metadata field can be precisely filtered with criteria such as "contains", "is like", "equals to", "exists" or in case of a date value with "before" or "after".
 
 In addition, for a metadata field that is connected to another source type, it's possible to filter by this second source type. If you are looking for the source type "Photograph" with the metadata field "Photographer", which is connected to source type "Person", you can search for photograph(s) taken by person(s) who is born before February 1970. The result of this request will be an intersection of the two source types, illustrated in this Diagram.
 
@@ -76,29 +76,28 @@ Search result 3: An Excel-like table view to edit multiple sources at once.
 
 ## Do research and work on your data
 
-
-Once you found the desired sources, you can (re)view them and annotate the source itself, the media file, or single metadata values. If you select more than one source, you can compare them in a side-by-side view, link them, edit them all at once, or save them in a collection. A collection is similar to a playlist in a music app or shopping basket in an online store.
+Once you have found the desired sources, you can (re)view them and annotate the source itself, the media file, or single metadata values. If you select more than one source, you can compare them in a side-by-side view, link them, edit them all at once, or save them in a collection. A collection is similar to a playlist in a music app or shopping basket in an online store.
 
 ### Display a source
 
-The Knora web app app offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, Knora web app offers different tools to work on the source.
+The Knora web app offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, Knora web app offers different tools to work on the source.
 
-In a still image source, you're able to draw regions on the image and to annotate or transcribe this region. Usually a still image source is used for book pages, photographs, postcards, letters etc.
+In a still image source, you're able to draw regions on the image and to annotate or transcribe this region. Usually, a still image source is used for book pages, photographs, postcards, letters etc.
 
 In time-based sources like moving image or audio document, you can mark sequences on the timeline. A transcription tool helps to annotate and to transcribe the sequence.
 
 ![Single resource view. The source type in this example is "Video".](../assets/images/knora-app/source-selected-one.png)
 Single resource view. The source type in this example is "Video".
 
-Knora web app offers a graph view to visualize the connection of a selected source. The graph view is a powerful tool, because you will find more information about the source by clicking through the nodes.
+Knora web app offers a graph view to visualize the connection of a selected source. The graph view is a powerful tool because you will find more information about the source by clicking through the nodes.
 
 ![Graph view of a single resource.](../assets/images/knora-app/source-graph-view.png)
 Graph view of a single resource.
 
-Additionally you can work on the source directly, e.g, transcribe a moving image or a taped interview or mark regions of interest on still images and on documents.
+Additionally, you can work on the source directly, e.g, transcribe a moving image or a taped interview or mark regions of interest on still images and on documents.
 
 ![Single resource fullframe view with the transcription tool at the bottom. The source type in this example is "Video" with a table-based sequence protocol on the right hand-side.](../assets/images/knora-app/source-selected-fullframe.png)
-Single resource fullframe view with the transcription tool at the bottom. The source type in this example is "Video" with a table-based sequence protocol on the right hand-side.
+Single source fullframe view with the transcription tool at the bottom. The source type in this example is "Video" with a table-based sequence protocol on the right hand-side.
 
 ### Select more than one source
 
