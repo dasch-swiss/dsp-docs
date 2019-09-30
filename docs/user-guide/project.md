@@ -1,17 +1,33 @@
 # Project Management
 
-As a project administrator, you can define your project, add your team members, create permission groups and, as most important, define the data model of your project (ontology).
+As a project administrator and/or system administrator, you can define your project, add your team members, create permission groups and as most important, define the data model (ontology) and the lists of your project.
 
-## [Project](#project)
+![Project management available functionalities](../assets/images/knora-app/project-management-toolbar.png)*Only project admin and system admin have access to these functionalities, user members have not.*
+
+## Project
 In Knora Web App, the targeted projects are in particular research projects with a small to medium complexity, e.g. PhD research, pilot project, or proof of concept.
+
+Once you are logged in, the dashboard displays the list of your project(s). If you are project admin, you can edit the project information or remove (deactivate) your project from the project menu. Deactivated projects are stored in a list on your dashboard and they can be reactivated by project admin at any time. 
+
+![Project list and project menu](../assets/images/knora-app/project-list.png)*By clicking on the project name, you get access to the full project information.*
+
 System administrator can create your new research project. Essential information are required such as the project name, a short project description and institution information.
 
-![Create a new project](../assets/images/knora-app/project-create-new.png)
+![Create a new project](../assets/images/knora-app/project-create-new.png)<center>*Form to create a new project*</center>
 
-## [Collaboration](#collaboration)
-Add members to the project team and define their permissions roles: Who is able to edit or to see the data in the project? Data includes the research sources and their metadata. Permissions can be set for the entire project or for single metadata fields.
+## Collaboration
+&#9888; *WORK IN PROGRESS*
 
-## [Data model](#data-model)
+As system admin, you can add users as project member and define their permissions roles: Who is able to edit or to see the data in the project? Data includes the research sources and their metadata. Permissions can be set for the entire project or for single metadata fields. 
+
+A user menu with different actions is accessible for each member of the project (link to the right side of the user line). The admin can appoint another user as project admin, edit user's information, change user's password if forgotten, and remove a user.
+
+![Collaboration page](../assets/images/knora-app/project-collaboration.png)
+
+***Permissions for project admins to add new users as project member will be implemented soon.***
+
+
+## Data model
 &#9888; *NOT YET IMPLEMENTED* (only mockups are presented)
 
 The most important step in the project is the definition of the data model. Knora web app offers a tool to create data models easily. First, you have to know which data and sources you want to work with. The data model can be flexible and customizable. With Knora web app, you can comply with the FAIR data standard, but compliance is not required to analyze your data.
@@ -70,7 +86,7 @@ E.g., For the metadata "Photographer" in source type "Photograph", you should cr
 ![Data model editor 4: Manage connections between the source types.](../assets/images/knora-app/data-model-example.png)
 Data model editor 4: Manage connections between the source types.
 
-## [Lists](#lists)
+## Lists
 Projects often need to define lists or hierarchies of categories that can be assigned to many different sources.
 
 

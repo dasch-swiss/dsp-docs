@@ -1,6 +1,6 @@
 # Data management
 
-Once your [data model](./project.md#data-model) is ready, you're able to add data. The Knora Web App offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
+Once your [data model](/user-guide/project/#data-model) is ready, you're able to add data. The Knora Web App offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
 
 ### Start from scratch
 
@@ -18,16 +18,16 @@ Create new source e.g. upload audio file of an interview.
 The workspace of the Knora Web App includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
 It's possible to collect different sources and to store them in an individual collection. You can define more than one collection. You can share collections and invite other users to collaborate.
 
-## [Search and browse](#search-and-browse)
+## Search and browse
 
 
-### [Full-text search](#full-text-search)
+### Full-text search
 
 Full-text search performs queries including one or more terms or phrases, and returns data that matches search conditions. The asterisk * can be used as a wildcard symbol.
 
 <!-- ![Search 1: Simple full-text search with a selection to filter by project.](/assets/images/search-fulltext.png) -->
 
-### [Advanced search](#advanced-search)
+### Advanced search
 
 The advanced search allows you to filter by project, by source type, or by the metadata of source types. Each filter can be standalone or combined. The metadata field can be precisely filtered with criteria such as "contains", "is like", "equals to", "exists" or in case of a date value with "before" or "after".
 
@@ -39,7 +39,7 @@ Diagram 1: Photograph and Person are two sources, connected by metadata field "P
 ![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)
 Search 2: Advanced search offers many filter combinations and is a powerful search tool.
 
-### [Expert search](#expert-search)
+### Expert search
 
 The expert search can be more powerful than the advanced search, but requires knowing how to use the query language Gravsearch (based on SparQL and developed by the DaSCH team). With Gravsearch, expert users can build searches by combining text-related criteria with any other criteria.
 
@@ -75,7 +75,7 @@ Each column of the table corresponds to one metadata.
 ![Search result 3: An Excel-like table view to edit multiple sources at once.](../assets/images/knora-app/search-results-table.png)
 Search result 3: An Excel-like table view to edit multiple sources at once.
 
-## [Do research and work on your data](#work-with-data)
+## Do research and work on your data
 
 Once you have found the desired sources, you can (re)view them and annotate the source itself, the media file, or single metadata values. If you select more than one source, you can compare them in a side-by-side view, link them, edit them all at once, or save them in a collection. A collection is similar to a playlist in a music app or shopping basket in an online store.
 

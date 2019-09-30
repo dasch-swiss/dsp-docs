@@ -1,7 +1,7 @@
 # User Guide
 
 This is the documentation for the generic Knora web application of the Data and Service Center for Humanities DaSCH. You can reach the app on
-**[app2.dasch.swiss](https://app2.dasch.swiss)**
+**[app2.dasch.swiss](https://app2.dasch.swiss)**.
 
 ## Getting started
 
@@ -21,4 +21,4 @@ You can use the Knora Web App with restricted access as guest. Otherwise, you'll
 
 ## Help
 
-For any questions or help wanted, you can go to the help page, accessible from the Help button at the top of the page. Here, you can find links to the user guide, get more information about the DaSCH softwares, and get more support through different platform according to your requests.
+For any questions or help wanted, you can go to the help page, accessible from the Help button at the top right of the page (see screen shot above). Here, you can find links to the user guide, get more information about the DaSCH softwares, and get more support through different platform according to your requests.
