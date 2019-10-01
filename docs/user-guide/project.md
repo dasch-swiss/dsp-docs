@@ -1,10 +1,7 @@
 # Project Management
 
-As a project administrator and/or system administrator, you can define your project, add your team members, create permission groups and as most important, define the data model (ontology) and the lists of your project.
-
-![Project management available functionalities](../assets/images/knora-app/project-info.png)*https://app2.dasch.swiss/project/0803/info - Project management functionalities; e.g. Incunabula project. Project information page is displayed without restricted content, the other functionalities are reserved for project admin and system admin.*
-
 ## Project
+
 In Knora Web App, the targeted projects are in particular research projects with a small to medium complexity, e.g. PhD research, pilot project, or proof of concept.
 
 Once you are logged in, the dashboard displays the list of your project(s). If you are project admin, you can edit the project information or archive your project from the project menu. Archived projects are stored in a list on your dashboard and they can be "reactivated" by project admin at any time. 
@@ -14,6 +11,10 @@ Once you are logged in, the dashboard displays the list of your project(s). If y
 System administrator can create your new research project. Essential information are required such as the project name, a short project description and institution information.
 
 ![Create a new project](../assets/images/knora-app/project-create-new.png)<center>*Form to create a new project.*</center>
+
+As a project administrator and/or system administrator, you can define your project, add your team members, create permission groups and as most important, define the data model (ontology) and the lists of your project.
+
+![Project management available functionalities](../assets/images/knora-app/project-info.png)*https://app2.dasch.swiss/project/0803/info - Project management functionalities; e.g. Incunabula project. Project information page is displayed without restricted content, the other functionalities are reserved for project admin and system admin.*
 
 ## Collaboration
 &#9888; *WORK IN PROGRESS*
