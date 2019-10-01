@@ -1,43 +1,50 @@
 # Data management
 
-Once your [data model](/user-guide/project/#data-model) is ready, you're able to add data. The Knora Web App offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
+Once your [data model](/user-guide/project/#data-model) is ready, you're able to add data. The Knora App offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
 
 ### Start from scratch
+&#9888; *NOT YET IMPLEMENTED* (only mockups are presented)
 
-When a project starts from scratch, you will enter and generate new data directly in the Knora Web App itself. Generating new data can be done one by one with a form or with a table-based (Excel like) tool.
+When a project starts from scratch, you will enter and generate new data directly in the Knora App itself. Generating new data can be done one by one with a form or with a table-based (Excel like) tool.
 
 - Upload the files, e.g., the actual audio file of an interview or images of the photographs discussed in the interview
 - Augment the metadata
-- In case of interview transcriptions from audio or video files, Knora Web App will offer a simple transcription tool
+- In case of interview transcriptions from audio or video files, Knora App will offer a simple transcription tool
 
-![Create new source e.g. upload audio file of an interview.](../assets/images/knora-app/mock-source-new-edit.png)
-Create new source e.g. upload audio file of an interview.
+![Create new source e.g. upload audio file of an interview.](../assets/images/knora-app/mock-source-new-edit.png)*Create new source; e.g. upload audio file of an interview.*
 
 ### Organize data and create additional sources
+&#9888; *NOT YET IMPLEMENTED*
 
-The workspace of the Knora Web App includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
+The workspace of the Knora App includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
 It's possible to collect different sources and to store them in an individual collection. You can define more than one collection. You can share collections and invite other users to collaborate.
 
 ## Search and browse
 
+Knora App offers the possibility to the user to search in 3 different ways: **full text** search, **advanced** search and **expert** search (Gravsearch query). The search bar is always available in the header of each page, whether logged in or out.
 
-### Full-text search
+![Search bar with the 3 search modes: full text, advanced and expert](../assets/images/knora-app/search-3modes.png)
 
-Full-text search performs queries including one or more terms or phrases, and returns data that matches search conditions. The asterisk * can be used as a wildcard symbol.
+### Full text search
 
-<!-- ![Search 1: Simple full-text search with a selection to filter by project.](/assets/images/search-fulltext.png) -->
+Full text search performs queries including one or more terms or phrases, and returns data that matches search conditions. By default, the search is performed in all projects stored in Knora. However, it is possible to filter by project using the menu "Filter by project" on the left side of the search bar.
+
+![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)
+
+Special syntax:
+
+- asterisk* can be used as a wildcard symbol
+- "quotation marks" searches for the whole pattern 
 
 ### Advanced search
 
+![Advanced search link is findable in the search menu at the right of the full text search field.](../assets/images/knora-app/search-advanced-link.png)
+
 The advanced search allows you to filter by project, by source type, or by the metadata of source types. Each filter can be standalone or combined. The metadata field can be precisely filtered with criteria such as "contains", "is like", "equals to", "exists" or in case of a date value with "before" or "after".
 
-In addition, for a metadata field that is connected to another source type, it's possible to filter by this second source type. If you are looking for the source type "Photograph" with the metadata field "Photographer", which is connected to source type "Person", you can search for photograph(s) taken by person(s) who is born before February 1970. The result of this request will be an intersection of the two source types, illustrated in this Diagram.
+In addition, for a metadata field that is connected to another source type, it's possible to filter by this second source type.
 
-![Diagram 1: Photograph and Person are two sources, connected by metadata field "Photographer" in photograph. In advanced search (and expert search) you can find an intersection of both by filtering both sources at the same time.](../assets/images/knora-app/search-advanced-diagram.png)
-Diagram 1: Photograph and Person are two sources, connected by metadata field "Photographer" in photograph. In advanced search (and expert search) you can find an intersection of both by filtering both sources at the same time.
-
-![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)
-Search 2: Advanced search offers many filter combinations and is a powerful search tool.
+![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)*Search 2: Advanced search offers many filter combinations and is a powerful search tool.*
 
 ### Expert search
 
@@ -81,7 +88,7 @@ Once you have found the desired sources, you can (re)view them and annotate the 
 
 ### Display a source
 
-The Knora Web App offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, Knora Web App offers different tools to work on the source.
+The Knora App offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, Knora App offers different tools to work on the source.
 
 In a still image source, you're able to draw regions on the image and to annotate or transcribe this region. Usually, a still image source is used for book pages, photographs, postcards, letters etc.
 
@@ -90,7 +97,7 @@ In time-based sources like moving image or audio document, you can mark sequence
 ![Single source view. The source type in this example is "Video".](../assets/images/knora-app/source-selected-one.png)
 Single source view. The source type in this example is "Video".
 
-Knora Web App offers a graph view to visualize the connection of a selected source. The graph view is a powerful tool because you will find more information about the source by clicking through the nodes.
+Knora App offers a graph view to visualize the connection of a selected source. The graph view is a powerful tool because you will find more information about the source by clicking through the nodes.
 
 ![Graph view of a single source.](../assets/images/knora-app/source-graph-view.png)
 Graph view of a single source.
@@ -119,8 +126,8 @@ Compare 2 to 6 sources with each other, similar to the Mirador web app.
 ### Annotate and connect your data (sources and / or metadata)
 &#9888; *NOT YET IMPLEMENTED*
 
-A main feature of the flexible data storage that Knora Web App uses is the possibility to annotate and link sources and their metadata. An annotation can be a small note about a date like "Not sure about the birthdate of this person. There's another date mentioned in the source XYZ". Inside the note, it's possible to link to another source.
-Links in Knora Web App are always bi-directional. If you link source A with source B, then source B knows about this connection. If you find source B, you have the connection to source A as well.
+A main feature of the flexible data storage that Knora App uses is the possibility to annotate and link sources and their metadata. An annotation can be a small note about a date like "Not sure about the birthdate of this person. There's another date mentioned in the source XYZ". Inside the note, it's possible to link to another source.
+Links in Knora App are always bi-directional. If you link source A with source B, then source B knows about this connection. If you find source B, you have the connection to source A as well.
 
 ### Export, save or share the data
 &#9888; *NOT YET IMPLEMENTED*
