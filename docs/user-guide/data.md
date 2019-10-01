@@ -29,7 +29,7 @@ Knora App offers the possibility to the user to search in 3 different ways: **fu
 
 Full text search performs queries including one or more terms or phrases, and returns data that matches search conditions. By default, the search is performed in all projects stored in Knora. However, it is possible to filter by project using the menu "Filter by project" on the left side of the search bar.
 
-![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)
+![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)*https://app2.dasch.swiss - Search 1: Full text search*
 
 Special syntax:
 
@@ -44,18 +44,19 @@ The advanced search allows you to filter by project, by source type, or by the m
 
 In addition, for a metadata field that is connected to another source type, it's possible to filter by this second source type.
 
-![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)*Search 2: Advanced search offers many filter combinations and is a powerful search tool.*
+![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)*https://app2.dasch.swiss/search/advanced - Search 2: Advanced search offers many filter combinations and is a powerful search tool.*
 
 ### Expert search
 
+![Expert search link is findable in the search menu at the right of the full text search field.](../assets/images/knora-app/search-expert-link.png)
+
 The expert search can be more powerful than the advanced search, but requires knowing how to use the query language Gravsearch (based on SparQL and developed by the DaSCH team). With Gravsearch, expert users can build searches by combining text-related criteria with any other criteria.
 
-For example, you could search for a photograph in a transcript that contains a certain element and also mentions a person, who lived in the same country as another person, who is the author of another photograph.
+For example, you could search for a page in a manuscript that contains a certain element and also mentions a person, who lived in the same country as another person, who is the author of another author.
+
+![Expert search is a text area in which you can create Gravsearch queries.](../assets/images/knora-app/search-expert.png)*https://app2.dasch.swiss/search/expert - Search 3: Expert search is a text area in which you can create Gravsearch queries.*
 
 To learn Gravsearch, go to the Knora documentation [&rarr; Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html)
-
-![Search 3: Expert search is a text area in which you can create Gravsearch queries.](../assets/images/knora-app/search-expert-gravsearch.png)
-Search 3: Expert search is a text area in which you can create Gravsearch queries.
 
 ## [Search results](#search-results)
 
@@ -63,24 +64,24 @@ Search 3: Expert search is a text area in which you can create Gravsearch querie
 ### Simple list
 The results of the search are displayed in an organised list with a small preview. You can select one result at a time to get more information.
 
-![Search result 1: Simple list of results, similar to Google's list of results.](../assets/images/knora-app/search-results-simple-list.png)
-Search result 1: Simple list of results, similar to Google's list of results.
+![Search result 1: Simple list of results, similar to Google's list of results.](../assets/images/knora-app/search-results-list.png)*Search result 1: Simple list of results, similar to Google's list of results.*
+
+&#9888; *NOT YET IMPLEMENTED*
+It is not possible yet to sort or order by criteria when searching with the full text search, use the advanced search or the expert search instead to get back sorted results.
 
 ### Grid list: Lighttable
 
 The results of the search are displayed in a grid list with a big preview. You can select one result at a time to get more information.
 
-![Search result 2: A kind of preview list, inspired by Pinterest.com.](../assets/images/knora-app/search-results-grid-list.png)
-Search result 2: A kind of preview list, inspired by Pinterest.com.
+![Search result 2: A kind of preview list, inspired by Pinterest.com.](../assets/images/knora-app/search-results-grid.png)*Search result 2: A preview list where the results are presented in tiles.*
 
 ### Table: Excel-like view
 &#9888; *NOT YET IMPLEMENTED*
 
-The search results are displayed in a table with the option to sort them. This layout is enabled when the search has been performed with only one source type.
+The search results are displayed in a table with the option to sort them. This layout is enabled when the search has been performed with **only one source type**.
 Each column of the table corresponds to one metadata.
 
-![Search result 3: An Excel-like table view to edit multiple sources at once.](../assets/images/knora-app/search-results-table.png)
-Search result 3: An Excel-like table view to edit multiple sources at once.
+![Search result 3: An Excel-like table view to edit multiple sources at once.](../assets/images/knora-app/search-results-table-mockup.png)*Search result 3: An Excel-like table view to edit multiple sources at once.*
 
 ## Do research and work on your data
 
@@ -94,8 +95,8 @@ In a still image source, you're able to draw regions on the image and to annotat
 
 In time-based sources like moving image or audio document, you can mark sequences on the timeline. A transcription tool helps to annotate and to transcribe the sequence.
 
-![Single source view. The source type in this example is "Video".](../assets/images/knora-app/source-selected-one.png)
-Single source view. The source type in this example is "Video".
+![Single source view. The source type in this example is "Photo".](../assets/images/knora-app/resource-view-with-image.png)
+Single source view. The source type in this example is "Photo".
 
 Knora App offers a graph view to visualize the connection of a selected source. The graph view is a powerful tool because you will find more information about the source by clicking through the nodes.
 
