@@ -31,7 +31,9 @@ Full text search performs queries including one or more terms or phrases, and re
 
 ![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)*https://app2.dasch.swiss - Search 1: Full text search*
 
-<!-- TODO: history / log -->
+When clicking on the search bar, the search history panel is displayed. The 10 last searches are registered.
+
+![Search history panel](../assets/images/knora-app/search-history.png)
 
 Special syntax:
 
@@ -49,8 +51,6 @@ In addition, for a metadata field that is connected to another source type, it's
 ![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)*https://app2.dasch.swiss/search/advanced - Search 2: Advanced search offers many filter combinations and is a powerful search tool.*
 
 Currently, it is possible to search for only **one** source.
-
-<!-- TODO: define the comparaison operators one by one -->
 
 ### Expert search
 
