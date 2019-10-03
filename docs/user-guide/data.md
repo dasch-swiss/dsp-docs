@@ -46,19 +46,23 @@ In addition, for a metadata field that is connected to another source type, it's
 
 ![Search 2: Advanced search offers many filter combinations and is a powerful search tool.](../assets/images/knora-app/search-advanced.png)*https://app2.dasch.swiss/search/advanced - Search 2: Advanced search offers many filter combinations and is a powerful search tool.*
 
+Currently, it is possible to search for only **one** source.
+
+<!-- TODO: define the comparaison operators one by one -->
+
 ### Expert search
 
 ![Expert search link is findable in the search menu at the right of the full text search field.](../assets/images/knora-app/search-expert-link.png)
 
 The expert search can be more powerful than the advanced search, but requires knowing how to use the query language Gravsearch (based on SparQL and developed by the DaSCH team). With Gravsearch, expert users can build searches by combining text-related criteria with any other criteria.
 
-For example, you could search for a page in a manuscript that contains a certain element and also mentions a person, who lived in the same country as another person, who is the author of another author.
+**For example**: you could search for a page in a manuscript that contains a certain element and also mentions a person, who lived in the same country as another person, who is the author of another author.
 
-![Expert search is a text area in which you can create Gravsearch queries.](../assets/images/knora-app/search-expert.png)*https://app2.dasch.swiss/search/expert - Search 3: Expert search is a text area in which you can create Gravsearch queries.*
+![Expert search is a text area in which you can create Gravsearch queries.](../assets/images/knora-app/search-expert.png)*https://app2.dasch.swiss/search/expert - Search 3: Expert search is a text area in which you can create Gravsearch queries. Here is the default example you can find in the app.*
 
 To learn Gravsearch, go to the Knora documentation [&rarr; Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html)
 
-## [Search results](#search-results)
+## Search results
 
 
 ### Simple list
