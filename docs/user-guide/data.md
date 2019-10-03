@@ -31,6 +31,8 @@ Full text search performs queries including one or more terms or phrases, and re
 
 ![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)*https://app2.dasch.swiss - Search 1: Full text search*
 
+<!-- TODO: history / log -->
+
 Special syntax:
 
 - asterisk* can be used as a wildcard symbol
