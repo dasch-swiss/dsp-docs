@@ -2,6 +2,8 @@
 
 ![Get access to your user profile and more](../assets/images/knora-app/usermenu-to-userprofile.png)*https://app2.dasch.swiss/dashboard - Get access to your user profile, collections and  account from the main user menu.*
 
+---
+
 ## Your user profile and projects
 
 To change your personal information as well as your default language used by the interface, you can edit your profile clicking *Edit*. Currently, the avatar image comes from gravatar.com (go on their [website](http://en.gravatar.com/) to register if you want your customized user photo).
@@ -12,11 +14,15 @@ The list of your projects is accessible, click on one project to get more inform
 
 ![Edit user's profile](../assets/images/knora-app/user-edit-profile.png)*Edit your user profile. The username, the email address and the admin rules are not editable.*
 
+---
+
 ## Your collections
 
 &#9888; *NOT YET IMPLEMENTED*
 
 You will be able to store collections of sources or specific searches to work with them later or share them with collaborators.
+
+---
 
 ## Your account
 

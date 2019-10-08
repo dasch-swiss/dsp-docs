@@ -14,6 +14,8 @@ As project administrator or system administrator, you can define your project, a
 
 ![Project management available functionalities](../assets/images/knora-app/project-info.png)*https://app2.dasch.swiss/project/0803/info - Project management functionalities; e.g. Incunabula project. Project information page is displayed without restricted content, the other functionalities are reserved for project admin and system admin.*
 
+---
+
 ## Collaboration
 &#9888; *WORK IN PROGRESS*
 
@@ -25,10 +27,14 @@ A user menu with different actions is accessible for each member of the project 
 
 ***Permissions for project admins to add new users as project member will be implemented soon.***
 
+---
+
 ## Permission groups
 &#9888; *NOT YET IMPLEMENTED*
 
 Project admin can create one or several permission groups in their project to set specific permissions on data to a user group.
+
+---
 
 ## Data model
 &#9888; *NOT YET IMPLEMENTED* (only mockups are presented)
@@ -52,6 +58,8 @@ Diagram 1 shows the relationships of the data by source type from these experien
 
 ![Relationship of the data by source type](../assets/images/knora-app/diagram-data-model.png)*Relationship of the data by source type*
 
+---
+
 ### Select your SOURCE TYPES
 
 In the data model editor, you select your source types from a predefined list on the right-hand side. Later, you will be able to customize the source type or define an additional default source type, if the one you need doesn't exist by default.
@@ -66,11 +74,15 @@ In our example with the interview and the photographs, you drag and drop the fol
 - Person
 - Location / Place
 
+---
+
 ### Select the METADATA fields for each source type (optional)
 
 The predefined source types offer a suggested list of metadata fields. This list could help to create a data model simply and quickly. It's also possible to deselect the suggested metadata fields (e.g., no metadata), to adapt others and to customize them.
 
 ![Data model editor 2: Add additional metadata fields to your source type; e.g. add the missing field "Person".](../assets/images/knora-app/data-model-add-property.png)*Data model editor 2: Add additional metadata fields to your source type; e.g. add the missing field "Person".*
+
+---
 
 ### Customize the SOURCE TYPES and the METADATA fields (optional)
 
@@ -78,12 +90,16 @@ It's possible to customize the predefined source type and the metadata field val
 
 ![Data model editor 3: Customize the source type AUDIO; e.g. rename it into Interview](../assets/images/knora-app/data-model-edit-source.png)*Data model editor 3: Customize the source type AUDIO; e.g. rename it into Interview*
 
+---
+
 ### Connect SOURCE TYPES in the data model (optional)
 
 If you have reusable metadata value in a source type (A), you should create an additional source type (B) and drag-and-drop it over the metadata field of the first source type (A) to connect the two data types.
 E.g., For the metadata "Photographer" in source type "Photograph", you should create a source type "Person" and connect it in "Photograph".
 
 ![Data model editor 4: Manage connections between the source types.](../assets/images/knora-app/data-model-example.png)*Data model editor 4: Manage connections between the source types.*
+
+----
 
 ## Lists
 &#9888; *WORK IN PROGRESS*
