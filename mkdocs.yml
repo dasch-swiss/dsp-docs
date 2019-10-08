@@ -5,6 +5,7 @@ nav:
       - Introduction: user-guide/index.md
       - Project Management: user-guide/project.md
       - Data Management: user-guide/data.md
+      - User Management: user-guide/user.md
       - System Management: user-guide/system.md
       # - Publication: user-guide/publication.md
     - Developers:

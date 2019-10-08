@@ -24,6 +24,7 @@ The documentation consists of three main topics with subordinate themes:
     - Introduction / index = Web app overview
     - Project management = Admin interface, where a project or system admin can define a project, build a team and user groups permissions but also define the data model (ontology and list editor).
     - Data management = Research tools are part of the workspace where a user can look for sources, open and work on them: edit metadata, annotate and expand data by using e.g. a transcription tool.
+    - User management = All information related to the user account, e.g. user profile, user's projects and collections, update password.
     - System management = System admin interface where a system admin can manage all projects and all users.
     - Publication = Manifest++ will be the data presentation part where a user can configure a project specific webpage.
 1. **Developers** contains all information for people who wants to use Knora or to help improving one of the software mentioned above.
