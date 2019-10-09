@@ -35,9 +35,9 @@ Full text search performs queries including one or more terms or phrases, and re
 
 ![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)*https://app2.dasch.swiss - Search 1: Full text search*
 
-When clicking on the search bar, the search history panel is displayed. The 10 last searches are registered.
+When clicking on the search bar, the search history panel is displayed. The **10** last searches are registered. It is also possible to clear the search history list (*Clear list* button at the bottom of the panel).
 
-![Search history panel](../assets/images/knora-app/search-history.png)
+![Search history panel](../assets/images/knora-app/search-history.png)*Search history list is accessible for the full text search from any webpage.*
 
 Special syntax:
 
