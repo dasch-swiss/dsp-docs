@@ -8,7 +8,8 @@ nav:
       - System Management: user-guide/system.md
       # - Publication: user-guide/publication.md
     - Developers:
-      - Overview: developers/knora/getting-started.md
+      - Overview: developers/index.md
+      - Knora Getting Started: developers/knora/getting-started.md
       - API Reference: developers/knora/api-reference/index.md
       - Documentation:
         - Knora: developers/knora/documentation/index.md
