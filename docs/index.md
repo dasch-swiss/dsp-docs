@@ -20,6 +20,8 @@ If you are a researcher you're probably most interested in the usage of the gene
 ### For developers
 The documentation for developers is splited into different groups depending on the software repository.
 
+- [Overview](developers/index.md)
+
 - [Knora](developers/knora/documentation/index.md) is the main software framework in the back-end. ...
 
 - [Knora API JS Lib](developers/knora-api-js-lib/documentation/index.md)
