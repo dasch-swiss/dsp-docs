@@ -7,6 +7,8 @@ nav:
       - Data Management: user-guide/data.md
       - System Management: user-guide/system.md
       # - Publication: user-guide/publication.md
+    - How-To:
+      - Overview: how-to/index.md
     - Developers:
       - Overview: developers/index.md
       - Knora Getting Started: developers/knora/getting-started.md
