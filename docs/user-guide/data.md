@@ -2,7 +2,7 @@
 
 Once your [data model](/user-guide/project/#data-model) is ready, you're able to add data. The Knora App offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
 
-### Start from scratch
+## Start from scratch
 &#9888; *NOT YET IMPLEMENTED* (only mockups are presented)
 
 When a project starts from scratch, you will enter and generate new data directly in the Knora App itself. Generating new data can be done one by one with a form or with a table-based (Excel like) tool.
@@ -13,11 +13,15 @@ When a project starts from scratch, you will enter and generate new data directl
 
 ![Create new source e.g. upload audio file of an interview.](../assets/images/knora-app/mock-source-new-edit.png)*Create new source; e.g. upload audio file of an interview.*
 
+---
+
 ### Organize data and create additional sources
 &#9888; *NOT YET IMPLEMENTED*
 
 The workspace of the Knora App includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
 It's possible to collect different sources and to store them in an individual collection. You can define more than one collection. You can share collections and invite other users to collaborate.
+
+---
 
 ## Search and browse
 
@@ -31,14 +35,16 @@ Full text search performs queries including one or more terms or phrases, and re
 
 ![Filter your full text search by specific project](../assets/images/knora-app/search-fulltext-filterByProject.png)*https://app2.dasch.swiss - Search 1: Full text search*
 
-When clicking on the search bar, the search history panel is displayed. The 10 last searches are registered.
+When clicking on the search bar, the search history panel is displayed. The **10** last searches are registered. It is also possible to clear the search history list (*Clear list* button at the bottom of the panel).
 
-![Search history panel](../assets/images/knora-app/search-history.png)
+![Search history panel](../assets/images/knora-app/search-history.png)*Search history list is accessible for the full text search from any webpage.*
 
 Special syntax:
 
 - asterisk* can be used as a wildcard symbol
 - "quotation marks" searches for the whole pattern 
+
+---
 
 ### Advanced search
 
@@ -52,6 +58,8 @@ In addition, for a metadata field that is connected to another source type, it's
 
 Currently, it is possible to search for only **one** source.
 
+---
+
 ### Expert search
 
 ![Expert search link is findable in the search menu at the right of the full text search field.](../assets/images/knora-app/search-expert-link.png)
@@ -64,6 +72,8 @@ The expert search can be more powerful than the advanced search, but requires kn
 
 To learn Gravsearch, go to the Knora documentation [&rarr; Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html)
 
+---
+
 ## Search results
 
 
@@ -75,11 +85,15 @@ The results of the search are displayed in an organised list with a small previe
 &#9888; *NOT YET IMPLEMENTED*
 It is not possible yet to sort or order by criteria when searching with the full text search, use the advanced search or the expert search instead to get back sorted results.
 
+---
+
 ### Grid list: Lighttable
 
 The results of the search are displayed in a grid list with a big preview. You can select one result at a time to get more information.
 
 ![Search result 2: A kind of preview list, inspired by Pinterest.com.](../assets/images/knora-app/search-results-grid.png)*Search result 2: A preview list where the results are presented in tiles.*
+
+---
 
 ### Table: Excel-like view
 &#9888; *NOT YET IMPLEMENTED*
@@ -88,6 +102,8 @@ The search results are displayed in a table with the option to sort them. This l
 Each column of the table corresponds to one metadata.
 
 ![Search result 3: An Excel-like table view to edit multiple sources at once.](../assets/images/knora-app/search-results-table-mockup.png)*Search result 3: An Excel-like table view to edit multiple sources at once.*
+
+---
 
 ## Do research and work on your data
 
@@ -112,6 +128,8 @@ Additionally, you can work on the source directly, e.g, transcribe a moving imag
 
 ![Single source fullframe view with the transcription tool at the bottom. The source type in this example is "Video" with a table-based sequence protocol on the right hand-side.](../assets/images/knora-app/source-selected-fullframe.png)*Single source fullframe view with the transcription tool at the bottom. The source type in this example is "Video" with a table-based sequence protocol on the right hand-side.*
 
+---
+
 ### Select more than one source
 &#9888; *NOT YET IMPLEMENTED*
 
@@ -120,6 +138,8 @@ Additionally, you can work on the source directly, e.g, transcribe a moving imag
 By selecting more than one source, you will be able to edit them all at once, add them to a collection, share or connect them. 
 Or you could compare the sources (see [Compare the sources](/user-guide/data/#compare-the-sources)).
 
+---
+
 ### Compare the sources
 &#9888; *NOT YET IMPLEMENTED*
 
@@ -127,12 +147,16 @@ You will be able to compare from two to six source objects at the same time side
 
 ![Compare 2 to 6 sources with each other, similar to the Mirador web app.](../assets/images/knora-app/source-compare-viewer.png)*Compare 2 to 6 sources with each other, similar to the Mirador web app.*
 
+---
+
 ### Annotate and connect your data (sources and/or metadata)
 &#9888; *NOT YET IMPLEMENTED*
 
 A main feature of the flexible data storage that Knora App uses is the possibility to annotate and link sources and their metadata. An annotation can be a small note about a date like "Not sure about the birthdate of this person. There's another date mentioned in the source XYZ". Inside the note, it will be possible to link to another source.
 
 Links in Knora App are always bi-directional. If you link source A with source B, then source B knows about this connection. If you find source B, you have the connection to source A as well.
+
+---
 
 ### Export, save or share the data
 &#9888; *NOT YET IMPLEMENTED*

@@ -6,12 +6,16 @@ System administrators can get an overview of all projects and all users stored i
 
 ![Get access to the system admin part from the user menu](../assets/images/knora-app/system-user-menu.png)*System administration part is accessible from the user menu in the header.*
 
+---
+
 ## All projects
 
 System admin gets the list of all activated projects as well as archived projects. It is possible to create a new research project, the required information must be filled in. 
 For each project, the system admin has the possibility to edit the project information and archive the project.
 
 ![Overview of all projects](../assets/images/knora-app/system-all-projects.png)*Overview of all activated projects, the list of archived projects is displayed below.*
+
+---
 
 ## All users
 
