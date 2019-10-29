@@ -34,6 +34,29 @@ $ brew install bazelbuild/tap/bazel
 $ brew upgrade bazelbuild/tap/bazel
 ```
 
+#### Vizualize your Build
+
+Add the following line to your ~/.bazelrc:
+
+```
+query --package_path %workspace%:[PATH TO BAZEL]/base_workspace # set the path to the bazel binary
+```
+
+Run bazel query inside your project directory, asking it to search for all dependencies
+of //:main (or however the label is to your target of interest):
+
+```
+$ bazel query 'deps(//:main)' --output graph > graph.in
+```
+
+This creates a file called `graph.in`, which is a text representation of the build graph.
+You can use ```dot``` (install with `brew install graphviz`) to create a png:
+
+```
+$ dot -Tpng < graph.in > graph.png
+```
+
+
 ### Python3
 
 To install, follow these steps:
