@@ -2,11 +2,11 @@
 
 This is the main documentation for all services the Data and Service Center for the Humanities DaSCH develops and supports. It includes
 
-- [Knora](https://github.com/dasch-swiss/Knora)
+- [Knora](https://github.com/dasch-swiss/knora-api)
 - [Sipi](https://github.com/dasch-swiss/Sipi)
 - [Knora API JS lib](https://github.com/dasch-swiss/Knora-api-js-lib)
-- [Knora-ui modules](https://github.com/dasch-swiss/Knora-ui)
-- [Knora web app](https://github.com/dasch-swiss/Skuirl)
+- [Knora-ui modules](https://github.com/dasch-swiss/knora-ui)
+- [Knora web app](https://github.com/dasch-swiss/knora-app)
 
 
 You'll find the documentaion on [docs.dasch.swiss](https://docs.dasch.swiss).
