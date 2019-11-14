@@ -17,7 +17,15 @@ nav:
       - Documentation:
         - Knora: developers/knora/documentation/index.md
         - Knora API JS lib: developers/knora-api-js-lib/documentation/index.md
-        - Knora-ui modules: developers/knora-ui/documentation/index.md
+        - Knora-ui modules:
+          - Introduction: developers/knora-ui/documentation/index.md
+          - Authentication module: developers/knora-ui/documentation/authentication.md
+          - Core module: developers/knora-ui/documentation/core.md
+          - Search module: developers/knora-ui/documentation/search.md
+          - Viewer module: developers/knora-ui/documentation/viewer.md
+          - Action module:
+              - Readme: developers/knora-ui/documentation/action/action.md
+              - Progress indicator: developers/knora-ui/documentation/action/progress-indicator.md
         - Knora web app: developers/knora-web-app/documentation/index.md
         - Sipi: developers/sipi/documentation/index.md
       - Contribution:
