@@ -1,1 +1,0 @@
-# Knora-ui search module
