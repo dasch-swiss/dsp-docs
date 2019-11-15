@@ -128,11 +128,9 @@ export class AppInitService {
     Init() {
 
         return new Promise<void>((resolve, reject) => {
-            // console.log('AppInitService.init() called');
-            // do your initialisation stuff here
+            // do your initialisation code here
 
             const data = <IAppConfig> window['tempConfigStorage'];
-            // console.log('AppInitService: json', data);
             AppInitService.settings = data;
 
             AppInitService.coreConfig = <KuiCoreConfig> {
@@ -141,8 +139,6 @@ export class AppInitService {
                 media: AppInitService.settings.iiifURL,
                 app: AppInitService.settings.appURL
             };
-
-            // console.log('AppInitService: finished');
 
             resolve();
         });
@@ -153,7 +149,8 @@ export class AppInitService {
 This service will be loaded in `src/app/app.module.ts`:
 
 ```typescript
-import {KuiCoreModule} from '@knora/core';
+import { APP_INITIALIZER } from '@angular/core';
+import { KuiCoreModule, KuiCoreConfigToken } from '@knora/core';
 import { AppInitService } from './app-init.service';
 
 export function initializeApp(appInitService: AppInitService) {
