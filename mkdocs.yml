@@ -34,6 +34,10 @@ nav:
             - Readme: developers/knora-ui/documentation/core/index-core.md
           - Search module:
             - Readme: developers/knora-ui/documentation/search/index-search.md
+            - Search-panel: developers/knora-ui/documentation/search/search-panel.md
+            - Fulltext search: developers/knora-ui/documentation/search/fulltext-search.md
+            - Extended search: developers/knora-ui/documentation/search/extended-search.md
+            - Expert search: developers/knora-ui/documentation/search/expert-search.md
           - Viewer module:
             - Readme: developers/knora-ui/documentation/viewer/index-viewer.md
             - Search-results: developers/knora-ui/documentation/viewer/search-results.md

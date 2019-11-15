@@ -39,7 +39,7 @@ This module has the following package dependencies, which you also have to insta
 
 This module contains various components to search. The main component is the kui-search-panel, which contains the kui-fulltext-search, kui-extended-search and kui-expert-search. All of them can be used standalone or in combination in kui-search-panel.
 
-### Search panel
+### [Search panel](/developers/knora-ui/documentation/search/search-panel)
 Fully customizable panel. You can set the following parameters in kui-search-panel:
 
 - route: string; url-route for search results
@@ -50,7 +50,7 @@ Fully customizable panel. You can set the following parameters in kui-search-pan
 
 If everything is set to false or undefined the search-panel is a simple full-text search. [Read more](modules/search/search-panel)
 
-### Full-text search (Deprecated)
+### [Full-text search (Deprecated)](/developers/knora-ui/documentation/search/fulltext-search)
 
 `<kui-fulltext-search [route]="/search-results"></kui-fulltext-search>`
 
@@ -73,7 +73,7 @@ We suggest to define a route for the search-results in the app.routing
         ]
 ```
 
-### Extended / advanced search
+### [Extended / advanced search](/developers/knora-ui/documentation/search/extended-search)
 
 Generic search filter tool to limit search results to ontology and resource class and / or properties. [Read more](modules/search/extended-search)
 
@@ -87,7 +87,7 @@ If you want to use this search, you have to add the following css style to you m
 }
 ```
 
-### Expert search
+### [Expert search](/developers/knora-ui/documentation/search/expert-search)
 
 Expert search is a textarea input field in which you can create Gravsearch queries.
 The expert search can be more powerful than the advanced search, but requires knowing how to use the query language Gravsearch (based on SparQL and developed by the DaSCH team). With Gravsearch, expert users can build searches by combining text-related criteria with any other criteria.
