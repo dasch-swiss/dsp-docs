@@ -10,23 +10,23 @@ But you can use only [@knora/core]() which contains almost all services for the 
 
 ## Already published modules
 
-### @knora/core
+### [@knora/core](/developers/knora-ui/documentation/core/core)
 *Services for API requests*
 > The core module contains every service to use Knora\'s RESTful webapi /v2 and /admin. Therefore a JsonLD converter and an ontology cache service.
 
-### @knora/authentication
+### [@knora/authentication](/developers/knora-ui/documentation/authentication)
 *Login, Logout, Session*
 > The authentication module contains the login form, a logout button and it offers a session service, but also an authentication guard.
 
-### @knora/search
+### [@knora/search](/developers/knora-ui/documentation/search/search)
 *Complete search panel*
 > Search module allows to make fulltext or extended searches in Knora. Filter by resource class and its properties related to an ontology.
 
-### @knora/viewer
+### [@knora/viewer](/developers/knora-ui/documentation/viewer/viewer)
 *Resources, Properties, Lists*
 > The viewer module contains object components to show a resource class representation, the property gui-elements and various view frameworks.
 
-### @knora/action
+### [@knora/action](/developers/knora-ui/documentation/action/action)
 *Special pipes and buttons*
 > The action module contains special pipes to sort lists or to get the index key in arrays, but also directives for images, sort buttons and s.o.
 
