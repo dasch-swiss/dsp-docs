@@ -7,8 +7,6 @@ It will be soon replaced by the knora-api-js-lib, @knora/core and @knora/action 
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/authentication.svg)](https://www.npmjs.com/package/@knora/authentication)
 
-This module is part of [Knora-ui](https://github.com/dasch-swiss/knora-ui) modules, developed by the team at the [Data and Service Center for Humanities DaSCH](http://dasch.swiss).
-
 The authentication module contains the login form (for standalone usage) or a complete login- / logout-button environment incl. the login form.
 
 ## Prerequisites

@@ -20,7 +20,7 @@ nav:
         - Knora-ui modules:
           - Introduction: developers/knora-ui/documentation/index.md
           - Action module:
-              - Readme: developers/knora-ui/documentation/action/action.md
+              - Readme: developers/knora-ui/documentation/action/index-action.md
               - AdminImage: developers/knora-ui/documentation/action/action.md
               - ExistingName: developers/knora-ui/documentation/action/action.md
               - Key: developers/knora-ui/documentation/action/action.md
@@ -29,13 +29,13 @@ nav:
               - SortButton: developers/knora-ui/documentation/action/action.md
               - StringifyStringLiteral: developers/knora-ui/documentation/action/action.md
               - Truncate: developers/knora-ui/documentation/action/action.md
-          - Authentication module: developers/knora-ui/documentation/authentication.md
+          - Authentication module: developers/knora-ui/documentation/index-authentication.md
           - Core module:
-            - Readme: developers/knora-ui/documentation/core/core.md
+            - Readme: developers/knora-ui/documentation/core/index-core.md
           - Search module:
-            - Readme: developers/knora-ui/documentation/search/search.md
+            - Readme: developers/knora-ui/documentation/search/index-search.md
           - Viewer module:
-            - Readme: developers/knora-ui/documentation/viewer/viewer.md
+            - Readme: developers/knora-ui/documentation/viewer/index-viewer.md
             - Search-results: developers/knora-ui/documentation/viewer/search-results.md
         - Knora web app: developers/knora-web-app/documentation/index.md
         - Sipi: developers/sipi/documentation/index.md

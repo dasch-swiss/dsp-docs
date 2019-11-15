@@ -2,9 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/search.svg)](https://www.npmjs.com/package/@knora/search)
 
-This module is part of [Knora-ui](https://github.com/dasch-swiss/knora-ui) modules, developed by the team at the [Data and Service Center for Humanities DaSCH](http://dasch.swiss).
-
-Search module allows to make simple searches or extended searches in Knora. In extended search, resource class and its properties related to one specific ontology are selected to create your query.
+Search module allows to make simple searches or extended searches in Knora. In extended search, resource class and its properties related to one specific ontology are selected to create your query. It is also possible to write Gravsearch queries to target specific data with the expert search form. 
 
 ## Prerequisites
 

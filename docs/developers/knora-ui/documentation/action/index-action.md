@@ -2,9 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/action.svg)](https://www.npmjs.com/package/@knora/action)
 
-This module is part of [Knora-ui](https://github.com/dasch-swiss/knora-ui) modules, developed by the team at the [Data and Service Center for Humanities DaSCH](http://dasch.swiss).
-
-The action module contains special pipes to sort lists or to get the index key in arrays, but also directives for images, sort buttons and s.o.
+The action module is like a tool box containing special pipes to sort lists or to get the index key in arrays, directives for images and sorting names, but also components to display progress indicator bars or customized dialog boxes for resources, etc...
 
 ## Prerequisites
 
