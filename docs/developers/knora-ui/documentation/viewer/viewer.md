@@ -1,4 +1,4 @@
-# Knora-ui viewer module
+# Knora-ui VIEWER module
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/viewer.svg)](https://www.npmjs.com/package/@knora/viewer)
 

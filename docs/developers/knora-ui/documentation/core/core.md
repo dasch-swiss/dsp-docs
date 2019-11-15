@@ -1,4 +1,4 @@
-# Knora-ui core module
+# Knora-ui CORE module
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/core.svg)](https://www.npmjs.com/package/@knora/core)
 

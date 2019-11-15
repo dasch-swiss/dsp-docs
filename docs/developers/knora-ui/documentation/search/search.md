@@ -1,4 +1,4 @@
-# Knora-ui search module
+# Knora-ui SEARCH module
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/search.svg)](https://www.npmjs.com/package/@knora/search)
 

@@ -1,4 +1,4 @@
-# Knora ui modules
+# Knora-ui modules
 
 ## User Interface Modules for Knora
 

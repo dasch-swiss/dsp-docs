@@ -1,4 +1,4 @@
-# Knora-ui authentication module (DEPRECATED)
+# Knora-ui AUTHENTICATION module (DEPRECATED)
 
 <span style="color:red">**The following information stands until the version 9.4.1 of @knora/authentication.**
 It will be soon replaced by the knora-api-js-lib, @knora/core and @knora/action modules. New Install and Setup instructions will be then defined!</span>

@@ -1,4 +1,4 @@
-# Knora-ui action module
+# Knora-ui ACTION module
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/action.svg)](https://www.npmjs.com/package/@knora/action)
 
