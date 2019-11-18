@@ -21,14 +21,14 @@ nav:
           - Introduction: developers/knora-ui/documentation/index.md
           - Action module:
               - Readme: developers/knora-ui/documentation/action/index-action.md
-              - AdminImage: developers/knora-ui/documentation/action/action.md
-              - ExistingName: developers/knora-ui/documentation/action/action.md
-              - Key: developers/knora-ui/documentation/action/action.md
-              - Message: developers/knora-ui/documentation/action/action.md
+              - AdminImage: developers/knora-ui/documentation/action/admin-image.md
+              - ExistingName: developers/knora-ui/documentation/action/existing-name.md
+              - Key: developers/knora-ui/documentation/action/key.md
+              - Message: developers/knora-ui/documentation/action/message.md
               - Progress indicator: developers/knora-ui/documentation/action/progress-indicator.md
-              - SortButton: developers/knora-ui/documentation/action/action.md
-              - StringifyStringLiteral: developers/knora-ui/documentation/action/action.md
-              - Truncate: developers/knora-ui/documentation/action/action.md
+              - SortButton: developers/knora-ui/documentation/action/sort-button.md
+              - StringifyStringLiteral: developers/knora-ui/documentation/action/stringify-string-literal.md
+              - Truncate: developers/knora-ui/documentation/action/truncate.md
           - Authentication module: developers/knora-ui/documentation/index-authentication.md
           - Core module:
             - Readme: developers/knora-ui/documentation/core/index-core.md

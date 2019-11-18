@@ -16,14 +16,16 @@ You can use the progress indicator in two ways:
 
 ### Classic Loader
 
+**HTML file**
 ```html
 <kui-progress-indicator></kui-progress-indicator>
 ```
 
-*live example to include*
+*TODO: IMPLEMENT EXAMPLE*
 
 <!-- <iframe src="https://stackblitz.com/edit/mini-examples?embed=1&file=src/main.ts&hideExplorer=1&hideNavigation=1&view=preview" width="700px" height="300px"></iframe> -->
 
+<hr>
 
 ### Submit-form-data loader
 e.g. as a list style type while submitting form data
@@ -36,6 +38,8 @@ Angular Material Icons is required. You have to import the style file into your 
 
 We recommend to host the Material Icons font in your app e.g. by using the [Material Icons package](https://www.npmjs.com/package/material-icons).
 
+<hr>
+
 ### Dynamic example of Submit-form-data loader
 
-*live example to include*
+*TODO: IMPLEMENT EXAMPLE*
