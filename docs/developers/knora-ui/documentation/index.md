@@ -20,11 +20,11 @@ However, you can start only with [@knora/core](/developers/knora-ui/documentatio
 
 ### [@knora/core](/developers/knora-ui/documentation/core/index-core)
 *Services for API requests*
-> The core module contains every service to use Knora\'s RESTful webapi /v2 and /admin. Therefore a JsonLD converter and an ontology cache service.
+> The core module contains all services to use Knora's RESTful webapi V2 and Admin, as well as a JsonLD converter and an ontology cache service.
 
 ### [@knora/search](/developers/knora-ui/documentation/search/index-search)
-*Complete search panel*
-> Search module allows to make fulltext or extended searches in Knora. Filter by resource class and its properties related to an ontology.
+*Full search panel*
+> The search module allows to make full text or extended searches in Knora. Filter by resource class and its properties related to an ontology.
 
 ### [@knora/viewer](/developers/knora-ui/documentation/viewer/index-viewer)
 *Resources, Properties, Lists*
@@ -34,9 +34,9 @@ However, you can start only with [@knora/core](/developers/knora-ui/documentatio
 
 ## Contribute to develop Knora-ui modules
 
-If you want to contribute to develop Knora-ui modules with us, check the [contribution guideline](/developers/knora-ui/contribution/).
+If you want to contribute to develop Knora-ui modules with us, please consult the [contribution guideline](/developers/knora-ui/contribution/).
 
-***
+* * *
 
 Knora and the Knora ui modules is [free software](http://www.gnu.org/philosophy/free-sw.en.html), released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl-3.0.en.html).
 

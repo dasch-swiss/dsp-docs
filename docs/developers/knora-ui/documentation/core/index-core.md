@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@knora/core.svg)](https://www.npmjs.com/package/@knora/core)
 
-The core module contains all services to use Knora's RESTful webapi v2 and admin.
+The core module contains all services to use Knora's RESTful webapi V2 and Admin.
 
 ## Prerequisites
 
