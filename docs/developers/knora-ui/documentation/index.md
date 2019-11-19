@@ -4,7 +4,7 @@
 
 The Knora-ui modules are published on [npmJS](https://www.npmjs.com/~knora).
 
-The modules helps to create a graphical user interface, a web application to use [Knora](https://www.knora.org) in a quick and simple way. The modules are written in Typescript in order to use them with [Angular](https://angular.io) (version 8). We decided to style the components and directives with [material design](https://material.angular.io).
+The modules helps to create a graphical user interface, a web application to use [Knora](https://www.knora.org) in a quick and simple way. The modules are written in Typescript in order to use them with [Angular](https://angular.io) (version 8). The components and directives are styled with [Angular Material](https://material.angular.io).
 
 However, you can start only with [@knora/core](/developers/knora-ui/documentation/core/index-core) which contains the basic elements to build and connect your application to the Knora web API. Knora is a software framework for storing, sharing, and working with primary sources and data in the humanities.
 
@@ -34,7 +34,7 @@ However, you can start only with [@knora/core](/developers/knora-ui/documentatio
 
 ## Contribute to develop Knora-ui modules
 
-If you want to contribute to develop Knora-ui modules with us, check the [contribution guideline](/developers/contribution/index).
+If you want to contribute to develop Knora-ui modules with us, check the [contribution guideline](/developers/knora-ui/contribution/).
 
 ***
 
