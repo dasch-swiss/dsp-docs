@@ -92,7 +92,7 @@ If you want to use this search, you have to add the following css style to you m
 Expert search is a textarea input field in which you can create Gravsearch queries.
 The expert search can be more powerful than the advanced search, but requires knowing how to use the query language Gravsearch (based on SparQL and developed by the DaSCH team). With Gravsearch, expert users can build searches by combining text-related criteria with any other criteria.
 
-Check the [Gravsearch learning guide](https://docs.knora.org/paradox/05-internals/design/api-v2/gravsearch.html) on Knora documentation.
+Check the [Gravsearch learning guide](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html) on Knora documentation.
 
 ## Setup
 
