@@ -36,7 +36,7 @@ imgDefaultUser: string = 'root@example.com';
 imgSalsahUser: string = 'salsah@dasch.ch';
 ```
 
-*TODO: EXAMPLE TO IMPLEMENT*
+![User avatars](../../../../assets/images/knora-ui/admin-image1.png)
 
 <hr>
 
@@ -57,4 +57,4 @@ imgDefaultProject: string = undefined;
 imgDaschProject: string = 'http://dasch.swiss/content/images/2017/11/DaSCH_Logo_RGB.png';
 ```
 
-*TODO: EXAMPLE TO IMPLEMENT*
+![Default project logos](../../../../assets/images/knora-ui/admin-image2.png)

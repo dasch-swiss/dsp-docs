@@ -6,7 +6,7 @@ The action module is like a tool box containing special pipes to sort lists or t
 
 ## Prerequisites
 
-For help getting started with a new Angular app, check out the [Angular CLI](https://cli.angular.io/).
+For help getting started with a new Angular app, check the [Angular CLI](https://cli.angular.io/) documentation.
 
 For existing apps, follow these steps to begin using Knora-ui action.
 

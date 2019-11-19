@@ -59,7 +59,7 @@ errorMessage: ApiServiceError = {
 };
 ```
 
-*TODO: IMPLEMENT EXAMPLE*
+![Message in short version](../../../../assets/images/knora-ui/message-short.png)
 
 <hr>
 
@@ -81,4 +81,4 @@ errorMessage: ApiServiceError = {
   url: 'http://0.0.0.0:3333/admin/projects/shortcode/001/members'
 };
 ```
-*TODO: IMPLEMENT EXAMPLE*
+![Error message in default size version](../../../../assets/images/knora-ui/message-error.png)

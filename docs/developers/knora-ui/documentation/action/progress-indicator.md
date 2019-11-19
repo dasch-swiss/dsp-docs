@@ -21,8 +21,6 @@ You can use the progress indicator in two ways:
 <kui-progress-indicator></kui-progress-indicator>
 ```
 
-*TODO: IMPLEMENT EXAMPLE*
-
 <!-- <iframe src="https://stackblitz.com/edit/mini-examples?embed=1&file=src/main.ts&hideExplorer=1&hideNavigation=1&view=preview" width="700px" height="300px"></iframe> -->
 
 <hr>
@@ -30,7 +28,7 @@ You can use the progress indicator in two ways:
 ### Submit-form-data loader
 e.g. as a list style type while submitting form data
 
-*live example to include*
+![Submit form data loader](../../../../assets/images/knora-ui/submit-form-data-loader.png)
 
 Angular Material Icons is required. You have to import the style file into your app and add the following line in your main styling file:
 
@@ -42,4 +40,6 @@ We recommend to host the Material Icons font in your app e.g. by using the [Mate
 
 ### Dynamic example of Submit-form-data loader
 
-*TODO: IMPLEMENT EXAMPLE*
+![Loader before submit stage](../../../../assets/images/knora-ui/loader-before-submit-status.png)
+![Loader submitting stage](../../../../assets/images/knora-ui/loader-submitting-status.png)
+![Loader after submit stage](../../../../assets/images/knora-ui/loader-after-submit-status.png)
