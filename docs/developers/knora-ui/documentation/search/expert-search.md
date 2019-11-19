@@ -19,3 +19,5 @@ Extended search panel
 
 <kui-expert-search (gravsearch)="setGravsearch($event)"></kui-expert-search>
 ```
+
+![Expert search panel with a default Gravsearch query](../../../../assets/images/knora-ui/expert-search.png)

@@ -21,6 +21,8 @@ filterbyproject (optional) | string | If the full-text search should be filtere
 <router-outlet></router-outlet>
 ```
 
+![Simple full-text search](../../../../assets/images/knora-ui/fulltext-search-simple.png)
+
 ### Full-text search with project filter
 
 ```html
@@ -29,3 +31,5 @@ filterbyproject (optional) | string | If the full-text search should be filtere
 
 <router-outlet></router-outlet>
 ```
+
+![Full-text search with project filter](../../../../assets/images/knora-ui/fulltext-search-with-project-filter.png)

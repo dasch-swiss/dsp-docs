@@ -22,3 +22,5 @@ Extended search panel
 
 <router-outlet></router-outlet>
 ```
+
+![Advanced search panel with a search example](../../../../assets/images/knora-ui/extended-search.png)

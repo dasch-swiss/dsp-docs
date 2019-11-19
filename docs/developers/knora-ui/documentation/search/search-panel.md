@@ -26,3 +26,5 @@ Implement the search panel in your HTML file:
 
 <router-outlet></router-outlet>
 ```
+
+![Full search panel](../../../../assets/images/knora-ui/search-panel.png)
