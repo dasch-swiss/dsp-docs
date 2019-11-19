@@ -1,6 +1,6 @@
 # Expert search (Component)
 
-The expert search is a textarea field in which Gravsearch queries can be written 
+The expert search is a textarea field in which Gravsearch queries can be written. Complex search can be made this way but you must know the [Gravsearch language](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html).
 
 ## Parameters
 
