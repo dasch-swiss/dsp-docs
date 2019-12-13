@@ -8,12 +8,12 @@ nav:
       - User Management: user-guide/user.md
       - System Management: user-guide/system.md
       # - Publication: user-guide/publication.md
-    - How-To:
-      - Overview: how-to/index.md
     - Developers:
       - Overview: developers/index.md
       - Knora Getting Started: developers/knora/getting-started.md
-      - API Reference: developers/knora/api-reference/index.md
+      - API Reference: 
+        - Introduction: developers/knora/api-reference/index.md
+        - Queries: developers/knora/api-reference/queries.md
       - Documentation:
         - Knora: developers/knora/documentation/index.md
         - Knora API JS lib: developers/knora-api-js-lib/documentation/index.md

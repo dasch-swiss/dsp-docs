@@ -1,0 +1,179 @@
+# How to install Knora
+Developing for Knora requires a complete local installation of Knora. The different parts are:
+1. The cloned [Knora Github repository [https://github.com/dhlab-basel/Knora]](https://github.com/dhlab-basel/Knora)
+2. One of the supplied triplestores in the Knora Github repository
+3. Sipi by using the [docker image](https://hub.docker.com/r/dhlabbasel/sipi/).
+
+<br>
+
+## Install additional software
+Running Knora requires [Docker](https://www.docker.com) which can be downloaded free of charge. Please follow the instructions for installing [Docker Desktop](https://www.docker.com/products/docker-desktop).
+
+For a successful local installation of Knora the following additional software is necessary:
+* `git`
+* `expect`
+* `sbt`
+* `redis`
+
+On macOS these can be easily installed using [Homebrew [https://brew.sh]](https://brew.sh). If you haven't installed Homebrew yet, open a terminal window and type
+````
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+````
+You'll then see messages explaining what you need to do to complete the installation process. If Homebrew is already installed on your computer, update it before installing further packages by typing
+````
+brew update
+````
+Then, simply type
+````
+brew install git
+brew install expect
+brew install sbt
+brew install redis
+````
+to install the necessary additional software. Git is a version-control system for tracking changes in files. Expect is a tool for automating interactive applications. Sbt is a build-tool for Scala and Java projects. Redis is a data structure store needed for caching.
+
+<br>
+
+## Clone Knora from Github
+To clone Knora from Github open a terminal window and change to the directory where you intend to install Knora. Then type
+````
+git clone https://github.com/dasch-swiss/knora-api.git
+````
+This will install the directory `Knora` with subdirectories in the chosen directory.
+
+<br>
+
+## Chose and install a triplestore
+There are a number of triplestore implementations available, including free software as well as proprietary options. Knora is aimed to work with any standards-compliant triplestore. However, it is primarily tested with [Ontotext GraphDB [http://ontotext.com/products/graphdb/]](http://ontotext.com/products/graphdb/), a high-performance, proprietary triplestore. We recommend GraphDB Standard Edition, but GraphDB Free - which is proprietary but available free of charge - also works. Both versions need to be licensed separately from [Ontotext [http://ontotext.com]](http://ontotext.com). GraphDB-Free can be simply licensed by filling in the respective online registration from.
+
+Depending on which GraphDB version has been licensed, some environment variables may have to be set:
+#### GraphDB-Free:
+Type
+````
+export KNORA_GDB_TYPE=graphdb-free
+````
+to tell Knora that you use GraphDB-Free. If you decide to use another folder than the default folder `./triplestores/graphdb/home`, it is necessary to tell Knora the path to your folder:
+````
+export KNORA_GDB_HOME=/path/to/your/folder 
+````
+Copy the GraphDB license file into the folder `./triplestores/graphdb/` or into a folder of your choice and name it `graphdb.license`.
+
+#### GraphDB-SE:
+Since GraphDB-SE is our default triplestore version you only need to modify the settings if you aren't using the following default value paths:
+* `./triplestores/graphdb/home` for KNORA_GDB_HOME
+* `./triplestores/graphdb/graphdb.license` for the license file.
+
+If you chose other locations, you need to tell Knora the path to your folder and to the license file: 
+````
+export KNORA_GDB_TYPE=graphdb-se
+export KNORA_GDB_TYPE=/path/to/your/licensefile
+export KNORA_GDB_HOME=/path/to/your/folder
+````
+Copy the GraphDB license file into the folder `./triplestores/graphdb/` or into a folder of your choice and name it `graphdb.license`.
+
+<br>
+
+## Build the docker image
+From inside the cloned `Knora` repository folder run
+````
+make stack-up
+````
+to compose the Docker image. This should start the complete Knora stack consisting of GraphDB, Webapi, Salsah1 and Sipi which may take some time. If everything worked properly, when typing the command
+````
+docker ps
+````
+you should see five active processes / available endpoints for your local instance: 
+* `sipi` at `0.0.0.0:1024`
+* `salsah1` at  `0.0.0.0:3335`
+* `webapi` at `0.0.0.0:3333`
+* `redis` at `0.0.0.0:6379`
+* `graphdb` at `0.0.0.0:7200`
+
+If everything worked fine, type
+````
+make init-db-test
+````
+to load some test data. Afterwards it is necessary to restart the API. Type
+````
+make stack-restart-api
+````
+Then, the test data are available to play with them. You can then create your own scripts based on the knora-test scripts to create new repositories and optionally load existing Knora-compliant RDF data into them.
+
+When you open `0.0.0.0:3335` in your Browser, you should see our Web-API start page called SALSAH.
+The GraphDB workbench you can find at `0.0.0.0:7200`.
+
+To stop everything again, type 
+````
+make stack-down
+````
+
+<br><br>
+---
+---
+<!-- from Ivan -->
+# Developer Overview
+
+## Local Development Environment
+
+At the DaSCH, the principal development envionment is [Apple macOS](https://www.apple.com/macos).
+
+Each developer machine should have the following prerequisites installed:
+
+- Docker Desktop: https://www.docker.com/products/docker-desktop
+- Homebrew: https://brew.sh
+
+### Java Adoptopenjdk 11
+
+To install, follow these steps:
+
+```bash
+$ brew tap AdoptOpenJDK/openjdk
+$ brew cask install AdoptOpenJDK/openjdk/adoptopenjdk11
+```
+
+To pin the version of Java, please add this environment variable to you startup script (bashrc, etc.):
+
+```
+export JAVA_HOME=`/usr/libexec/java_home -v 11`
+```
+
+### Bazel build tools
+
+To install, follow these steps:
+
+```
+$ brew tap bazelbuild/tap
+$ brew install bazelbuild/tap/bazel
+$ brew upgrade bazelbuild/tap/bazel
+```
+
+#### Vizualize your Build
+
+Add the following line to your ~/.bazelrc:
+
+```
+query --package_path %workspace%:[PATH TO BAZEL]/base_workspace # set the path to the bazel binary
+```
+
+Run bazel query inside your project directory, asking it to search for all dependencies
+of //:main (or however the label is to your target of interest):
+
+```
+$ bazel query 'deps(//:main)' --output graph > graph.in
+```
+
+This creates a file called `graph.in`, which is a text representation of the build graph.
+You can use ```dot``` (install with `brew install graphviz`) to create a png:
+
+```
+$ dot -Tpng < graph.in > graph.png
+```
+
+
+### Python3
+
+To install, follow these steps:
+
+```
+$ brew install python
+```
