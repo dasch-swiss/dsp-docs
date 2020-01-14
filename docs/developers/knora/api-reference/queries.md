@@ -1,5 +1,5 @@
 # How to build queries
-The simplest form of a query is a full-text search. For more complex queries than a full-text search, Knora offers a special query language called [Gravsearch](../../03-apis/api-v2/query-language.html) which is based on the query language [SPARQL](https://www.w3.org/TR/sparql11-overview/) (**S**PARQL **P**rotocol **A**nd **R**DF **Q**uery **L**anguage).
+The simplest form of a query is a full-text search. For more complex queries than a full-text search, Knora offers a special query language called [Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html) which is based on the query language [SPARQL](https://www.w3.org/TR/sparql11-overview/) (**S**PARQL **P**rotocol **A**nd **R**DF **Q**uery **L**anguage).
 
 <br>
 
