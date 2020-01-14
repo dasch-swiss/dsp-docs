@@ -96,4 +96,4 @@ const appRoutes: Routes = [
 
 The `LoginFormComponent` in the app needs in principle only the `<kui-login-form></kui-login-form>` tag. Additional it's also possible to define e navigation route, where the user will be redirected after successful login: `<kui-login-form [navigate]="'/dashboard'"></kui-login-form>`
 
-![Login form](../../../../assets/images/knora-ui/login-form.png)
+![Login form](../../../assets/images/knora-ui/login-form.png)
