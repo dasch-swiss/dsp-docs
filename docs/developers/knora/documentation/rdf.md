@@ -1,26 +1,11 @@
-# Semantic Web basics
-
-The Semantic Web is an extension of the World Wide Web through standards which promote common data formats and exchange protocols on the Web. Its aim is to provide the most appropriate infrastructure for integrating information on the Web and to support a distributed Web at the level of the data. The data describe the presentation of the information. The Semantic Web uses standards-based knowledge representation structures and mechanisms to capture information and to make it processable by machines, which facilitates its sharing and reuse across different systems and applications. It involves publishing in languages specifically designed for data which differ in their level of expressivity. The following languages are from least expressive to most expressive: 
-* Resource Description Framework (RDF) - the basic framework, the rest of the Semantic Web is based on this language.
-* Resource Description Framework Schema (RDFS) - language appropriate to express basic notions of commonality and variability, classes, subclasses and properties.
-* Web Ontology Language (OWL) - language that allows to express detailed constraints between classes, entities and properties. 
-
-Machine-readable descriptions allow to add meaning to the content and thus to describe the structure of the knowledge we possess about the content. In such a way, authomated information gathering and research can be performed.
-
-### Further reading
-* Wikipedia article about [Semantic Web](https://en.wikipedia.org/wiki/Semantic_Web).
-* D. Allemang & J. Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 1-25.
-
-<br>
-
-# A note about the examples in this document
-It was aimed for to explain all following language features by using only one exemplary project. The setting of the chosen project is the following: It is about archaeological objects stemming from different findspots - known and unknown - and kept in different institutions around the world today. These objects show depictions of mythological scenes that illustrate episodes known from ancient literature, e.g. the Iliad or the Odyssey of Homer, or reflect thoughts of various ancient philosophers about the nature of our world and all creatures living therein. For some of these objects other data and documents exist on the Web, e.g. entries in museum databases, and we may possess low or high resolution images of them. Furthermore, the findspots - if known - can be identified unambigously by reference to geographical databases, e.g. GeoNames. 
-
-<br>
-
 # Resource Description Framework (RDF) basics
 
 The Resource Description Framework (RDF) ist the basic representation language and foundation of the Semantic Web. It addresses the fundamental issue of managing distributed data. All things in the world are referred to as ***resources***. Resources can be anything someone might want to talk about: documents, people, physical objects as well as abstract concepts. The Resource Description Framework (RDF) is the framework for expressing information about such resources. It is useful if information on the Web is not only displayed, but needs to be processed by applications. 
+
+## A note about the examples in this document
+It was aimed for to explain all following language features by using only one exemplary project. The setting of the chosen project is the following: It is about archaeological objects stemming from different findspots - known and unknown - and kept in different institutions around the world today. These objects show depictions of mythological scenes that illustrate episodes known from ancient literature, e.g. the Iliad or the Odyssey of Homer, or reflect thoughts of various ancient philosophers about the nature of our world and all creatures living therein. For some of these objects other data and documents exist on the Web, e.g. entries in museum databases, and we may possess low or high resolution images of them. Furthermore, the findspots - if known - can be identified unambigously by reference to geographical databases, e.g. GeoNames. 
+
+<br>
 
 If data are available in tabular form, the rows represent the items we intend to describe and each column represents some property of these items. The cells in the table then denote particular values for these properties. Table 1 shows a small excerpt of such a table from our exemplary project.
 
@@ -58,7 +43,7 @@ Often, the same resource, e.g. a person, is referenced in multiple triples. When
 ![alt text](https://docs.knora.org/paradox/02-knora-ontologies/introduction-fig1.dot.png "Figure 1")
 
 The graph display of the triples in Table 2 looks as follows:
-![alt text](Table1Graphics.png "Figure 2")
+![alt text](../../../assets/images/knora/Table1Graphics.png "Figure 2")
 
 Let's assume we possess the information in Table 3 from another source which we intend to merge with our data presented in Table 1.
 |Author|Work|Depiction|
@@ -73,7 +58,7 @@ This provides us with the following triples in Table 4:
 |Iliad|hasDepictionOn|24.97.11|
 |Odyssey|hasDepictionOn|24.97.11|
 The graph display of the triples in Table 2 concerning ID 3 and of the triples in Table 4 looks as follows:
-![alt text](Table2Table4Graphics.png "Figure 3")
+![alt text](../../../assets/images/knora/Table2Table4Graphics.png "Figure 3")
 
 <br>
 
@@ -348,11 +333,11 @@ A collection is represented as a list of items. `rdf:List` is an instance of `rd
 ## Summary
 The following Figure 4 illustrates the concepts of resource, class, and sub-class. Resources are denoted by a large dot and arrows are drawn from a resource to the class it defines. A sub-class is shown by a rectangle (the sub-class) completely enclosed by another (the super-class), i.e. class ConstraintProperty is a subclass of class Property. The notion `rdf:type` specifies that something is a member of a group, i.e. an instance of a class. By using `rdfs:Class` instead of `rdf:type` a description of the meaning of a membership in a group is gained. Meaning is expressed through the meachanisms of inference in RDFS that can be drawn when a resource is used in a certain way.
 
-![alt text](RDFFigure4.png "Figure 4")
+![alt text](../../../assets/images/knora/RDFFigure4.png "Figure 4")
 
 The following Figure 5 expresses the same information about the class hierarchy, but does so using a graphic representation of the RDF data model. If a class is a subset of another, there is an arc labelled "s" from the node representing the first class to the node representing the second one ("s" stands for `rdfs:subClassOf`). If a resource was an instance of a class, then there is an arc labelled "t" from the resource to the node representing the class ("t" stands for `rdf:type`). Not all arcs are drawn, e.g. `rdfs:ConstraintProperty` is a subclass of `rdfs:Resource` because it is a subclass of `rdf:Property` which is a subclass of `rdfs:Resource`.
 
-![alt text](RDFFigure5.png "Figure 5")
+![alt text](../../../assets/images/knora/RDFFigure5.png "Figure 5")
 
 Examples: 
 - The class `rdfs:Literal` is an instance of `rdfs:Class` and an instance of `rdfs:Resource`. 
