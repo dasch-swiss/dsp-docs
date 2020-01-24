@@ -1,6 +1,10 @@
 # Resource Description Framework (RDF) basics
 
-The Resource Description Framework (RDF) ist the basic representation language and foundation of the Semantic Web. It addresses the fundamental issue of managing distributed data. All things in the world are referred to as ***resources***. Resources can be anything someone might want to talk about: documents, people, physical objects as well as abstract concepts. The Resource Description Framework (RDF) is the framework for expressing information about such resources. It is useful if information on the Web is not only displayed, but needs to be processed by applications. 
+The Resource Description Framework (RDF) is the basic representation language and foundation of the Semantic Web. It addresses the fundamental issue of managing distributed data. All things in the world are referred to as ***resources***. Resources can be anything: documents, people, physical objects as well as abstract concepts. The Resource Description Framework (RDF) is the framework for expressing information about such resources. It is useful if information on the Web is not only displayed, but needs to be processed by applications. 
+
+The following introduction to RDF draws heavily on the book of **Dean Allemang & James Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 27–50** which we warmly recommend for reading. Further information can be found in the [RDF 1.1 Primer](https://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/).
+
+<br>
 
 ## A note about the examples in this document
 It was aimed for to explain all following language features by using only one exemplary project. The setting of the chosen project is the following: It is about archaeological objects stemming from different findspots - known and unknown - and kept in different institutions around the world today. These objects show depictions of mythological scenes that illustrate episodes known from ancient literature, e.g. the Iliad or the Odyssey of Homer, or reflect thoughts of various ancient philosophers about the nature of our world and all creatures living therein. For some of these objects other data and documents exist on the Web, e.g. entries in museum databases, and we may possess low or high resolution images of them. Furthermore, the findspots - if known - can be identified unambigously by reference to geographical databases, e.g. GeoNames. 
@@ -42,11 +46,13 @@ Often, the same resource, e.g. a person, is referenced in multiple triples. When
 
 ![alt text](https://docs.knora.org/paradox/02-knora-ontologies/introduction-fig1.dot.png "Figure 1")
 
-The graph display of the triples in Table 2 looks as follows:
-![alt text](../../../assets/images/knora/Table1Graphics.png "Figure 2")
+Furthermore, if the subject or object is a URI/IRI or a blank node, it is depicted within an ellipse, if it is a literal value, however, within a rectangle. 
+
+The graph display of the triples in Table 2 then looks as follows:
+![alt text](../../../assets/images/knora/Table1Graphics.png "Figure 2") 
 
 Let's assume we possess the information in Table 3 from another source which we intend to merge with our data presented in Table 1.
-|Author|Work|Depiction|
+|Work|Author|Depiction|
 |-----|:----:|---|
 |Iliad|Homer|24.97.11|
 |Odyssey|Homer|24.97.11|
@@ -59,6 +65,7 @@ This provides us with the following triples in Table 4:
 |Odyssey|hasDepictionOn|24.97.11|
 The graph display of the triples in Table 2 concerning ID 3 and of the triples in Table 4 looks as follows:
 ![alt text](../../../assets/images/knora/Table2Table4Graphics.png "Figure 3")
+Since we now look at one specific example, namely "ID 3", all the values are literals and hence depicted in yellow rectangles.
 
 <br>
 
@@ -154,14 +161,14 @@ If several triples share a common subject it need not be repeated each time. Ins
 myonto:Homer rdf:type myonto:Author ;
              myonto:wrote "Iliad" .
 ````
-This statement expresses that in my ontology named *myonto* Homer is part of my class author and that he wrote the Iliad.
+This statement expresses that in my ontology named *myonto* Homer is part of my class Author and that he wrote the Iliad.
 
 If there are several triples that share both subject and predicate, a comma (,) is used to separate the objects. E.g. to express, that Homer wrote both the Iliad and the Odyssey, I can use the following statement:
 ````
 myonto:Homer myonto:wrote myonto:Iliad, myonto:Odyssey .
 ````
 
-To improve terseness and readability Turtle provides some abbreviations. The most widley used abbreviation is the word ***a*** to mean `rdf:type`. Thus, the following two triples are equivalent, both telling that the class ceramics in my ontology is part of a larger class called category:
+To improve terseness and readability Turtle provides some abbreviations. The most widley used abbreviation is the word ***a*** to mean `rdf:type`. Thus, the following two triples are equivalent, both telling that the class Ceramics in my ontology is part of a larger class called Category:
 ````
 myonto:Ceramics rdf:type myonto:Category .
 myonto:Ceramics a myonto:Category .
@@ -169,15 +176,15 @@ myonto:Ceramics a myonto:Category .
 <br>
 
 ## Blank nodes
-Sometimes we are aware of that something exists, that we know some things about it, but we don't know its identity. We want to express what we know about this resource without bothering to use a global identifier. Such a resource without a global identifier can be represented by a blank node. Blank nodes are comparable to the unknown variables x or y in an equation - they represent something without saying what their value is. Blank nodes can be the **subject** and/or the **object** of a triple. Within the framework of our example of archaeological objects showing depictions of Homeric poetry which are held by different institutions, the exact provenience of some objects may be unknown since they stem from illicit excavations and were bought on the antiquities market many years ago. Nevertheless, we know that each object possesses a provenience.  
+Sometimes we are aware of that something exists, that we know some things about it, but its identity is unknown. We want to express what we know about this resource without bothering to use a global identifier. Such a resource without a global identifier can be represented by a blank node. Blank nodes are comparable to the unknown variables x or y in an equation - they represent something without saying what their value is. Blank nodes can be the **subject** and/or the **object** of a triple. Within the framework of our example of archaeological objects showing depictions of Homeric poetry which are held by different institutions, the exact provenience of some objects may be unknown since they stem from illicit excavations and were bought on the antiquities market many years ago. Nevertheless, we know that each object possesses a provenience.  
 
-A blank node is indicated by putting all triples of which it is a subject between square brackets ([]). The information that if an object was bought on the antiquities market no detail information about its find context is available can be put inside a blank node:
+A blank node is indicated by square brackets ([]). All triples of which it is a subject are placed within these brackets. The information that if an object was bought on the antiquities market no detail information about its find context is available can be put inside a blank node:
 ````
  [ rdf:type myonto:Market ;
    myonto:noInfo myonto:FindContext ]
 ````
 
-Such a blank node can then be referred to in other triples by including the entire bracketed sequece in place of the blank node. The following example expresses that all my objects which belong to the class UnprovenancedObj in my ontology *myonto* were bought on the antiquities market and for them I have no detail information about their find contexts available: 
+Such a blank node can then be referred to in other triples by including the entire bracketed sequence in place of the blank node. The following example expresses that all my objects which belong to the class UnprovenancedObj in my ontology *myonto* were bought on the antiquities market and for them I have no detail information about their find contexts available: 
 ````
 myonto:UnprovenancedObj myonto:isPartOf 
     [ rdf:type myonto:Market ;
@@ -194,38 +201,35 @@ Agamemnon myonto:isFatherOf (Iphigeneia,
                              Orestes) .
 ````
 
-### Further reading
-
-* Recommendations of [RDF 1.1 Primer](https://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/).
-* D. Allemang & J. Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 27-50.
-
 <br>
 
-# RDF Schema
-RDF itself simply creates a graph structure to represent data. The RDF Schema is a semantic extension of RDF wich provides some guidelines about how to use this graph structure, i.e. it imposes special syntactic conditions or restrictions upon RDF graphs. The schema is informaton about the data. It should help to provide meaning to the data. Thus, it is a layer on top of the RDF layer to describe consistency constraints in the data. The key to these levels is ***inferencing***. The statements of meaning are given in the form of an inference pattern: "Given some initial information, the following new information can be derived." That's the way the RDF Schema language (RDFS) and also the Web Ontology Language (OWL) work. All schema information in RDFS is expressed by RDF triples. The meaning of asserted triples is defined with new inferred triples. The structures that describe the meaning of the data are also in triples. 
+# RDF Schema (RDFS)
+RDF simply creates a graph structure to represent data. The **RDF S**chema (RDFS) is a semantic extension of RDF wich provides some guidelines about how to use this graph structure, i.e. it imposes special syntactic conditions or restrictions upon RDF graphs. The schema is informaton about the data. It should help to provide meaning to the data. Thus, it is a layer on top of the RDF layer to describe consistency constraints in the data. The key to these levels is ***inferencing***. The statements of meaning are given in the form of an inference pattern: "Given some initial information, the following new information can be derived." That's the way the RDF Schema language (RDFS) and also the Web Ontology Language (OWL) work. All schema information in RDFS is expressed by RDF triples. The meaning of asserted triples is defined with new inferred triples. The structures that describe the meaning of the data are also in triples. 
+
+The following introduction to RDF Schema draws heavily on the book of **Dean Allemang & James Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 113–152** which we warmly recommend for reading. Further information can be found in the Recommendations of [RDF Schema 1.1](https://www.w3.org/TR/2014/REC-rdf-schema-20140225/).
 
 <br>
 
 ## Asserted triples and inferred triples
-Asserted triples are triples that were asserted in the original RDF store. Inferred triples are additional triples that are inferred by one of the inference rules. There is no logical distinction between inferred and asserted triples. Hence, one should be careful concerning inference rules and how to implement them. The RDFS and OWL standards define for certain patterns of triples which inferences are valid.
+Asserted triples are triple data that were explicitly added in the original RDF store. Inferred triples are additional triples that are inferred by one of the inference rules. There is no logical distinction between inferred and asserted triples. Hence, one should be careful concerning inference rules and how to implement them. The RDFS and OWL standards define for certain patterns of triples which inferences are valid.
 
-The simplest approach is to store all triples in a single store regardless whether they are asserted or inferred. This approach is called ***cached inferencing*** since all inferences are stored with the data. It is simple, but the number of triples in the triple store increases and some inferred triples may later turn out to be incorrect und unwarranted. The other extreme is to never actually store any inferred triples in any persistent store. Then, inferencing is done in response to queries only. This approach can be called ***just in time inferencing***, since the inferences are made just in time. The query responses are produced such that they respect all the appropriate inferences, but no inferred triple is retained. Both approaches have an important impact if data sources change, i.e. if a triple is deleted or a new triple added. If *cached inferencing* was chosen, originally inferred triples which are no longer valid must be identified and removed or new ones added. An important variant of *just in time inferencing* is where explicit inferencing is undesired.
+The simplest approach is to store all triples in a single store and to ignore whether they are asserted or inferred. This approach is called ***cached inferencing*** since all inferences are stored with the data. It is simple, but the number of triples in the triple store increases and some inferred triples may later turn out to be incorrect und unwarranted. The other extreme is to never actually store any inferred triples in any persistent store. Then, inferencing is done in response to queries only. This approach can be called ***just in time inferencing***, since the inferences are made just in time. The query responses are produced such that they respect all the appropriate inferences, but no inferred triple is retained. Both approaches have an important impact if data sources change, i.e. if a triple is deleted or a new triple added. If *cached inferencing* was chosen, originally inferred triples which are no longer valid must be identified and removed or new ones added. An important variant of *just in time inferencing* is where explicit inferencing is undesired.
 
-What kind of inferencing is needed depends on the required level of expressivity for a certain task. There are different inferencing levels. RDFS operates on a small number of inference rules that deal mostly with relating classes to subclasses and properties to classes. OWL includes constraints on properties and notions of equality and includes rules for describing classes based on allowed values for properties. All these standards use inferencing to describe the meaning of a model - they differ in the inferencing that they support.
+What kind of inferencing is needed depends on the required level of expressivity for a certain task. There are different inferencing levels. RDFS operates on a small number of inference rules that deal mostly with relating classes to subclasses and properties to classes. OWL includes constraints on properties and notions of equality and includes rules for describing classes based on allowed values for properties. All these standards use inferencing, but they differ in the inferencing that they support.
 
 <br>
 
 ## Classes
 Resources can be grouped in **classes** which are themselves resources. The members of such a class are known as ***instances*** of the class. Classes are often identified by URIs/IRIs. All RDF datatypes are classes. The instances of a class that is a datatype are the members of the value space of the datatype. Thus, "3.14" is an instance of the class decimal, "4" is an instance of the class integer, "2000-01-01" is an instance of the class date, etc.
 
-The basic construct for specifying a group of related resources in RDFS is called an `rdfs:Class`. The way to express that something is a class is with a triple in which the predicate is `rdf:type` and the object is `rdfs:Class` as in the following examples. 
+The basic construct for specifying a group of related resources in RDFS is called an `rdfs:Class`. The way to express that something is a class is with a triple in which the predicate is `rdf:type` and the object is `rdfs:Class` as in the following examples: 
 ````
 myonto:Ceramics rdf:type rdfs:Class .
 myonto:BlackFigured rdf:type rdfs:Class .
 ````
 These triples express that our resources `Ceramics` and `BlackFigured` are classes.
 
-One of the basic terms is `rdfs:subClassOf`. The meaning of "*B* is a `subClassOf` *C*" is "every member of class B is also a member of class C", expressed in the form of an inference. From a further information "*x* is a member of *B*" one can derive the new information "*x* is a member of *C*". Speaking more generally, if a class A is a subclass of another class B, then anything of type A is also of type B. This is called the ***type propagation rule***. This feature of inference systems is particulary useful in a Semantic Web context in which new combinations of relationships likely occur as data from multiple sources are merged. In the framework of our example the class `BlackFigured` is a subclass of the class `Ceramics`. For any member of the class `BlackFigured` we can then derive due to the following statement that it is also a memeber of the class `Ceramics`:
+One of the basic terms is `rdfs:subClassOf`. The meaning of "*B* is a `subClassOf` *C*" is "every member of class B is also a member of class C", expressed in the form of an inference. From a further information "*x* is a member of *B*" one can derive the new information "*x* is a member of *C*". Speaking more generally, if a class A is a subclass of another class B, then anything of type A is also of type B. This is called the ***type propagation rule***. This feature of inference systems is particulary useful in a Semantic Web context in which new combinations of relationships likely occur as data from multiple sources are merged. In the framework of our example the class `BlackFigured` is a subclass of the class `Ceramics`. For any member of the class `BlackFigured` we can then derive that it is also a member of the class `Ceramics`due to the following statement :
 ````
 myonto:BlackFigured rdfs:subClassOf myonto:Ceramics .
 ````
@@ -250,7 +254,7 @@ Other basic properties are `rdfs:range` and `rdfs:domain`. They have meanings in
 ````
 P rdfs:domain D .
 ```` 
-means that property `P` has domain `D`. From this we can infer that the subject of that triple is a member of the class `D`. More generally, `rdfs:domain` is an instance of `rdf:Property` that is used to express that any resource that has a given property is an instance of one or more classes. If the predicate of a triple has more than one `rdfs:domain` property, the resources denoted by the subjects of triples are instances of all the classes stated by the `rdfs:domain` properties. We pick just two classes from our example - `Ceramics` and `BlackFigured` - which show a subclass relation: 
+means that property `P` has domain `D`. From this we can infer that the subject of that triple is a member of the class `D`. `rdfs:domain` can be used to specify with which class the defined property can be used with. It is possible to specify multiple `rdfs:domain` properties when defining a property. We pick just two classes from our example - `Ceramics` and `BlackFigured` - which show a subclass relation: 
 ````
 myonto:BlackFigured rdfs:subClassOf myonto:Ceramics .
 ````
@@ -258,15 +262,19 @@ We now have a property called `incised` whose domain is `BlackFigured`.
 ````
 myonto:incised rdfs:domain myonto:BlackFigured .
 ````
+This means that all my objects with incised decoration belong to the class `BlackFigured`.
 
 #### `rdfs:range`
 ````
 P rdfs:range R .
 ```` 
-means that the property `P` has range `R`. From this we can infer that the object of that triple is a member of class `R`. More generally, `rdfs:range` is an instance of `rdf:Property` that is used to express that the values of a property are instances of one or more classes. If the predicate of a triple has more than one `rdfs:range` property, the resources denoted by the objects of triples are instances of all the classes stated by the `rdfs:range` properties. If we want to specify that all mythological figures who travelled on the ship Argo are called Argonauts, we can do this with the following triple:
+means that the property `P` has range `R`. From this we can infer that the object (the value of `P`) of that triple is a member of class `R`. If the predicate of a triple has more than one `rdfs:range` property, the resources denoted by the objects of triples are instances of all the classes stated by the `rdfs:range` properties. If we want to specify that queens who gave birth to a son could theoretically become queen mothers, we could do that with the following combination of 
+`rdfs:domain` and `rdfs:range`:
 ````
-myonto:onArgo rdfs:range myonto:Argonauts .
+myonto:hasSon rdfs:domain myonto:Queen .
+myonto:hasSon rdfs:range myonto:QueenMother .
 ````
+
 It is important to know that if `P` is used in an inconsistent way with this declaration, RDFS does not signal an error, but rather infers the necessary type information to bring `P` into accordance with its domain and range declarations! In RDFS, there is no notion of an incorrect or inconsistent inference, i.e. it will never proclaim an input as invalid but simply infer appropriate type information. Domains and ranges are not used to validate information, but to determine new information based on old information. In practice, there are often better and more appropriate options to use instead of `rdfs:domain` and `rdfs:range` alone.
 
 <br>
@@ -284,7 +292,7 @@ Frequently it is useful to add comments about a model, i.e. to document it prope
 ````
 myonto:BlackFigured rdfs:comment "The class BlackFigured contains ceramic vessels where the decoration is painted with black paint." .
 ````
-In the case where a resource is an URL, supplementary information about this resource may be useful. This additional information is often included in documents. `rdfs:seeAlso` provides a way to specify the web location of such supplementary information. The web location has to be given in the form of an IRI/URI and not in a human-readable form. The precise behaviour of a processor is not specified, but most tools that encounter `rdfs:seeAlso` link them to those links in a browser or application interface. In our example we could link findspots of archaeological objects to a web resource with geodata, e.g. GeoNames, in the following way:
+In the case where a resource is an URL, supplementary information about this resource may be useful. This additional information is often included in documents. `rdfs:seeAlso` provides a way to specify the web location of such supplementary information. The web location has to be given in the form of an IRI/URI! The precise behaviour of a processor is not specified, but most tools that encounter `rdfs:seeAlso` link them to those links in a browser or application interface. In our example we could link findspots of archaeological objects to a web resource with geodata, e.g. GeoNames, in the following way:
 ````
 myonto:latitude rdfs:seeAlso geonames:lat .
 ````
@@ -294,7 +302,7 @@ myonto:latitude rdfs:seeAlso geonames:lat .
 
 ### Combinations and patterns
 #### Intersection
-RDFS inference rules are few and rather simple. More specific patterns can be otained by combining basic RDFS features. One such cases is set intersection. If we intend to draw the inference that if a resource `x` is an instance of class `C`, then it should also be an instance of classes `A` and `B`, expressing the formal relationship `C` &#8838; `A` &#8745; `B`. Such an inference can be obtained by making `C` a subclass of `A` and `B`:
+RDFS inference rules are few and rather simple. More specific patterns can be obtained by combining basic RDFS features. One such case is set intersection. If we intend to draw the inference that if a resource `x` is an instance of class `C`, then it should also be an instance of classes `A` and `B`, expressing the formal relationship `C` &#8838; `A` &#8745; `B`. Such an inference can be obtained by making `C` a subclass of `A` and `B`:
 ````
 :C rdfs:subClassOf :A .
 :C rdfs:subClassOf :B .
@@ -319,7 +327,7 @@ The union of two sets (`A` &#8746; `B` &#8838; `C`) can be obtained by making `C
 :A rdfs:subClassOf :C .
 :B rdfs:subClassOf :C .
 ````
-Then, for any instance `x` that is either a member of `A` or of `B` it will be inferred that it is also a member of `C`.
+Then, for any instance `x` that is either a member of class `A` or of `B` it will be inferred that it is also a member of class `C`.
 
 In an analogous way to the treatment of classes, set union can be defined for properties using `rdfs:subPropertyOf`.
 
@@ -331,21 +339,20 @@ A collection is represented as a list of items. `rdf:List` is an instance of `rd
 <br>
 
 ## Summary
-The following Figure 4 illustrates the concepts of resource, class, and sub-class. Resources are denoted by a large dot and arrows are drawn from a resource to the class it defines. A sub-class is shown by a rectangle (the sub-class) completely enclosed by another (the super-class), i.e. class ConstraintProperty is a subclass of class Property. The notion `rdf:type` specifies that something is a member of a group, i.e. an instance of a class. By using `rdfs:Class` instead of `rdf:type` a description of the meaning of a membership in a group is gained. Meaning is expressed through the meachanisms of inference in RDFS that can be drawn when a resource is used in a certain way.
-
+The following Figure 4 illustrates the concepts of resource, class, and sub-class based on our example project. 
 ![alt text](../../../assets/images/knora/RDFFigure4.png "Figure 4")
 
-The following Figure 5 expresses the same information about the class hierarchy, but does so using a graphic representation of the RDF data model. If a class is a subset of another, there is an arc labelled "s" from the node representing the first class to the node representing the second one ("s" stands for `rdfs:subClassOf`). If a resource was an instance of a class, then there is an arc labelled "t" from the resource to the node representing the class ("t" stands for `rdf:type`). Not all arcs are drawn, e.g. `rdfs:ConstraintProperty` is a subclass of `rdfs:Resource` because it is a subclass of `rdf:Property` which is a subclass of `rdfs:Resource`.
+Figure 5 shows the same in a more general way: resources are denoted by a large black dot and arrows are drawn from a resource to the class it defines. A sub-class is shown by a rectangle (the sub-class) completely enclosed by another (the super-class), i.e. class ConstraintProperty is a subclass of class Property. The notion `rdf:type` specifies that something is a member of a group, i.e. an instance of a class. By using `rdfs:Class` instead of `rdf:type` a description of the meaning of a membership in a group is gained. Meaning is expressed through the mechanisms of inference in RDFS that can be drawn when a resource is used in a certain way.
 
 ![alt text](../../../assets/images/knora/RDFFigure5.png "Figure 5")
+
+The following Figure 6 expresses the same information about the class hierarchy, but does so using a graphic representation of the RDF data model. If a class is a subset of another, there is an arc labelled "s" from the node representing the first class to the node representing the second one ("s" stands for `rdfs:subClassOf`). If a resource was an instance of a class, then there is an arc labelled "t" from the resource to the node representing the class ("t" stands for `rdf:type`). Not all arcs are drawn, e.g. `rdfs:ConstraintProperty` is a subclass of `rdfs:Resource` because it is a subclass of `rdf:Property` which is a subclass of `rdfs:Resource`.
+
+![alt text](../../../assets/images/knora/RDFFigure6.png "Figure 6")
 
 Examples: 
 - The class `rdfs:Literal` is an instance of `rdfs:Class` and an instance of `rdfs:Resource`. 
 - The class `rdf:Property` is the class of RDF properties and an instance of `rdfs:Class`.
-
-### Further reading
-* Recommendations of [RDF Schema 1.1](https://www.w3.org/TR/2014/REC-rdf-schema-20140225/).
-* D. Allemang & J. Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 113-152.
 
 <br>
 
@@ -355,11 +362,15 @@ OWL is intended to be used when information contained in documents needs to be p
 The main building blocks of the OWL language are an RDF graph and at least one concrete syntax - there may be more than one - that can be used to serialize and exchange ontologies. 
 
 OWL has been designed to meet the needs for a Web Ontology Language. It is part of the W3C recommendations related to the Semantic Web:
-- [XML](https://www.w3.org/XML/) proveds a surface syntax for structured documents, but imposes no semantic constraints.
+- [XML](https://www.w3.org/XML/) provides a surface syntax for structured documents, but imposes no semantic constraints.
 - [XML Schema](https://www.w3.org/XML/Schema) is a language for restricting the structure of XML documents and extends XML with datatypes.
 - [RDF](https://www.w3.org/TR/rdf-concepts/) is a datamodel for objects and relations between them. Furthermore, it provides a simple semantics for this datamodel and these datamodels can be represented in an XML syntax.
 - [RDF Schema](https://www.w3.org/TR/rdf-schema/) is a vocabulary for describing properties and classes of RDF resources, with a semantics for generalization-hierarchies of such properties and classes.
 - OWL then adds more vocabulary to RDF for describing properties and classes: e.g. relations between classes, cardinality, equality, characteristics of properties and enumerated classes.
+
+The following introduction to OWL draws heavily on the book of **Dean Allemang & James Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 153–305** which we warmly recommend for reading. Further information can be found in the Recommendations of the [OWL 2 Web Ontology Language Document Overview (Second Edition)](https://www.w3.org/TR/2012/REC-owl2-overview-20121211/) and the Wikipedia entry of [OWL](https://en.wikipedia.org/wiki/Web_Ontology_Language).
+
+<br>
 
 ## `owl:Class`
 In OWL, a [Class](https://www.w3.org/TR/owl-guide/#owl_Class) defines a group of individuals that belong together because they share some properties. An `owl:Class` differs from an `rdfs:Class` - an `owl:Class` is a special case of an `rdfs:Class`. Classes can be organised in a hierarchy using `rdfs:subClassOf`. Thus, `owl:Class` is defined as a subclass of `rdfs:Class`:
@@ -370,24 +381,32 @@ This means that every member of an `owl:Class`  is also a member of `rdfs:Class`
 
 There is a built-in most general class named `owl:Thing` which is the class of all individuals. It is a superclass of all OWL classes. There is also a built-in class named `owl:Nothing` which is the class that has no instances. It is a subclass of all OWL classes. 
 
+<br>
+
 ## `owl:inverseOf`
-Extra language features that are not directly provided by OWL, but that one may desire, such as e.g. `superClassOf`, are often supported by OWL as a combination of other features. The construct `owl:inverseOf` inverses a property, i.e. the direction of the property is reversed. This property can be used to define e.g. the `superClassOf` a resource by combining it with `rdfs:subClassOf` in the following way:
+Extra language features that are not directly provided by OWL, but that one may desire, such as e.g. `superClassOf`, are often supported by OWL as a combination of other features. The construct `owl:inverseOf` inverses a property, i.e. the direction of the property is reversed. This property can be used to define e.g. the `superClassOf` of a resource by combining it with `rdfs:subClassOf` in the following way:
 ````
 myonto:superClassOf owl:inverseOf rdfs:subClassOf .
 ````
 
+<br>
+
 ## `owl:SymmetricProperty`
-The special case if the inverse property of a property is the same property is important enough to be provided by `owl:SymmetricProperty`. It is just an aspect of a single property and is expressed in OWL as a Class. An example for such a property is to be married - if Agamemnon is married to Klytaimnestra, Klytaimnestra is also married to Agamemnon. Thus we can define a property `married` in our ontology with the following triple:
+For a symmetric property holds that if a pair (x,y) is an instance of the property P, then also the pair (y,x) is an instance of this property P. Such a property is provided by `owl:SymmetricProperty` and expressed in OWL as a Class. An example for such a property is to be married - if Agamemnon is married to Klytaimnestra, Klytaimnestra is also married to Agamemnon. Thus we can define a property `married` in our ontology with the following triples:
 ````
 myonto:married rdf:type owl:SymmetricProperty .
+Agamemnon myonto:married Klytaimnestra .
 ````
+
 Be aware - to make sure that `owl:inverseOf` works in both directions, one has to assert that
 ````
 owl:inverseOf rdf:type owl:SymmetricProperty .
 ````
 
+<br>
+
 ## `owl:TransitiveProperty`
-Another important property is transitivity. Transitivity is a relation between three elements such that if it holds between the first and second and it also holds between the second and third, it must necessarily hold between the first and thevthird. In OWL, transitivity is provided by the construct `owl:TransitiveProperty` which is a class of properties. To model the property `isLocatedIn` in our ontology as a member of the transitive class we can state
+Another important property is transitivity. Transitivity is a relation between three elements such that if it holds between the first and second and it also holds between the second and third, it must necessarily hold between the first and the third. In OWL, transitivity is provided by the construct `owl:TransitiveProperty` which is a class of properties. To model the property `isLocatedIn` in our ontology as a member of the transitive class we can state
 ````
 myonto:isLocatedIn rdf:type owl:TransitiveProperty .
 ````
@@ -397,6 +416,8 @@ Rome myonto:isLocatedIn Italy .
 Italy myonto:isLocatedIn Europe .
 ````
 we can infer that Rome is located in Europe.
+
+<br>
 
 ## `owl:equivalentClass`
 A frequent situation is that if information about the same entity from different sources is merged then the two providers of this information will not have used the same URI/IRI for refering to the same entity. When combining these data it may be useful to state that two URIs/IRIs actually refer to the same entity. When two classes are known to always have the same members, they are said to be ***equivalent***. Such a situation can be expressed with one simple statement using `owl:equivalentClass`:
@@ -408,12 +429,16 @@ The second triple expresses that the class `GreekGods` in our ontology is equiva
 
 Note that when two classes are equivalent, it only means that they have the same members. But other properties of these classes aren't shared!
 
+<br>
+
 ## `owl:equivalentProperty`
 If one intends to state that two properties are equivalent, `owl:equivalentProperty` can be used: 
 ````
  myonto:isInvisible owl:equivalentClass otheronto:notSeen .
 ````
 This statement expresses that the property which is called `isInvisible` in our ontology, is named `notSeen` in some other ontology.
+
+<br>
 
 ## `owl:sameAs`
 If it turns out that two individuals are actually one and the same, `owl:sameAs` can be used to state this fact:
@@ -422,11 +447,15 @@ If it turns out that two individuals are actually one and the same, `owl:sameAs`
 ````
 This statement expresses that the site which is called `Puteoli` in our ontology, is the same as a site named `Puzzeoli` in some other ontology.
 
+<br>
+
 ## `owl:FunctionalProperty`
-A functional property `owl:FunctionalProperty`is a property for which there can only be one single value. An everyday example for such a property is e.g. `hasBirthplace` since each person has only one birth place. Functional properties can be useful to infer sameness, e.g. if names with foreign characters are transliterated differently in two sources - a Greek "B" may be trasliterated either as "B" or as "V", we can state:
+A functional property `owl:FunctionalProperty`is a property which can only have one single value. An everyday example for such a property is e.g. `hasBirthplace` since each person has only one birth place. Functional properties can be useful to infer sameness, e.g. if names with foreign characters are transliterated differently in two sources - a Greek "B" may be transliterated either as "B" or as "V", we can state:
 ````
  myonto:GreekB owl:FunctionalProperty otheronto:GreekV .
 ````
+
+<br>
 
 ## `owl:InverseFunctionalProperty`
 However, it is more common to use the related notion of `owl:InverseFunctionalProperty`. One can think of this construct to be the inverse of `owl:FunctionalProperty` as its name suggests. Especially identifying numbers are inverse functional properties. 
@@ -447,6 +476,8 @@ there is exactly one value for the property and the other way round. This featur
 ````
 This means that each member of class `Monument` possesses a unique identifier that is an integer number. Any two monuments that share an `ID` must be the same (due to inverse functionality) and in addition, each monument can have at most one ID (due to functionality).
 
+<br>
+
 ## `owl:ObjectProperty` and `owl:DatatypeProperty`
 The constructs `owl:sameAs`, `owl:FunctionalProperty` and `owl:InverseFunctionalProperty` especially help to describe how information from multiple sources can be merged. OWL can also provide useful information for editing tools if a value of some property may be either a link to another object or a widget for a particular data type. For this purpose OWL distinguishes between `owl:DatatypeProperty` and `owl:ObjectProperty`. `owl:DatatypeProperty` can have a data value as object, `owl:ObjectProperty` can have a resource as object. 
 ````
@@ -460,6 +491,9 @@ The first example may be used to express that one archaeological object is kept 
 ## Restrictions
 The construct `owl:Restriction` allows to describe individuals of classes in terms of existing properties and classes that have already been modeled. The class of all things in OWL called `owl:Thing` is unrestricted. A restriction provides some description that limits the kinds of things that can be said about a member of the class. A restriction class in OWL is defined by the keyword `owl:onProperty`. A description of how the new class is constrained can be provided e.g. by `owl:allValuesFrom`, `owl:someValuesFrom` and `owl:hasValue`. The membership in a restriction class must satisfy the specified conditions as well as the `owl:onProperty` specification. 
 
+<br>
+
+### Property constraints
 `owl:someValuesFrom` selects all individuals from a class for which at least one value of the property `P` comes from class `C`. In our example we can formulate such a restriction as:
 ````
 [a owl:Restriction;
@@ -467,6 +501,8 @@ The construct `owl:Restriction` allows to describe individuals of classes in ter
    owl:someValuesFrom myonto:Museum]
 ````
 All archaeological objects kept in a museum today thus have been defined as all archaeological objects for which at least one value of the property `isLocatedIn` comes from the class `Museum`. The [ ] notation refers to a blank node which is described by the properties listed here. This restriction class has no specific name associated with it - it is defined by the properties of the restriction and is hence called an ***unnamed class***.
+
+<br>
 
 `owl:allValuesFrom` selects all individuals from a class for which all values of the property `P` come from class `C`. In our example we can formulate such a restriction as:
 ````
@@ -477,6 +513,8 @@ All archaeological objects kept in a museum today thus have been defined as all 
 This restriction selects all our archaeological objects for which the findspot is known.
 
 A noteworthy difference between `owl:someValuesFrom` and `owl:allValuesFrom` is that the former implies that there must be such a member, while the latter technically means *if there are any members, then they all must have this property* which doesn't imply that there are any members.
+
+<br>
 
 `owl:hasValue` is used to produce a restriction of the form "all individuals that have the value `A` for the property `P`". We can formulate such a restriction as:
 ````
@@ -500,9 +538,13 @@ Then it is possible to deduce
 myonto:ID3 a myonto:HighResolutionObject .
 ````
 
-`owl:hasValue` is just a special case of the `owl:someValuesFrom` restriction. Nevertheless, it is very useful because it effectively turns specific instance descripitons into class descriptions.
+`owl:hasValue` is just a special case of the `owl:someValuesFrom` restriction. Nevertheless, it is very useful because it effectively turns specific instance descriptions into class descriptions.
+
+<br>
 
 OWL provides a facility for defining new classes as unions (`owl:unionOf`) and intersections (`owl:intersectionOf`) of previously defined classes. The union of two or more classes includes the members of all those classes while the intersection includes only those that belong to every one of the classes. 
+
+<br>
 
 OWL allows to enumerate the members of a class using the construct `owl:oneOf`. If I have a class `myonto:ObjectsSomeSmallMuseum` with the members "vase1", "vase2" and "relief1", then:
 ````
@@ -511,12 +553,17 @@ myonto:ObjectsSomeSmallMuseum rdf:type owl:Class;
 ````
 My class `myonto:ObjectsSomeSmallMuseum` is related via the property `owl:oneOf` to a list of the members of the class. However, `owl:oneOf` should be used only in situations in which the definition of the class is not likely to change at all or at least not frequently. One such case would e.g. be the number of planets in the solar system. In contrast, the above example may be appropriate for our own immediate needs, but not for a more general approach: although we include only three objects of this small museum in our data, the museum itself for sure owns many more. 
 
+<br>
+
 Sometimes it may be useful to state that one thing is different from another thing. OWL provides `owl:differentFrom` for this. An example is the following:
 ````
 myonto:Zenon owl:differentFrom otheronto:Zenon.
 ````
 Two different ancient Greek philosophers with the name Zenon are known. The above triple states that the Zenon in our ontology (e.g. Zenon of Elea) is not the same Zenon as in another ontology (e.g. Zenon of Kition).
 
+<br>
+
+### Cardinalities
 OWL also includes restrictions that refer to ***cardinalities***, i.e. the number of values for a specific property. Cardinality restrictions can be used to define sets of particular interest. Cardinality refers to the number of *distinct* values a property has. The fact that we only know about two works attributed to Homer - the Iliad and the Odyssey - we may state by using `owl:cardinality`:
 ````
 [a owl:Restriction;
@@ -533,22 +580,16 @@ Cardinality restrictions can also be used to specify upper and lower boundaries,
 <br>
 
 ## Reasoning with individuals and classes
-From an RDF perspective inferences about individuals and inferences about classes are very similar: in both cases new triples are added to the model based on the asserted triples. However, from a modeling perspective, these two kinds of reasoning are very different. The former draws specific conclusions about individuals while the latter draws general conclusions about classes of individuals. In the case of reasoning about individuals the information specified in one source is transformed according to a model for use in another context with the help of constructs such as `rdfs:subClassOf`, `rdfs:subPropertyOf` and various `owl:Restriction`s. Class reasoning determines how data are related in general with constructs such as `rdfs:subClassOf`, `rdfs:subPropertyOf`, `rdfs:domain` or `rdfs:range`. Once these more general relationships have been inferred, the processing of the data can be done much easier.
+From an RDF perspective inferences about individuals and inferences about classes are very similar: in both cases new triples are added to the model based on the asserted triples. However, from a modeling perspective, these two kinds of reasoning are very different. The former draws specific conclusions about individuals while the latter draws general conclusions about classes of individuals. In the case of reasoning about individuals the information specified in one source is transformed according to a model for use in another context with the help of constructs such as `rdfs:subClassOf`, `rdfs:subPropertyOf` and various `owl:Restriction`. Class reasoning determines how data are related in general with constructs such as `rdfs:subClassOf`, `rdfs:subPropertyOf`, `rdfs:domain` or `rdfs:range`. Once these more general relationships have been inferred, the processing of the data can be done much easier.
 
 <br>
 
 ## Composing files
-OWL provides a built-in class `owl:Ontology`. It is customary for the URI/IRI of an ontology to correspond to the URL of the file on the Web where the ontology is stored. The corresponding URI/IRI can be eclosed in angle brackets as follows:
+OWL provides a built-in class `owl:Ontology`. The URI/IRI of an ontology usually corresponds to the URL of the file on the Web where the ontology is stored. The corresponding URI/IRI can be eclosed in angle brackets as follows:
 ````
 <http://www.knora.org/ontology/knora-base> rdf:type owl:Ontology.
 ````
 This can be useful when modularity of semantic models is specified. The most frequent way to specify modularity is with the property `owl:imports`. This property connects two instances of the class `owl:Ontology`.
-
-
-### Further reading
-* Recommendations of [OWL 2 Web Ontology Language Document Overview (Second Edition)](https://www.w3.org/TR/2012/REC-owl2-overview-20121211/).
-* Wikipedia entry of [OWL](https://en.wikipedia.org/wiki/Web_Ontology_Language).
-* D. Allemang & J. Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 153-305.
 
 <br>
 
@@ -557,7 +598,7 @@ This can be useful when modularity of semantic models is specified. The most fre
 - `rdfs:subPropertyOf` - relations described by a subproperty also hold for the superproperty
 - `rdfs:domain` - the subject of a triple is classified into the domain of the predicate
 - `rdfs:range` - the object of a triple is classified into the range of the predicate
-- `rdfs:label` - human-readable name of a resource, no semantcs inferable
+- `rdfs:label` - human-readable name of a resource, no semantics inferable
 - `rdfs:comment` - human-readable information of the model, no semantics inferable
 - `owl:equivalentClass` - the members of each class are also members of the other class
 - `owl:equivalentProperty` - relations that hold for each property also hold for the other property
@@ -577,7 +618,7 @@ This can be useful when modularity of semantic models is specified. The most fre
 - `owl:unionOf` - unites classes and creates a new class
 - `owl:intersectionOf` - determines the intersection of classes and creates a new class
 - `owl:complementOf` - determines the compliment of a class and creates a new class
-- `owl:oneOf` - specifies that a class consists just of the listed memebers
+- `owl:oneOf` - specifies that a class consists just of the listed members
 - `owl:differentFrom` - specifies that one individual is not identical to another one
 - `owl:disjointWith` - specifies that two classes cannot share a member
 - `owl:cardinality` - specifies information about the number of distict values for some property

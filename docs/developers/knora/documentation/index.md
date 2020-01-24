@@ -27,7 +27,7 @@ The following table contains a non-exhaustive list of data formats and the infor
 |Tabular data, including relational databases |Knora resources|
 |Data in tree or graph structures |Knora resources|
 |Images (jpg, png, tiff, etc.) | JPEG 2000 files stored by SIPI|
-|Audio and video files | **WELCHES FORMAT???** stored by SIPI|
+|Audio and video files | format not decided yet, stored by SIPI|
 |pdf | stored by SIPI, but data reuse is improved by extracting the text for storage as Standoff/RDF|
 
 Knora makes data available for reuse via its generic, standards-based **A**pplication **P**rogramming **I**nterfaces (APIs). A **V**irtual **R**esearch **E**nvironment (VRE) can then use these APIs to search, link together, and add to data from different research projects in a unified way.
@@ -37,10 +37,10 @@ The full Knora documentation can be found [here](https://docs.knora.org/paradox/
 <br>
 
 ## Layout of Knora
-Knora is a platform that includes five layers (see Figure 1). The bottom layer consists of an RDF triplestore, the IIIF-based media server [SIPI](../../sipi/documentation/index.md), the Knora-base ontology and any project specific ontologies that extend the base ontology. The second layer is occupied by the [Knora API](https://github.com/dasch-swiss/knora-api) which is a RESTful API, i.e. an application program interface that uses HTTP requests to GET, PUT, POST and DELETE data. The Knora API has an implemented access control. It returns information in JSON-LD format. In order to make the data accessible in an easy way, three more layers are built on top of the Knora API. The [Knora API JS lib](../../knora-api-js-lib/documentation/index.md) comprises the third layer, it contains a reusable Node.js module for HTTP requests written in TypeScript. Layer four is occupied by [Knora UI modules](../../knora-ui/documentation/index.md). These modules help to create a graphical user interface. They are written in TypeScript and designed in such a way that they can be used with Angular. The top layer is made up of the generic [Knora App](https://docs.dasch.swiss/user-guide/) and the more specific project Apps. From the top layer Gravsearch queries are sent to the Knora API, where permissions are checked and the queries translated into SPARQL queries which are sent further down to the triplestore. The results are returned to the Knora App if the user has the sufficient permissions. In such a way, copyrighted material can be protected. 
+Knora is a platform that includes five layers (see Figure 1). The bottom layer consists of an RDF triplestore, the IIIF-based media server [SIPI](../../sipi/documentation/index.md), the Knora-base ontology and any project specific ontologies that extend the base ontology. The second layer is occupied by the [Knora API](https://github.com/dasch-swiss/knora-api) which is a RESTful API, i.e. an application program interface that uses HTTP requests to GET, PUT, POST and DELETE data. The Knora API has an implemented access control. It returns information in JSON-LD format. In order to make the data accessible in an easy way, three more layers are built on top of the Knora API. The [Knora API JS lib](../../knora-api-js-lib/documentation/index.md) comprises the third layer, it contains a reusable Node.js module for HTTP requests written in TypeScript. Layer four is occupied by [Knora UI modules](../../knora-ui/documentation/index.md). These modules help to create a graphical user interface. They are developed with Angular and TypeScript and designed in such a way that they can be integrated to an Angular project. The top layer is made up of the generic [Knora App](https://docs.dasch.swiss/user-guide/) and the more specific project Apps. From the top layer Gravsearch queries are sent to the Knora API, where permissions are checked and the queries translated into SPARQL queries which are sent further down to the triplestore. The results are returned to the Knora App if the user has the sufficient permissions. In such a way, copyrighted material can be protected. 
 ![alt text](../../../assets/images/knora/KnoraArchitecture.jpeg "Figure 1") Figure 1: Knora architecture.
 
-The generic web app Knora App itself consists of three different parts (see Figure 2). First, there is the project administration part where you can build your project-specific data model, set permissions, add users etc. Then, there is a cross-project research platform where you add or modify your data - this is your working environment. The third component is the Manifest+ viewer wich is designed for project presentation. Alternatively, it is possible to build more elaborate project-specific Apps based on the provided Knora modules in the different layers. However, it's up to you to keep such project-specific Apps compatible with the latest Knora API version.
+The generic web app Knora App itself consists of three different parts (see Figure 2). First, there is the project administration part where you can manage your project - build your data model, set permissions, add users, etc. Then, there is a cross-project research platform where you search (full text, advanced or expert search), add or modify your data - this is your working environment. The third component is the Manifest+ viewer wich is designed for project presentation. Alternatively, it is possible to build more elaborate project-specific Apps based on the provided Knora modules in the different layers. However, it's up to you to keep such project-specific Apps compatible with the latest Knora API version.
 
 ![alt text](../../../assets/images/knora/KnoraArchitectureDetail.jpeg "Figure 2") Figure 2: Details of Knora App.
 
@@ -58,21 +58,81 @@ Currently, the following programming languages, software and formats are used fo
 
 <br>
 
-## Standoff/RDF Text Markup
-[Standoff markup](http://uahost.uantwerpen.be/lse/index.php/lexicon/markup-standoff/) is text markup that is stored separately from the content it describes. Knora’s Standoff/RDF markup stores content as a simple Unicode string, and represents markup separately as RDF data. By storing markup as RDF, Knora can search for markup structures in the same way as for any RDF data structure. This enables searches that combine text-related criteria with other sorts of criteria. For example, if persons and events are represented as Knora resources, and texts are represented in Standoff/RDF, a text can contain tags representing links to persons or events. One could then search for a text that mentions a person who lived in the same city as another person who is the author of a text that mentions an event that occurred during a certain period of time.
-
-In Knora’s Standoff/RDF, a tag is an RDF entity that is linked to a [text value](https://docs.knora.org/paradox/02-knora-ontologies/knora-base.html#textvalue). Each tag points to a substring of the text, but has its own semantic properties. It is possible to define own tag classes in the ontology by creating subclasses of the already defined `knora-base:StandoffTag`, and to attach own properties to them.
-
-Knora’s API supports automatic conversion between XML and Standoff/RDF. This can be achieved by Standoff/RDF storing the order of tags and their hierarchical relationships. Then, an [XML-to-Standoff Mapping](https://docs.knora.org/paradox/03-apis/api-v2/xml-to-standoff-mapping.html) for the standoff tag classes and properties has to be defined. Afterwards, an XML document can be imported into Knora, which will store it in Standoff/RDF format. The text and markup can then be searched using the search language [Gravsearch](../api-reference/queries.md). When the document is retrieved, Knora converts it back to the original XML.
-
-<br>
-
 ## The Knora-base ontology
 Knora has a [base ontology](https://docs.knora.org/paradox/02-knora-ontologies/knora-base.html), i.e. a data model, with pre-defined basic data types. In addition to this base ontology, each project can create its own data model which is capable to describe the types of items it wishes to store. Project specific ontologies **must** be extensions of the Knora base ontology.
 
-The Knora-base ontology is identified by the IRI `http://www.knora.org/ontology/knora-base`. In our documents it will be identified by the prefix `knora-base` or simply `kb`. More information about the Knora-base ontology can be found [here]() **LINK STILL MISSING!!! NOT WRITTEN YET**.
+The Knora-base ontology is identified by the IRI `http://www.knora.org/ontology/knora-base`. In our documents it will be identified by the prefix `knora-base` or simply `kb`. More information about the Knora-base ontology can be found [here](knora-base.md).
+
+<br>
+
+## Standoff/RDF Text Markup
+[Standoff markup](http://uahost.uantwerpen.be/lse/index.php/lexicon/markup-standoff/) is text markup that is stored separately from the content it describes. Knora’s Standoff/RDF markup stores content as a simple Unicode string, and represents markup separately as RDF data. By storing markup as RDF, Knora can search for markup structures in the same way as for any RDF data structure. This enables searches that combine text-related criteria with other sorts of criteria. For example, if persons and events are represented as Knora resources, and texts are represented in Standoff/RDF, a text can contain tags representing links to persons or events. One could then search for a text that mentions a person who lived in the same city as another person who is the author of a text that mentions an event that occurred during a certain period of time.
+
+In Knora’s Standoff/RDF, a tag is an RDF entity that is linked to a [text value](https://docs.knora.org/paradox/02-knora-ontologies/knora-base.html#textvalue). Each tag points to a substring of the text, but has its own semantic properties. It is possible to define own tag classes in the ontology by creating subclasses of the already defined `kb:StandoffTag`, and to attach own properties to them.
+````
+###  http://www.knora.org/ontology/knora-base#StandoffLinkTag
+
+kb:StandoffLinkTag rdf:type owl:Class ;
+
+              rdfs:subClassOf kb:StandoffTag ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty kb:standoffTagHasLink ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+
+              rdfs:comment "Represents a reference to a Knora resource in a TextValue"@en .
+
+````
+Knora’s API supports automatic conversion between XML and Standoff/RDF. This can be achieved by Standoff/RDF storing the order of tags and their hierarchical relationships. Then, an [XML-to-Standoff Mapping](https://docs.knora.org/paradox/03-apis/api-v2/xml-to-standoff-mapping.html) for the standoff tag classes and properties has to be defined. The mapping is written in XML. Afterwards, an XML document can be imported into Knora, which will store it in Standoff/RDF format. The following example shows a possible mapping for a knoraDate:
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+     <mappingElement>
+        <tag>
+            <name>text</name>
+            <class>noClass</class>
+            <namespace>noNamespace</namespace>
+            <separatesWords>false</separatesWords>
+        </tag>
+        <standoffClass>
+            <classIri>http://www.knora.org/ontology/standoff#StandoffRootTag</classIri>
+        </standoffClass>
+    </mappingElement>
+
+    <mappingElement>
+        <tag>
+            <name>mydate</name>
+            <class>noClass</class>
+            <namespace>noNamespace</namespace>
+            <separatesWords>false</separatesWords>
+        </tag>
+        <standoffClass>
+            <classIri>http://www.knora.org/ontology/0001/anything#StandoffEventTag</classIri>
+            <attributes>
+                <attribute>
+                    <attributeName>description</attributeName>
+                    <namespace>noNamespace</namespace>
+                    <propertyIri>http://www.knora.org/ontology/0001/anything#standoffEventTagHasDescription</propertyIri>
+                </attribute>
+            </attributes>
+            <datatype>
+                <type>http://www.knora.org/ontology/knora-base#StandoffDateTag</type>
+                <attributeName>knoraDate</attributeName>
+            </datatype>
+        </standoffClass>
+    </mappingElement>
+</mapping>
+````
+Once the mapping has been created, an XML like the following could be sent to Knora and converted to standoff:
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<text>
+    We had a party on <mydate description="new year" knoraDate="GREGORIAN:2016-12-31">New Year's Eve</mydate>. It was a lot of fun.
+</text>
+````
+ The text and markup can then be searched using the search language [Gravsearch](../api-reference/queries.md). When the document is retrieved, Knora converts it back to the original XML.
 
 <br>
 
 ## Using Gravsearch for searches
-Knora’s API provides a search language, [Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html), that supports Knora’s humanites-focused data structures, including calendar-independent dates and standoff markup, as well as fast full-text searches. This allows for combining text-related criteria with any other criteria in searches. Examples for queries and how to build queries you can find [here](../api-reference/queries.md).
+Knora’s API provides a search language, [Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html), that is based on the SPARQL language. Gravsearch supports Knora’s humanites-focused data structures, including calendar-independent dates and standoff markup, as well as fast full-text searches. This allows for combining text-related criteria with any other criteria in searches. Examples for queries and how to build queries you can find [here](../api-reference/queries.md).
