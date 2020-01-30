@@ -1,9 +1,6 @@
-# Knora documentation
+# DaSCH Service Platform documentation
 
-<br>
-
-## What is Knora?
-Knora (**Kn**owledge **O**rganization, **R**epresentation, and **A**nnotation) is a content management system for the long-term preservation and reuse of humanities data. It is designed to accommodate data with a complex internal structure, including data that could be stored in relational databases.
+The main software framework in the back-end of the DaSCH Service Platform is called Knora (**Kn**owledge **O**rganization, **R**epresentation, and **A**nnotation). Knora is a content management system for the long-term preservation and reuse of humanities data. It is designed to accommodate data with a complex internal structure, including data that could be stored in relational databases.
 
 Knora aims to solve key problems in the long-term preservation and reuse of humanities data:
 
@@ -11,10 +8,11 @@ Knora aims to solve key problems in the long-term preservation and reuse of huma
 * Another problem is that researchers use a multitude of different data formats, many of which are proprietary and quickly become obsolete. It is not practical to maintain all the programs that were used to create and read old data files, or even all the operating systems that these programs ran on. Instead of preserving all these data formats, Knora supports the conversion of all sorts of data to a small number of formats that are suitable for long-term preservation, and that maintain the data’s meaning and structure:
 
     * Non-binary data is stored as **R**esource **D**escription **F**ramework ([RDF](https://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/)), in a dedicated database called a triplestore. RDF is an open, vendor-independent standard that can express any data structure. For a concise information about RDF basics see [here](./rdf.md).
+
     * Binary media files (images, audio, and video) are converted to a few specialised archival file formats and stored by the media server [SIPI](https://github.com/dasch-swiss/sipi), with metadata stored in the triplestore. For a concise information about SIPI see [here](../../sipi/documentation/index.md).
-
-* Moreover, Knora has built-in support for special data structures that occur on a regular basis in humanities data: calender-independent dates and flexible searchable text markup. 
-
+    
+* Moreover, Knora has built-in support for special data structures that occur on a regular basis in humanities data: persistent links, calender-independent dates and flexible searchable text markup. 
+    * Persistent links are a very important feature. If a resource is changed, a new resource will be created in Knora. The older version remains available and citable, there will be no dead links. This means that if in a publication an older version is referenced, the cited version still can be displayed, but there will be a notice that a newer version exists with the corresponding link attached to it. 
     * A date could be given in any kind of calendar - e.g. the Julian, Gregorian, Jewish or Islamic - just to name the most frequent ones. Knora stores dates using the Julian day count that was established by astronomers. Use of the Julian day count easily allows for conversion from one calendar into another and to calculate distances between two dates. It is possible to search for a date in one calendar and to convert it into another one. 
 
     * Commonly used text markup systems have troubles to cope with overlapping markup. Knora solves this problem by using [Standoff/RDF markup](https://docs.knora.org/paradox/01-introduction/standoff-rdf.html) where the markup is stored as RDF data, separately from the text. This enables overlapping markup. Knora’s RDF-based standoff is designed to support the needs of complex digital critical editions. Knora can import any XML document (including TEI/XML) for storage as standoff/RDF, and can regenerate the original XML document at any time.
@@ -36,9 +34,10 @@ The full Knora documentation can be found [here](https://docs.knora.org/paradox/
 
 <br>
 
-## Layout of Knora
-Knora is a platform that includes five layers (see Figure 1). The bottom layer consists of an RDF triplestore, the IIIF-based media server [SIPI](../../sipi/documentation/index.md), the Knora-base ontology and any project specific ontologies that extend the base ontology. The second layer is occupied by the [Knora API](https://github.com/dasch-swiss/knora-api) which is a RESTful API, i.e. an application program interface that uses HTTP requests to GET, PUT, POST and DELETE data. The Knora API has an implemented access control. It returns information in JSON-LD format. In order to make the data accessible in an easy way, three more layers are built on top of the Knora API. The [Knora API JS lib](../../knora-api-js-lib/documentation/index.md) comprises the third layer, it contains a reusable Node.js module for HTTP requests written in TypeScript. Layer four is occupied by [Knora UI modules](../../knora-ui/documentation/index.md). These modules help to create a graphical user interface. They are developed with Angular and TypeScript and designed in such a way that they can be integrated to an Angular project. The top layer is made up of the generic [Knora App](https://docs.dasch.swiss/user-guide/) and the more specific project Apps. From the top layer Gravsearch queries are sent to the Knora API, where permissions are checked and the queries translated into SPARQL queries which are sent further down to the triplestore. The results are returned to the Knora App if the user has the sufficient permissions. In such a way, copyrighted material can be protected. 
-![alt text](../../../assets/images/knora/KnoraArchitecture.jpeg "Figure 1") Figure 1: Knora architecture.
+## Layout of DaSCH Service Platform
+The DaSCH Service Platform is a platform that includes five layers (see Figure 1). The bottom layer consists of an RDF triplestore, the IIIF-based media server [SIPI](../../sipi/documentation/index.md), the Knora-base ontology and any project specific ontologies that extend the base ontology. The second layer is occupied by the [Knora API](https://github.com/dasch-swiss/knora-api) which is a RESTful API, i.e. an application program interface that uses HTTP requests to GET, PUT, POST and DELETE data. The Knora API has an implemented access control. It returns information in JSON-LD format. In order to make the data accessible in an easy way, three more layers are built on top of the Knora API. The [Knora API JS lib](../../knora-api-js-lib/documentation/index.md) comprises the third layer, it contains a reusable Node.js module for HTTP requests written in TypeScript. Layer four is occupied by [Knora UI modules](../../knora-ui/documentation/index.md). These modules help to create a graphical user interface. They are developed with Angular and TypeScript and designed in such a way that they can be integrated to an Angular project. The top layer is made up of the generic [Knora App](https://docs.dasch.swiss/user-guide/) and the more specific project Apps. From the top layer Gravsearch queries are sent to the Knora API, where permissions are checked and the queries translated into SPARQL queries which are sent further down to the triplestore. The results are returned to the Knora App if the user has the sufficient permissions. In such a way, copyrighted material can be protected. 
+
+![alt text](../../../assets/images/knora/KnoraArchitecture.jpeg "Figure 1") Figure 1: DaSCH Service Platform architecture.
 
 The generic web app Knora App itself consists of three different parts (see Figure 2). First, there is the project administration part where you can manage your project - build your data model, set permissions, add users, etc. Then, there is a cross-project research platform where you search (full text, advanced or expert search), add or modify your data - this is your working environment. The third component is the Manifest+ viewer wich is designed for project presentation. Alternatively, it is possible to build more elaborate project-specific Apps based on the provided Knora modules in the different layers. However, it's up to you to keep such project-specific Apps compatible with the latest Knora API version.
 
@@ -83,6 +82,7 @@ kb:StandoffLinkTag rdf:type owl:Class ;
               rdfs:comment "Represents a reference to a Knora resource in a TextValue"@en .
 
 ````
+
 Knora’s API supports automatic conversion between XML and Standoff/RDF. This can be achieved by Standoff/RDF storing the order of tags and their hierarchical relationships. Then, an [XML-to-Standoff Mapping](https://docs.knora.org/paradox/03-apis/api-v2/xml-to-standoff-mapping.html) for the standoff tag classes and properties has to be defined. The mapping is written in XML. Afterwards, an XML document can be imported into Knora, which will store it in Standoff/RDF format. The following example shows a possible mapping for a knoraDate:
 ````
 <?xml version="1.0" encoding="UTF-8"?>
