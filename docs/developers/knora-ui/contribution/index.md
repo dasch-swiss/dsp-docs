@@ -84,3 +84,9 @@ Shortname = explicit name with short length
 
 - @Input(), @Output(), @ViewChild must be declared at the top of the class, before the declaration of any other variables
 - Specific methods must be declared after lifecycle hook methods (ngOnInit, etc. > getOneResource())
+
+***
+
+## Style guide
+
+The general design and the style of GUI elements are defined in the [Knora-App style guide](/developers/knora-web-app/contribution/). This guideline should be followed for any new features. 
