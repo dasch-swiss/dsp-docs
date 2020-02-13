@@ -72,7 +72,7 @@ Type
 ````
 export KNORA_GDB_TYPE=graphdb-free
 ````
-to tell Knora that you use GraphDB-Free. If you decide to use another folder than the default folder `./triplestores/graphdb/home`, it is necessary to tell Knora the path to your folder:
+to tell Knora that you use GraphDB-Free. If you decide to use another folder than the default folder `./triplestores/graphdb/`, it is necessary to tell Knora the path to your folder:
 ````
 export KNORA_GDB_HOME=/path/to/your/folder 
 ````
@@ -81,7 +81,7 @@ Copy the GraphDB license file into the folder `./triplestores/graphdb/` or into 
 #### GraphDB-SE:
 Since GraphDB-SE is our default triplestore version you only need to modify the settings if you aren't using the following default value paths:
 
-* `./triplestores/graphdb/home` for KNORA_GDB_HOME
+* `./triplestores/graphdb/` for KNORA_GDB_HOME
 * `./triplestores/graphdb/graphdb.license` for the license file.
 
 If you chose other locations, you need to tell Knora the path to your folder and to the license file: 
@@ -90,7 +90,7 @@ export KNORA_GDB_TYPE=graphdb-se
 export KNORA_GDB_LICENSE=/path/to/your/licensefile
 export KNORA_GDB_HOME=/path/to/your/folder
 ````
-Copy the GraphDB license file into the folder `./triplestores/graphdb/` or into a folder of your choice and name it `graphdb.license`.
+Copy the GraphDB license file into the folder `./triplestores/graphdb/` or into a folder of your choice and name it `graphdb.license`. Then restart your terminal.
 
 <br>
 
