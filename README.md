@@ -1,4 +1,4 @@
-# DaSCH Software Platform Documentation
+# DaSCH Service Platform Documentation
 
 This is the main documentation for all services the Data and Service Center for the Humanities DaSCH develops and supports. It includes
 
