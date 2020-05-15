@@ -1,10 +1,10 @@
-# Knora-ui modules
+# DSP-UI library
 
-## User Interface Modules for Knora
+## User Interface library for DSP-API
 
-The Knora-ui modules are published on [npmJS](https://www.npmjs.com/~knora).
+DSP-UI library is published on [npmJS](https://www.npmjs.com/package/@dasch-swiss/dsp-ui).DSP-UI contains 4 modules: core, viewer, search and action.
 
-The modules helps to create a graphical user interface, a web application to use [Knora](https://www.knora.org) in a quick and simple way. The modules are written in Typescript in order to use them with [Angular](https://angular.io) (version 8). The components and directives are styled with [Angular Material](https://material.angular.io).
+The modules help to create a graphical user interface, a web application to use [DSP-API](https://www.knora.org) in a quick and simple way. The modules are written in Typescript in order to use them with [Angular](https://angular.io) (version 9). The components and directives are styled with [Angular Material](https://material.angular.io).
 
 However, you can start only with [@knora/core](/developers/knora-ui/documentation/core/index-core) which contains the basic elements to build and connect your application to the Knora web API. Knora is a software framework for storing, sharing, and working with primary sources and data in the humanities.
 

@@ -1,10 +1,10 @@
-# Contribute to develop Knora-ui modules
+# Contribute to develop DSP-UI modules
 
 ## Developers note
 
 ### Prerequisites
 
-We develop the Knora-ui modules with Angular 8, especially with Angular-cli, which requires the following tools:
+We develop DSP-UI modules with Angular 9, especially with Angular-CLI, which requires the following tools:
 
 #### Yarn
 
@@ -54,11 +54,11 @@ Before using the module inside of the app, you have to rebuild after the changes
 
 Run the app with `ng s`. The demo app runs on <http://localhost:4200> and we use it for documentation on [Knora-ui Github page](https://dasch-swiss.github.io/knora-ui).
 
-There's a test environment for the modules on <https://github.com/dhlab-basel/knora-ui-playground> with yalc
+The modules can be tested with the [app of the repository knora-ui-ng-lib](https://github.com/dasch-swiss/knora-ui-ng-lib).
 
 ***
 
-## Knora-UI coding rules
+## DSP-UI coding rules
 
 In general, please follow the style guide of Angular &rarr; [https://angular.io/guide/styleguide](https://angular.io/guide/styleguide).
 
