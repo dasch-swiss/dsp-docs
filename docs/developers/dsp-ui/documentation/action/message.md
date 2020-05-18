@@ -1,7 +1,7 @@
 # Message (Component)
 
 Message component to handle notes, warning and error messages.
-If you set the paramater `[short]="true"`, it shows a smaller message. 
+If you set the paramater `[short]="true"`, it shows a smaller message.
 It can be used to give feedbacks in a form e.g. update process: show success or error message.
 
 ## Parameters
@@ -18,7 +18,7 @@ message | KuiMessageData, ApiServiceError | This type needs at least a status nu
 
 Name | Type | Description
 --- | --- | ---
-short (optional) | boolean | 
+short (optional) | boolean |
 
 <hr>
 
@@ -26,7 +26,7 @@ short (optional) | boolean |
 
 Name | Type | Description
 --- | --- | ---
-medium (optional) | boolean | 
+medium (optional) | boolean |
 
 ## Examples
 
@@ -61,7 +61,7 @@ errorMessage: ApiServiceError = {
 };
 ```
 
-![Message in short version](../../../../assets/images/knora-ui/message-short.png)
+![Message in short version](../../../../assets/images/dsp-ui/message-short.png)
 
 <hr>
 
@@ -86,4 +86,4 @@ errorMessage: ApiServiceError = {
 };
 ```
 
-![Error message in default size version](../../../../assets/images/knora-ui/message-error.png)
+![Error message in default size version](../../../../assets/images/dsp-ui/message-error.png)
