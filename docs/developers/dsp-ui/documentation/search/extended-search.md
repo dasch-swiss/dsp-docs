@@ -10,7 +10,6 @@ route | string | Route to navigate after search. This route path should contain
 toggleExtendedSearchForm | boolean | Trigger toggle for extended search form.
 gravsearch | string | Send the gravsearch query back.
 
-
 ## Examples
 
 Extended search panel

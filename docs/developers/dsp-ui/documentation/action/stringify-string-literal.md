@@ -4,11 +4,10 @@ This pipe stringifies an array of StringLiterals. With the parameter `all`, the 
 
 Otherwise the pipe displays the value corresponding to the default language which comes from the user profile (if a user is logged-in) or from the browser. With the predefined language the pipe checks, if a value exists in the array, otherwise it shows the first value.
 
-## Example
+## Example - StringifyStringLiteral Pipe
 
-### StringifyStringLiteral Pipe
+### HTML file
 
-**HTML file**
 ```html
 <strong>Show all values</strong>
 <p>{{labels | kuiStringifyStringLiteral:'all'}}</p>
@@ -17,7 +16,8 @@ Otherwise the pipe displays the value corresponding to the default language whic
 <p>{{labels | kuiStringifyStringLiteral}}</p>
 ```
 
-**Typescript file**
+### Typescript file
+
 ```ts
 labels: StringLiteral[] = '[{"value":"Welt","language":"de"},{"value":"World","language":"en"},{"value":"Monde","language":"fr"},{"value":"Mondo","language":"it"}]';
 ```

@@ -8,7 +8,8 @@ When the value is an object with name and label, you get them with `{{item.value
 
 ## Examples
 
-**HTML file**
+### HTML file
+
 ```html
 <ul>
     <li *ngFor="let item of array | kuiKey">
@@ -17,7 +18,8 @@ When the value is an object with name and label, you get them with `{{item.value
 </ul>
 ```
 
-**Typescript file**
+### Typescript file
+
 ```ts
 array = [];
 

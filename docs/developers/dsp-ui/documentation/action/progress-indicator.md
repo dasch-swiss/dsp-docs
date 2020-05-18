@@ -16,7 +16,8 @@ You can use the progress indicator in two ways:
 
 ### Classic Loader
 
-**HTML file**
+#### HTML file
+
 ```html
 <kui-progress-indicator></kui-progress-indicator>
 ```
@@ -26,6 +27,7 @@ You can use the progress indicator in two ways:
 <hr>
 
 ### Submit-form-data loader
+
 e.g. as a list style type while submitting form data
 
 ![Submit form data loader](../../../../assets/images/knora-ui/submit-form-data-loader.png)

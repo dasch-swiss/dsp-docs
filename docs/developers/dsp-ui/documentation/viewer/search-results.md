@@ -13,7 +13,8 @@ The search-results gets the search mode and parameters from routes or inputs, an
 
 ## Simple search results example
 
-**HTML file**
+### HTML file
+
 ```html
 <kui-search-results></kui-search-results>
 ```
@@ -22,12 +23,14 @@ The search-results gets the search mode and parameters from routes or inputs, an
 
 ## Search results filtered by project example
 
-**HTML file**
+### HTML file
+
 ```html
 <kui-search-results [projectIri]="projectIri"></kui-search-results>
 ```
 
-**Typescript file**
+### Typescript file
+
 ```ts
 export class SearchResultsComponent {
 
@@ -41,13 +44,15 @@ export class SearchResultsComponent {
 
 ## Search results providing search mode and query parameters example
 
-**HTML file**
+### HTML file
+
 ```html
 <!-- example of an extended search where we pass a gravsearch query as search parameter -->
 <kui-search-results [searchMode]="'extended'" [searchQuery]="gravsearch"></kui-search-results>
 ```
 
-**Typescript file**
+### Typescript file
+
 ```ts
 export class SearchResultsComponent {
 

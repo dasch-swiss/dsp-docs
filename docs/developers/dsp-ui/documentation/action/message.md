@@ -6,7 +6,7 @@ It can be used to give feedbacks in a form e.g. update process: show success or 
 
 ## Parameters
 
-**Message type: KuiMessageData or ApiServiceError**
+### Message type: KuiMessageData or ApiServiceError
 
 Name | Type | Description
 --- | --- | ---
@@ -32,13 +32,15 @@ medium (optional) | boolean |
 
 ### Success and error message, short version (= small size)
 
-**HTML file**
+#### HTML file
+
 ```html
 <kui-message [message]="shortMessage" [short]="true"></kui-message>
 <kui-message [message]="errorMessage" [short]="true"></kui-message>
 ```
 
-**Typescript file**
+#### Typescript file
+
 ```ts
 // short message example
 shortMessage: KuiMessageData = {
@@ -65,12 +67,14 @@ errorMessage: ApiServiceError = {
 
 ### Error message, default size
 
-**HTML file**
+#### HTML file
+
 ```html
 <kui-message [message]="errorMessage"></kui-message>
 ```
 
-**Typescript file**
+#### Typescript file
+
 ```ts
 // error message example
 errorMessage: ApiServiceError = {
@@ -81,4 +85,5 @@ errorMessage: ApiServiceError = {
   url: 'http://0.0.0.0:3333/admin/projects/shortcode/001/members'
 };
 ```
+
 ![Error message in default size version](../../../../assets/images/knora-ui/message-error.png)
