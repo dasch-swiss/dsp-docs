@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
-The **DspCoreModule** is a configuration handler for [`@knora/api`](https://www.npmjs.com/package/@knora/api) which offers all the services to make [DSP-API requests](https://docs.dasch.swiss/developers/knora/api-reference/queries/).
+DspCoreModule is a configuration handler for [`@knora/api`](https://www.npmjs.com/package/@knora/api) which offers all the services to make [DSP-API requests](https://docs.dasch.swiss/developers/knora/api-reference/queries/).
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ For existing apps, follow these steps to begin using DSP-UI CORE.
 
 ## Installation
 
-The CORE module is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
+DspCoreModule is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
 
 ## Usage
 

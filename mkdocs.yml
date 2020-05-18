@@ -33,7 +33,6 @@ nav:
               - SortButton: developers/dsp-ui/documentation/action/sort-button.md
               - StringifyStringLiteral: developers/dsp-ui/documentation/action/stringify-string-literal.md
               - Truncate: developers/dsp-ui/documentation/action/truncate.md
-          - Authentication module: developers/dsp-ui/documentation/index-authentication.md
           - Core module:
             - Readme: developers/dsp-ui/documentation/core/index-core.md
           - Search module:

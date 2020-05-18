@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
-Search module allows to make simple searches or extended searches in DSP-API. In extended search, resource class and its properties related to one specific ontology are selected to create your query. It is also possible to write Gravsearch queries to target specific data with the expert search form.
+DspSearchModule allows to make simple searches or extended searches in DSP-API. In extended search, resource class and its properties related to one specific ontology are selected to create your query. It is also possible to write Gravsearch queries to target specific data with the expert search form.
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ For existing apps, follow these steps to begin using DSP-UI SEARCH.
 
 ## Installation
 
-The SEARCH module is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
+DspSearchModule is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
 
 ## Components
 

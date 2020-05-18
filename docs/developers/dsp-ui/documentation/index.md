@@ -14,23 +14,19 @@ DSP-UI-LIB implements [DSP-JS-LIB](https://www.npmjs.com/package/@knora/api) to 
 
 ### [DspActionModule](/developers/dsp-ui/documentation/action/index-action)
 *Special pipes and buttons*
-> The action module contains special pipes to sort lists or to get the index key in arrays, but also directives for images, sort buttons and s.o.
+> DspActionModule contains special pipes to sort lists or to get the index key in arrays, but also directives and components for images, sort buttons and s.o.
 
 ### [DspCoreModule](/developers/dsp-ui/documentation/core/index-core)
 *Services for API requests*
-> The core module contains all services to use DSP-API's RESTful webapi V2 and Admin, as well as a JsonLD converter and an ontology cache service.
+> DspCoreModule is a configuration handler for [`@knora/api`](https://www.npmjs.com/package/@knora/api) which offers all the services to make [DSP-API requests](https://docs.dasch.swiss/developers/knora/api-reference/queries/).
 
 ### [DspSearchModule](/developers/dsp-ui/documentation/search/index-search)
 *Full search panel*
-> The search module allows to make full text or extended searches in DSP-API. Filter by resource class and its properties related to an ontology.
+> DspSearchModule allows to make full text or extended searches in DSP-API. Filter by resource class and its properties related to an ontology.
 
 ### [DspViewerModule](/developers/dsp-ui/documentation/viewer/index-viewer)
-*Resources, Properties, Lists*
-> The viewer module contains object components to show a resource class representation, the property gui-elements and various view frameworks.
-
-### [@knora/authentication (obsolete)](/developers/dsp-ui/documentation/index-authentication)
-*Login, Logout, Session*
-> The authentication module contains the login form, a logout button and it offers a session service, but also an authentication guard.
+*Resources, Properties, Lists, Value components*
+> DspViewerModule contains object components to show a resource class representation, the property gui-elements and various view frameworks.
 
 * * *
 

@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
-The action module is like a tool box containing special pipes to sort lists or to get the index key in arrays, directives for images and sorting names, but also components to display progress indicator bars or customized dialog boxes for resources, etc...
+DspActionModule is like a tool box containing special pipes to sort lists or to get the index key in arrays, directives for images and sorting names, but also components to display progress indicator bars or customized dialog boxes for resources, etc...
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ For existing apps, follow these steps to begin using DSP-UI ACTION.
 
 ## Installation
 
-The ACTION module is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
+DspActionModule is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
 
 ## Setup
 

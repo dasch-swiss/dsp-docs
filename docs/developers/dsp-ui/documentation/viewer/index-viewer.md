@@ -2,9 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
-The **DspViewerModule** contains components to display resources; as single item or as a list for search results. It is comprised of resource sub-components such as file representations components to display still image, video, audio or text only and also value components to use single property elements.
-
-**ATTENTION: DSP-UI VIEWER is under development!**
+DspViewerModule contains components to display resources; as single item or as a list for search results. It is comprised of resource sub-components such as file representations components to display still image, video, audio or text only and also value components to use single property elements.
 
 ## Prerequisites
 
@@ -14,7 +12,7 @@ For existing apps, follow these steps to begin using DSP-UI VIEWER.
 
 ## Installation
 
-The VIEWER module is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
+DspViewerModule is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
 
 ## Setup
 
