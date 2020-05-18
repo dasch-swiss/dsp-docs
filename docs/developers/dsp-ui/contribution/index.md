@@ -4,57 +4,136 @@
 
 ### Prerequisites
 
-We develop DSP-UI modules with Angular 9, especially with Angular-CLI, which requires the following tools:
+We develop DSP-UI-LIB modules using Angular 9, with heavy reliance on Angular-cli, which requires the following tools:
 
-#### Yarn
+#### Node.js
 
-We use [yarn](https://yarnpkg.com/en/) instead of npm. To install yarn on macOS:
+Angular requires a [current, active LTS, or maintenance LTS](https://nodejs.org/about/releases/) version of Node.js. We recommend installing [Node version 12.x](https://nodejs.org/download/release/latest-v12.x/).
 
-```bash
-$ brew install yarn
-```
-
-For other platforms, please go to the yarn website.
-
-#### Node
-
-Install [Node](https://nodejs.org/en/download/) in version 10.9.0 or later. The easiest way to install node
-in the correct version is to use ['n'](https://github.com/tj/n):
+On MacOs, install node with [Homebrew](https://brew.sh).
+For other platforms, please visit the [Node.js download page](https://nodejs.org/en/download/).
 
 ```bash
-$ yarn global add n
-$ n v10.9.0
+brew install node@12
 ```
+
+_Developer hint: To switch between various node versions, we recommand to use [n &mdash; Node.js versions manager](https://www.npmjs.com/package/n)._
+
+To install it, run:
+
+```bash
+npm install -g n
+```
+
+and switch to the desired node version, e.g. 12.16.2 with `n v12.16.2`
+
+#### NPM package manager
+
+We use [npm](https://docs.npmjs.com/cli/install) instead of yarn, which is installed with Node.js by default.
+
+To check that you have the npm client installed, run `npm -v`.
 
 ### First steps
 
 Install the node packages with:
 
 ```bash
-$ yarn install --prod=false
+npm install
 ```
 
-and build the libraries with:
+and build the library with:
 
 ```bash
-$ yarn build-lib
+npm run build-lib
 ```
 
 ### Develop
 
-If you want to add more components, services and so on to a module library, you can do it with:
+If you want to add more components, services and so on to a module of the library, you can do it with:
 
-`$ ng generate component [path/in/your/module/][name-of-component] --project @knora/[module-name] --styleext scss`
+```bash
+ng generate component [path/in/the/module/][name-of-component] --project @dasch-swiss/dsp-ui
+```
 
-It puts the component or the service into `lib/` directly. Otherwise you can define a path inside of `lib/`.
+For example:
 
-Before using the module inside of the app, you have to rebuild after the changes: `ng build @knora/[module-name]`.
+```bash
+ng generate component core/test --project @dasch-swiss/dsp-ui
+```
+
+will create a component-folder called `test` inside of `projects/dsp-ui/src/lib/core/` with four files:
+
+- `test.component.scss`
+- `test.component.html`
+- `test.component.spec.ts`
+- `test.component.ts`
+
+The main component file should look as follows:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'dsp-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
+})
+export class TestComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+```
+
+Before testing the new component inside of the demo app, you have to rebuild after each change:
+
+```bash
+npm run build-lib
+```
 
 ### Run the demo app
 
-Run the app with `ng s`. The demo app runs on <http://localhost:4200> and we use it for documentation on [Knora-ui Github page](https://dasch-swiss.github.io/knora-ui).
+Run the app with the command line: `npm run start`.
 
-The modules can be tested with the [app of the repository knora-ui-ng-lib](https://github.com/dasch-swiss/knora-ui-ng-lib).
+The demo app runs on <http://0.0.0.0:4200>.
+
+Documentation can be found on [DSP-UI-LIB Github page](https://dasch-swiss.github.io/knora-ui).
+
+### Run the application in productive mode
+
+To simulate a production environment, the application should be built with optimization and served locally
+(not in dev mode, but from a local web server).
+
+- Install `nginx` on your system, e.g. `brew install nginx` for mac OS. Check the [documentation](https://linux.die.net/man/8/nginx) for more information.
+- Create a configuration file for the test application.
+    The example defines a configuration file `/usr/local/etc/nginx/servers/dspuiapp.conf` for macOS.
+    Substitute `$abs_path_to_lib` with the actual absolute path on your system pointing to the project root.
+    Substitute `$dsp-ui_folder_name` with the folder name of the app build in `dist`.
+
+```nginx
+    server {
+            listen 8090;
+            server_name dspuiapp.local;
+            root /$abs_path_to_lib/dist/$dsp-ui_folder_name;
+
+            location / {
+                        try_files $uri $uri/ /index.html;
+            }
+
+        access_log /usr/local/etc/nginx/logs/dspuiapp.local.access.log;
+    }
+```
+
+- Add an entry to your `/etc/hosts`: `127.0.0.1 dspuiapp.local`
+- Create an empty file `dspuiapp.local.access.log` in `/usr/local/etc/nginx/logs`
+    (you might have to create the folder `logs` first)
+- Start `nginx` (if `nginx` is already running, stop it first: `nginx`: `nginx -s stop`)
+- Build the library: `npm run build-lib`
+- Build the test app with optimization: `npm run build-app`
+- Access it via <http://dspuiapp.local:8090>
 
 ***
 

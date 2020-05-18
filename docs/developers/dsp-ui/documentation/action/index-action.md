@@ -1,6 +1,6 @@
-# Knora-ui ACTION module
+# DSP-UI ACTION module
 
-[![npm (scoped)](https://img.shields.io/npm/v/@knora/action.svg)](https://www.npmjs.com/package/@knora/action)
+[![npm (scoped)](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
 The action module is like a tool box containing special pipes to sort lists or to get the index key in arrays, directives for images and sorting names, but also components to display progress indicator bars or customized dialog boxes for resources, etc...
 
@@ -8,34 +8,11 @@ The action module is like a tool box containing special pipes to sort lists or t
 
 For help getting started with a new Angular app, check the [Angular CLI](https://cli.angular.io/) documentation.
 
-For existing apps, follow these steps to begin using Knora-ui action.
+For existing apps, follow these steps to begin using DSP-UI ACTION.
 
-## Install
+## Installation
 
-You can use either the npm or yarn command-line tool to install packages. Use whichever is appropriate for your project in the examples below.
-
-### Yarn
-
-`yarn add @knora/action`
-
-### NPM
-
-`npm install --save @knora/action`
-
-### Dependencies
-
-This module has the following package dependencies, which you also have to install.
-
--   @angular/common@8.0.3
--   @angular/core@8.0.3
--   @angular/animations@8.0.3
--   @angular/cdk@8.1.4
--   @angular/material@8.1.4
--   ts-md5@1.2.4
--   jdnconvertiblecalendar@0.0.5
--   jdnconvertiblecalendardateadapter@0.0.10
-
-### Required version of Knora: 9.0.0
+The ACTION module is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
 
 ## Setup
 
@@ -43,16 +20,17 @@ This module has the following package dependencies, which you also have to insta
 
 ```javascript
 import { AppComponent } from './app.component';
-import { KuiActionModule } from '@knora/action';
+import { DspCoreModule, DspActionModule } from '@dasch-swiss/dsp-ui';
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
-        KuiActionModule
+        DspCoreModule, // <- core module is required for some components and directives
+        DspActionModule // <- add action module in the imports
     ],
-    providers: [ ],
+    providers:  [ ... ]    // <-- add providers if you use the core module as mentioned in the installation guide
     bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -65,10 +43,13 @@ Some components need a global styling in the app to override some material styli
 ...
     "styles": [
         "src/styles.scss",
-        "node_modules/@knora/action/assets/style/action.scss" // <- add this line
+        "node_modules/@dasch-swiss/dsp-ui/action/assets/style/action.scss" // <- add this line
     ],
 ...
 ```
+
+<!-- ## Usage
+TODO: fill in this section with an example -->
 
 ## Components, Directives and Pipes
 

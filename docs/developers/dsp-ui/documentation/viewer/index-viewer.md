@@ -1,62 +1,49 @@
-# Knora-ui VIEWER module
+# DSP-UI VIEWER module
 
-[![npm (scoped)](https://img.shields.io/npm/v/@knora/viewer.svg)](https://www.npmjs.com/package/@knora/viewer)
+[![npm (scoped)](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
-The viewer module contains object components to show the resource class representations from Knora, the gui-elements for the property values and different kind of view frameworks.
+The **DspViewerModule** contains components to display resources; as single item or as a list for search results. It is comprised of resource sub-components such as file representations components to display still image, video, audio or text only and also value components to use single property elements.
 
-**ATTENTION: Knora-ui viewer is under development!**
+**ATTENTION: DSP-UI VIEWER is under development!**
 
 ## Prerequisites
 
 For help getting started with a new Angular app, check out the [Angular CLI](https://cli.angular.io/).
 
-For existing apps, follow these steps to begin using Knora-ui viewer.
+For existing apps, follow these steps to begin using DSP-UI VIEWER.
 
-## Install
+## Installation
 
-You can use either the npm or yarn command-line tool to install packages. Use whichever is appropriate for your project in the examples below.
-
-### Yarn
-
-`$ yarn add @knora/viewer`
-
-### NPM
-
-`$ npm install --save @knora/viewer`
-
-### Dependencies
-
-This module has the following package dependencies, which you also have to install.
-
--   @angular/common@8.0.3
--   @angular/core@8.0.3
--   @angular/animations@8.0.3
--   @angular/cdk@8.1.4
--   @angular/material@8.1.4
--   @angular/flex-layout@8.0.0-beta.27
--   @knora/action@9.4.1
--   @knora/core@9.4.1
-
-### Required version of Knora: 9.0.0
+The VIEWER module is part of @dasch-swiss/dsp-ui, follow [the installation guide](/developers/dsp-ui/documentation/#installation).
 
 ## Setup
 
 Import the viewer module in your app.module.ts and add it to the NgModules's imports:
 
-```typescript
+```javascript
 import { AppComponent } from './app.component';
-import { KuiViewerModule } from '@knora/viewer';
+import { DspCoreModule, DspViewerModule } from '@dasch-swiss/dsp-ui';
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
-        KuiViewerModule
+        DspCoreModule, // <- core module is required for some components and directives
+        DspViewerModule // <- add viewer module in the imports
     ],
-    providers: [ ],
+    providers:  [ ... ]    // <-- add providers as mentioned in the installation guide
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+```
+
+## Usage
+
+<!-- example of resource viewer -->
+Use DSP-UI VIEWER module in the component template as follows. The example shows how to display a resource by iri = 'http://rdfh.ch/0803/18a671b8a601'.
+
+```html
+<dsp-resource-view [iri]="'http://rdfh.ch/0803/18a671b8a601'"></dsp-resource-view>
 ```
