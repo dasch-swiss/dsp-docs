@@ -5,7 +5,7 @@ The simplest form of a query is a full-text search. For more complex queries tha
 
 ## Full-text search
 Knora offers a full-text search that searches all textual representations of values and `rdfs:label`-labels of resources. The full-text search supports the [Lucene Query Parser syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
-Search terms can be seperated by a white space - then they will be combined using the Boolean operator `OR` since this is Lucene's default operator. Be aware, that the search terms have to be URL encoded! 
+Search terms can be seperated by a white space - then they will be combined using the Boolean operator `OR` since this is Lucene's default operator. Be aware, that the search terms have to be URL encoded!
 
 The recommended way to submit a full-text query is via `HTTP GET` in the following form.
 ````
@@ -20,7 +20,7 @@ Most of these parameters can be set optionally:
 
 The first search parameter has to be preceded by a question mark `?` and any following parameter by an ampersand `&`. A search value must have a minimal length of three characters (default value) as defined in `app/v2` in the file `application.conf`.
 
-Wildcards may be used. 
+Wildcards may be used.
 * An ampersand `&` represents a single missing character. However, it has to be URL encoded as `%3F` because it has a special meaning in the URL syntax.
 * An asterisk `*` represents zero, one or multiple missing characters. The URL encode of an asterisk is `%2A`.
 
@@ -52,7 +52,7 @@ A -B
 
 <br>
 
-## A short note on the following examples 
+## A short note on the following examples
 All examples in the following sections are from Bernoulli-Euler-Online (BEOL) which is a research platform for the study of early modern mathematics and science implemented within Knora.
 
 <br>
@@ -79,7 +79,7 @@ retrieves all resources containing the term "Bernoulli". The beginning of the re
           "@value": "http://ark.dasch.swiss/ark:/72163/1/0801/==rbZIzLTNC4qrcpAAkjwAc/K0Ik_ElfQtOOTkgn4h4MnQQ"
         },
 ````
-We learn that our search term "Bernoulli" appears in a letter which belongs to the BEOL project. If we possess the necessary permissions, the web adress given in `@value` copied to a browser guides us to the corresponding entry of the letter and all of its available additional information in the Knora App. 
+We learn that our search term "Bernoulli" appears in a letter which belongs to the BEOL project. If we possess the necessary permissions, the web adress given in `@value` copied to a browser guides us to the corresponding entry of the letter and all of its available additional information in the Knora App.
 
 The following query with the URL encoded (`%3F`) wildcard `&`
 ````
@@ -151,21 +151,21 @@ Count queries for the above mentioned combinations of the search terms "Bernoull
 <br>
 
 ## SPARQL queries
-SPARQL is a set of specifications that provide languages and protocols to query and manipulate RDF graph content on the Web or in an RDF triplestore. In the following the [Turtle](https://www.w3.org/TR/turtle/) data format will be used to show each triple.  
+SPARQL is a set of specifications that provide languages and protocols to query and manipulate RDF graph content on the Web or in an RDF triplestore. In the following the [Turtle](https://www.w3.org/TR/turtle/) data format will be used to show each triple.
 
 The following introduction to SPARQL draws heavily on the book of **Bob DuCharme, Learning SPARQL. Querying and Updating with SPARQL 1.1, 2nd edition, Sebastopol 2013** which we warmly recommend for reading.
 
 The most basic keywords are `SELECT` and `WHERE`. Moreover, a very useful keyword is `LIMIT`.
 * `SELECT` names which part of the data we want to see. If all data should be shown, use `SELECT *`, the asterisk functions as wildcard.
 * `WHERE` is used to formulate a clause - it decides which data should be retrieved from the whole dataset.
-* `LIMIT` limits the query to the first e.g. 20 (`LIMIT 20`) or 100 hits. The limit has to be specified outside the curly braces of the `WHERE`-clause. If you've no idea what the test data are about or if you know that the dataset is large, it's very useful to limit your query in order not to ask too much from the query endpoint. Be aware, that if you're sorting your data, the `LIMIT` keyword will only apply after all data have been retrieved and sorted! Thus, `LIMIT` will give you the first results of the sorted data. 
+* `LIMIT` limits the query to the first e.g. 20 (`LIMIT 20`) or 100 hits. The limit has to be specified outside the curly braces of the `WHERE`-clause. If you've no idea what the test data are about or if you know that the dataset is large, it's very useful to limit your query in order not to ask too much from the query endpoint. Be aware, that if you're sorting your data, the `LIMIT` keyword will only apply after all data have been retrieved and sorted! Thus, `LIMIT` will give you the first results of the sorted data.
 
 <br>
 
 ### Query forms
-In SPARQL four different query forms do exist: `SELECT`, `CONSTRUCT`, `ASK` and `DESCRIBE`. 
-* The most common one is probably `SELECT` which enables requesting data from a collection. 
-* Using `CONSTRUCT` instead will return triples. Triples can be retrieved without modifying them or the retrieved triples can be used to generate new triples. `CONSTRUCT` enables to copy, create and convert RDF data, and it makes it easier to identify data that do not conform to specific rules. 
+In SPARQL four different query forms do exist: `SELECT`, `CONSTRUCT`, `ASK` and `DESCRIBE`.
+* The most common one is probably `SELECT` which enables requesting data from a collection.
+* Using `CONSTRUCT` instead will return triples. Triples can be retrieved without modifying them or the retrieved triples can be used to generate new triples. `CONSTRUCT` enables to copy, create and convert RDF data, and it makes it easier to identify data that do not conform to specific rules.
 * Using `ASK` asks the processor whether a certain given graph pattern fits a set of triples in the requested dataset or not. The processor returns a boolean `true` or `false`.
 * `DESCRIBE` asks for triples which describe a particular resource. This query form isn't popular because different processors return different triples as a description of the named resource.
 
@@ -197,9 +197,9 @@ Go to `http://0.0.0.0:7200/sparql` in your browser which will guide you to the G
 ````
 PREFIX knora-api: <https://api.dasch.swiss/ontology/knora-api/v2#>
 
-select * where { 
+select * where {
 	?s ?p ?o .
-} limit 100 
+} limit 100
 ````
 This query retrieves the first 100 triples of the data. The asterisk after `SELECT` indicates that all variables should be selected to get bound in this query. Setting a limit with the keyword `LIMIT` prevents a server timeout.
 
@@ -215,7 +215,7 @@ PREFIX knora-api: <http://api.knora.org/ontology/knora-api/simple/v2#>
 CONSTRUCT {
    ?s knora-api:isMainResource true .
 }
-WHERE { 
+WHERE {
     ?s a knora-api:Resource .
 }
 ````
@@ -229,7 +229,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 CONSTRUCT {
    ?s knora-api:isMainResource true .
 }
-WHERE { 
+WHERE {
     ?s a knora-api:Resource .
     ?s a foaf:Person .
 }
@@ -241,7 +241,7 @@ If you do a count search, i.e. sending a POST request to `https://api.dasch.swis
 ### A query asking for one specific variable
 If we are interested in works of the artist Marc Chagall, we can send a first query to the DBpedia endpoint, asking for information about Chagall with results stored in the variable `?artist`:
 ````
-SELECT ?artist 
+SELECT ?artist
 WHERE
 {
  <http://dbpedia.org/resource/Chagall> ?p ?artist .
@@ -264,7 +264,7 @@ WHERE {
   <http://dbpedia.org/resource/Marc_Chagall> ?property ?hasValue .
 }
 ````
-One of the results obtained is a property `dbpedia:ontology/wikiPageExternalLink` with the value `"<http://www.thejewishmuseum.org/collection/search?artist=Marc%20Chagall%2C%20French%2C%20b.%20Belorussia%2C%201887-1985>`. Following this link leads us to the homepage of the Jewish Museum in New York and the works of Marc Chagall the museum possesses.  
+One of the results obtained is a property `dbpedia:ontology/wikiPageExternalLink` with the value `"<http://www.thejewishmuseum.org/collection/search?artist=Marc%20Chagall%2C%20French%2C%20b.%20Belorussia%2C%201887-1985>`. Following this link leads us to the homepage of the Jewish Museum in New York and the works of Marc Chagall the museum possesses.
 
 If you intend to query data that isn't stored locally, the keyword `FROM` could be used to specify the data set. It is also possible to read data from a file when using the `FROM` keyword. If the data are stored in a file named `example.ttl` stored in the same folder as the query itself, then the `SELECT`-part of the request looks as follows:
 ````
@@ -285,7 +285,7 @@ WHERE {
    ?films <http://dbpedia.org/ontology/starring> :Johnny_Depp .
 }
 ````
-Such a set of triple patterns within curly braces is called a *graph pattern*. The `?films` variable is used in two different triples to find connected triples in the queried data. The first triple looks for films starring Iggy Pop, the second triple then searches if in one of these films also Johnny Depp was involved. The result shows all the films these actors played in together: Cry Baby and Dead Man. 
+Such a set of triple patterns within curly braces is called a *graph pattern*. The `?films` variable is used in two different triples to find connected triples in the queried data. The first triple looks for films starring Iggy Pop, the second triple then searches if in one of these films also Johnny Depp was involved. The result shows all the films these actors played in together: Cry Baby and Dead Man.
 
 <br>
 
@@ -300,16 +300,16 @@ WHERE {
 }
 ORDER BY xsd:double(?runtime)
 ````
-The keyword `ORDER BY` allows to sort the results with runtime in increasing order. Be aware that it is necessary to specify the datatype `xsd:double` of the `?runtime` variable, otherwise the filter and also the sorting doesn't work properly! 
+The keyword `ORDER BY` allows to sort the results with runtime in increasing order. Be aware that it is necessary to specify the datatype `xsd:double` of the `?runtime` variable, otherwise the filter and also the sorting doesn't work properly!
 
 <br>
 
 ### Searching for data that may exist or not
-The keyword `OPTIONAL` can be used to express "show this value if it exists". 
+The keyword `OPTIONAL` can be used to express "show this value if it exists".
 ````
 SELECT *
 WHERE
-{ 
+{
    <http://dbpedia.org/resource/Pink_Floyd> <http://dbpedia.org/ontology/formerBandMember> ?members .
    OPTIONAL {
       ?members <http://dbpedia.org/ontology/deathDate> ?deathDate .
@@ -326,7 +326,7 @@ While cleaning up data it is very useful if one can search for missing entries. 
 ````
 SELECT *
 WHERE
-{ 
+{
    ?artist rdf:type <http://dbpedia.org/ontology/Artist> .
    FILTER NOT EXISTS {?artist dbpedia2:works ?works }
 }
@@ -338,7 +338,7 @@ Another possibility is to use the keyword `MINUS`. As its name suggests, it subt
 ````
 SELECT *
 WHERE
-{ 
+{
    ?artist rdf:type <http://dbpedia.org/ontology/Artist> .
    MINUS {?artist dbpedia2:works ?works }
 }
@@ -353,7 +353,7 @@ To link up different sets of data the same variable can be in the object positio
 ````
 SELECT DISTINCT ?actor ?value
 WHERE
-{ 
+{
    ?film <http://dbpedia.org/ontology/starring> ?actor .
    ?actor <http://dbpedia.org/ontology/birthYear> ?value .
 }
@@ -361,7 +361,7 @@ LIMIT 1000
 ````
 In this query with the first triple we ask for all actors, in the second triple for the birth dates of the actors. The `DISTINCT` keyword tells the processor that duplicate answers shouldn't be displayed, thus, redundant results are eliminated. Without the `DISTINCT` keyword we would receive lots of identical responses since most actors played in more than one film.
 
-Whether the queried data stem from the same repository or from different ones doesn't matter as long there are resource URIs in one dataset that can be paralleled with resource URIs in another. 
+Whether the queried data stem from the same repository or from different ones doesn't matter as long there are resource URIs in one dataset that can be paralleled with resource URIs in another.
 
 <br>
 
@@ -399,12 +399,12 @@ The `UNION` keyword allows to specify multiple different graph pattern and to as
 ````
 SELECT *
 WHERE
-{ 
-   {?artist rdf:type <http://dbpedia.org/ontology/Artist> . 
-    ?artist <http://dbpedia.org/ontology/birthPlace> <http://dbpedia.org/resource/Russia> . 
-    ?artist <http://dbpedia.org/ontology/deathPlace> <http://dbpedia.org/resource/Paris> . } 
+{
+   {?artist rdf:type <http://dbpedia.org/ontology/Artist> .
+    ?artist <http://dbpedia.org/ontology/birthPlace> <http://dbpedia.org/resource/Russia> .
+    ?artist <http://dbpedia.org/ontology/deathPlace> <http://dbpedia.org/resource/Paris> . }
   UNION
-   {?artist rdf:type <http://dbpedia.org/ontology/Artist> . 
+   {?artist rdf:type <http://dbpedia.org/ontology/Artist> .
     ?artist <http://dbpedia.org/ontology/deathPlace> <http://dbpedia.org/resource/Saint-Paul-de-Vence> . }
 }
 ````
@@ -423,7 +423,7 @@ The keyword `FILTER` takes a single argument and it is used to retrieve those tr
 ````
 SELECT *
 WHERE
-{ 
+{
    ?s rdfs:label ?o .
    FILTER (regex(?o, "Leiden","i"))
 }
@@ -432,18 +432,18 @@ LIMIT 1000
 ````
 SELECT DISTINCT ?actor ?year
 WHERE
-{ 
+{
    ?film <http://dbpedia.org/ontology/starring> ?actor .
    ?actor <http://dbpedia.org/ontology/birthDate> ?year .
    FILTER (xsd:date(?year) > "1980-01-01"^^xsd:date)
 }
 LIMIT 1000
 ````
-Be aware that it is necessary to specify the datatype `xsd:date` of the `?year` variable, otherwise the filter doesn't work properly. 
+Be aware that it is necessary to specify the datatype `xsd:date` of the `?year` variable, otherwise the filter doesn't work properly.
 ````
 SELECT *
 WHERE
-{ 
+{
    <http://dbpedia.org/resource/Leiden> a ?o .
    FILTER (!(isURI(?o)))
 }
@@ -452,23 +452,23 @@ This query retrieves no results since all values for `?o` for the city of Leiden
 
 <br>
 
-### Skip a number of results 
+### Skip a number of results
 The `OFFSET` keyword can be used to tell the processor to skip a certain number of search results before picking those to return. This is useful for paging. Just type `OFFSET` and an integer number (e.g. `OFFSET 5`) after the last closing curly brace of the query.
 
 <br>
 
 ### Subqueries
-Subqueries are queries inside queries. With the help of subqueries a complex query can be broken down into easier manageable parts. Each subquery must be enclosed in its own set of curly braces. 
+Subqueries are queries inside queries. With the help of subqueries a complex query can be broken down into easier manageable parts. Each subquery must be enclosed in its own set of curly braces.
 ````
 SELECT ?capital ?latitude
 WHERE {
   {
-    SELECT ?capital 
+    SELECT ?capital
     WHERE { ?capital ?p <http://dbpedia.org/resource/Category:Capitals_in_Europe> . }
   }
   {
     SELECT *
-    WHERE { ?capital <http://dbpedia.org/property/latd> ?latitude . 
+    WHERE { ?capital <http://dbpedia.org/property/latd> ?latitude .
             FILTER (?latitude < 52.0)}
   }
 }
@@ -501,7 +501,7 @@ WHERE {
   BIND (?elmax - ?elmin AS ?eldiff)
 }
 ````
-We asked for the maximum and minimum elevation of the cave of Rouffignac, calculated the elevation difference and stored it in a variable `?eldiff` with the help of the keyword `BIND`. 
+We asked for the maximum and minimum elevation of the cave of Rouffignac, calculated the elevation difference and stored it in a variable `?eldiff` with the help of the keyword `BIND`.
 
 <br>
 
@@ -515,7 +515,7 @@ WHERE {
 }
 ORDER BY DESC(xsd:double(?runtime))
 ````
-This example is almost identical to the one in the section "Searching for strings and values", but we eliminated the filter and now we list all films in decreasing order of runtime. Be aware that it is necessary to specify the datatype `xsd:double` of the ?runtime variable, otherwise the filter and also the sorting doesn't work properly! 
+This example is almost identical to the one in the section "Searching for strings and values", but we eliminated the filter and now we list all films in decreasing order of runtime. Be aware that it is necessary to specify the datatype `xsd:double` of the ?runtime variable, otherwise the filter and also the sorting doesn't work properly!
 
 Sorting on multiple keys is possible if the key value names are separated by spaces:
 ````
@@ -571,11 +571,11 @@ WHERE {
 
 ### Query efficiency
 Sometimes there are different possibilities for a query to ask for the same set of information which differ in efficiency. The heart of any query is the `WHERE`-clause and the order of its components and the functions it calls can speed things up or slow them down. Although the order of a graph pattern's triple in a `WHERE`-clause does not effect the query results, the ordering may have a huge effect on the speed of the query's execution. Here are a few rules of thumb one should keep in mind:
-* You can speed up your searches if you reduce the search space as much as possible as soon as possible. 
+* You can speed up your searches if you reduce the search space as much as possible as soon as possible.
 * The keywort `OPTIONAL` will very likely slow your query down considerably. The best optimization is to avoid the use of `OPTIONAL` whenever possible.
 * Also the order of triple pattern influences the execution time. The fewer triples a triple pattern matches against the more it narrows down the search space and hence the faster the query processor will finish its job. Usually, a triple pattern with more unbound variables will match against more triples than a triple pattern with less unbound variables. Furthermore, the variable's position in the triple matters: a given dataset is more likely to have the same property in the predicate position of a large number of triples than in the subject position.
-* Moving a `FILTER` statement earlier can help to reduce the serach space as long as all variables referenced in the `FILTER` statement have already been bound. 
-* The use of property paths can be expensive in terms of execution time. 
+* Moving a `FILTER` statement earlier can help to reduce the serach space as long as all variables referenced in the `FILTER` statement have already been bound.
+* The use of property paths can be expensive in terms of execution time.
 
 Outside the `WHERE`-clause the following points should be kept in mind:
 * Naming fewer variables in the `SELECT` statement can make the query run faster.
@@ -609,21 +609,21 @@ We query the dbpedia SPARQL endpoint for the ID of Jakob Bernoulli and return th
 
 import urllib.request
 
-endpointURL = "http://dbpedia.org/sparql" 
+endpointURL = "http://dbpedia.org/sparql"
 query = """
-SELECT ?bernoulliID WHERE { 
+SELECT ?bernoulliID WHERE {
    <http://dbpedia.org/resource/Jakob_Bernoulli>
    <http://dbpedia.org/ontology/wikiPageID> ?bernoulliID . }
 """
 escapedQuery = urllib.parse.quote(query)
-requestURL = endpointURL + "?query=" + escapedQuery 
+requestURL = endpointURL + "?query=" + escapedQuery
 request = urllib.request.Request(requestURL)
-result = urllib.request.urlopen(request) 
+result = urllib.request.urlopen(request)
 print (result.read())
 ````
 The output in XML format looks as follows:
 ````
-<sparql xmlns="http://www.w3.org/2005/sparql-results#" 
+<sparql xmlns="http://www.w3.org/2005/sparql-results#"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
  <head>
    <variable name="bernoulliID"/>
@@ -632,9 +632,9 @@ The output in XML format looks as follows:
    <result>
      <binding name="bernoulliID">
        <literal datatype="http://www.w3.org/2001/XMLSchema#integer">7500054</literal>
-     </binding> 
+     </binding>
    </result>
- </results> 
+ </results>
 </sparql>
 ````
 We are told that the bound variable is named "bernoulliID" and we receive the information that the questioned ID is a literal value, namely the integer 7500054.
@@ -683,78 +683,78 @@ Thus, the result is presented in list form.
 #### Different ways to send queries
 As we've seen in the last paragraph, SPARQL queries can be stored in a file and run from the command line with e.g. Python. However, there are other ways to send your query and the resulting output will differ slightly, depending on which way you chose. Here are a few examples if we query the dbpedia SPARQL endpoint about labels of the resource Switzerland as in the python example in the last paragraph.
 
-If the query part of the script 
+If the query part of the script
 ````
 SELECT ?label
     WHERE { <http://dbpedia.org/resource/Switzerland> rdfs:label ?label . }
 ````
 is directly copied into the query text box of the Virtuoso SPARQL Query Editor at http://dbpedia.org/sparql and the results format is chosen as "JSON", the output looks as follows:
 ````
-head:	
+head:
    link:	[]
-   vars:	
+   vars:
     0:	"label"
-results:	
+results:
   distinct:	false
   ordered:	true
-  bindings:	
-    0:	
-      label:	
+  bindings:
+    0:
+      label:
         type:	   "literal"
         xml:lang:	"en"
         value: 	"Switzerland"
-    1:	
-      label:	
+    1:
+      label:
         type:	   "literal"
         xml:lang:	"ar"
         value:	   "سويسرا"
-    2:	
-      label:	
+    2:
+      label:
         type:	   "literal"
         xml:lang:	"de"
         value:	   "Schweiz"
-    3:	
-      label:	
+    3:
+      label:
         type:	   "literal"
         xml:lang:	"es"
         value:	   "Suiza"
-    4:	
-      label:	
+    4:
+      label:
         type:	   "literal"
         xml:lang:	"fr"
         value:	   "Suisse"
-    5:	
-      label:	
+    5:
+      label:
         type:	   "literal"
         xml:lang:	"it"
         value:	   "Svizzera"
-    6:	
-      label:	
+    6:
+      label:
         type:	   "literal"
         xml:lang:	"ja"
         value:	   "スイス"
-    7:	
-      label:	
+    7:
+      label:
         type:	   "literal"
         xml:lang:	"nl"
         value:	   "Zwitserland"
-    8:	
-      label:	
+    8:
+      label:
         type:	   "literal"
         xml:lang:	"pl"
         value:	   "Szwajcaria"
-    9:	
-      label:	
+    9:
+      label:
         type:	   "literal"
         xml:lang:	"pt"
         value:	   "Suíça"
-    10:	
-      label:	
+    10:
+      label:
         type:	   "literal"
         xml:lang:	"ru"
         value:	   "Швейцария"
-    11:	
-      label:	
+    11:
+      label:
         type:	   "literal"
         xml:lang:	"zh"
         value:	   "瑞士"
@@ -891,13 +891,13 @@ PREFIX beol: <http://api.dasch.swiss/ontology/0801/beol/simple/v2#>
         ?letter a knora-api:Resource .
         ?letter a beol:letter .
 
-        
+
     ?letter beol:letterHasTranslation ?translation .
 
     beol:letterHasTranslation knora-api:objectType knora-api:Resource .
     ?translation a knora-api:Resource .
 
-            
+
 
         ?letter beol:creationDate ?date .
 

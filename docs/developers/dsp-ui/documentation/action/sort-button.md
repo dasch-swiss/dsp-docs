@@ -16,11 +16,10 @@ position='left' (optional) | string | Optional position of the sort menu: right 
 icon='sort' (optional) | string | Default icon is "sort" from material design. But you can replace it with another one e.g. sort_by_alpha
 sortKey | string | Set and get (two-way data binding) of current sort key
 
-## Example
+## Example - Simple Example
 
-### Simple Example
+### HTML file
 
-**HTML file**
 ```html
 <kui-sort-button [sortProps]="sortProps" [(sortKey)]="sortKey" [position]="'right'"></kui-sort-button>
 
@@ -34,7 +33,8 @@ sortKey | string | Set and get (two-way data binding) of current sort key
 </ul>
 ```
 
-**Typescript file**
+### Typescript file
+
 ```ts
 sortProps: any = [
     {
@@ -79,6 +79,6 @@ list = [
 
 <iframe src="https://stackblitz.com/edit/knora-sort-button?embed=1&file=src/app/app.component.ts&hideExplorer=1&hideNavigation=1&hidedevtools=1&view=preview" width="700px" height="300px"></iframe>
 
-**Optional**
+### Optional
 
 It's possible to set the position of the sort button to the right or left side with the property `[position]`.
