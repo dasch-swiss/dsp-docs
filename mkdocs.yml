@@ -11,11 +11,11 @@ nav:
     - Developers:
       - Overview: developers/index.md
       - Knora Getting Started: developers/knora/getting-started.md
-      - API Reference: 
+      - API Reference:
         - Introduction: developers/knora/api-reference/index.md
         - Queries: developers/knora/api-reference/queries.md
       - Documentation:
-        - Knora: 
+        - Knora:
           - Introduction: developers/knora/documentation/index.md
           - RDF: developers/knora/documentation/rdf.md
           - Knora-base ontology: developers/knora/documentation/knora-base.md
@@ -65,7 +65,7 @@ theme:
   palette:
     primary: 'deep purple'
     accent: 'deep purple'
-  feature:
-    tabs: true
+  features:
+    - tabs
 extra_css:
   - 'assets/style/theme.css'
