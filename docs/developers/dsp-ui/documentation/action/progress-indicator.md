@@ -16,7 +16,8 @@ You can use the progress indicator in two ways:
 
 ### Classic Loader
 
-**HTML file**
+#### HTML file
+
 ```html
 <kui-progress-indicator></kui-progress-indicator>
 ```
@@ -26,9 +27,10 @@ You can use the progress indicator in two ways:
 <hr>
 
 ### Submit-form-data loader
+
 e.g. as a list style type while submitting form data
 
-![Submit form data loader](../../../../assets/images/knora-ui/submit-form-data-loader.png)
+![Submit form data loader](../../../../assets/images/dsp-ui/submit-form-data-loader.png)
 
 Angular Material Icons is required. You have to import the style file into your app and add the following line in your main styling file:
 
@@ -40,6 +42,6 @@ We recommend to host the Material Icons font in your app e.g. by using the [Mate
 
 ### Dynamic example of Submit-form-data loader
 
-![Loader before submit stage](../../../../assets/images/knora-ui/loader-before-submit-status.png)
-![Loader submitting stage](../../../../assets/images/knora-ui/loader-submitting-status.png)
-![Loader after submit stage](../../../../assets/images/knora-ui/loader-after-submit-status.png)
+![Loader before submit stage](../../../../assets/images/dsp-ui/loader-before-submit-status.png)
+![Loader submitting stage](../../../../assets/images/dsp-ui/loader-submitting-status.png)
+![Loader after submit stage](../../../../assets/images/dsp-ui/loader-after-submit-status.png)

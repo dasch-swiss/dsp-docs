@@ -10,7 +10,6 @@ route | string | Route to navigate after search. This route path should contain
 toggleExtendedSearchForm | boolean | Trigger toggle for extended search form.
 gravsearch | string | Send the gravsearch query back.
 
-
 ## Examples
 
 Extended search panel
@@ -23,4 +22,4 @@ Extended search panel
 <router-outlet></router-outlet>
 ```
 
-![Advanced search panel with a search example](../../../../assets/images/knora-ui/extended-search.png)
+![Advanced search panel with a search example](../../../../assets/images/dsp-ui/extended-search.png)

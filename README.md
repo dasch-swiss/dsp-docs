@@ -5,7 +5,7 @@ This is the main documentation for all services the Data and Service Center for 
 - [Knora](https://github.com/dasch-swiss/knora-api)
 - [Sipi](https://github.com/dasch-swiss/Sipi)
 - [Knora API JS lib](https://github.com/dasch-swiss/Knora-api-js-lib)
-- [Knora-ui modules](https://github.com/dasch-swiss/knora-ui)
+- [DSP-UI library](https://github.com/dasch-swiss/knora-ui-ng-lib)
 - [Knora web app](https://github.com/dasch-swiss/knora-app)
 
 
