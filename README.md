@@ -8,9 +8,7 @@ This is the main documentation for all services the Data and Service Center for 
 - [DSP-UI library](https://github.com/dasch-swiss/knora-ui-ng-lib)
 - [Knora web app](https://github.com/dasch-swiss/knora-app)
 
-
 You'll find the documentaion on [docs.dasch.swiss](https://docs.dasch.swiss).
-
 
 ## Contribute
 
@@ -40,7 +38,6 @@ The documentation consists of three main topics with subordinate themes:
 
 Images like screenshots and so on has to be stored in `assets/images`.
 
-
 ## Developers
 
 The documentation is based on [MkDocs](https://www.mkdocs.org).
@@ -61,28 +58,42 @@ MkDocs supports Python versions 2.7, 3.4, 3.5, 3.6, 3.7 and [pypy](https://pypy.
 Install the required packages by running
 
 ```shell
-$ pip3 install -r requirements.txt
+make install-requirements
 ```
 
 ### Getting started
-MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in the same directory as the mkdocs.yml configuration file, and then start the server by running the `mkdocs serve` command:
+
+MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in the same directory as the mkdocs.yml configuration file, and then start the server by running the following command:
 
 ```shell
-$ mkdocs serve
+$ make serve-docs
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory
 [I 160402 15:50:43 server:271] Serving on http://127.0.0.1:8000
 [I 160402 15:50:43 handlers:58] Start watching changes
 [I 160402 15:50:43 handlers:60] Start detecting changes
 ```
+
 Open up http://127.0.0.1:8000/ in your browser, and you'll see the documentation start page being.
+
+In case you need to clean the project directory, run:
+
+```shell
+make clean
+```
+
+To get some help about the `make` commands, run:
+
+```shell
+make help
+```
 
 ### Building the documentation and deploying
 
 To build the documentation just run
 
 ```shell
-$ mkdocs build
+make build-docs
 ```
 
 ### Deploying github page
@@ -90,7 +101,7 @@ $ mkdocs build
 After you checkout the primary working branch `master` of the git repository, run the following command:
 
 ```shell
-$ mkdocs gh-deploy
+make publish-docs
 ```
 
 That's it! Behind the scenes, MkDocs will build your docs and use the [ghp-import](https://github.com/davisp/ghp-import) tool to commit them to the gh-pages branch and push the gh-pages branch to GitHub.
