@@ -88,7 +88,7 @@ To get some help about the `make` commands, run:
 make help
 ```
 
-### Building the documentation and deploying
+### Building the documentation
 
 To build the documentation just run
 
@@ -98,6 +98,6 @@ make build-docs
 
 ### Deploying github page
 
-On each push into master branch, a Github action script will build and deploy the documentation on [docs.dasch.swiss](https://docs.dasch.swiss). Behind the scenes, MkDocs builds docs and use the [ghp-import](https://github.com/davisp/ghp-import) tool to commit them to the gh-pages branch and push the gh-pages branch to GitHub. That's it!
+On each push into `master` branch, a Github action script will build and deploy the documentation on [docs.dasch.swiss](https://docs.dasch.swiss). Behind the scenes, MkDocs builds the documentation and use the [ghp-import](https://github.com/davisp/ghp-import) tool to commit them to the gh-pages branch and then push the gh-pages branch to GitHub. That's it!
 
-Be aware that you have to review the built site before it is pushed to master branch! Please create an own branch for any changes and review it before merging!
+Be aware that you have to review the built site before pushing it to `master` branch! Please create an own branch for any changes and review it before merging!
