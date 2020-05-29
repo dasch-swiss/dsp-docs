@@ -1,6 +1,6 @@
 # User Guide
 
-This is the documentation for the generic Knora Web Application of the Data and Service Center for Humanities DaSCH. You can reach the app on **[app2.dasch.swiss](https://app2.dasch.swiss)**.
+This is the documentation for the generic Knora Web Application of the Data and Service Center for the Humanities DaSCH. You can reach the app on **[app2.dasch.swiss](https://app2.dasch.swiss)**.
 
 ---
 
@@ -12,7 +12,7 @@ Knora App is an intuitive, easy to use web-based application placed on top of [K
 
 ## Login
 
-To login, click on the LOGIN button of the header (right side), a login form will appear. Fill in the form with your credentials (user name or email and password). 
+To login, click on the LOGIN button of the header (right side), a login form will appear. Fill in the form with your credentials (user name or email and password).
 
 ![Get access to the login form.](../assets/images/knora-app/dashboard-header.png)
 
