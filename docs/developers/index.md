@@ -29,9 +29,8 @@ export JAVA_HOME=`/usr/libexec/java_home -v 11`
 To install, follow these steps:
 
 ```
-$ brew tap bazelbuild/tap
-$ brew install bazelbuild/tap/bazel
-$ brew upgrade bazelbuild/tap/bazel
+$ brew install bazel
+$ brew upgrade bazel
 ```
 
 #### Vizualize your Build
