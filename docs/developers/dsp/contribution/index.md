@@ -74,6 +74,10 @@ Add at least one of the corresponding labels to your PR:
 - **chore** Maintenance tasks; no production code change
 - **dependencies** Update a dependency package version
 
+### Make a draft
+
+Please convert the pull request to draft as long it is not ready for reviewing. As soon as the PR is ready for review click the corresponding button "Ready for review".
+
 ### Branch protection rules
 
 The main branch of each repo (usual it's the `master` branch) is protected by the following rules:
@@ -84,8 +88,8 @@ The main branch of each repo (usual it's the `master` branch) is protected by th
   - Require branches to be up to date before merging
   - Status checks e.g. tests defined in each repository's CI
 
+When the PR is merged the branch will be deleted automatically.
+
 ## General Github actions workflows (CI)
 
 We use [Github actions](https://github.com/features/actions) to automate some processes. With each push to Github the tests are executed. Successfull tests are needed to merge code into repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
-
-
