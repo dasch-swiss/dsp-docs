@@ -46,7 +46,8 @@ nav:
             - Search-results: developers/dsp-ui/documentation/viewer/search-results.md
         - Knora web app: developers/knora-web-app/documentation/index.md
         - Sipi: developers/sipi/documentation/index.md
-      - Contribution:
+      - Contribution: 
+        - How to contribute: developers/dsp/contribution/index.md
         - Knora: developers/knora/contribution/index.md
         - Knora API JS lib: developers/knora-api-js-lib/contribution/index.md
         - DSP-UI modules: developers/dsp-ui/contribution/index.md
