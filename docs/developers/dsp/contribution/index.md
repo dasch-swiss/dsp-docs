@@ -116,6 +116,12 @@ We use [Github actions](https://github.com/features/actions) to automate some pr
 
 With each push to Github the tests of the repository are executed. Successfull tests are needed to merge code into repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
 
+[![Knora-API CI](https://img.shields.io/github/workflow/status/dasch-swiss/knora-api/CI?label=Knora-API%20CI)](https://github.com/dasch-swiss/knora-api/actions)
+[![DSP-JS-LIB CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-js-lib/CI?label=DSP-JS-LIB%20CI)](https://github.com/dasch-swiss/dsp-js-lib/actions)
+[![DSP-UI-LIB CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-ui-lib/CI?label=DSP-UI-LIB%20CI)](https://github.com/dasch-swiss/dsp-ui-lib/actions)
+[![DSP-App CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-App%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
+[![DSP-Docs CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-docs/Publish?label=DSP-Docs%20CI)](https://github.com/dasch-swiss/dsp-docs/actions)
+
 ### Release notes
 
 Each push into master branch &mdash; after each merge from pull request &mdash; the release notes for next release are updated. This release called "Next release" is a draft and can be used to publish [real release](#release) later.
@@ -126,4 +132,16 @@ The Github action we use for this step is [release-drafter](https://github.com/m
 
 ### Release
 
-To do a real release we have to publish the above mentioned [release draft](#release-nots) manually.
+To do a real release we have to publish the above mentioned [release draft](#release-nots) manually. Update tag and release title with release version number including prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
+
+Do not forget to mark "This is a pre-release" in case of a release candidate (-rc.).
+
+With each published (pre-)release the action workflow builds the npm package or docker image and publishes on the corresponding platform.
+
+[![Knora-API Docker Image](https://img.shields.io/docker/v/daschswiss/knora-api?label=Knora-API%20Docker%20Image)](https://hub.docker.com/r/daschswiss/knora-api)
+
+[![DSP-JS NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-js?label=DSP-JS%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-js)
+
+[![DSP-UI NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui?label=DSP-UI%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
+
+[![Docker](https://img.shields.io/docker/v/daschswiss/dsp-app?label=DSP-App%20Docker%20Image)](https://hub.docker.com/r/daschswiss/dsp-app)
