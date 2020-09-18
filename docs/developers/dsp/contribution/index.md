@@ -1,6 +1,6 @@
-# How to contribute in general
+# How to contribute to the development of the DSP
 
-The DSP software is developed under git version control using [Github](https://github.com/dasch-swiss). It includes the following main repositories:
+The DSP software is developed under git version control using [GitHub](https://github.com/dasch-swiss). It includes the following main repositories:
 
 [![Knora-API](https://img.shields.io/github/v/release/dasch-swiss/knora-api?include_prereleases&label=Knora-API)](https://github.com/dasch-swiss/knora-api)
 [![DSP-JS-LIB](https://img.shields.io/github/v/release/dasch-swiss/dsp-js-lib?include_prereleases&label=DSP-JS-LIB)](https://github.com/dasch-swiss/dsp-js-lib)
@@ -8,7 +8,7 @@ The DSP software is developed under git version control using [Github](https://g
 [![DSP-APP](https://img.shields.io/github/v/release/dasch-swiss/dsp-app?include_prereleases&label=DSP-APP)](https://github.com/dasch-swiss/dsp-app)
 [![DSP-Docs](https://img.shields.io/github/v/release/dasch-swiss/dsp-docs?include_prereleases&label=DSP-Docs)](https://github.com/dasch-swiss/dsp-docs)
 
-In all those repositories we follow the [GitHub flow](https://guides.github.com/introduction/flow/) recommondations:
+In all these repositories, we follow the [GitHub flow](https://guides.github.com/introduction/flow/) recommondations:
 
 1. [Create a branch from master](#create-branch-guidelines)
 1. [Add commits](#git-commit-guidelines)
@@ -70,7 +70,7 @@ A pull request resolves one issue or user story defined on [Youtrack](https://da
 <DSP-nr> <title>
 ```
 
-When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story on Github's PR we strongly recommend to also add it to the description in form of a link:
+When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in form of a link:
 
 ```text
 Resolves [<DSP-nr>](https://dasch.myjetbrains.com/youtrack/issue/<DSP-nr>)
@@ -94,49 +94,49 @@ Add at least one of the corresponding labels to your PR:
 
 ### Make a draft
 
-Please convert the pull request to draft as long it is not ready for reviewing. As soon as the PR is ready for review click the corresponding button "Ready for review".
+Please convert the pull request to draft as long it is not ready for reviewing. As soon as the PR is ready for review, click on the corresponding button "Ready for review".
 
 ### Branch protection rules
 
-The main branch of each repo (usual it's the `master` branch) is protected by the following rules:
+The main branch of each repo (it's usually the `master` branch) is protected by the following rules:
 
 - Require pull request reviews before merging
   - At least from one reviewer
 - Require status checks to pass before merging
-  - Require branches to be up to date before merging
+  - Require branches to be up-to-date before merging
   - Status checks e.g. tests defined in each repository's CI
 
-When the PR is merged the branch will be deleted automatically.
+When the PR is merged, the branch will be deleted automatically.
 
-## General Github actions workflows (CI)
+## General GitHub actions workflows (CI)
 
-We use [Github actions](https://github.com/features/actions) to automate some processes. 
+We use [GitHub actions](https://github.com/features/actions) to automate some processes.
 
 ### Run tests
 
-With each push to Github the tests of the repository are executed. Successfull tests are needed to merge code into repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
+With each push to GitHub, the tests of the repository are executed. Successfull tests are needed to merge code into repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
 
 [![Knora-API CI](https://img.shields.io/github/workflow/status/dasch-swiss/knora-api/CI?label=Knora-API%20CI)](https://github.com/dasch-swiss/knora-api/actions)
 [![DSP-JS-LIB CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-js-lib/CI?label=DSP-JS-LIB%20CI)](https://github.com/dasch-swiss/dsp-js-lib/actions)
 [![DSP-UI-LIB CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-ui-lib/CI?label=DSP-UI-LIB%20CI)](https://github.com/dasch-swiss/dsp-ui-lib/actions)
-[![DSP-App CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-App%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
+[![DSP-APP CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-App%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
 [![DSP-Docs CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-docs/Publish?label=DSP-Docs%20CI)](https://github.com/dasch-swiss/dsp-docs/actions)
 
 ### Release notes
 
-Each push into master branch &mdash; after each merge from pull request &mdash; the release notes for next release are updated. This release called "Next release" is a draft and can be used to publish [real release](#release) later.
+After each push into the master branch &mdash; after each merge from a pull request &mdash; the release notes for the next release are updated. This release called "Next release" is a draft and can be used to publish the [real release](#release) later.
 
-The Github action we use for this step is [release-drafter](https://github.com/marketplace/actions/release-drafter).
+The GitHub action we use for this step is [release-drafter](https://github.com/marketplace/actions/release-drafter).
 
 > This feature is not yet implemented in all repositories. We are still testing it in [DSP-APP](https://github.com/dasch-swiss/dsp-app/releases).
 
 ### Release
 
-To do a real release we have to publish the above mentioned [release draft](#release-nots) manually. Update tag and release title with release version number including prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
+To make a real release, we have to publish the [release draft](#release-nots), mentioned above, manually. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
 
-Do not forget to mark "This is a pre-release" in case of a release candidate (-rc.).
+Do not forget to check the box "This is a pre-release" in case of a release candidate (-rc.).
 
-With each published (pre-)release the action workflow builds the npm package or docker image and publishes on the corresponding platform.
+With each published (pre-)release, the action workflow builds the npm package or the docker image and publishes on the corresponding platform.
 
 [![Knora-API Docker Image](https://img.shields.io/docker/v/daschswiss/knora-api?label=Knora-API%20Docker%20Image)](https://hub.docker.com/r/daschswiss/knora-api)
 
