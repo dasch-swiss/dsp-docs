@@ -132,7 +132,7 @@ The GitHub action we use for this step is [release-drafter](https://github.com/m
 
 ### Release
 
-To make a real release, we have to publish the [release draft](#release-nots), mentioned above, manually. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
+To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
 
 Do not forget to check the box "This is a pre-release" in case of a release candidate (-rc.).
 
