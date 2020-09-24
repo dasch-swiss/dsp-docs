@@ -101,10 +101,10 @@ Please convert the pull request to draft as long it is not ready for reviewing. 
 The main branch of each repo (it's usually the `master` branch) is protected by the following rules:
 
 - Require pull request reviews before merging
-  - At least from one reviewer
+    - At least from one reviewer
 - Require status checks to pass before merging
-  - Require branches to be up-to-date before merging
-  - Status checks e.g. tests defined in each repository's CI
+    - Require branches to be up-to-date before merging
+    - Status checks e.g. tests defined in each repository's CI
 
 When the PR is merged, the branch will be deleted automatically.
 
@@ -119,7 +119,7 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 [![Knora-API CI](https://img.shields.io/github/workflow/status/dasch-swiss/knora-api/CI?label=Knora-API%20CI)](https://github.com/dasch-swiss/knora-api/actions)
 [![DSP-JS-LIB CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-js-lib/CI?label=DSP-JS-LIB%20CI)](https://github.com/dasch-swiss/dsp-js-lib/actions)
 [![DSP-UI-LIB CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-ui-lib/CI?label=DSP-UI-LIB%20CI)](https://github.com/dasch-swiss/dsp-ui-lib/actions)
-[![DSP-APP CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-App%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
+[![DSP-APP CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-APP%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
 [![DSP-Docs CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-docs/Publish?label=DSP-Docs%20CI)](https://github.com/dasch-swiss/dsp-docs/actions)
 
 ### Release notes
@@ -144,4 +144,4 @@ With each published (pre-)release, the action workflow builds the npm package or
 
 [![DSP-UI NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui?label=DSP-UI%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
-[![Docker](https://img.shields.io/docker/v/daschswiss/dsp-app?label=DSP-App%20Docker%20Image)](https://hub.docker.com/r/daschswiss/dsp-app)
+[![DSP-APP Docker Image](https://img.shields.io/docker/v/daschswiss/dsp-app?label=DSP-APP%20Docker%20Image)](https://hub.docker.com/r/daschswiss/dsp-app)
