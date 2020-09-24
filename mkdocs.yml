@@ -15,7 +15,7 @@ nav:
         - Introduction: developers/knora/api-reference/index.md
         - Queries: developers/knora/api-reference/queries.md
       - Documentation:
-        - Knora: developers/knora/documentation/index.md
+        - Knora:
           - Introduction: developers/knora/documentation/index.md
           - RDF: developers/knora/documentation/rdf.md
           - Knora-base ontology: developers/knora/documentation/knora-base.md
