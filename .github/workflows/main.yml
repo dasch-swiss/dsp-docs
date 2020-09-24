@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+
+  build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        uses: jnanadarshan/mkdocs-build-action@v0.24
+
+  publish:
+    name: Publish documentation
+    needs: build
+    runs-on: ubuntu-latest
+    # Publish and deploy docs as Pull Requests are merged into "master"
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v2
+
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
