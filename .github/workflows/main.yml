@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        uses: jnanadarshan/mkdocs-build-action@v1
+        uses: jnanadarshan/mkdocs-build-action@v0.24
 
   publish:
     name: Publish documentation
