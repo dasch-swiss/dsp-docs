@@ -18,7 +18,7 @@ jobs:
     name: Publish documentation
     needs: build
     runs-on: ubuntu-latest
-    # Drafts your next Release notes as Pull Requests are merged into "master"
+    # Publish and deploy docs as Pull Requests are merged into "master"
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout master
