@@ -128,8 +128,6 @@ After each push into the master branch &mdash; after each merge from a pull requ
 
 The GitHub action we use for this step is [release-drafter](https://github.com/marketplace/actions/release-drafter).
 
-> This feature is not yet implemented in all repositories. We are still testing it in [DSP-APP](https://github.com/dasch-swiss/dsp-app/releases).
-
 ### Release
 
 To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
