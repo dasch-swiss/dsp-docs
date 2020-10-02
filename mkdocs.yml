@@ -67,6 +67,6 @@ theme:
     primary: 'deep purple'
     accent: 'deep purple'
   features:
-    - tabs
+    - navigation.tabs
 extra_css:
   - 'assets/style/theme.css'
