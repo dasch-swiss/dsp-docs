@@ -22,9 +22,9 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v1
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          CUSTOM_DOMAIN: docs.dasch.swiss
