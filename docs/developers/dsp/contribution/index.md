@@ -64,13 +64,13 @@ The subject contains succinct description of the change:
 
 ### Set title and add description
 
-A pull request resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/). Each of those issues has a DSP-number which has to be used in the PR title:
+A pull request resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/). Please reuse the DSP-number and the same title as on Youtrack:
 
 ```text
 <DSP-nr> <title>
 ```
 
-When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in form of a link:
+When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in form of a link (autimatically added by Github PR template):
 
 ```text
 Resolves [<DSP-nr>](https://dasch.myjetbrains.com/youtrack/issue/<DSP-nr>)
