@@ -36,7 +36,7 @@ The DaSCH Service Platform is a platform that includes five layers (see Figure 1
 
 ![alt text](../../../assets/images/knora/KnoraArchitecture.jpeg "Figure 1") Figure 1: DaSCH Service Platform architecture.
 
-The generic web app DSP-APPitself consists of three different parts (see Figure 2). First, there is the project administration part where you can manage your project - build your data model, set permissions, add users, etc. Then, there is a cross-project research platform where you search (full text, advanced or expert search), add or modify your data - this is your working environment. The third component is the Manifest+ viewer wich is designed for project presentation. Alternatively, it is possible to build more elaborate project-specific Apps based on the provided Knora modules in the different layers. However, it's up to you to keep such project-specific Apps compatible with the latest Knora API version.
+The generic web app DSP-APP itself consists of three different parts (see Figure 2). First, there is the project administration part where you can manage your project - build your data model, set permissions, add users, etc. Then, there is a cross-project research platform where you search (full text, advanced or expert search), add or modify your data - this is your working environment. The third component is the Manifest+ viewer wich is designed for project presentation. Alternatively, it is possible to build more elaborate project-specific Apps based on the provided Knora modules in the different layers. However, it's up to you to keep such project-specific Apps compatible with the latest Knora API version.
 
 ![alt text](../../../assets/images/knora/KnoraArchitectureDetail.jpeg "Figure 2") Figure 2: Details of DSP-APP.
 
