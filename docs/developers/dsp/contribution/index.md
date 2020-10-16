@@ -70,13 +70,13 @@ A pull request resolves one issue or user story defined on [Youtrack](https://da
 <DSP-nr> <title>
 ```
 
-When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in form of a link (autimatically added by Github PR template):
+When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in the following form:
 
 ```text
-Resolves [<DSP-nr>](https://dasch.myjetbrains.com/youtrack/issue/<DSP-nr>)
+Resolves <DSP-nr>
 ```
 
-Replace the `<DSP-nr>` with the real number e.g. `DSP-42`.
+Replace the `<DSP-nr>` with the real number e.g. `DSP-42`. With Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) it will automatically generate a link to Youtrack's issue.
 
 ### Add a label
 
