@@ -70,13 +70,13 @@ A pull request resolves one issue or user story defined on [Youtrack](https://da
 <DSP-nr> <title>
 ```
 
-When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in form of a link (autimatically added by Github PR template):
+When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in the following form:
 
 ```text
-Resolves [<DSP-nr>](https://dasch.myjetbrains.com/youtrack/issue/<DSP-nr>)
+Resolves <DSP-nr>
 ```
 
-Replace the `<DSP-nr>` with the real number e.g. `DSP-42`.
+Replace the `<DSP-nr>` with the real number e.g. `DSP-42`. With Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) it will automatically generate a link to Youtrack's issue.
 
 ### Add a label
 
@@ -130,7 +130,7 @@ The GitHub action we use for this step is [release-drafter](https://github.com/m
 
 ### Release
 
-To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
+To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Be sure it's up to date; you have to wait until the release-drafter were run in Github actions and wait until the tests pass on repository's main branch. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
 
 Do not forget to check the box "This is a pre-release" in case of a release candidate (-rc.).
 
