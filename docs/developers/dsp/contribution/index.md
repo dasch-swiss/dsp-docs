@@ -10,11 +10,11 @@ The DSP software is developed under git version control using [GitHub](https://g
 
 In all these repositories, we follow the [GitHub flow](https://guides.github.com/introduction/flow/) recommondations:
 
-1. [Create a branch from master](#create-branch-guidelines)
+1. [Create a branch from main](#create-branch-guidelines)
 1. [Add commits](#git-commit-guidelines)
 1. [Open a pull request](#pull-request-guidelines)
 1. Discuss and review your code
-1. Merge into `master` branch
+1. Merge into `main` branch
 
 ## Create Branch Guidelines
 
@@ -98,7 +98,7 @@ Please convert the pull request to draft as long it is not ready for reviewing. 
 
 ### Branch protection rules
 
-The main branch of each repo (it's usually the `master` branch) is protected by the following rules:
+The main branch of each repo (it's usually the `main` branch) is protected by the following rules:
 
 - Require pull request reviews before merging
     - At least from one reviewer
@@ -124,7 +124,7 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 
 ### Release notes
 
-After each push into the master branch &mdash; after each merge from a pull request &mdash; the release notes for the next release are updated. This release called "Next release" is a draft and can be used to publish the [real release](#release) later.
+After each push into the main branch &mdash; after each merge from a pull request &mdash; the release notes for the next release are updated. This release called "Next release" is a draft and can be used to publish the [real release](#release) later.
 
 The GitHub action we use for this step is [release-drafter](https://github.com/marketplace/actions/release-drafter).
 
