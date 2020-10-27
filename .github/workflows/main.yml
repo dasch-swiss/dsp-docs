@@ -18,10 +18,10 @@ jobs:
     name: Publish documentation
     needs: build
     runs-on: ubuntu-latest
-    # Publish and deploy docs as Pull Requests are merged into "master"
-    if: github.ref == 'refs/heads/master'
+    # Publish and deploy docs as Pull Requests are merged into "main" branch
+    if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout master
+      - name: Checkout main
         uses: actions/checkout@v1
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
