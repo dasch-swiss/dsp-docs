@@ -46,7 +46,7 @@ The questions to answer in creating your data model:
 - *What kind of data do I have in my project?*
 - *What are the sources and what are their metadata?*
 
-**For example:** You interviewed 20 people. During these interviews, that you taped, you talked about photographs. Among all the data collected during the project, the most important are:
+**For example:** You have interviewed 20 people. During these interviews that you recorded, you talked about photographs. Among all the data collected during the project, the most important are:
 
 - audio-files of the interview
 - transcribed text of conversations (or you can transcribe the files inside the web app)
