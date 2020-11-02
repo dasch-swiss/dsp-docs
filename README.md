@@ -4,9 +4,9 @@ This is the main documentation for all services the Data and Service Center for 
 
 - [Knora](https://github.com/dasch-swiss/knora-api)
 - [Sipi](https://github.com/dasch-swiss/Sipi)
-- [Knora API JS lib](https://github.com/dasch-swiss/Knora-api-js-lib)
-- [DSP-UI library](https://github.com/dasch-swiss/knora-ui-ng-lib)
-- [Knora web app](https://github.com/dasch-swiss/knora-app)
+- [DSP-JS lib](https://github.com/dasch-swiss/dsp-js-lib)
+- [DSP-UI lib](https://github.com/dasch-swiss/dsp-ui-lib)
+- [DSP-App](https://github.com/dasch-swiss/dsp-app)
 
 You'll find the documentaion on [docs.dasch.swiss](https://docs.dasch.swiss).
 
@@ -98,6 +98,6 @@ make build-docs
 
 ### Deploying github page
 
-On each push into `master` branch, a Github action script will build and deploy the documentation on [docs.dasch.swiss](https://docs.dasch.swiss). Behind the scenes, MkDocs builds the documentation and use the [ghp-import](https://github.com/davisp/ghp-import) tool to commit them to the gh-pages branch and then push the gh-pages branch to GitHub. That's it!
+On each push into `main` branch, a Github action script will build and deploy the documentation on [docs.dasch.swiss](https://docs.dasch.swiss). Behind the scenes, MkDocs builds the documentation and use the [ghp-import](https://github.com/davisp/ghp-import) tool to commit them to the gh-pages branch and then push the gh-pages branch to GitHub. That's it!
 
-Be aware that you have to review the built site before pushing it to `master` branch! Please create an own branch for any changes and review it before merging!
+Be aware that you have to review the built site before pushing it to `main` branch! Please create an own branch for any changes and review it before merging!
