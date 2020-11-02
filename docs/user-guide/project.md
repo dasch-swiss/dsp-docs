@@ -49,7 +49,7 @@ The questions to answer in creating your data model:
 **For example:** You have interviewed 20 people. During these interviews that you recorded, you talked about photographs. Among all the data collected during the project, the most important are:
 
 - audio-files of the interview
-- transcribed text of conversations (or you can transcribe the files inside the web app)
+- transcribed text of conversations (or transcribe the files within the web application)
 - photographs
 - data about the person you interviewed
 - location where the photograph was taken
