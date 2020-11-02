@@ -39,7 +39,7 @@ Project admin can create one or several permission groups in their project to se
 ## Data model
 &#9888; *NOT YET IMPLEMENTED* (only mockups are presented)
 
-The most important step in the project is the definition of the data model. DSP-APP will offer a tool to create easily data models. First, you have to know which data and sources you want to work with. The data model can be flexible and customizable. With DSP-APP, you can comply with the FAIR data standard, but compliance is not required to analyze your data.
+The most important step in the project is the definition of the data model. DSP-APP will provide a tool for easy creation of data models. First, you have to know which data and sources you want to work with. The data model can be flexible and customizable. With DSP-APP, you can comply with the FAIR data standard, but compliance is not required to analyze your data.
 
 The questions to answer in creating your data model:
 
