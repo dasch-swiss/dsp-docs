@@ -19,7 +19,7 @@ nav:
           - Introduction: developers/knora/documentation/index.md
           - RDF: developers/knora/documentation/rdf.md
           - Knora-base ontology: developers/knora/documentation/knora-base.md
-          - Knora-admin ontology: developers/knora/documentation/knora-admin.md
+          - Admin ontology: developers/knora/documentation/knora-admin.md
         - Knora API JS lib: developers/knora-api-js-lib/documentation/index.md
         - DSP-UI modules:
           - Introduction: developers/dsp-ui/documentation/index.md
