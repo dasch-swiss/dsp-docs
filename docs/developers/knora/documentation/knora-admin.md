@@ -1,10 +1,10 @@
-# Knora-admin ontology
+# Admin ontology
 
 <br>
 
 Knora has an admin ontology where object properties, datatype properties, classes, individuals and permission class properties necessary for project administration are modelled. 
 
-The Knora-admin ontology is identified by the IRI `http://www.knora.org/ontology/knora-admin`. In our documents it will be identified by the prefix `knora-admin`. The prefix `kb` used here refers to the [Knora-base ontology](knora-base.md).
+The admin ontology is identified by the IRI `http://www.knora.org/ontology/knora-admin`. In our documents it will be identified by the prefix `knora-admin`. The prefix `kb` used here refers to the [Knora-base ontology](knora-base.md).
 
 <br>
 
