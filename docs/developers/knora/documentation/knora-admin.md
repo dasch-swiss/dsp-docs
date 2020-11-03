@@ -10,9 +10,10 @@ The Knora-admin ontology is identified by the IRI `http://www.knora.org/ontology
 
 ## Projects
 In Knora each item of data belongs to some particular project. Each project using Knora must define a `knora-admin:knoraProject`, which has the following properties: 
+
 * `projectShortname`: A short name that can be used to identify the project in configuration files and the like.
-*  `projectLongname`: The full name of the project.
-* `projectShortcode`: A hexadecimal code that uniquely identiXes the project. These codes are
+* `projectLongname`: The full name of the project.
+* `projectShortcode`: A hexadecimal code that uniquely identifies the project. These codes are
 assigned to projects by the [DaSCH](http://dasch.swiss/).
 * `projectDescription`: A description of the project.
 * `belongsToInstitution`: The `knora-admin:Institution` that the project belongs to.
