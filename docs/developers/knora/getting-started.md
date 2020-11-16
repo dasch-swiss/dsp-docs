@@ -63,7 +63,8 @@ This will install the directory `Knora` with subdirectories in the chosen direct
 
 <br>
 
-## Chose and install a triplestore
+## Select and install a triplestore
+
 There are a number of triplestore implementations available, including free software as well as proprietary options. Knora is aimed to work with any standards-compliant triplestore. However, it is primarily tested with [Ontotext GraphDB [http://ontotext.com/products/graphdb/]](http://ontotext.com/products/graphdb/), a high-performance, proprietary triplestore. We recommend GraphDB Standard Edition, but GraphDB Free - which is proprietary but available free of charge - also works. Both versions need to be licensed separately from [Ontotext [http://ontotext.com]](http://ontotext.com). GraphDB-Free can be simply licensed by filling in the respective online registration from.
 
 Depending on which GraphDB version has been licensed, some environment variables may have to be set:
