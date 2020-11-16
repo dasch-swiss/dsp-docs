@@ -1,15 +1,15 @@
 # Data management
 
-Once your [data model](/user-guide/project/#data-model) is ready, you're able to add data. The Knora App offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
+Once your [data model](/user-guide/project/#data-model) is ready, you're able to add data. The DSP-APP offers several possibilities to add data, whether you are starting from scratch or importing data from another program.
 
 ## Start from scratch
 &#9888; *NOT YET IMPLEMENTED* (only mockups are presented)
 
-When a project starts from scratch, you will enter and generate new data directly in the Knora App itself. Generating new data can be done one by one with a form or with a table-based (Excel like) tool.
+When a project starts from scratch, you will enter and generate new data directly in the DSP-APP itself. Generating new data can be done one by one with a form or with a table-based (Excel like) tool.
 
 - Upload the files, e.g., the actual audio file of an interview or images of the photographs discussed in the interview
 - Augment the metadata
-- In case of interview transcriptions from audio or video files, Knora App will offer a simple transcription tool
+- In case of interview transcriptions from audio or video files, DSP-APP will offer a simple transcription tool
 
 ![Create new source e.g. upload audio file of an interview.](../assets/images/knora-app/mock-source-new-edit.png)*Create new source; e.g. upload audio file of an interview.*
 
@@ -18,14 +18,14 @@ When a project starts from scratch, you will enter and generate new data directl
 ### Organize data and create additional sources
 &#9888; *NOT YET IMPLEMENTED*
 
-The workspace of the Knora App includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
+The workspace of the DSP-APP includes tools to connect different sources, even if they're not in the same project (linkage), to comment on a source and on their metadata fields (annotate), and to transcribe audio-visual material. These actions will generate more data and will help to find specific sources and their relations easily.
 It's possible to collect different sources and to store them in an individual collection. You can define more than one collection. You can share collections and invite other users to collaborate.
 
 ---
 
 ## Search and browse
 
-Knora App offers the possibility to the user to search in 3 different ways: **full text** search, **advanced** search and **expert** search (Gravsearch query). The search bar is always available in the header of each page, whether logged in or out.
+DSP-APP offers the possibility to the user to search in 3 different ways: **full text** search, **advanced** search and **expert** search (Gravsearch query). The search bar is always available in the header of each page, whether logged in or out.
 
 ![Search bar with the 3 search modes: full text, advanced and expert](../assets/images/knora-app/search-3modes.png)
 
@@ -112,7 +112,7 @@ Once you have found the desired sources, you can (re)view them and annotate the 
 ### Display a source
 &#9888; *WORK IN PROGRESS*
 
-The Knora App offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, Knora App offers different tools to work on the source.
+The DSP-APP offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, DSP-APP offers different tools to work on the source.
 
 In a still image source, you're able to draw regions on the image and to annotate or transcribe this region. Usually, a still image source is used for book pages, photographs, postcards, letters etc.
 
@@ -120,7 +120,7 @@ In time-based sources like moving image or audio document, you can mark sequence
 
 ![Single source view. The source type in this example is "Photo".](../assets/images/knora-app/resource-view-with-image.png)*Single source view. The source type in this example is "Page".*
 
-Knora App will offer a graph view to visualize the connection of a selected source. The graph view is a powerful tool because you will find more information about the source by clicking through the nodes.
+DSP-APP will offer a graph view to visualize the connection of a selected source. The graph view is a powerful tool because you will find more information about the source by clicking through the nodes.
 
 ![Graph view of a single source.](../assets/images/knora-app/source-graph-view.png)*Graph view of a single source.*
 
@@ -152,9 +152,9 @@ You will be able to compare from two to six source objects at the same time side
 ### Annotate and connect your data (sources and/or metadata)
 &#9888; *NOT YET IMPLEMENTED*
 
-A main feature of the flexible data storage that Knora App uses is the possibility to annotate and link sources and their metadata. An annotation can be a small note about a date like "Not sure about the birthdate of this person. There's another date mentioned in the source XYZ". Inside the note, it will be possible to link to another source.
+A main feature of the flexible data storage that DSP-APP uses is the possibility to annotate and link sources and their metadata. An annotation can be a small note about a date like "Not sure about the birthdate of this person. There's another date mentioned in the source XYZ". Inside the note, it will be possible to link to another source.
 
-Links in Knora App are always bi-directional. If you link source A with source B, then source B knows about this connection. If you find source B, you have the connection to source A as well.
+Links in DSP-APP are always bi-directional. If you link source A with source B, then source B knows about this connection. If you find source B, you have the connection to source A as well.
 
 ---
 

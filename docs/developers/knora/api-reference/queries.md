@@ -79,7 +79,7 @@ retrieves all resources containing the term "Bernoulli". The beginning of the re
           "@value": "http://ark.dasch.swiss/ark:/72163/1/0801/==rbZIzLTNC4qrcpAAkjwAc/K0Ik_ElfQtOOTkgn4h4MnQQ"
         },
 ````
-We learn that our search term "Bernoulli" appears in a letter which belongs to the BEOL project. If we possess the necessary permissions, the web adress given in `@value` copied to a browser guides us to the corresponding entry of the letter and all of its available additional information in the Knora App.
+We learn that our search term "Bernoulli" appears in a letter which belongs to the BEOL project. If we possess the necessary permissions, the web adress given in `@value` copied to a browser guides us to the corresponding entry of the letter and all of its available additional information in the DSP-APP.
 
 The following query with the URL encoded (`%3F`) wildcard `&`
 ````
