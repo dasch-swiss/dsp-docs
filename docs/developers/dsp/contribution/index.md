@@ -127,7 +127,7 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 
 ### Prepare release (new in DSP-JS, DSP-UI and DSP-APP)
 
-We use [release-please-action](https://github.com/marketplace/actions/release-please-action) (in DSP-JS, DSP-UI and DSP-App) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
+We use [release-please-action](https://github.com/marketplace/actions/release-please-action) (in DSP-JS, DSP-UI and DSP-APP) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
 
 With each published (pre-)release, the action workflow builds the npm package or the docker image and publishes on the corresponding platform.
 
