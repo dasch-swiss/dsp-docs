@@ -97,7 +97,7 @@ Add at least one of the corresponding labels to your PR:
 
 ### Make a draft
 
-Please convert the pull request to draft as long it is not ready for reviewing. As soon as the PR is ready for review, click on the corresponding button "Ready for review".
+Please [convert the pull request to draft](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) as long it is not ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), click on the corresponding button "Ready for review".
 
 ### Branch protection rules
 
@@ -125,7 +125,7 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 [![DSP-APP CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-APP%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
 [![DSP-Docs CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-docs/Publish?label=DSP-Docs%20CI)](https://github.com/dasch-swiss/dsp-docs/actions)
 
-### Prepare release (new in DSP-JS, DSP-UI and DSP-App)
+### Prepare release (new in DSP-JS, DSP-UI and DSP-APP)
 
 We use [release-please-action](https://github.com/marketplace/actions/release-please-action) (in DSP-JS, DSP-UI and DSP-App) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
 
