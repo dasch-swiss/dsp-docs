@@ -127,7 +127,7 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 
 ### Prepare release (new in DSP-JS, DSP-UI and DSP-App)
 
-We use [release-please-action](https://github.com/marketplace/actions/release-please-action) (in DSP-JS, DSP-UI and DSP-App) to prepare next release. This action script automates CHANGELOG generation, the creation of GitHub releases, and version bumps. For doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
+We use [release-please-action](https://github.com/marketplace/actions/release-please-action) (in DSP-JS, DSP-UI and DSP-App) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
 
 With each published (pre-)release, the action workflow builds the npm package or the docker image and publishes on the corresponding platform.
 
@@ -151,7 +151,6 @@ The GitHub action we use for this step is [release-drafter](https://github.com/m
 
 > :warning: The following release process is deprecated; only used in DSP-API
 
-To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Be sure it's up to date; you have to wait until the release-drafter were run in Github actions and wait until the tests pass on repository's main branch. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
+To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Be sure it's up to date; you have to wait until the release-drafter has run in Github actions and wait until the tests pass on repository's main branch. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
 
 Do not forget to check the box "This is a pre-release" in case of a release candidate (-rc.).
-
