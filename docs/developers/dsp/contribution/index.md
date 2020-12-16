@@ -28,7 +28,7 @@ The prefix `wip` stands for "work in progress" followed by a "/" (slash). The se
 
 ## Git Commit Guidelines
 
-We follow strict rules how a commit message has to look like. This leads to more readable messages that are easy to follow when looking through the project history.
+We follow strict rules how a commit message has to look like. This leads to more readable messages that are easy to follow when looking through the project history and release notes. Since release notes are automatically generated from commits, it is important to follow the [Conventional Commit messages](https://www.conventionalcommits.org/).
 
 ### Commit Message Format
 
@@ -40,13 +40,16 @@ We follow strict rules how a commit message has to look like. This leads to more
 
 Must be one of the following:
 
-- **feat** New feature
-- **fix** A bug fix
+- **fix** Represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
+- **feat** Represents a new feature, and correlates to a SemVer **minor**.
+- **feat!**, **fix!**, **refactor!**, etc. Represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.
+- **refactor** Refactoring production code
 - **docs** Changes to the documentation
 - **style** Update style; no production code change
-- **refactor** Refactoring production code
 - **test** All about tests: adding, refactoring tests; no production code change
 - **chore** Maintenance tasks; no production code change
+
+The first three items on this list are taken into account for the release notes and have an effect on the version number.
 
 #### Scope (optional)
 
@@ -94,7 +97,7 @@ Add at least one of the corresponding labels to your PR:
 
 ### Make a draft
 
-Please convert the pull request to draft as long it is not ready for reviewing. As soon as the PR is ready for review, click on the corresponding button "Ready for review".
+Please [convert the pull request to draft](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) as long it is not ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), click on the corresponding button "Ready for review".
 
 ### Branch protection rules
 
@@ -122,17 +125,9 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 [![DSP-APP CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-APP%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
 [![DSP-Docs CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-docs/Publish?label=DSP-Docs%20CI)](https://github.com/dasch-swiss/dsp-docs/actions)
 
-### Release notes
+### Prepare release (new in DSP-JS, DSP-UI and DSP-APP)
 
-After each push into the main branch &mdash; after each merge from a pull request &mdash; the release notes for the next release are updated. This release called "Next release" is a draft and can be used to publish the [real release](#release) later.
-
-The GitHub action we use for this step is [release-drafter](https://github.com/marketplace/actions/release-drafter).
-
-### Release
-
-To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Be sure it's up to date; you have to wait until the release-drafter were run in Github actions and wait until the tests pass on repository's main branch. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
-
-Do not forget to check the box "This is a pre-release" in case of a release candidate (-rc.).
+We use [release-please-action](https://github.com/marketplace/actions/release-please-action) (in DSP-JS, DSP-UI and DSP-APP) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
 
 With each published (pre-)release, the action workflow builds the npm package or the docker image and publishes on the corresponding platform.
 
@@ -143,3 +138,19 @@ With each published (pre-)release, the action workflow builds the npm package or
 [![DSP-UI NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui?label=DSP-UI%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
 
 [![DSP-APP Docker Image](https://img.shields.io/docker/v/daschswiss/dsp-app?label=DSP-APP%20Docker%20Image)](https://hub.docker.com/r/daschswiss/dsp-app)
+
+### Release notes (deprecated)
+
+> :warning: The following release notes process is deprecated; only used in DSP-API
+
+After each push into the main branch &mdash; after each merge from a pull request &mdash; the release notes for the next release are updated. This release called "Next release" is a draft and can be used to publish the [real release](#release) later.
+
+The GitHub action we use for this step is [release-drafter](https://github.com/marketplace/actions/release-drafter).
+
+### Release (deprecated)
+
+> :warning: The following release process is deprecated; only used in DSP-API
+
+To make a real release, we have to publish the [release draft](#release-notes), mentioned above, manually. Be sure it's up to date; you have to wait until the release-drafter has run in Github actions and wait until the tests pass on repository's main branch. Update the tag and the release title with the release version number, including the prefix `v`: e.g. v1.0.0 or v1.0.0-rc.0
+
+Do not forget to check the box "This is a pre-release" in case of a release candidate (-rc.).
