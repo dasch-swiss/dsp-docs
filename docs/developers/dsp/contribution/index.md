@@ -89,9 +89,9 @@ Resolves <DSP-no.>
 
 Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) will automatically generate a link to Youtrack's issue.
 
-### Add a label
+### Add a label (optional)
 
-Add at least one of the corresponding labels to your PR:
+Add one of the corresponding labels to your PR:
 
 - **breaking**: breaking changes.
 - **enhancement**: new feature.
