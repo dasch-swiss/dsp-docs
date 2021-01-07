@@ -10,11 +10,11 @@ The DSP software is developed under git version control using [GitHub](https://g
 
 In all these repositories, we follow the [GitHub flow](https://guides.github.com/introduction/flow/) recommondations:
 
-1. [Create a branch from main](#create-branch-guidelines)
-1. [Add commits](#git-commit-guidelines)
-1. [Open a pull request](#pull-request-guidelines)
-1. Discuss and review your code
-1. Merge into `main` branch
+1. [Create a branch from main](#create-branch-guidelines).
+1. [Add commits](#git-commit-guidelines).
+1. [Open a pull request](#pull-request-guidelines).
+1. Discuss and review your code.
+1. Merge into `main` branch.
 
 ## Create Branch Guidelines
 
@@ -40,14 +40,14 @@ We follow strict rules how a commit message has to look like. This leads to more
 
 Must be one of the following:
 
-- **fix** Represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
-- **feat** Represents a new feature, and correlates to a SemVer **minor**.
-- **feat!**, **fix!**, **refactor!**, etc. Represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.
-- **refactor** Refactoring production code
-- **docs** Changes to the documentation
-- **style** Update style; no production code change
-- **test** All about tests: adding, refactoring tests; no production code change
-- **chore** Maintenance tasks; no production code change
+- **fix**: represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
+- **feat**: represents a new feature, and correlates to a SemVer **minor**.
+- **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.
+- **refactor**: production code refactoring.
+- **docs**: documentation changes.
+- **style**: styles update (no production code change).
+- **test**: all about tests: adding, refactoring tests (no production code change).
+- **chore**: maintenance tasks (no production code change).
 
 The first three items on this list are taken into account for the release notes and have an effect on the version number.
 
@@ -67,33 +67,41 @@ The subject contains succinct description of the change:
 
 ### Set title and add description
 
-A pull request resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/). Please reuse the DSP-number and the same title as on Youtrack:
+A pull request usually resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/).
+Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially becuase all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG. Thus PR title have a role of commit message for whole PR and follows the commit message convention mentioned [above](http://localhost:8000/developers/dsp/contribution/#git-commit-guidelines) with small modifications. 
+#### PR Title Format
 
 ```text
-<DSP-nr> <title>
+<type>(<DSP-no.>): <subject>
 ```
 
-When using the DSP-number in the PR, the PR will be linked on Youtrack. To link the user story to a GitHub's PR, we strongly recommend to add it also to the description in the following form:
+It's crucial to start the PR title with the `<type>` ([allowed types](http://localhost:8000/developers/dsp/contribution/#type)), followed by `<DSP-no.>`, which represents the number of the task(s) related to the PR. `<subject>` should be YouTrack task title or its short version started with the small letter. Here is the example:
 
 ```text
-Resolves <DSP-nr>
+feat(DSP-001): example pull request title
 ```
 
-Replace the `<DSP-nr>` with the real number e.g. `DSP-42`. With Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) it will automatically generate a link to Youtrack's issue.
+The PR description should contains important informations for its reviewers. Don't copy/paste YouTrack task description here. Instead of that start the description by adding following:
 
-### Add a label
+```text
+Resolves <DSP-no.>
+```
 
-Add at least one of the corresponding labels to your PR:
+Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) will automatically generate a link to Youtrack's issue.
 
-- **breaking** Breaking Changes
-- **enhancement** New feature
-- **bug** A bug fix
-- **styling** Update style; no production code change
-- **documentation** Changes to the documentation
-- **testing** All about tests: adding, refactoring tests; no production code change
-- **refactor** Refactoring production code
-- **chore** Maintenance tasks; no production code change
-- **dependencies** Update a dependency package version
+### Add a label (optional)
+
+Add one of the corresponding labels to your PR:
+
+- **breaking**: breaking changes.
+- **enhancement**: new feature.
+- **bug**: a bug fix.
+- **styling** update style (no production code change).
+- **documentation**: changes to the documentation.
+- **testing**: all about tests: adding, refactoring tests (no production code change).
+- **refactor**: refactoring production code.
+- **chore**: maintenance tasks (no production code change).
+- **dependencies**: update a dependency package version.
 
 ### Make a draft
 
