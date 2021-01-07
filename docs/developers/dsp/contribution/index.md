@@ -72,16 +72,16 @@ Since we started to use the [release-please-action](https://github.com/marketpla
 #### PR Title Format
 
 ```text
-<type>(<DSP-no.>): <subject>
+<type>(<scope>): <subject> (<DSP-no.>)
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](http://localhost:8000/developers/dsp/contribution/#type)), followed by `<DSP-no.>`, which represents the number of the task(s) related to the PR. `<subject>` should be YouTrack task title or its short version started with the small letter. Here is the example:
+It's crucial to start the PR title with the `<type>` ([allowed types](http://localhost:8000/developers/dsp/contribution/#type)), followed by optional`<scope>`. `<subject>` should be YouTrack task title or its short version. At the end of the title PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is the example:
 
 ```text
-feat(DSP-001): example pull request title
+docs(contribution): example pull request title (DSP-001)
 ```
 
-The PR description should contains important informations for its reviewers. Don't copy/paste YouTrack task description here. Instead of that start the description by adding following:
+The PR description should contains important informations for its reviewers. Don't copy/paste YouTrack task description here. Instead of that start the description by adding the following:
 
 ```text
 Resolves <DSP-no.>
