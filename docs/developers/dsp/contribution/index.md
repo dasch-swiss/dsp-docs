@@ -68,14 +68,14 @@ The subject contains succinct description of the change:
 ### Set title and add description
 
 A pull request usually resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/).
-Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially becuase all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG. Thus PR title have a role of commit message for whole PR and follows the commit message convention mentioned [above](http://localhost:8000/developers/dsp/contribution/#git-commit-guidelines) with small modifications. 
+Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially becuase all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG. Thus PR title have a role of commit message for whole PR and follows the commit message convention mentioned [above](#git-commit-guidelines) with small modifications. 
 #### PR Title Format
 
 ```text
 <type>(<scope>): <subject> (<DSP-no.>)
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](http://localhost:8000/developers/dsp/contribution/#type)), followed by optional`<scope>`. `<subject>` should be YouTrack task title or its short version. At the end of the title PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is the example:
+It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>`. `<subject>` should be YouTrack task title or its short version. At the end of the title PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is the example:
 
 ```text
 docs(contribution): example pull request title (DSP-001)
