@@ -68,7 +68,7 @@ The subject contains succinct description of the change:
 ### Set title and add description
 
 A pull request usually resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/).
-Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially becuase all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG. Thus PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small modifications. 
+Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially because all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG and release notes. Thus PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small modifications. 
 
 #### PR Title Format
 
@@ -76,7 +76,7 @@ Since we started to use the [release-please-action](https://github.com/marketpla
 <type>(<scope>): <subject> (<DSP-no.>)
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>`. `<subject>` should be YouTrack task title or its short version. At the end of the PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is an example:
+It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` (in brackets and without space between type and scope). `<subject>` should be YouTrack task title or its short version. At the end of the PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is an example:
 
 ```text
 docs(contribution): example pull request title (DSP-001)
@@ -92,7 +92,7 @@ Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/gith
 
 ### Add a label (optional)
 
-This step is optional, since it has no impact on the release process anymore. However adding one of the corresponding labels to your PR will help quickly realize its purpose:
+This step is optional, since it has no impact on the release process anymore. However adding at least one of the corresponding label to your PR will help quickly realize its purpose:
 
 - **breaking**: breaking changes.
 - **enhancement**: new feature.
