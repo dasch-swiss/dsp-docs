@@ -69,6 +69,7 @@ The subject contains succinct description of the change:
 
 A pull request usually resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/).
 Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially becuase all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG. Thus PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small modifications. 
+
 #### PR Title Format
 
 ```text
