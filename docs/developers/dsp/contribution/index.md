@@ -92,7 +92,7 @@ Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/gith
 
 ### Add a label (optional)
 
-This step is optional, since it has no impact on the release process anymore. However adding one of the corresponding labels to your PR will help quickly realize it's purpose:
+This step is optional, since it has no impact on the release process anymore. However adding one of the corresponding labels to your PR will help quickly realize its purpose:
 
 - **breaking**: breaking changes.
 - **enhancement**: new feature.
