@@ -13,7 +13,7 @@ In all these repositories, we follow the [GitHub flow](https://guides.github.com
 1. [Create a branch from main](#create-branch-guidelines).
 1. [Add commits](#git-commit-guidelines).
 1. [Open a pull request](#pull-request-guidelines).
-1. Discuss and review your code.
+1. [Discuss and review your code](#code-review-guidelines).
 1. Merge into `main` branch.
 
 ## Create Branch Guidelines
@@ -63,19 +63,20 @@ The subject contains succinct description of the change:
 - don't capitalize first letter
 - no dot (.) at the end
 
-## Pull request guidelines
+## Pull Request Guidelines
 
 ### Set title and add description
 
 A pull request usually resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/).
-Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially becuase all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG. Thus PR title have a role of commit message for whole PR and follows the commit message convention mentioned [above](#git-commit-guidelines) with small modifications. 
+Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially because all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG and release notes. Thus PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small modifications. 
+
 #### PR Title Format
 
 ```text
 <type>(<scope>): <subject> (<DSP-no.>)
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>`. `<subject>` should be YouTrack task title or its short version. At the end of the title PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is the example:
+It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` (in brackets and without space between type and scope). `<subject>` should be YouTrack task title or its short version. At the end of the PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is an example:
 
 ```text
 docs(contribution): example pull request title (DSP-001)
@@ -91,7 +92,7 @@ Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/gith
 
 ### Add a label (optional)
 
-Add one of the corresponding labels to your PR:
+This step is optional, since it has no impact on the release process anymore. However adding at least one of the corresponding label to your PR will help quickly realize its purpose:
 
 - **breaking**: breaking changes.
 - **enhancement**: new feature.
@@ -105,7 +106,7 @@ Add one of the corresponding labels to your PR:
 
 ### Make a draft
 
-Please [convert the pull request to draft](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) as long it is not ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), click on the corresponding button "Ready for review".
+Please [convert the pull request to draft](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) as long it isn't ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), click on the corresponding button "Ready for review".
 
 ### Branch protection rules
 
@@ -118,6 +119,10 @@ The main branch of each repo (it's usually the `main` branch) is protected by th
     - Status checks e.g. tests defined in each repository's CI
 
 When the PR is merged, the branch will be deleted automatically.
+
+## Code Review Guidelines
+
+- Rewievers should pay attention to proper [PR title setting](#pr-title-format).
 
 ## General GitHub actions workflows (CI)
 
