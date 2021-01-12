@@ -54,6 +54,21 @@ to install the necessary additional software. Git is a version-control system fo
 
 <br>
 
+## Bazel build tools
+
+To install, follow these steps:
+
+```shell
+$ brew install node
+$ npm install -g @bazel/bazelisk
+$ npm install -g @bazel/buildozer
+```
+
+This will install [bazelisk](https://github.com/bazelbuild/bazelisk) which is
+a wrapper to the `bazel` binary. It will, when `bazel` is run on the command line,
+automatically install the supported Bazel version, defined in the `.bazelversion`
+file in the root of the repository.
+
 ## Clone Knora from Github
 To clone Knora from Github open a terminal window and change to the directory where you intend to install Knora. Then type
 ````
