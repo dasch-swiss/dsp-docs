@@ -42,8 +42,8 @@ Must be one of the following:
 
 - **fix**: represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
 - **feat**: represents a new feature, and correlates to a SemVer **minor**.
-- **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.
-   ⚠ It is important that the exclamation mark is placed before the colon. For example `feat!: <subject>` or `feat(api-v2)!: <subject>`
+- **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.\
+  ⚠ It is important that the exclamation mark is placed before the colon. For example `feat!: <subject>` or `feat(api-v2)!: <subject>`
 - **refactor**: production code refactoring.
 - **docs**: documentation changes.
 - **style**: styles update (no production code change).
