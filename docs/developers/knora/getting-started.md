@@ -1,5 +1,5 @@
-# How to install Knora
-Developing for Knora requires a complete local installation of Knora. The different parts are:
+# How to install the DaSCH Service Platform (DSP)
+Developing for DSP requires a full local installation of DSP. The different parts are:
 
 1. The cloned [Knora Github repository [https://github.com/dhlab-basel/Knora]](https://github.com/dhlab-basel/Knora)
 2. One of the supplied triplestores in the Knora Github repository
