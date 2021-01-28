@@ -42,7 +42,8 @@ Must be one of the following:
 
 - **fix**: represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
 - **feat**: represents a new feature, and correlates to a SemVer **minor**.
-- **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.
+- **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.\
+  ⚠ It is important that the exclamation mark is placed before the colon. For example `feat!: <subject>` or `feat(api-v2)!: <subject>`
 - **refactor**: production code refactoring.
 - **docs**: documentation changes.
 - **style**: styles update (no production code change).
@@ -140,14 +141,13 @@ With each push to GitHub, the tests of the repository are executed. Successfull 
 
 ### Prepare release
 
-We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines). When merging this release PR a new release will be created automatically.
+We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines) in all commits and in [PR titles](#pr-title-format).
 
-With each published (pre-)release, the action workflow builds the npm package or the docker image and publishes on the corresponding platform.
+### Create release
+
+When we are ready to tag a release, simply merge the release PR. This will create a release on Github, builds the npm package or the docker image and publishes on the corresponding platform.
 
 [![Knora-API Docker Image](https://img.shields.io/docker/v/daschswiss/knora-api?label=Knora-API%20Docker%20Image)](https://hub.docker.com/r/daschswiss/knora-api)
-
 [![DSP-JS NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-js?label=DSP-JS%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-js)
-
 [![DSP-UI NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-ui?label=DSP-UI%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-ui)
-
 [![DSP-APP Docker Image](https://img.shields.io/docker/v/daschswiss/dsp-app?label=DSP-APP%20Docker%20Image)](https://hub.docker.com/r/daschswiss/dsp-app)
