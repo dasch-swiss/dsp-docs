@@ -6,7 +6,7 @@ This is the main documentation for all services the Data and Service Center for 
 - [Sipi](https://github.com/dasch-swiss/Sipi)
 - [DSP-JS lib](https://github.com/dasch-swiss/dsp-js-lib)
 - [DSP-UI lib](https://github.com/dasch-swiss/dsp-ui-lib)
-- [DSP-App](https://github.com/dasch-swiss/dsp-app)
+- [DSP-APP](https://github.com/dasch-swiss/dsp-app)
 
 You'll find the documentaion on [docs.dasch.swiss](https://docs.dasch.swiss).
 
