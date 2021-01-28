@@ -1,18 +1,19 @@
-# Knora-admin ontology
+# Admin ontology
 
 <br>
 
 Knora has an admin ontology where object properties, datatype properties, classes, individuals and permission class properties necessary for project administration are modelled. 
 
-The Knora-admin ontology is identified by the IRI `http://www.knora.org/ontology/knora-admin`. In our documents it will be identified by the prefix `knora-admin`. The prefix `kb` used here refers to the [Knora-base ontology](knora-base.md).
+The admin ontology is identified by the IRI `http://www.knora.org/ontology/knora-admin`. In our documents it will be identified by the prefix `knora-admin`. The prefix `kb` used here refers to the [Knora-base ontology](knora-base.md).
 
 <br>
 
 ## Projects
 In Knora each item of data belongs to some particular project. Each project using Knora must define a `knora-admin:knoraProject`, which has the following properties: 
+
 * `projectShortname`: A short name that can be used to identify the project in configuration files and the like.
-*  `projectLongname`: The full name of the project.
-* `projectShortcode`: A hexadecimal code that uniquely identiXes the project. These codes are
+* `projectLongname`: The full name of the project.
+* `projectShortcode`: A hexadecimal code that uniquely identifies the project. These codes are
 assigned to projects by the [DaSCH](http://dasch.swiss/).
 * `projectDescription`: A description of the project.
 * `belongsToInstitution`: The `knora-admin:Institution` that the project belongs to.
