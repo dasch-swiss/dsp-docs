@@ -28,7 +28,7 @@ The documentation for developers is splited into different groups depending on t
 
 - [Knora API JS Lib](developers/knora-api-js-lib/documentation/index.md)
 
-- [DSP-UI library](developers/dsp-ui/documentation/index.md)
+- [DSP-UI library](https://dasch-swiss.github.io/dsp-ui-lib)
 
 - [Knora web app](developers/knora-web-app/documentation/index.md)
 
