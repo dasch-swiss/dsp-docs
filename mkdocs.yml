@@ -10,25 +10,23 @@ nav:
       # - Publication: user-guide/publication.md
     - Developers:
       - Overview: developers/index.md
-      - Knora Getting Started: developers/knora/getting-started.md
+      - DSP Getting Started: developers/knora/getting-started.md
       - API Reference:
         - Introduction: developers/knora/api-reference/index.md
         - Queries: developers/knora/api-reference/queries.md
       - Documentation:
-        - Knora:
+        - DSP-API:
           - Introduction: developers/knora/documentation/index.md
           - RDF: developers/knora/documentation/rdf.md
           - Knora-base ontology: developers/knora/documentation/knora-base.md
           - Admin ontology: developers/knora/documentation/knora-admin.md
-        - Knora API JS lib: developers/knora-api-js-lib/documentation/index.md
-        - Knora web app: developers/knora-web-app/documentation/index.md
         - Sipi: developers/sipi/documentation/index.md
+        - Librairies: developers/libraries/documentation/index.md
       - Contribution: 
         - How to contribute: developers/dsp/contribution/index.md
-        - Knora: developers/knora/contribution/index.md
-        - Knora API JS lib: developers/knora-api-js-lib/contribution/index.md
-        - Knora web app: developers/knora-web-app/contribution/index.md
+        - DSP-API: developers/knora/contribution/index.md
         - Sipi: developers/sipi/contribution/index.md
+        - Style guide: developers/dsp/contribution/style-guide.md
     - Community:
       - FAQ: community/faq.md
       - Product Updates: community/product-updates.md
