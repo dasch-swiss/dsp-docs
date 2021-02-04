@@ -1,10 +1,12 @@
 # How to build queries
-The simplest form of a query is a full-text search. For more complex queries than a full-text search, Knora offers a special query language called [Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html) which is based on the query language [SPARQL](https://www.w3.org/TR/sparql11-overview/) (**S**PARQL **P**rotocol **A**nd **R**DF **Q**uery **L**anguage).
+
+The simplest form of a query is a full-text search. For more complex queries than a full-text search, DSP-API offers a special query language called [Gravsearch](https://docs.knora.org/paradox/03-apis/api-v2/query-language.html) which is based on the query language [SPARQL](https://www.w3.org/TR/sparql11-overview/) (**S**PARQL **P**rotocol **A**nd **R**DF **Q**uery **L**anguage).
 
 <br>
 
 ## Full-text search
-Knora offers a full-text search that searches all textual representations of values and `rdfs:label`-labels of resources. The full-text search supports the [Lucene Query Parser syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
+
+DSP-API offers a full-text search that searches all textual representations of values and `rdfs:label`-labels of resources. The full-text search supports the [Lucene Query Parser syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 Search terms can be seperated by a white space - then they will be combined using the Boolean operator `OR` since this is Lucene's default operator. Be aware, that the search terms have to be URL encoded!
 
 The recommended way to submit a full-text query is via `HTTP GET` in the following form.
@@ -13,14 +15,16 @@ HTTP GET request sent to https://api.dasch.swiss/v2/search/searchValue[limitToRe
 ````
 
 Most of these parameters can be set optionally:
+
 * `limitToResourceClass=resourceClassIRI` : this restricts the search to resources of the specified resource class and its subclasses.
-* `LimitToStandoffClass=standoffClassIRI` : this will force Knora to look for search terms that are marked up with the indicated standoff class.
+* `LimitToStandoffClass=standoffClassIRI` : this will force DSP-API to look for search terms that are marked up with the indicated standoff class.
 * `limitToProject=projectIRI` : this restricts the search to resources of the specified project.
 * `offset=Integer` : this parameter can be used to enable paging and to go through all the results request by request. The default value for the parameter `offset` is 0 which will return the first page of search results. Subsequent pages can be retrieved by increasing the parameter `offset` by one. This means, `offset=1` fetches the second page of serach results, `offset=2` the third, and so on. The amount of retrieved search results per page is defined in `app/v2` in the file `application.conf`.
 
 The first search parameter has to be preceded by a question mark `?` and any following parameter by an ampersand `&`. A search value must have a minimal length of three characters (default value) as defined in `app/v2` in the file `application.conf`.
 
 Wildcards may be used.
+
 * An ampersand `&` represents a single missing character. However, it has to be URL encoded as `%3F` because it has a special meaning in the URL syntax.
 * An asterisk `*` represents zero, one or multiple missing characters. The URL encode of an asterisk is `%2A`.
 
@@ -53,11 +57,13 @@ A -B
 <br>
 
 ## A short note on the following examples
-All examples in the following sections are from Bernoulli-Euler-Online (BEOL) which is a research platform for the study of early modern mathematics and science implemented within Knora.
+
+All examples in the following sections are from Bernoulli-Euler-Online (BEOL) which is a research platform for the study of early modern mathematics and science implemented within DSP-API.
 
 <br>
 
 ## Examples of full-text searches
+
 Let's assume we intend to search for the term "Bernoulli" with and without wildcard options. To send HTTP GET requests you can use a program such as [Postman](https://www.getpostman.com/) or simply use the [Firefox request detail panel](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) or a similar tool in your favorite browser. For HTTP POST requests, a program such as Postman has to be used.
 
 The query
@@ -151,11 +157,13 @@ Count queries for the above mentioned combinations of the search terms "Bernoull
 <br>
 
 ## SPARQL queries
+
 SPARQL is a set of specifications that provide languages and protocols to query and manipulate RDF graph content on the Web or in an RDF triplestore. In the following the [Turtle](https://www.w3.org/TR/turtle/) data format will be used to show each triple.
 
 The following introduction to SPARQL draws heavily on the book of **Bob DuCharme, Learning SPARQL. Querying and Updating with SPARQL 1.1, 2nd edition, Sebastopol 2013** which we warmly recommend for reading.
 
 The most basic keywords are `SELECT` and `WHERE`. Moreover, a very useful keyword is `LIMIT`.
+
 * `SELECT` names which part of the data we want to see. If all data should be shown, use `SELECT *`, the asterisk functions as wildcard.
 * `WHERE` is used to formulate a clause - it decides which data should be retrieved from the whole dataset.
 * `LIMIT` limits the query to the first e.g. 20 (`LIMIT 20`) or 100 hits. The limit has to be specified outside the curly braces of the `WHERE`-clause. If you've no idea what the test data are about or if you know that the dataset is large, it's very useful to limit your query in order not to ask too much from the query endpoint. Be aware, that if you're sorting your data, the `LIMIT` keyword will only apply after all data have been retrieved and sorted! Thus, `LIMIT` will give you the first results of the sorted data.
@@ -163,13 +171,15 @@ The most basic keywords are `SELECT` and `WHERE`. Moreover, a very useful keywor
 <br>
 
 ### Query forms
+
 In SPARQL four different query forms do exist: `SELECT`, `CONSTRUCT`, `ASK` and `DESCRIBE`.
+
 * The most common one is probably `SELECT` which enables requesting data from a collection.
 * Using `CONSTRUCT` instead will return triples. Triples can be retrieved without modifying them or the retrieved triples can be used to generate new triples. `CONSTRUCT` enables to copy, create and convert RDF data, and it makes it easier to identify data that do not conform to specific rules.
 * Using `ASK` asks the processor whether a certain given graph pattern fits a set of triples in the requested dataset or not. The processor returns a boolean `true` or `false`.
 * `DESCRIBE` asks for triples which describe a particular resource. This query form isn't popular because different processors return different triples as a description of the named resource.
 
-Our `knora-api` only allows `CONSTRUCT` requests and a limited set of SPARQL keywords. Thus, the main part of the following examples to illustrate the possibilities of SPARQL use the SPARQL endpoint of Wikipedia called [DBpedia](http://dbpedia.org/snorql/) accessible at http://dbpedia.org/snorql/. There, the following prefixes are predefined:
+Our `dsp-api` only allows `CONSTRUCT` requests and a limited set of SPARQL keywords. Thus, the main part of the following examples to illustrate the possibilities of SPARQL use the SPARQL endpoint of Wikipedia called [DBpedia](http://dbpedia.org/snorql/) accessible at http://dbpedia.org/snorql/. There, the following prefixes are predefined:
 ````
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -190,10 +200,12 @@ PREFIX knora-api: <https://api.dasch.swiss/ontology/knora-api/v2#>
 <br>
 
 ### A query asking for all data
+
 If we have no idea what our data is all about, a nice first query is the following - but don't forget to set a limit because it asks for all the triples in the dataset!
 
-#### Using your local Knora installation
-Go to `http://0.0.0.0:7200/sparql` in your browser which will guide you to the GraphDB SPARQL Query & Update page if you've Knora installed locally. Copy the following code into the window:
+#### Using your local DSP-API installation
+
+Go to `http://0.0.0.0:7200/sparql` in your browser which will guide you to the GraphDB SPARQL Query & Update page if you've DSP-API installed locally. Copy the following code into the window:
 ````
 PREFIX knora-api: <https://api.dasch.swiss/ontology/knora-api/v2#>
 
@@ -204,11 +216,12 @@ select * where {
 This query retrieves the first 100 triples of the data. The asterisk after `SELECT` indicates that all variables should be selected to get bound in this query. Setting a limit with the keyword `LIMIT` prevents a server timeout.
 
 #### Using Postman and HTTP POST
-If you haven't installed Knora locally or if you want to run the same query on our live-server, you'll see that this query isn't allowed because it's supposed to be too broad to be meaningful. Additionally, the query has to be adapted because only `CONSTRUCT` queries are allowed, the main resource has to be named and the keyword `LIMIT` is not supported. Remember, that all variables in the `CONSTRUCT` must appear also in the `WHERE`-clause! Open Postman and chose
+
+If you haven't installed DSP-API locally or if you want to run the same query on our live-server, you'll see that this query isn't allowed because it's supposed to be too broad to be meaningful. Additionally, the query has to be adapted because only `CONSTRUCT` queries are allowed, the main resource has to be named and the keyword `LIMIT` is not supported. Remember, that all variables in the `CONSTRUCT` must appear also in the `WHERE`-clause! Open Postman and chose
 ````
 HTTP POST sent to https://api.dasch.swiss/v2/searchextended
 ````
-Then click "Body" and chose "raw". Theoretically, the  adapted query asking for all resources in Knora would look like the following:
+Then click "Body" and chose "raw". Theoretically, the adapted query asking for all resources in DSP-API would look like the following:
 ````
 PREFIX knora-api: <http://api.knora.org/ontology/knora-api/simple/v2#>
 
@@ -239,6 +252,7 @@ If you do a count search, i.e. sending a POST request to `https://api.dasch.swis
 <br>
 
 ### A query asking for one specific variable
+
 If we are interested in works of the artist Marc Chagall, we can send a first query to the DBpedia endpoint, asking for information about Chagall with results stored in the variable `?artist`:
 ````
 SELECT ?artist
@@ -277,6 +291,7 @@ WHERE {
 <br>
 
 ### A query with matching on multiple triples
+
 The following query uses a `?films` variable to tie together two triple patterns in the `WHERE`-clause.
 ````
 SELECT ?films
@@ -290,6 +305,7 @@ Such a set of triple patterns within curly braces is called a *graph pattern*. T
 <br>
 
 ### Searching for strings and values
+
 The keyword `FILTER` tells the query processor to return only those triples which meet the given condition in the filter. This time we're searching for films starring David Bowie, but only those which have a runtime longer than 89 minutes.
 ````
 SELECT ?BowieFilm ?runtime
@@ -305,6 +321,7 @@ The keyword `ORDER BY` allows to sort the results with runtime in increasing ord
 <br>
 
 ### Searching for data that may exist or not
+
 The keyword `OPTIONAL` can be used to express "show this value if it exists".
 ````
 SELECT *
@@ -322,6 +339,7 @@ are processed in the order the processor sees them. Hence, the order of `OPTIONA
 <br>
 
 ### Searching for data that doesn't meet a condition
+
 While cleaning up data it is very useful if one can search for missing entries. `FILTER NOT EXISTS` is a filter condition that returns a boolean value `true` if the specified graph pattern doesn't exist.
 ````
 SELECT *
@@ -349,6 +367,7 @@ Be aware that `FILTER NOT EXISTS` and `MINUS` *may* return different results!
 <br>
 
 ### A joined search
+
 To link up different sets of data the same variable can be in the object position in one triple and in the subject position of another triple as in the following example:
 ````
 SELECT DISTINCT ?actor ?value
@@ -366,6 +385,7 @@ Whether the queried data stem from the same repository or from different ones do
 <br>
 
 ### Asking about patterns
+
 Property paths are a way to express more extensive patterns to look for. They provide a possibility to search for the requested data and in addition to that keep looking for more data. An example where this may be useful is the citation pattern of a certain paper. By simply adding a `+` sign we can tell the query processor to look for papers that cite paper A, and papers that cite those, etc. until the tree of papers is finished. The plus sign means "one or more". One could use an asterisk instead, which means "zero or more". It is also possible to be much more specific by using a property path which asks for papers that are exactly three links away, i.e. papers that cited papers that cited papers that cited paper A. This is laid out by a a series of steps separated by slashes. The `WHERE`-clauses of such queries could look like as follows:
 
 |`WHERE`-clause|meaning|
@@ -395,6 +415,7 @@ For all countries except Ireland the corresponding number is returned when askin
 <br>
 
 ### Combining search conditions
+
 The `UNION` keyword allows to specify multiple different graph pattern and to ask for a combination of all the data which fit any of these patterns. No connection between the sets of data need to be specified. However, probably it is more useful to use `UNION` for retrieving two overlapping sets of data.
 ````
 SELECT *
@@ -413,6 +434,7 @@ The above query asks for all artists that were born in Russia and died in Paris 
 <br>
 
 ### Filtering data
+
 The keyword `FILTER` takes a single argument and it is used to retrieve those triples that match the filter argument. The filter argument can contain strings, a function or a simple comparison. Here are a few examples of filter arguments and the corresponding queries:
 
 |Filter argument|Meaning|
@@ -453,11 +475,13 @@ This query retrieves no results since all values for `?o` for the city of Leiden
 <br>
 
 ### Skip a number of results
+
 The `OFFSET` keyword can be used to tell the processor to skip a certain number of search results before picking those to return. This is useful for paging. Just type `OFFSET` and an integer number (e.g. `OFFSET 5`) after the last closing curly brace of the query.
 
 <br>
 
 ### Subqueries
+
 Subqueries are queries inside queries. With the help of subqueries a complex query can be broken down into easier manageable parts. Each subquery must be enclosed in its own set of curly braces.
 ````
 SELECT ?capital ?latitude
@@ -480,6 +504,7 @@ This query first asks for all capital cities of Europe. The subquery then retrie
 <br>
 
 ### Storing results in variables
+
 The `AS` keyword can be used to store the query result in a variable.
 ````
 SELECT (SUM(?height) AS ?total)
@@ -506,6 +531,7 @@ We asked for the maximum and minimum elevation of the cave of Rouffignac, calcul
 <br>
 
 ### Sorting
+
 The keyword `ORDER BY` enables the sorting of data. Values can e.g. be sorted in ascending or descending order - the ascending order is the default, for a descending order the sort key has to be wrapped in the `DESC()` function.
 ````
 SELECT ?BowieFilm ?runtime
@@ -532,6 +558,7 @@ This query returns all skyscrapers of Manhattan sorted by their number of floors
 <br>
 
 ### Querying a remote endpoint
+
 The `SERVICE` keyword provides a possibility to query remote data from a distant SPARQL endpoint. The usual way to formulate such a query is the following with an outer `SELECT` or `CONSTRUCT` indicating which values we're interested in:
 ````
 PREFIX xy: <http://your.external.querypoint>
@@ -547,6 +574,7 @@ However, the SPARQL Explorer for DBpedia doesn't allow such queries to external 
 <br>
 
 ### Queries using `CONSTRUCT`
+
 In contrast to a `SELECT` query, a `CONSTRUCT` query specifies a triple to create with each set of values that got bound to the three variables while it has the same graph pattern following the `WHERE` keyword. Thus, the following `SELECT` version of a query asking for all information - subjects, predicates and objects of all triples - in DBpedia where the same subject has a `foaf:givenName` value of "Peter" and a `foaf:surname` value of "Morris"
 ````
 SELECT ?person ?p ?o
@@ -570,6 +598,7 @@ WHERE {
 <br>
 
 ### Query efficiency
+
 Sometimes there are different possibilities for a query to ask for the same set of information which differ in efficiency. The heart of any query is the `WHERE`-clause and the order of its components and the functions it calls can speed things up or slow them down. Although the order of a graph pattern's triple in a `WHERE`-clause does not effect the query results, the ordering may have a huge effect on the speed of the query's execution. Here are a few rules of thumb one should keep in mind:
 * You can speed up your searches if you reduce the search space as much as possible as soon as possible.
 * The keywort `OPTIONAL` will very likely slow your query down considerably. The best optimization is to avoid the use of `OPTIONAL` whenever possible.
@@ -584,14 +613,17 @@ Outside the `WHERE`-clause the following points should be kept in mind:
 <br>
 
 ### SPARQL Query Result Formats
+
 The retrieved results can usually be returned in different formats, suitable for the different needs of different target groups. Standardized formats are: E**x**tensible **M**arkup **L**anguage (XML), **J**ava**S**cript **O**bject **N**otation (JSON), **C**omma-**S**eparated **V**alue (CSV) and **T**abular-**S**eparated **V**alue (TSV). These formats do not only differ in the syntax used to represent the query results, but also in the amount of metadata provided with the results. For our purposes especially the XML and the JSON formats are useful.
 
 #### SPARQL Query Result XML Format
+
 The SPARQL query result XML format describes a standard XML format for returning the results of a SPARQL query. The structure of a returned XML document is as follows:
 * The document element is called `sparql` and it has two child elements - the `head` element lists the selected variable names and the `results` element contains the actual results.
 * The returned results are stored in `result` children of the `results` element with a `binding` child for each bound variable.
 
 #### SPARQL Query Result JSON Format
+
 A JSON object is defined as “an unordered collection of zero or more name-value pairs, where a name is a string and a value is a string, number, boolean, null, object, or array.” The syntax is as follows:
 * Objects are in curly braces.
 * A name-value pair is separated by a colon. The name has to be unique within an object.
@@ -601,6 +633,7 @@ A JSON object is defined as “an unordered collection of zero or more name-valu
 The results of a `SELECT` query in JSON format are a table. The uppermost JSON object has two name-value pairs `head` and `results` - both have an object as their values. The variables the `SELECT` query asked for a stored in the `vars` value of the `head` object. The most important part of the `results` element is its `bindings` object. Each object in the `bindings` array has a name-value pair for each requested variable.
 
 #### Python example scripts
+
 If you have [Python 3](https://www.python.org/) installed on your computer the following SPARQL query can be stored in a file `testxml.py` and run from the directory where the file is stored with the command `python testxml.py`.
 
 We query the dbpedia SPARQL endpoint for the ID of Jakob Bernoulli and return the result in XML format.
@@ -681,6 +714,7 @@ Suíça
 Thus, the result is presented in list form.
 
 #### Different ways to send queries
+
 As we've seen in the last paragraph, SPARQL queries can be stored in a file and run from the command line with e.g. Python. However, there are other ways to send your query and the resulting output will differ slightly, depending on which way you chose. Here are a few examples if we query the dbpedia SPARQL endpoint about labels of the resource Switzerland as in the python example in the last paragraph.
 
 If the query part of the script
@@ -847,9 +881,10 @@ This retrieves the following result in JSON format:
 <br>
 
 ## Gravsearch queries
-Gravsearch is a query language which is able to perform queries with complex search criteria that work well in terms of perforance and security. Furthermore, it enables clients to work with a simpler RDF data model than the one Knora actually uses to store data in the triplestore, and it permits to provide better error-checking than SPARQL.
 
-A Gravsearch query isn't being processed directly by the triplestore. Instead, the query is interpreted by Knora, which enforces certain restrictions on the query, implements paging and permission checking. The API server then generates a SPARQL query based on the submitted Gravsearch query, queries the triplestore, filters the results according to the user’s permissions, and returns each page of query results as a Knora API response. Thus, Gravsearch is a hybrid between a RESTful API and a SPARQL endpoint.
+Gravsearch is a query language which is able to perform queries with complex search criteria that work well in terms of perforance and security. Furthermore, it enables clients to work with a simpler RDF data model than the one DSP-API actually uses to store data in the triplestore, and it permits to provide better error-checking than SPARQL.
+
+A Gravsearch query isn't being processed directly by the triplestore. Instead, the query is interpreted by DSP-API, which enforces certain restrictions on the query, implements paging and permission checking. The API server then generates a SPARQL query based on the submitted Gravsearch query, queries the triplestore, filters the results according to the user’s permissions, and returns each page of query results as a DSP API response. Thus, Gravsearch is a hybrid between a RESTful API and a SPARQL endpoint.
 
 A Gravsearch query conforms to a subset of the syntax of a [SPARQL CONSTRUCT](https://www.w3.org/TR/sparql11-query/#construct) query, with some additional restrictions and functionality. In particular, the variable representing the top-level (or ‘main’) resource that will appear in each search result must be identified, statements must be included to specify the types of the entities being queried, `OFFSET` is used to control paging, and `ORDER BY` is used to sort the results.
 
@@ -857,21 +892,22 @@ The current version of Gravsearch accepts `CONSTRUCT` queries whose `WHERE`-clau
 
 * `OPTIONAL`: cannot be nested in a `UNION`.
 * `UNION`: cannot be nested in a `UNION`.
-* `FILTER`: may contain a complex expression using the Boolean operators `AND` (&&) and `OR` (||), as well as comparison operators. The left argument of a comparison operator must be a query variable. A Knora ontology entity IRI used in a `FILTER` must be a property IRI.
+* `FILTER`: may contain a complex expression using the Boolean operators `AND` (&&) and `OR` (||), as well as comparison operators. The left argument of a comparison operator must be a query variable. A DSP ontology entity IRI used in a `FILTER` must be a property IRI.
 * `FILTER NOT EXISTS`
 * `MINUS`
 * `OFFSET`: the `OFFSET` is needed for paging. It does not actually refer to the number of triples to be returned, but to the requested page of results. The default value is 0, which refers to the first page of results. The number of results per page is defined in `app/v2` in `application.conf`.
-* `ORDER BY`: In SPARQL, the result of a `CONSTRUCT` query is an unordered set of triples. However, a Gravsearch query returns an ordered list of resources, which can be ordered by the values of specified properties. If the query is written in the complex schema, items below the level of Knora values may not be used in `ORDER BY`.
-* `BIND`: The value assigned must be a Knora resource IRI.
+* `ORDER BY`: In SPARQL, the result of a `CONSTRUCT` query is an unordered set of triples. However, a Gravsearch query returns an ordered list of resources, which can be ordered by the values of specified properties. If the query is written in the complex schema, items below the level of DSP values may not be used in `ORDER BY`.
+* `BIND`: The value assigned must be a DSP resource IRI.
 
 <br>
 
 ### Gravsearch query examples
+
 To send queries to our live-server it is easiest to use the program Postman. You have to chose the method `POST`. Open Postman and type
 ````
 HTTP POST sent to https://api.dasch.swiss/v2/searchextended
 ````
-Then click "Body" and chose "raw". You can then write your queries in the window before sending your request. Be aware, that only `CONSTRUCT` requests are supported by `knora-api`.
+Then click "Body" and chose "raw". You can then write your queries in the window before sending your request. Be aware, that only `CONSTRUCT` requests are supported by `dsp-api`.
 
 Here is one query examples, more will follow.
 ````

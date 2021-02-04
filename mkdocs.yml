@@ -10,21 +10,23 @@ nav:
       # - Publication: user-guide/publication.md
     - Developers:
       - Overview: developers/index.md
-      - DSP Getting Started: developers/knora/getting-started.md
+      - DSP Getting Started: developers/dsp-api/getting-started.md
       - API Reference:
-        - Introduction: developers/knora/api-reference/index.md
-        - Queries: developers/knora/api-reference/queries.md
+        - Introduction: developers/dsp-api/api-reference/index.md
+        - Queries: developers/dsp-api/api-reference/queries.md
       - Documentation:
         - DSP-API:
-          - Introduction: developers/knora/documentation/index.md
-          - RDF: developers/knora/documentation/rdf.md
-          - Knora-base ontology: developers/knora/documentation/knora-base.md
-          - Admin ontology: developers/knora/documentation/knora-admin.md
+          - Introduction: developers/dsp-api/documentation/index.md
+          - RDF: developers/dsp-api/documentation/rdf.md
+          - Knora-base ontology: developers/dsp-api/documentation/knora-base.md
+          - Admin ontology: developers/dsp-api/documentation/knora-admin.md
+        - DSP-APP: developers/dsp-app/documentation/index.md
         - Sipi: developers/sipi/documentation/index.md
         - Librairies: developers/libraries/documentation/index.md
       - Contribution: 
         - How to contribute: developers/dsp/contribution/index.md
-        - DSP-API: developers/knora/contribution/index.md
+        - DSP-API: developers/dsp-api/contribution/index.md
+        - DSP-APP: developers/dsp-app/contribution/index.md
         - Sipi: developers/sipi/contribution/index.md
         - Style guide: developers/dsp/contribution/style-guide.md
     - Community:
