@@ -10,7 +10,7 @@
 
 <https://github.com/dasch-swiss/knora-api-js-lib/releases>
 
-## DSP-UI library (previously knora-ui)
+## DSP-UI (previously knora-ui)
 
 <https://github.com/dasch-swiss/dsp-ui/releases>
 
