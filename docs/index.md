@@ -24,13 +24,11 @@ The documentation for developers is splited into different groups depending on t
 
 - [Overview](developers/index.md)
 
-- [Knora](developers/knora/documentation/index.md) is the main software framework in the back-end. ...
+- [DSP-API](developers/dsp-api/documentation/index.md) is the main software framework in the back-end. ...
 
-- [Knora API JS Lib](developers/knora-api-js-lib/documentation/index.md)
+- [DSP Libraries](developers/libraries/documentation/index.md)
 
-- [DSP-UI library](https://dasch-swiss.github.io/dsp-ui-lib)
-
-- [Knora web app](developers/knora-web-app/documentation/index.md)
+- [DSP-APP](developers/dsp-app/documentation/index.md)
 
 - [Sipi](developers/sipi/documentation/index.md)
 
