@@ -1,7 +1,5 @@
 # SIPI basics
 
-<br>
-
 ## The media server SIPI
 
 The **S**imple **I**mage **P**resentation **I**nterface (Sipi) takes care of storing, converting and serving image, audio and video files as well as other documents such as pdf files. It is designed to be used by all institutions that need to preserve high-quality images and to make them available online.
