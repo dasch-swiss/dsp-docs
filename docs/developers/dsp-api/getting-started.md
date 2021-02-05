@@ -1,14 +1,16 @@
 # How to install the DaSCH Service Platform (DSP)
+
 Developing for DSP requires a full local installation of DSP. The different parts are:
 
-1. The cloned [Knora Github repository [https://github.com/dhlab-basel/Knora]](https://github.com/dhlab-basel/Knora)
-2. One of the supplied triplestores in the Knora Github repository
+1. The cloned [DSP-API GitHub repository](https://github.com/dasch-swiss/dsp-api)
+2. One of the supplied triplestores in the DSP-API Github repository
 3. Sipi by using the [docker image](https://hub.docker.com/r/dhlabbasel/sipi/).
 
 <br>
 
 ## Install additional software
-For a successful local installation of Knora additional software has to be installed. First of all [Xcode](https://developer.apple.com/xcode/) must be installed. Xcode is an integrated developer environment of Apple for macOS. Thus, you can find Xcode in the App Store. After downloading the app, agree to the license terms and install the components.
+
+For a successful local installation of DSP-API additional software has to be installed. First of all [Xcode](https://developer.apple.com/xcode/) must be installed. Xcode is an integrated developer environment of Apple for macOS. Thus, you can find Xcode in the App Store. After downloading the app, agree to the license terms and install the components.
 
 Next, we recommend to install [Homebrew [https://brew.sh]](https://brew.sh). If you haven't installed Homebrew yet, open a terminal window and type
 ````
@@ -32,9 +34,9 @@ It is necessary to pin the version of Java to version 11. To achieve this, pleas
 export JAVA_HOME=`/usr/libexec/java_home -v 11`
 ```
 
-Running Knora also requires [Docker](https://www.docker.com) which can be downloaded free of charge. Please follow the instructions for installing [Docker Desktop](https://www.docker.com/products/docker-desktop). It is useful if you increase the memory to 6.50 GB in docker > preferences > resources.
+Running DSP-API also requires [Docker](https://www.docker.com) which can be downloaded free of charge. Please follow the instructions for installing [Docker Desktop](https://www.docker.com/products/docker-desktop). It is useful if you increase the memory to 6.50 GB in docker > preferences > resources.
 
-For a successful local installation of Knora the following additional software is necessary too:
+For a successful local installation of DSP-API the following additional software is necessary too:
 
 * `git`
 * `expect`
@@ -69,20 +71,22 @@ a wrapper to the `bazel` binary. It will, when `bazel` is run on the command lin
 automatically install the supported Bazel version, defined in the `.bazelversion`
 file in the root of the repository.
 
-## Clone Knora from Github
-To clone Knora from Github open a terminal window and change to the directory where you intend to install Knora. Then type
+## Clone DSP-API from GitHub
+
+To clone DSP-API from Github open a terminal window and change to the directory where you intend to install DSP-API. Then type
 ````
-git clone https://github.com/dasch-swiss/knora-api.git
+git clone https://github.com/dasch-swiss/dsp-api.git
 ````
-This will install the directory `Knora` with subdirectories in the chosen directory.
+This will install the directory `dsp-api` with subdirectories in the chosen directory.
 
 <br>
 
 ## Select and install a triplestore
 
-There are a number of triplestore implementations available, including free software as well as proprietary options. Knora is aimed to work with any standards-compliant triplestore. However, it is primarily tested with [Ontotext GraphDB [http://ontotext.com/products/graphdb/]](http://ontotext.com/products/graphdb/), a high-performance, proprietary triplestore. We recommend GraphDB Standard Edition, but GraphDB Free - which is proprietary but available free of charge - also works. Both versions need to be licensed separately from [Ontotext [http://ontotext.com]](http://ontotext.com). GraphDB-Free can be simply licensed by filling in the respective online registration from.
+There are a number of triplestore implementations available, including free software as well as proprietary options. DSP-API is aimed to work with any standards-compliant triplestore. However, it is primarily tested with [Ontotext GraphDB [http://ontotext.com/products/graphdb/]](http://ontotext.com/products/graphdb/), a high-performance, proprietary triplestore. We recommend GraphDB Standard Edition, but GraphDB Free - which is proprietary but available free of charge - also works. Both versions need to be licensed separately from [Ontotext [http://ontotext.com]](http://ontotext.com). GraphDB-Free can be simply licensed by filling in the respective online registration from.
 
 Depending on which GraphDB version has been licensed, some environment variables may have to be set:
+
 #### GraphDB-Free:
 Type
 ````
@@ -111,7 +115,7 @@ Copy the GraphDB license file into the folder `./triplestores/graphdb/` or into 
 <br>
 
 ## Build the docker image
-From inside the cloned `Knora` repository folder run
+From inside the cloned `dsp-api` repository folder run
 ````
 make stack-up
 ````

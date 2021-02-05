@@ -1,11 +1,12 @@
 # DaSCH Service Platform Documentation
 
-This is the main documentation for all services the Data and Service Center for the Humanities DaSCH develops and supports. It includes
+This is the main documentation for all services the Data and Service Center for the Humanities DaSCH develops and supports. It includes:
 
-- [Knora](https://github.com/dasch-swiss/knora-api)
-- [Sipi](https://github.com/dasch-swiss/Sipi)
-- [DSP-JS lib](https://github.com/dasch-swiss/dsp-js-lib)
+- [DSP-API](https://github.com/dasch-swiss/dsp-api)
+- [DSP-JS](https://github.com/dasch-swiss/dsp-js-lib)
+- [DSP-UI](https://github.com/dasch-swiss/dsp-ui-lib)
 - [DSP-APP](https://github.com/dasch-swiss/dsp-app)
+- [Sipi](https://github.com/dasch-swiss/Sipi)
 
 You'll find the documentaion on [docs.dasch.swiss](https://docs.dasch.swiss).
 
@@ -18,18 +19,29 @@ If you have to contribute and you want to add or edit entries, please read the f
 The documentation consists of three main topics with subordinate themes:
 
 1. **User-Guide** contains all about the usage of the generic web application.
+
+> Currently, only the admin part is available:
+
     - Introduction / index = Web app overview
     - Project management = Admin interface, where a project or system admin can define a project, build a team and user groups permissions but also define the data model (ontology and list editor).
-    - Data management = Research tools are part of the workspace where a user can look for sources, open and work on them: edit metadata, annotate and expand data by using e.g. a transcription tool.
     - User management = All information related to the user account, e.g. user profile, user's projects and collections, update password.
     - System management = System admin interface where a system admin can manage all projects and all users.
+
+> Available on [app.dasch.swiss](http://app.dasch.swiss/)
+
+    - Data management = Research tools are part of the workspace where a user can look for sources, open and work on them: edit metadata, annotate and expand data by using e.g. a transcription tool.
+
+> Future implementation
+
     - Publication = Manifest++ will be the data presentation part where a user can configure a project specific webpage.
-1. **Developers** contains all information for people who wants to use Knora or to help improving one of the software mentioned above.
+
+2. **Developers** contains all information for people who wants to use Knora or to help improving one of the software mentioned above.
     - Documentation = Information about the tools and usage
     - Installation / Setup = Guide with the usual content about "getting started"
-    - API reference = all about Knora-API incl. Sipi IIIF routes
+    - API reference = all about DSP-API incl. Sipi IIIF routes
     - Contribution = Design documentation to help people who want to write
-1. **Community** almost links to other services and support pages
+
+3. **Community** almost links to other services and support pages
       - Discuss Forum = Link to [discuss.dasch.swiss](https://discuss.dasch.swiss)
       - FAQ = List of questions and answers
       - Product Updates = List of release notes

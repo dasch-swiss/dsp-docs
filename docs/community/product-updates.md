@@ -2,21 +2,21 @@
 
 <!-- Here we can probably add the version matrix? -->
 
-## DSP-API (previously knora-api)
+## DSP-API (previously Knora)
 
-<https://github.com/dasch-swiss/knora-api/releases>
+<https://github.com/dasch-swiss/dsp-api/releases>
 
-## DSP-JS-LIB (previously knora-api-js-lib)
+## DSP-JS
 
-<https://github.com/dasch-swiss/knora-api-js-lib/releases>
+<https://github.com/dasch-swiss/dsp-js-lib/releases>
 
-## DSP-UI library
+## DSP-UI
 
-<https://github.com/dasch-swiss/dsp-ui/releases>
+<https://github.com/dasch-swiss/dsp-ui-lib/releases>
 
-## DSP-APP (previously knora-app)
+## DSP-APP
 
-<https://github.com/dasch-swiss/knora-app/releases>
+<https://github.com/dasch-swiss/dsp-app/releases>
 
 ## Simple Image Presentation Interface (Sipi)
 

@@ -1,6 +1,6 @@
-# Style guide 
+# Style guide
 
-Angular Material has been chosen to style the GUI elements and the typography of Knora-App.
+Angular Material has been chosen to style the GUI elements and the typography of DSP-APP.
 
 ## Typography classes
 
