@@ -15,7 +15,7 @@ DSP-API aims to solve key problems in the long-term preservation and reuse of hu
 
 The following table contains a non-exhaustive list of data formats and the information on how these formats are stored and managed by DSP-API (and SIPI):
 
-|Original format|Format in KnoDSP-APIra|
+|Original format|Format in DSP-API|
 |-----|----|
 |Text (XML, LaTEX, Word, etc.)|DSP resources (RDF) containing Standoff/RDF|
 |Tabular data, including relational databases |DSP resources|
