@@ -1,25 +1,6 @@
-<!---
-Copyright © 2015-2021 the contributors (see Contributors.md).
-
-This file is part of Knora.
-
-Knora is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Knora is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 # Introduction: Using API v2
 
-Version 2 of the Knora API aims to make both the response and request
+Version 2 of the DSP API aims to make both the response and request
 formats more generic and consistent. Version 1 was basically the result
 of the reimplementation of the existing API of the SALSAH prototype.
 Since the development of this prototype has a long history and the
@@ -55,10 +36,10 @@ can request these formats using the following MIME types:
 ## JSON-LD
 
 Our preferred format for data exchange is
-[JSON-LD](https://json-ld.org/spec/latest/json-ld/). JSON-LD allows the
-Knora API server to provide responses that are relatively easy for
+[JSON-LD](https://json-ld.org/spec/latest/json-ld/). JSON-LD allows
+DSP-API to provide responses that are relatively easy for
 automated processes to interpret, since their structure and semantics is
-explicitly defined. For example, each user-created Knora resource
+explicitly defined. For example, each user-created DSP-API resource
 property is identified by an IRI, which can be dereferenced to get more
 information about it (e.g. its label in different languages). Moreover,
 each value has a type represented by an IRI. These are either standard
@@ -79,44 +60,44 @@ other objects.
 The client can choose between hierarchical and flat JSON-LD. In hierarchical
 JSON-LD, entities with IRIs are inlined (nested) where they are used. If the
 same entity is used in more than one place, it is inlined only once, and other
-uses just refer to its IRI. In Knora's flat JSON-LD, all entities with IRIs are located
+uses just refer to its IRI. In DSP-API's flat JSON-LD, all entities with IRIs are located
 at the top level of the document (in a `@graph` if there is more than one of them).
 This setting does not affect blank nodes, which are always inlined (unlike in standard
-flat JSON-LD). Knora ontologies are always returned in the `flat` rendering; other kinds
+flat JSON-LD). DSP-API ontologies are always returned in the `flat` rendering; other kinds
 of responses default to `hierarchical`. To use this setting, submit the HTTP header
 `X-Knora-JSON-LD-Rendering` with the value `hierarchical` or `flat`.
 
-## Knora IRIs
+## DSP-API IRIs
 
 Resources and entities are identified by IRIs. The format of these IRIs
-is explained in [Knora IRIs](knora-iris.md).
+is explained in [DSP-API IRIs](knora-iris.md).
 
 ## API Schema
 
-Knora API v2 uses RDF data structures that are simpler than the ones
+The DSP API v2 uses RDF data structures that are simpler than the ones
 actually stored in the triplestore, and more suitable for the development
 of client software. Thus we refer to the *internal* schema of data
 as it is stored in the triplestore, and to *external* schemas which
 are used to represent that data in API v2.
 
-Knora API v2 offers a complex schema and a simple one. The main difference
+The DSP API v2 offers a complex schema and a simple one. The main difference
 is that the complex schema exposes the complexity of value objects, while
 the simple version does not. A client that needs to edit values must use the
 complex schema in order to obtain the IRI of each value. A client that reads
 but does not update data can use the simplified schema. The simple schema is
 mainly intended to facilitate interoperability with other RDF-based systems in the
 context of Linked Open Data. It is therefore designed to use the
-simplest possible datatypes and to require minimal knowledge of Knora.
+simplest possible datatypes and to require minimal knowledge of DSP-API.
 
 In either case, the client deals only with data whose structure and
-semantics are defined by external Knora API ontologies, which are distinct from
-the internal ontologies that are used to store date in the triplestore. The Knora
-API server automatically converts back and forth between these internal
+semantics are defined by external DSP-API ontologies, which are distinct from
+the internal ontologies that are used to store date in the triplestore.
+DSP-API automatically converts back and forth between these internal
 and external representations. This approach encapsulates the internals
 and adds a layer of abstraction to them.
 
 IRIs representing ontologies and ontology entities are different in different
-schemas; see [Knora IRIs](knora-iris.md).
+schemas; see [DSP-API IRIs](knora-iris.md).
 
 Some API operations inherently require the client to accept responses in
 the complex schema. For example, if an ontology is requested using an IRI

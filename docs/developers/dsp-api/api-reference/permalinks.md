@@ -1,28 +1,9 @@
-<!---
-Copyright © 2015-2021 the contributors (see Contributors.md).
-
-This file is part of Knora.
-
-Knora is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Knora is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 # Permalinks
 
-Knora provides a permanent, citable URL for each resource and value.
+DSP-API provides a permanent, citable URL for each resource and value.
 These URLs use [Archival Resource Key (ARK) Identifiers](http://n2t.net/e/ark_ids.html),
 and are designed to remain valid even if the resource itself is moved
-from one Knora repository to another.
+from one DSP-API repository to another.
 
 ## Obtaining ARK URLs
 
@@ -100,17 +81,17 @@ For more information on getting past versions of resources and values, see:
 - [Get a Version of a Value in a Resource](reading-and-searching-resources.md#get-a-version-of-a-value-in-a-resource)
 - [Get the Version History of a Resource](reading-and-searching-resources.md#get-the-version-history-of-a-resource)
 
-## Resolving Knora ARK URLs
+## Resolving DSP-API ARK URLs
 
-A Knora ARK URL is intended to be resolved by the [Knora ARK resolver](https://github.com/dhlab-basel/ark-resolver).
+A DSP-API ARK URL is intended to be resolved by the [DSP-API ARK resolver](https://github.com/dhlab-basel/ark-resolver).
 
-## Knora ARK URL Format
+## DSP-API ARK URL Format
 
 For details, see [Archival Resource Key (ARK) Identifiers](../../05-internals/design/api-v2/ark.md).
 
 ### ARK URLs for Projects
 
-The format of a Knora project ARK URL is as follows:
+The format of a DSP-API project ARK URL is as follows:
 
 ```
 http://HOST/ark:/NAAN/VERSION/PROJECT
@@ -118,7 +99,7 @@ http://HOST/ark:/NAAN/VERSION/PROJECT
 
 `NAAN` is a
 [Name Assigning Authority Number](https://tools.ietf.org/html/draft-kunze-ark-22#section-2.3),
-`VERSION` is the version number of the Knora ARK URL format (currently always 1),
+`VERSION` is the version number of the DSP-API ARK URL format (currently always 1),
 and `PROJECT` is the project's [short-code](knora-iris.md#project-short-codes).
 
 For example, given a project with ID `0001`, and using the DaSCH's ARK resolver
@@ -132,7 +113,7 @@ This could redirect to a page describing the project.
 
 ### ARK URLs for Resources
 
-The format of a Knora resource ARK URL is as follows:
+The format of a DSP-API resource ARK URL is as follows:
 
 ```
 http://HOST/ark:/NAAN/VERSION/PROJECT/RESOURCE_UUID[.TIMESTAMP]
@@ -140,11 +121,11 @@ http://HOST/ark:/NAAN/VERSION/PROJECT/RESOURCE_UUID[.TIMESTAMP]
 
 `NAAN` is a
 [Name Assigning Authority Number](https://tools.ietf.org/html/draft-kunze-ark-22#section-2.3),
-`VERSION` is the version number of the Knora ARK URL format (currently always 1),
+`VERSION` is the version number of the DSP-API ARK URL format (currently always 1),
 `PROJECT` is the project's [short-code](knora-iris.md#project-short-codes),
 and `RESOURCE_UUID` is the resource's [UUID](knora-iris.md#iris-for-data).
 
-For example, given the Knora resource IRI `http://rdfh.ch/0001/0C-0L1kORryKzJAJxxRyRQ`,
+For example, given the DSP-API resource IRI `http://rdfh.ch/0001/0C-0L1kORryKzJAJxxRyRQ`,
 and using the DaSCH's ARK resolver hostname and NAAN, the corresponding
 ARK URL without a timestamp is:
 
@@ -158,12 +139,12 @@ The same ARK URL with an optional timestamp is:
 http://ark.dasch.swiss/ark:/72163/1/0001/0C=0L1kORryKzJAJxxRyRQY.20180604T085622513Z
 ```
 
-Without a timestamp, a Knora resource ARK URL refers to the latest version of the
+Without a timestamp, a DSP-API resource ARK URL refers to the latest version of the
 resource at the time when the URL is resolved.
 
 ### ARK URLs for Values
 
-The format of a Knora value ARK URL is as follows:
+The format of a DSP-API value ARK URL is as follows:
 
 ```
 http://HOST/ark:/NAAN/VERSION/PROJECT/RESOURCE_UUID/VALUE_UUID[.TIMESTAMP]
@@ -171,7 +152,7 @@ http://HOST/ark:/NAAN/VERSION/PROJECT/RESOURCE_UUID/VALUE_UUID[.TIMESTAMP]
 
 `NAAN` is a
 [Name Assigning Authority Number](https://tools.ietf.org/html/draft-kunze-ark-22#section-2.3),
-`VERSION` is the version number of the Knora ARK URL format (currently always 1),
+`VERSION` is the version number of the DSP-API ARK URL format (currently always 1),
 `PROJECT` is the project's [short-code](knora-iris.md#project-short-codes),
 `RESOURCE_UUID` is the resource's [UUID](knora-iris.md#iris-for-data), and `VALUE_UUID`
 is the value's `knora-api:valueHasUUID`.
@@ -190,5 +171,5 @@ The same ARK URL with an optional timestamp is:
 http://ark.dasch.swiss/ark:/72163/1/0001/0C=0L1kORryKzJAJxxRyRQY/4OOf3qJUTnCDXlPNnygSzQX.20180604T085622513Z
 ```
 
-Without a timestamp, a Knora value ARK URL refers to the latest version of the
+Without a timestamp, a DSP-API value ARK URL refers to the latest version of the
 value at the time when the URL is resolved.

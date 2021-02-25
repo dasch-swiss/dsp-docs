@@ -2,14 +2,14 @@
 
 <br>
 
-Knora has an admin ontology where object properties, datatype properties, classes, individuals and permission class properties necessary for project administration are modelled. 
+DSP-API has an admin ontology where object properties, datatype properties, classes, individuals and permission class properties necessary for project administration are modelled. 
 
-The admin ontology is identified by the IRI `http://www.knora.org/ontology/knora-admin`. In our documents it will be identified by the prefix `knora-admin`. The prefix `kb` used here refers to the [Knora-base ontology](knora-base.md).
+The admin ontology is identified by the IRI `http://www.knora.org/ontology/knora-admin`. In our documents it will be identified by the prefix `knora-admin`. The prefix `kb` used here refers to the [knora-base ontology](knora-base.md).
 
 <br>
 
 ## Projects
-In Knora each item of data belongs to some particular project. Each project using Knora must define a `knora-admin:knoraProject`, which has the following properties: 
+In DSP-API each item of data belongs to some particular project. Each project using DSP-API must define a `knora-admin:knoraProject`, which has the following properties: 
 
 * `projectShortname`: A short name that can be used to identify the project in configuration files and the like.
 * `projectLongname`: The full name of the project.
@@ -25,7 +25,7 @@ Ontologies, resources and values are attached to projects by means of the `kb:at
 # Authorisation 
 
 ## Users and Groups
-Each Knora user is represented by an object belonging to the class `knora-admin:User`, which is a subclass of `foaf:Person`, and has the properties in the following list. The numbers given in parentheses after each property are the so-called *cardinalities*. For more information on cardinalities see [here](knora-base.md#owl-cardinalities).
+Each DSP-API user is represented by an object belonging to the class `knora-admin:User`, which is a subclass of `foaf:Person`, and has the properties in the following list. The numbers given in parentheses after each property are the so-called *cardinalities*. For more information on cardinalities see [here](knora-base.md#owl-cardinalities).
 * `userid` (1): A unique identifier that the user must provide when logging in.
 * `password` (1): A cryptographic hash of the user’s password. 
 * `email` (0-n): Email addresses belonging to the user. 
@@ -34,13 +34,13 @@ Each Knora user is represented by an object belonging to the class `knora-admin:
 * `foaf:familyName` (1): The user’s family name. 
 * `foaf:givenName` (1): The user’s given name.
 
-Knora’s concept of access control is that an object  -a resource or value - can grant permissions to groups of users, but not to individual users. There are several built-in groups:
-* `knora-admin:UnknownUser`: Any user who has not logged into Knora is automatically assigned to this group.
-* `knora-admin:KnownUser`: Any user who has logged into Knora is automatically assigned to this group.
+DSP-API’s concept of access control is that an object  -a resource or value - can grant permissions to groups of users, but not to individual users. There are several built-in groups:
+* `knora-admin:UnknownUser`: Any user who has not logged into DSP-API is automatically assigned to this group.
+* `knora-admin:KnownUser`: Any user who has logged into DSP-API is automatically assigned to this group.
 * `knora-admin:ProjectMember`: When checking a user’s permissions on an object, the user is automatically assigned to this group if she is a member of the project that the object belongs to.
 * `knora-admin:Creator`: When checking a user’s permissions on an object, the user is automatically assigned to this group if he is the creator of the object.
 * `knora-admin:ProjectAdmin`: When checking a user’s permissions on an object, the user is automatically assigned to this group if she is an administrator of the project that the object belongs to.
-* `knora-admin:SystemAdmin`: The group of Knora system administrators.
+* `knora-admin:SystemAdmin`: The group of DSP-API system administrators.
 
 A user-created ontology can define additional groups, which must belong to the OWL class `knora-admin:UserGroup`.
 

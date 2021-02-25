@@ -1,34 +1,15 @@
-<!---
-Copyright © 2015-2021 the contributors (see Contributors.md).
-
-This file is part of Knora.
-
-Knora is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Knora is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 # Editing Resources
 
 ## Creating a Resource
 
-To create a new resources, use this route:
+To create a new resource, use this route:
 
 ```
 HTTP POST to http://host/v2/resources
 ```
 
 The body of the request is a JSON-LD document in the
-[complex API schema](introduction.md#api-schema), specifying the type,`rdfs:label`, and its Knora resource properties and their values. The representation of the
+[complex API schema](introduction.md#api-schema), specifying the type,`rdfs:label`, and its DSP-API resource properties and their values. The representation of the
 resource is the same as when it is returned in a `GET` request, except that its `knora-api:attachedToUser` is not given,
 and the resource IRI and those of its values can be optionally specified. The format of the values submitted
 is described in [Editing Values](editing-values.md). If there are multiple values for a property,
@@ -182,7 +163,7 @@ than the requesting user only if the requesting user is an administrator of the
 project or a system administrator. The specified creator must also
 have permission to create resources of that class in that project.
 
-In addition to the creation date, in the body of the request, it is possible to specify a custom IRI (of [Knora IRI](knora-iris.md#iris-for-data) form) for a resource through
+In addition to the creation date, in the body of the request, it is possible to specify a custom IRI (of [DSP-API IRI](knora-iris.md#iris-for-data) form) for a resource through
 the `@id` attribute which will then be assigned to the resource; otherwise the resource will get a unique random IRI.
 
 A custom resource IRI must be `http://rdfh.ch/PROJECT_SHORTCODE/` (where `PROJECT_SHORTCODE`
@@ -302,7 +283,7 @@ A successful response is an HTTP 200 (OK) status containing a confirmation messa
 
 ## Deleting a Resource
 
-Knora does not normally delete resources; instead, it marks them as deleted, which means
+DSP-API does not normally delete resources; instead, it marks them as deleted, which means
 that they do not appear in normal query results.
 
 To mark a resource as deleted, use this route:
@@ -350,7 +331,7 @@ with a confirmation message.
 ### Links to Deleted Resources
 
 If resource `A` has a link to resource `B`, and resource
-`B` is later marked as deleted, `A`'s link will still exist. Knora API
+`B` is later marked as deleted, `A`'s link will still exist. The DSP API
 v2 will still return the link when `A` is queried, but without any information
 about `B` (except for `B`'s IRI). If `A`'s link is necessary to
 meet the requirements of a cardinality, marking `B` as deleted will
@@ -359,7 +340,7 @@ not violate the cardinality.
 The reason for this design is that `A` and `B` might be in
 different projects, and each project must retain control of its resources
 and be able to mark them as deleted, even if they are used by another
-project. In future, Knora may be able to notify the owner of `A` in this
+project. In future, DSP-API may be able to notify the owner of `A` in this
 case.
 
 ## Erasing a Resource from the Triplestore

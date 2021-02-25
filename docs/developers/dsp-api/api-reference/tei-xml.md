@@ -1,33 +1,14 @@
-<!---
-Copyright © 2015-2021 the contributors (see Contributors.md).
-
-This file is part of Knora.
-
-Knora is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Knora is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 # TEI/XML: Converting Standoff to TEI/XML
 
 ## General
 
-Knora offers a way to convert standoff markup to TEI/XML. The conversion is based on the assumption that a whole resource is to be turned into a TEI document.
+DSP-API offers a way to convert standoff markup to TEI/XML. The conversion is based on the assumption that a whole resource is to be turned into a TEI document.
 There is a basic distinction between the body and the header of a TEI document. The resource's property that contains the text with standoff markup is mapped to the TEI document's body.
 Other of the resource's property may be mapped to the TEI header.
 
 ## Standard Standoff to TEI Conversion
 
-Knora offers a built-in conversion form standard standoff entities (defined in the `standoff` ontology) tags to TEI.
+DSP-API offers a built-in conversion form standard standoff entities (defined in the `standoff` ontology) tags to TEI.
 
 In order to obtain a resource as a TEI document, the following request has to be performed. 
 Please note that the URL parameters have to be URL-encoded.
@@ -39,7 +20,7 @@ HTTP GET to http://host/v2/tei/resourceIri?textProperty=textPropertyIri
 In addition to the resource's Iri, the Iri of the property containing the text with standoff has to be submitted. This will be converted to the TEI body. 
 Please note that the resource can only have one instance of this property and the text must have standoff markup.
 
-The Knora test data contain the resource `http://rdfh.ch/0001/thing_with_richtext_with_markup` with the text property `http://0.0.0.0:3333/ontology/0001/anything/v2#hasRichtext` that can be converted to TEI as follows:
+The DSP-API test data contain the resource `http://rdfh.ch/0001/thing_with_richtext_with_markup` with the text property `http://0.0.0.0:3333/ontology/0001/anything/v2#hasRichtext` that can be converted to TEI as follows:
 
 ```
 HTTP GET to http://host/v2/tei/http%3A%2F%2Frdfh.ch%2F0001%2Fthing_with_richtext_with_markup?textProperty=http%3A%2F%2F0.0.0.0%3A3333%2Fontology%2F0001%2Fanything%2Fv2%23hasRichtext
@@ -430,4 +411,4 @@ HTTP GET request to http://host/v2/tei/resourceIri&textProperty=textPropertyIri&
 See `webapi/src/it/scala/org/knora/webapi/e2e/v1/KnoraSipiIntegrationV1ITSpec.scala` for a complete test case involving the sample data ("create a mapping for standoff conversion to TEI referring to an XSLT and also create a Gravsearch template and an XSLT for transforming TEI header data").
 
 When you provide a custom conversion, it is up to you to ensure the validity of the TEI document. You can use this service to validate: [TEI by example validator](http://teibyexample.org/xquery/TBEvalidator.xq).
-Problems and bugs caused by XSL transformations are out of scope of the responsibility of the Knora software.
+Problems and bugs caused by XSL transformations are out of scope of the responsibility of the DSP-API software.

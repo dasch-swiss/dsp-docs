@@ -1,28 +1,9 @@
-<!---
-Copyright © 2015-2021 the contributors (see Contributors.md).
-
-This file is part of Knora.
-
-Knora is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Knora is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 # Querying, Creating, and Updating Ontologies
 
 ## Querying Ontology Information
 
 Before reading this document, you should have a basic understanding of
-Knora API v2 external ontology schemas (see [API Schema](introduction.md#api-schema)).
+external ontology schemas in the DSP API v2 (see [API Schema](introduction.md#api-schema)).
 
 Each request returns a single RDF graph, which can be represented in
 [JSON-LD](https://json-ld.org/spec/latest/json-ld/),
@@ -158,22 +139,22 @@ or RDF/XML, add an HTTP `Accept` header
 (see [Response Formats](introduction.md#response-formats)).
 
 If the client dereferences a project-specific ontology IRI as a URL, the
-Knora API server running on the hostname in the IRI will serve the
+DSP-API instance running on the hostname in the IRI will serve the
 ontology. For example, if the server is running on `0.0.0.0:3333`, the
 IRI `http://0.0.0.0:3333/ontology/00FF/images/simple/v2` can be
 dereferenced to request the `images` sample ontology in the simple
 schema.
 
-If the client dereferences a built-in Knora ontology, such as
+If the client dereferences a built-in DSP-API ontology, such as
 `http://api.knora.org/ontology/knora-api/simple/v2`, there must be a
-Knora API server running at `api.knora.org` that can serve the ontology.
+DSP-API instance running at `api.knora.org` that can serve the ontology.
 The [DaSCH](http://dasch.swiss/) intends to run such as server. For
 testing, you can configure your local `/etc/hosts` file to resolve
 `api.knora.org` as `localhost`.
 
 #### Differences Between Internal and External Ontologies
 
-The external ontologies used by Knora API v2 are different to the internal
+The external ontologies used by the DSP API v2 are different to the internal
 ontologies that are actually stored in the triplestore (see
 [API Schema](introduction.md#api-schema)). In general, the external
 ontologies use simpler data structures, but they also provide additional
@@ -189,7 +170,7 @@ external ontologies.
 #### JSON-LD Representation of an Ontology in the Simple Schema
 
 The simple schema is suitable for client applications that need to read
-but not update data in Knora. For example, here is the response for the
+but not update data in DSP-API. For example, here is the response for the
 `images` sample ontology in the simple schema,
 `http://0.0.0.0:3333/ontology/00FF/images/simple/v2` (simplified for
 clarity):
@@ -415,8 +396,8 @@ example, we can see cardinalities inherited from `knora-api:Resource`,
 such as `knora-api:hasStandoffLinkTo` and `http://schema.org/name`
 (which represents `rdfs:label`).
 
-In the simple schema, Knora value properties can be datatype properties.
-The `knora-base:objectType` of a Knora value property such as
+In the simple schema, DSP-API value properties can be datatype properties.
+The `knora-base:objectType` of a DSP-API value property such as
 `images:description` is a literal datatype, in this case
 `xsd:string`. Moreover, `images:description` is a subproperty of
 the standard property `dcterms:description`, whose object can be a
@@ -467,7 +448,7 @@ the client can request the `knora-api` ontology in the simple schema:
 `http://api.knora.org/ontology/knora-api/simple/v2`. For example,
 `images:erfassungsdatum` has a `knora-api:objectType` of
 `knora-api:Date`, which is a subtype of `xsd:string` with a
-Knora-specific, human-readable format. In the `knora-api` simple
+DSP-API-specific, human-readable format. In the `knora-api` simple
 ontology, there is a definition of this type:
 
 ```jsonld
@@ -503,7 +484,7 @@ ontology, there is a definition of this type:
 #### JSON-LD Representation of an Ontology in the Complex Schema
 
 The complex schema is suitable for client applications that need to
-update data in Knora. For example, here is the response for the `images`
+update data in DSP-API. For example, here is the response for the `images`
 sample ontology in the complex schema, `http://0.0.0.0:3333/ontology/00FF/images/v2`
 (simplified for clarity):
 
@@ -848,11 +829,11 @@ sample ontology in the complex schema, `http://0.0.0.0:3333/ontology/00FF/images
 }
 ```
 
-In the complex schema, all Knora value properties are object properties,
+In the complex schema, all DSP-API value properties are object properties,
 whose objects are IRIs, each of which uniquely identifies a value that
 contains metadata and can potentially be edited. The
-`knora-base:objectType` of a Knora value property such as
-`images:description` is a Knora value class, in this case
+`knora-base:objectType` of a DSP-API value property such as
+`images:description` is a DSP-API value class, in this case
 `knora-api:TextValue`. Similarly, `images:erfassungsdatum` has a
 `knora-api:objectType` of `knora-api:DateValue`, which has a more
 complex structure than the `knora-api:Date` datatype shown in the
@@ -861,14 +842,14 @@ by requesting the `knora-api` ontology in the complex schema,
 `http://api.knora.org/ontology/knora-api/v2`.
 
 Moreover, additional information is provided in the complex schema, to
-help clients that wish to create or update resources and values. A Knora
+help clients that wish to create or update resources and values. A DSP-API
 resource class that can be instantiated is identified with the boolean
 properties `knora-api:isResourceClass` and
 `knora-api:canBeInstantiated`, to distinguish it from built-in abstract
-classes. Knora resource properties whose values can be edited by clients
+classes. DSP-API resource properties whose values can be edited by clients
 are identified with `knora-api:isResourceProperty` and
 `knora-api:isEditable`, to distinguish them from properties whose values
-are maintained automatically by Knora. Link value
+are maintained automatically by DSP-API. Link value
 properties are shown along with link properties, because a client that
 updates links will need the IRIs of their link values. The predicate
 `salsah-gui:guiOrder` tells a GUI client in what order to display the
@@ -949,7 +930,7 @@ HTTP POST to http://host/v2/ontologies
 ```
 
 The ontology name must follow the rules given in
-[Knora IRIs](knora-iris.md).
+[DSP-API IRIs](knora-iris.md).
 
 The ontology metadata can have an optional comment given in the request 
 body as:

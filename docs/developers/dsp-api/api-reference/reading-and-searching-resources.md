@@ -1,22 +1,3 @@
-<!---
-Copyright © 2015-2021 the contributors (see Contributors.md).
-
-This file is part of Knora.
-
-Knora is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Knora is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public
-License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 # Reading and Searching Resources
 
 To retrieve an existing resource, the HTTP method `GET` has to be used.
@@ -37,7 +18,7 @@ simple or the complex ontology schema. The complex schema is used by default.
 To receive a response in the simple schema, use the HTTP request header or URL
 parameter described in [API Schema](introduction.md#api-schema).
 
-Each Knora API v2 response describing one or more resources returns a
+Each DSP API v2 response describing one or more resources returns a
 single RDF graph. For example, a request for a single resource returns that
 resource and all its values. In a full-text search, the resource is returned with the
 values that matched the search criteria. A response to an extended search
@@ -66,7 +47,7 @@ Text markup can be returned in one of two ways:
 - As XML embedded in the response, using an [XML to Standoff Mapping](xml-to-standoff-mapping.md).
 
 - As [standoff/RDF](../../02-knora-ontologies/knora-base.md#text-with-standoff-markup),
-  which is Knora's internal markup representation.
+  which is DSP-API's internal markup representation.
 
 Embedded XML is the default.
 
@@ -182,12 +163,12 @@ you receive a response without `knora-api:nextStandoffStartIndex`.
 ### Get a Full Representation of a Resource by IRI
 
 A full representation of resource can be obtained by making a GET
-request to the API providing its IRI. Because a Knora IRI has the format
+request to the API providing its IRI. Because a DSP-API IRI has the format
 of a URL, its IRI has to be URL-encoded.
 
 To get the resource with the IRI `http://rdfh.ch/c5058f3a` (a
-book from the sample Incunabula project, which is included in the Knora
-API server's test data), make a HTTP GET request to the `resources`
+book from the sample Incunabula project, which is included in the DSP-API
+test data), make a HTTP GET request to the `resources`
 route (path segment `resources` in the API call) and append the
 URL-encoded IRI:
 
@@ -214,10 +195,10 @@ and add the URL parameter `?version=TIMESTAMP`, where `TIMESTAMP` is an
 [xsd:dateTimeStamp](https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp) in the
 UTC timezone. The timestamp can either be URL-encoded, or submitted with all
 punctuation (`-`, `:`, and `.`) removed (this is to accept timestamps
-from Knora's [ARK URLs](permalinks.md)).
+from DSP-API's [ARK URLs](permalinks.md)).
 
 The resource will be returned with the values that it had at the specified
-time. Since Knora only versions values, not resource metadata (e.g.
+time. Since DSP-API only versions values, not resource metadata (e.g.
 `rdfs:label`), the current metadata will be returned.
 
 Each value will be returned with the permissions that are attached to
@@ -252,13 +233,13 @@ and add the URL parameter `?version=TIMESTAMP`, where `TIMESTAMP` is an
 [xsd:dateTimeStamp](https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp) in the
 UTC timezone. The timestamp can either be URL-encoded, or submitted with all
 punctuation (`-`, `:`, and `.`) removed (this is to accept timestamps
-from Knora's [ARK URLs](permalinks.md)).
+from DSP-API's [ARK URLs](permalinks.md)).
 
 The value will be returned within its containing resource, in the same format
 as for [Responses Describing Resources](#responses-describing-resources),
 but without any of the resource's other values.
 
-Since Knora only versions values, not resource metadata (e.g.
+Since DSP-API only versions values, not resource metadata (e.g.
 `rdfs:label`), the current resource metadata will be returned.
 
 The value will be returned with the permissions that are attached to
@@ -323,7 +304,7 @@ Each entry has the properties `knora-api:author` (the IRI of the user who made t
 
 The entries include all the dates when the resource's values were created or modified (within
 the requested date range), as well as the date when the resource was created (if the requested
-date range allows it). Each date is included only once. Since Knora only versions values, not
+date range allows it). Each date is included only once. Since DSP-API only versions values, not
 resource metadata (e.g. `rdfs:label`), changes to a resource's metadata are not included in its
 version history.
 
@@ -346,7 +327,7 @@ HTTP GET to http://host/v2/resourcespreview/resourceIRI(/anotherResourceIri)*
 
 ## Get a Graph of Resources
 
-Knora can return a graph of connections between resources, e.g. for generating
+DSP-API can return a graph of connections between resources, e.g. for generating
 a network diagram.
 
 ```
@@ -357,7 +338,7 @@ HTTP GET to http://host/v2/graph/resourceIRI[depth=Integer]
 The first parameter must be preceded by a question mark `?`, any
 following parameter by an ampersand `&`.
 
-- `depth` must be at least 1. The maximum depth is an Knora configuration setting.
+- `depth` must be at least 1. The maximum depth is an DSP-API configuration setting.
   The default is 4.
 - `direction` specifies the direction of the links to be queried, i.e. links to
   and/or from the given resource. The default is `outbound`.
@@ -422,7 +403,7 @@ class, and label. Direct links are shown instead of link values. For example:
 
 ### Search for a Resource by its `rdfs:label`
 
-Knora offers the possibility to search for resources by their
+DSP-API offers the possibility to search for resources by their
 `rdfs:label`. The use case for this search is to find a specific
 resource as you type. E.g., the user wants to get a list of resources
 whose `rdfs:label` contain some search terms separated by a whitespace
@@ -470,7 +451,7 @@ The response to a count query request is an object with one predicate,
 
 ### Full-text Search
 
-Knora offers a full-text search that searches through all textual
+DSP-API offers a full-text search that searches through all textual
 representations of values and `rdfs:label` of resources. 
 Full-text search supports the 
 [Lucene Query Parser syntax](../../08-lucene/index.md).
@@ -506,10 +487,10 @@ first page of search results. Subsequent pages of results can be fetched
 by increasing `offset` by one. The amount of results per page is defined
 in `app/v2` in `application.conf`.
 
-If the parameter `limitToStandoffClass` is provided, Knora will look for search terms
+If the parameter `limitToStandoffClass` is provided, DSP-API will look for search terms
 that are marked up with the indicated standoff class.
 
-If the parameter `returnFiles=true` is provided, Knora will return any
+If the parameter `returnFiles=true` is provided, DSP-API will return any
 file value attached to each matching resource.
 
 To request the number of results rather than the results themselves, you can
@@ -640,7 +621,7 @@ Count queries for the above mentioned combinations of the search terms "Bernoull
 
 ### Gravsearch
 
-For more complex queries than a full-text search, Knora offers a query language
+For more complex queries than a full-text search, DSP-API offers a query language
 called [Gravsearch: Virtual Graph Search](query-language.md)).
 
 ### Support of TEI/XML
@@ -665,7 +646,7 @@ The specified class and property are used without inference; they will not
 match subclasses or subproperties.
 
 The HTTP header `X-Knora-Accept-Project` must be submitted; its value is
-a Knora project IRI. In the request URL, the values of `resourceClass` and `orderByProperty`
+a DSP-API project IRI. In the request URL, the values of `resourceClass` and `orderByProperty`
 are URL-encoded IRIs in the [complex schema](introduction.md#api-schema).
 The `orderByProperty` parameter is optional; if it is not supplied, resources will
 be sorted alphabetically by resource IRI (an arbitrary but consistent order).
