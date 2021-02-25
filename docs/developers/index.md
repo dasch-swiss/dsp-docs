@@ -1,13 +1,20 @@
 # Developer Overview
 
-## Local Development Environment
+## Getting started with the DaSCH Service Platform (DSP)
 
-At the DaSCH, the principal development envionment is [Apple macOS](https://www.apple.com/macos).
+### Local Development Environment
+
+At the DaSCH, the principal development environment is [Apple macOS](https://www.apple.com/macos).
 
 Each developer machine should have the following prerequisites installed:
 
 - Docker Desktop: https://www.docker.com/products/docker-desktop
-- Homebrew: https://brew.sh
+- Homebrew: https://brew.sh, which can be used to install:
+  - `git`
+  - `expect`
+  - `sbt`
+  - `python` (Python 3)
+  - `node`
 
 ### Java AdoptOpenJDK 11
 
@@ -32,6 +39,7 @@ To install, follow these steps:
 
 ```
 $ npm install -g @bazel/bazelisk
+$ npm install -g @bazel/buildozer
 ```
 
 This will install [bazelisk](https://github.com/bazelbuild/bazelisk) which is
@@ -39,7 +47,15 @@ a wrapper to the `bazel` binary. It will, when the `bazel` command ir run,
 automatically install the supported Bazel version, defined in the `.bazelversion`
 file in the root of the `knora-api` repository.
 
-#### Commands
+### Clone DSP-API from GitHub
+
+To clone DSP-API from Github open a terminal window and change to the directory where you intend to install DSP-API. Then type
+````
+git clone https://github.com/dasch-swiss/dsp-api.git
+````
+This will install the directory `dsp-api` with subdirectories in the chosen directory.
+
+### Bazel Commands
 
 Build `webapi`:
 
@@ -51,7 +67,34 @@ $ bazel build //webapi/...
 $ bazel test //webapi/...
 ```
 
-#### Build Structure
+### Build the docker image
+
+From inside the cloned `dsp-api` repository folder, create a test repository:
+
+```
+make init-db-test
+```
+
+Then start the DSP stack:
+
+```
+make stack-up
+```
+
+This should start the complete Knora stack consisting of
+Fuseki, DSP-API, Redis, and Sipi.
+If everything worked properly, the Dashboard in Docker Desktop should show
+those containers running.
+
+To stop everything again, type 
+
+```
+make stack-down
+```
+
+Please see the `Makefile` for other useful `make` targets.
+
+### Build Structure
 
 The Bazel build is defined in a number of files:
   - WORKSPACE - here are external dependencies defined
@@ -62,7 +105,7 @@ The Bazel build is defined in a number of files:
 For a more detailed discussion, please see the [Concepts and Terminology](https://docs.bazel.build/versions/master/build-ref.html)
 section in the Bazel documentation.
 
-#### Some Notes
+### Some Notes
 
 1. Override some `.bazelrc` settings in your own copy created at `~/.bazelrc`:
     ```
@@ -76,7 +119,7 @@ section in the Bazel documentation.
 
 1. Add Bazel Plugin and Project to IntelliJ
     1. The latest version of the [Bazel plugin](https://plugins.jetbrains.com/plugin/8609-bazel/versions)
-       supports only IntelliJ upto version `2019.03.05`. After you make sure to
+       supports only IntelliJ upto version `2020.01.04`. After you make sure to
        run this version of IntelliJ, install the plugin from inside IntelliJ.
     1. Click on `File -> Import Bazel Project` and select twice `next`.
     1. Uncomment the `Scala` language and click `Finish`.
@@ -96,7 +139,7 @@ section in the Bazel documentation.
     $ bazel run //webapi:main_library_repl
     ```
 
-#### Build stamping
+### Build stamping
 
 By default, Bazel tries not to include anything about the system state in build
 outputs. However, released binaries and libraries often want to include
@@ -139,7 +182,7 @@ file which has the `{BUILD_TAG}` variable replaced by the current value of
 `BUILD_SCM_TAG`. In an intermediary step, the `version_info_without_build_tag`
 target, replaces variables coming from `//third_party:versions.bzl`.
 
-#### Visualize your Build
+### Visualize your Build
 
 Add the following line to your ~/.bazelrc:
 
@@ -159,13 +202,4 @@ You can use ```dot``` (install with `brew install graphviz`) to create a png:
 
 ```
 $ dot -Tpng < graph.in > graph.png
-```
-
-
-### Python3
-
-To install, follow these steps:
-
-```
-$ brew install python
 ```
