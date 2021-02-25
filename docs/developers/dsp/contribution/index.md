@@ -41,16 +41,16 @@ We follow strict rules how a commit message has to look like. This leads to more
 Must be one of the following:
 
 - **fix**: represents bug fixes, and correlates to a [SemVer](https://semver.org/) **patch**.
+- **refactor**: represents production code refactoring, and correlates to a **patch**.
 - **feat**: represents a new feature, and correlates to a SemVer **minor**.
 - **feat!**, **fix!**, **refactor!**, etc.: represents a breaking change (indicated by the `!`) and will result in a SemVer **major**.\
   ⚠ It is important that the exclamation mark is placed before the colon. For example `feat!: <subject>` or `feat(api-v2)!: <subject>`
-- **refactor**: production code refactoring.
-- **docs**: documentation changes.
+- **docs**: documentation changes (no production code change).
+- **chore**: maintenance tasks (no production code change).
 - **style**: styles update (no production code change).
 - **test**: all about tests: adding, refactoring tests (no production code change).
-- **chore**: maintenance tasks (no production code change).
 
-The first three items on this list are taken into account for the release notes and have an effect on the version number.
+The first four items on this list are taken into account for the release notes and have an effect on the version number.
 
 #### Scope (optional)
 
