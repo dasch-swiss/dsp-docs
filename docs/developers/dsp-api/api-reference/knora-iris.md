@@ -14,7 +14,7 @@ belong to the DSP-API system project.
 A user-created ontology IRI must always include its project shortcode.
 
 Project ID `0000` is reserved for shared ontologies
-(see [Shared Ontologies](../../02-knora-ontologies/introduction.md#shared-ontologies)).
+(see [Shared Ontologies](../ontologies/introduction.md#shared-ontologies)).
 
 The range of project IDs from `0001` to `00FF` inclusive is reserved for
 local testing. Thus, the first useful project will be `0100`.
@@ -154,7 +154,7 @@ has the following IRIs:
 
 ### Shared Ontology IRIs
 
-As explained in [Shared Ontologies](../../02-knora-ontologies/introduction.md#shared-ontologies),
+As explained in [Shared Ontologies](../ontologies/introduction.md#shared-ontologies),
 a user-created ontology can be defined as shared, meaning that it can be used by
 multiple projects, and that its creators will not change it in ways that could
 affect other ontologies or data that are based on it.

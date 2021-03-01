@@ -80,7 +80,7 @@ schema, with one exception (see [Date Comparisons](#date-comparisons)).
 Gravsearch query results can be requested in the simple or complex schema;
 see [API Schema](introduction.md#api-schema).
 
-All examples hereafter run with DSP-API started locally as documented in the section [Getting Started with DSP-API](../../04-publishing-deployment/getting-started.md). If you access another DSP-API stack, you can check the IRI of the ontology you are targeting by requesting the [ontologies metadata](ontology-information.md#querying-ontology-metadata).
+All examples hereafter run with DSP-API started locally as documented in the section [Getting Started with DSP-API](../../index.md). If you access another DSP-API stack, you can check the IRI of the ontology you are targeting by requesting the [ontologies metadata](ontology-information.md#querying-ontology-metadata).
 
 ### Using the Simple Schema
 
@@ -374,7 +374,7 @@ The first argument must represent a text value (a `knore-api:TextValue` in
 the complex schema, or an `xsd:string` in the simple schema). The second
 argument is a string literal containing the words to be matched, separated by spaces.
 The function supports the
-[Lucene Query Parser syntax](../../08-lucene/index.md).
+[Lucene Query Parser syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 Note that Lucene's default operator is a logical OR when submitting several search terms.
 
 This function can only be used as the top-level expression in a `FILTER`.

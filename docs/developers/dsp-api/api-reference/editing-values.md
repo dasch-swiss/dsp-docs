@@ -93,10 +93,10 @@ by a `/values/` and a custom ID string. For example:
 ```
 
 The format of the object of `knora-api:hasPermissions` is described in
-[Permissions](../../02-knora-ontologies/knora-base.md#permissions).
+[Permissions](../ontologies/knora-base.md#permissions).
 
 If permissions are not given, configurable default permissions are used
-(see [Default Object Access Permissions](../../05-internals/design/api-admin/administration.md#default-object-access-permissions)).
+(TODO: add documentation about Default Object Access Permissions).
 
 To create a value, the user must have **modify permission** on the containing resource.
 
@@ -112,7 +112,7 @@ The response is a JSON-LD document containing:
 To create a link, you must create a `knora-api:LinkValue`, which represents metadata about the
 link. The property that connects the resource to the `LinkValue` is a link value property, whose
 name is constructed by adding `Value` to the name of the link property
-(see [Links Between Resources](../../02-knora-ontologies/knora-base.md#links-between-resources)).
+(see [Links Between Resources](../ontologies/knora-base.md#links-between-resources)).
 The triple representing the direct link between the resources is created automatically. For
 example, if the link property that should connect the resources is `anything:hasOtherThing`,
 we can create a link like this:
@@ -206,7 +206,7 @@ provided.
 
 DSP-API supports the storage of certain types of data as files, using
 [Sipi](https://github.com/dhlab-basel/Sipi)
-(see [FileValue](../../02-knora-ontologies/knora-base.md#filevalue)).
+(see [FileValue](../ontologies/knora-base.md#filevalue)).
 The DSP API v2 currently supports using Sipi to store the following types of files:
 
 * Images: JPEG, JPEG2000, TIFF, or PNG which are stored internally as JPEG2000
@@ -270,7 +270,7 @@ a JPG thumbnail image that is 150 pixels wide, you would add
 
 A DSP-API `Representation` (i.e. a resource containing information about a
 file) must always have exactly one file value attached to it. (see
-[Representations](../../02-knora-ontologies/knora-base.md#representations)).
+[Representations](../ontologies/knora-base.md#representations)).
 Therefore, a request to create a new file value must always be submitted as part
 of a request to create a new resource (see
 [Creating a Resource](editing-resources.md#creating-a-resource)).
