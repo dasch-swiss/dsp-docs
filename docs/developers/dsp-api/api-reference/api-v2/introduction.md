@@ -1,16 +1,5 @@
 # Introduction: Using API v2
 
-Version 2 of the DSP API aims to make both the response and request
-formats more generic and consistent. Version 1 was basically the result
-of the reimplementation of the existing API of the SALSAH prototype.
-Since the development of this prototype has a long history and the
-specification of API V1 was an evolving process, V1 has various
-inconsistencies and peculiarities. With V2, we would like to offer a
-format that is consistent and hence easier to use for a client.
-
-Please note that V2 is still in development. We do not yet recommend
-using it on productive systems.
-
 ## API v2 Path Segment
 
 Every request to API v2 includes `v2` as a path segment, e.g.
