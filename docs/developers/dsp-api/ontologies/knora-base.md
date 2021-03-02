@@ -160,7 +160,7 @@ can have metadata about a file attached to it. The technical term for such a
 resource in DSP-API is a **Representation**. For each file, there is a
 `kb:FileValue` in the triplestore containing metadata about the file
 (see [FileValue](#filevalue)). DSP-API uses [Sipi](https://github.com/dhlab-basel/Sipi)
-to store files. The [DSP-API APIs](../03-apis/index.md) provide ways
+to store files. The DSP-API APIs provide ways
 to create file values using DSP-API and Sipi.
 
 A resource that has a file value must belong to one of the subclasses of
@@ -208,10 +208,10 @@ the world (such as `ex:Painting`) and also belongs to a subclass of
 of file attached to it. For example, if paintings are represented only
 by still images, `ex:Painting` could be a subclass of
 `StillImageRepresentation`. This is the only approach supported in
-[DSP API v1](../03-apis/api-v1/index.md).
+DSP API v1.
 
-The more flexible approach, which is supported by [DSP API
-v2](../03-apis/api-v2/index.md), is for each `ex:Painting` to link (using
+The more flexible approach, which is supported by DSP API
+v2, is for each `ex:Painting` to link (using
 `kb:hasRepresentation` or a subproperty) to other resources containing files
 that represent the painting. Each of these other resources can extend a
 different subclass of `Representation`. For example, a painting could have a
@@ -1008,7 +1008,7 @@ For links to a `kb:Resource`, see [StandoffLinkTag](#standofflinktag).
 A mapping allows for the conversion of an XML document to RDF-standoff
 and back. A mapping defines one-to-one relations between XML elements
 (with or without a class) and attributes and standoff classes and
-properties (see [XML to Standoff Mapping](../03-apis/api-v2/xml-to-standoff-mapping.md)).
+properties (see [XML to Standoff Mapping](../api-reference/api-v2/xml-to-standoff-mapping.md)).
 
 A mapping is represented by a `kb:XMLToStandoffMapping` which contains
 one or more `kb:MappingElement`. A `kb:MappingElement` maps an XML
@@ -1438,8 +1438,6 @@ that is a subclass of the one specified in the base property. However,
 it is not possible for the subproperty to make the base property's
 constraint less restrictive.
 
-See also [Why doesn’t DSP-API use rdfs:domain and rdfs:range for consistency checking?](../faq/index.md#why-doesnt-knora-use-rdfs-domain-and-rdfs-range-for-consistency-checking-)
-
 ### Consistency Constraint Example
 
 A user-created ontology could define consistency constraints as in
@@ -1468,7 +1466,7 @@ this simplified example:
 
 An ontology can refer to a DSP-API ontology in another project only if the other
 ontology is built-in or shared
-(see [Shared Ontologies](../03-apis/api-v2/knora-iris.md#shared-ontologies)).
+(see [Shared Ontologies](../api-reference/api-v2/knora-iris.md#shared-ontologies)).
 
 ### Restrictions on Classes
 
@@ -1520,12 +1518,12 @@ user-created ontologies. We envisage a process in which two or more
 projects would initiate the process by starting a public discussion on
 proposed entities to be shared. Once a consensus was reached, the
 [DaSCH](http://dasch.swiss/) would publish these entities in a
-[shared ontology](../03-apis/api-v2/knora-iris.md#shared-ontologies)).
+[shared ontology](../api-reference/api-v2/knora-iris.md#shared-ontologies)).
 
 ## DSP-API Ontology Versions
 
 The Knora base ontology has the property `kb:ontologyVersion`, whose
 object is a string that indicates the deployed version of all the DSP-API
-built-in ontologies. This allows the
-[repository update program](../04-publishing-deployment/updates.md) to determine
+built-in ontologies. This allows the automated
+repository update program to determine
 which repository updates are needed when DSP-API is upgraded.

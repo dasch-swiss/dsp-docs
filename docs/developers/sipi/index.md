@@ -11,7 +11,7 @@ SIPI is written in C++ and runs on Linux and Mac OS X. It offers a flexible fram
 
 ## Interaction of DSP-API and SIPI
 
-If a file is requested from SIPI by e.g. an image link served by [DSP-API](../../dsp-api/documentation/index.md), a preflight function is called. This function needs three parameters: a prefix, the identifier (the name of the requested file) and a cookie. All file links created by DSP-API use the project number as prefix. An example link from our incunabula project may look as follows: `0.0.0.0:1024/0803/incunabula_0000003328.jp2/full/2613,3505/0/default.jpg`.
+If a file is requested from SIPI by e.g. an image link served by DSP-API, a preflight function is called. This function needs three parameters: a prefix, the identifier (the name of the requested file) and a cookie. All file links created by DSP-API use the project number as prefix. An example link from our incunabula project may look as follows: `0.0.0.0:1024/0803/incunabula_0000003328.jp2/full/2613,3505/0/default.jpg`.
 
 Based on the provided information, SIPI asks DSP-API about the permissions on the file in question of the current user. Therefore, the cookie is needed: it contains the current user's DSP-API session ID. Hence, DSP-API can match SIPI's request with a given user profile and tell SIPI the permissions this user has on the requested file. If the user has sufficient permissions, the file is served in full quality. If the user has only preview rights, SIPI serves a reduced quality of the file or integrates a watermark. If the user has no permissions, SIPI refuses to serve the file. However, all of this behaviour is defined in the preflight function in SIPI and not controlled by DSP-API. DSP-API only provides the permission code.
 

@@ -59,7 +59,7 @@ class, because this could cause subclasses to violate the rule that a class cann
 have a cardinality on property P as well as a cardinality on a subproperty of P;
 see [Restrictions on Classes](knora-base.md#restrictions-on-classes).)
 
-A standardisation process for shared ontologies is planned (issue @github[#523](#523)).
+A standardisation process for shared ontologies is planned.
 
 For more details about shared ontologies, see
-[Shared Ontology IRIs](../03-apis/api-v2/knora-iris.md#shared-ontology-iris).
+[Shared Ontology IRIs](../api-reference/api-v2/knora-iris.md#shared-ontology-iris).

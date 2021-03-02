@@ -31,7 +31,7 @@ Knora's responsibilities include:
 - Transforming query results into Knora API responses.
 - Ensuring that ontologies and data in the triplestore are consistent and
   conform to the requirements of the
-  [knora-base](../../../02-knora-ontologies/knora-base.md) ontology.
+  [knora-base](../../ontologies/knora-base.md) ontology.
 - Managing the versioning of data in the triplestore.
 - Working with [Sipi](http://sipi.io) to store files that cannot be stored
   as RDF data.
@@ -47,13 +47,13 @@ for other triplestores coming soon).
 
 Knora supports different versions of its API for working with humanities data:
 
-- [Knora API v2](../../../03-apis/api-v2/index.md), a standards-based
-  API currently under development.
-- [Knora API v1](../../../03-apis/api-v1/index.md), a stable, legacy API
-  that focuses on maintaining compatibility with applications that used
+- [Knora API v2](../../api-reference/api-v2/introduction.md), a standards-based
+  API focused on interoperability and long-term use.
+- [Knora API v1](../../api-reference/api-v1/introduction.md), a legacy API
+  for maintaining compatibility with applications that used
   Knora's prototype software.
 
-There is also a [Knora admin API](../../../03-apis/api-admin/index.md) for
+There is also a [Knora admin API](../../api-reference/api-admin/introduction.md) for
 administering Knora repositories.
 
 The Knora code base includes some functionality that is shared by these different

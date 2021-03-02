@@ -55,7 +55,7 @@ provided.
 
 Each schema has its own type IRIs, which are derived from the ones used
 in the triplestore. For details of these different IRI formats, see
-[Knora IRIs](../../../03-apis/api-v2/knora-iris.md).
+[Knora IRIs](../../api-reference/api-v2/knora-iris.md).
 
 ## Implementation
 

@@ -22,7 +22,7 @@ License along with Knora.  If not, see <http://www.gnu.org/licenses/>.
 ## Usage
 
 The `SmartIri` trait can be used to parse and validate IRIs, and in
-particular for converting [Knora type IRIs](../../../03-apis/api-v2/knora-iris.md)
+particular for converting [Knora type IRIs](../../api-reference/api-v2/knora-iris.md)
 between internal and external schemas. It validates each IRI it parses. To use it,
 import the following:
 
