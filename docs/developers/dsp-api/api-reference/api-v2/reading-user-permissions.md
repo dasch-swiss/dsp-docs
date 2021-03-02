@@ -13,4 +13,4 @@ These are the possible permission codes, in ascending order:
 - `CR`: change rights permission (most privileged)
 
 Each permission implies all lesser permissions. For more details, see
-[Permissions](../../02-knora-ontologies/knora-base.md#permissions).
+[Permissions](../../ontologies/knora-base.md#permissions).

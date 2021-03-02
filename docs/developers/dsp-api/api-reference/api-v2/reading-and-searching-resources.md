@@ -46,7 +46,7 @@ Text markup can be returned in one of two ways:
 
 - As XML embedded in the response, using an [XML to Standoff Mapping](xml-to-standoff-mapping.md).
 
-- As [standoff/RDF](../../02-knora-ontologies/knora-base.md#text-with-standoff-markup),
+- As [standoff/RDF](../../ontologies/knora-base.md#text-with-standoff-markup),
   which is DSP-API's internal markup representation.
 
 Embedded XML is the default.
@@ -151,7 +151,7 @@ initial value is 0. The response will look like this:
 }
 ```
 
-See [Text with Standoff Markup](../../02-knora-ontologies/knora-base.md#text-with-standoff-markup)
+See [Text with Standoff Markup](../../ontologies/knora-base.md#text-with-standoff-markup)
 for details of the predicates in each standoff tag.
 
 If there are more pages of standoff to be requested, the response will contain `knora-api:nextStandoffStartIndex`,
@@ -203,7 +203,7 @@ time. Since DSP-API only versions values, not resource metadata (e.g.
 
 Each value will be returned with the permissions that are attached to
 the **current** version of the value
-(see [Permissions](../../02-knora-ontologies/knora-base.md#permissions)).
+(see [Permissions](../../ontologies/knora-base.md#permissions)).
 
 The returned resource will include the predicate `knora-api:versionDate`,
 containing the timestamp that was submitted, and its `knora-api:versionArkUrl`
@@ -244,7 +244,7 @@ Since DSP-API only versions values, not resource metadata (e.g.
 
 The value will be returned with the permissions that are attached to
 its **current** version
-(see [Permissions](../../02-knora-ontologies/knora-base.md#permissions)).
+(see [Permissions](../../ontologies/knora-base.md#permissions)).
 
 ### Get the Version History of a Resource
 
@@ -422,7 +422,7 @@ make this kind of "search as you type" possible, a wildcard character is
 automatically added to the last search term. 
 Search by label automatically adds Lucene operators, 
 search strings are expected not to contain any characters with a special meaning in 
-[Lucene Query Parser syntax](../../08-lucene/index.md).
+[Lucene Query Parser syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 
 ```
 HTTP GET to http://host/v2/searchbylabel/searchValue[limitToResourceClass=resourceClassIRI]
@@ -454,7 +454,7 @@ The response to a count query request is an object with one predicate,
 DSP-API offers a full-text search that searches through all textual
 representations of values and `rdfs:label` of resources. 
 Full-text search supports the 
-[Lucene Query Parser syntax](../../08-lucene/index.md).
+[Lucene Query Parser syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 Note that Lucene's default operator is a logical OR when submitting several search terms.
 
 Please note that the search

@@ -15,25 +15,82 @@ nav:
         - Introduction: developers/dsp-api/introduction.md
         - RDF: developers/dsp-api/rdf.md
         - API Reference:
-          - Introduction: developers/dsp-api/api-reference/introduction.md
-          - DSP-API IRIs: developers/dsp-api/api-reference/knora-iris.md
-          - Reading and Searching Resourcess: developers/dsp-api/api-reference/reading-and-searching-resources.md
-          - Permalinks: developers/dsp-api/api-reference/permalinks.md
-          - Gravsearch: developers/dsp-api/api-reference/query-language.md
-          - Authentication: developers/dsp-api/api-reference/authentication.md
-          - Editing Resources: developers/dsp-api/api-reference/editing-resources.md
-          - Editing Values: developers/dsp-api/api-reference/editing-values.md
-          - Ontology Information: developers/dsp-api/api-reference/ontology-information.md
-          - Getting Lists: developers/dsp-api/api-reference/getting-lists.md
-          - Metadata: developers/dsp-api/api-reference/metadata.md
-          - Reading User Permissions: developers/dsp-api/api-reference/reading-user-permissions.md
-          - TEI/XML: developers/dsp-api/api-reference/tei-xml.md
-          - XML to Standoff Mapping: developers/dsp-api/api-reference/xml-to-standoff-mapping.md
+          - Feature Toggles: developers/dsp-api/api-reference/feature-toggles.md
+          - API v1:
+            - Introduction: developers/dsp-api/api-reference/api-v1/introduction.md
+            - Reading and Searching Resources: developers/dsp-api/api-reference/api-v1/reading-and-searching-resources.md
+            - Reading Values: developers/dsp-api/api-reference/api-v1/reading-values.md
+            - Adding Resources: developers/dsp-api/api-reference/api-v1/adding-resources.md
+            - Adding Values: developers/dsp-api/api-reference/api-v1/adding-values.md
+            - Authentication: developers/dsp-api/api-reference/api-v1/authentication.md
+            - Changing Values: developers/dsp-api/api-reference/api-v1/changing-values.md
+            - Deleting Resources and Values: developers/dsp-api/api-reference/api-v1/delete-resources-and-values.md
+            - XML to Standoff Mapping: developers/dsp-api/api-reference/api-v1/xml-to-standoff-mapping.md
+          - API v2:
+            - Introduction: developers/dsp-api/api-reference/api-v2/introduction.md
+            - DSP-API IRIs: developers/dsp-api/api-reference/api-v2/knora-iris.md
+            - Reading and Searching Resourcess: developers/dsp-api/api-reference/api-v2/reading-and-searching-resources.md
+            - Permalinks: developers/dsp-api/api-reference/api-v2/permalinks.md
+            - Gravsearch: developers/dsp-api/api-reference/api-v2/query-language.md
+            - Authentication: developers/dsp-api/api-reference/api-v2/authentication.md
+            - Editing Resources: developers/dsp-api/api-reference/api-v2/editing-resources.md
+            - Editing Values: developers/dsp-api/api-reference/api-v2/editing-values.md
+            - Ontology Information: developers/dsp-api/api-reference/api-v2/ontology-information.md
+            - Getting Lists: developers/dsp-api/api-reference/api-v2/getting-lists.md
+            - Metadata: developers/dsp-api/api-reference/api-v2/metadata.md
+            - Reading User Permissions: developers/dsp-api/api-reference/api-v2/reading-user-permissions.md
+            - TEI/XML: developers/dsp-api/api-reference/api-v2/tei-xml.md
+            - XML to Standoff Mapping: developers/dsp-api/api-reference/api-v2/xml-to-standoff-mapping.md
+          - Admin API:
+            - Overview: developers/dsp-api/api-reference/api-admin/overview.md
+            - Introduction: developers/dsp-api/api-reference/api-admin/introduction.md
+            - Users: developers/dsp-api/api-reference/api-admin/users.md
+            - Groups: developers/dsp-api/api-reference/api-admin/groups.md
+            - Projects: developers/dsp-api/api-reference/api-admin/projects.md
+            - Permissions: developers/dsp-api/api-reference/api-admin/permissions.md
+            - Lists: developers/dsp-api/api-reference/api-admin/lists.md
+            - New List Admin Routes: developers/dsp-api/api-reference/api-admin/lists_new-list-admin-routes_v1.md
+          - Utility API:
+            - Health Route: developers/dsp-api/api-reference/api-util/health.md
+            - Version Route: developers/dsp-api/api-reference/api-util/version.md
         - Ontologies:
           - Introduction: developers/dsp-api/ontologies/introduction.md
           - The knora-base Ontology: developers/dsp-api/ontologies/knora-base.md
           - The knora-admin Ontology: developers/dsp-api/ontologies/knora-admin.md
           - The salsah-gui Ontology: developers/dsp-api/ontologies/salsah-gui.md
+        - Design:
+          - Design Principles:
+            - developers/dsp-api/design/principles/index.md
+            - developers/dsp-api/design/principles/authentication.md
+            - developers/dsp-api/design/principles/consistency-checking.md
+            - developers/dsp-api/design/principles/design-overview.md
+            - developers/dsp-api/design/principles/feature-toggles.md
+            - developers/dsp-api/design/principles/futures-with-akka.md
+            - developers/dsp-api/design/principles/http-module.md
+            - developers/dsp-api/design/principles/rdf-api.md
+            - developers/dsp-api/design/principles/store-module.md
+            - developers/dsp-api/design/principles/triplestore-updates.md
+          - API v1 Design:
+            - developers/dsp-api/design/api-v1/index.md
+            - developers/dsp-api/design/api-v1/how-to-add-a-route.md
+            - developers/dsp-api/design/api-v1/json.md
+          - API v2 Design:
+            - developers/dsp-api/design/api-v2/index.md
+            - developers/dsp-api/design/api-v2/ark.md
+            - developers/dsp-api/design/api-v2/content-wrappers.md
+            - developers/dsp-api/design/api-v2/gravsearch.md
+            - developers/dsp-api/design/api-v2/how-to-add-a-route.md
+            - developers/dsp-api/design/api-v2/json-ld.md
+            - developers/dsp-api/design/api-v2/ontology-management.md
+            - developers/dsp-api/design/api-v2/ontology-schemas.md
+            - developers/dsp-api/design/api-v2/overview.md
+            - developers/dsp-api/design/api-v2/query-design.md
+            - developers/dsp-api/design/api-v2/sipi.md
+            - developers/dsp-api/design/api-v2/smart-iris.md
+            - developers/dsp-api/design/api-v2/standoff.md
+          - Admin API Design:
+            - developers/dsp-api/design/api-admin/index.md
+            - developers/dsp-api/design/api-admin/administration.md
     - DSP-APP: developers/dsp-app/index.md
     - Sipi: developers/sipi/index.md
     - Libraries: developers/libraries/index.md

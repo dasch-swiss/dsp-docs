@@ -134,8 +134,8 @@ Once the mapping has been created, an XML like the following could be sent to DS
 </text>
 ```
 
-The text and markup can then be searched using the search language [Gravsearch](api-reference/query-language.md). When the document is retrieved, DSP-API converts it back to the original XML.
+The text and markup can then be searched using the search language [Gravsearch](api-reference/api-v2/query-language.md). When the document is retrieved, DSP-API converts it back to the original XML.
 
 ## Using Gravsearch for searches
 
-DSP-API provides a search language, [Gravsearch](api-reference/query-language.md), that is based on the SPARQL language. Gravsearch supports DSP’s humanites-focused data structures, including calendar-independent dates and standoff markup, as well as fast full-text searches. This allows for combining text-related criteria with any other criteria in searches. Examples for queries and how to build queries you can find [here](api-reference/query-language.md).
+DSP-API provides a search language, [Gravsearch](api-reference/api-v2/query-language.md), that is based on the SPARQL language. Gravsearch supports DSP’s humanites-focused data structures, including calendar-independent dates and standoff markup, as well as fast full-text searches. This allows for combining text-related criteria with any other criteria in searches. Examples for queries and how to build queries you can find [here](api-reference/api-v2/query-language.md).

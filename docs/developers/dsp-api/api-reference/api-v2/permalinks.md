@@ -87,7 +87,7 @@ A DSP-API ARK URL is intended to be resolved by the [DSP-API ARK resolver](https
 
 ## DSP-API ARK URL Format
 
-For details, see [Archival Resource Key (ARK) Identifiers](../../05-internals/design/api-v2/ark.md).
+For details, see [Archival Resource Key (ARK) Identifiers](../../design/api-v2/ark.md).
 
 ### ARK URLs for Projects
 

@@ -163,7 +163,7 @@ in the examples in the next sections.
 
 The internal predicates `knora-base:subjectClassConstraint` and
 `knora-base:objectClassConstraint` (see
-[Constraints on the Types of Property Subjects and Objects](../ontologies/knora-base.md#constraints-on-the-types-of-property-subjects-and-objects))
+[Constraints on the Types of Property Subjects and Objects](../../ontologies/knora-base.md#constraints-on-the-types-of-property-subjects-and-objects))
 are represented as `knora-api:subjectType` and `knora-api:objectType` in
 external ontologies.
 
@@ -388,7 +388,7 @@ ontology.
 In a class definition, cardinalities for properties of the class are
 represented as in OWL, using objects of type `owl:Restriction`. The
 supported cardinalities are the ones indicated in
-[OWL Cardinalities](../ontologies/knora-base.md#owl-cardinalities).
+[OWL Cardinalities](../../ontologies/knora-base.md#owl-cardinalities).
 
 The class definitions include cardinalities that are directly defined on
 each class, as well as cardinalities inherited from base classes. For
@@ -856,7 +856,7 @@ updates links will need the IRIs of their link values. The predicate
 properties of a class, and the predicates `salsah-gui:guiElement` and
 `salsah-gui:guiAttribute` specify how to configure a GUI element for
 editing the value of a property. For more information on the
-`salsah-gui` ontology, see [The SALSAH GUI Ontology](../ontologies/salsah-gui.md).
+`salsah-gui` ontology, see [The SALSAH GUI Ontology](../../ontologies/salsah-gui.md).
 
 ## Ontology Updates
 
@@ -1121,7 +1121,7 @@ HTTP POST to http://host/v2/ontologies/classes
 
 `OWL_CARDINALITY_PREDICATE` and `OWL_CARDINALITY_VALUE` must correspond
 to the supported combinations given in
-[OWL Cardinalities](../ontologies/knora-base.md#owl-cardinalities). (The placeholder
+[OWL Cardinalities](../../ontologies/knora-base.md#owl-cardinalities). (The placeholder
 `OWL_CARDINALITY_VALUE` is shown here in quotes, but it should be an
 unquoted integer.)
 
@@ -1132,7 +1132,7 @@ At least one base class must be provided.
 
 When a cardinality on a link property is submitted, an identical cardinality
 on the corresponding link value property is automatically added (see
-[Links Between Resources](../ontologies/knora-base.md#links-between-resources)).
+[Links Between Resources](../../ontologies/knora-base.md#links-between-resources)).
 
 A successful response will be a JSON-LD document providing the new class
 definition (but not any of the other entities in the ontology).
@@ -1277,7 +1277,7 @@ subproperties, with the exception of file properties (subproperties of
 `knora-api:hasLinkToValue`).
 
 If the property is a link property, the corresponding link value property
-(see [Links Between Resources](../ontologies/knora-base.md#links-between-resources))
+(see [Links Between Resources](../../ontologies/knora-base.md#links-between-resources))
 will automatically be created.
 
 The property definition must specify its `knora-api:objectType`. If the
@@ -1295,9 +1295,9 @@ provide `knora-api:subjectType`, which must be a subclass of
 The predicates `salsah-gui:guiElement` and `salsah-gui:guiAttribute` are
 optional. If provided, the object of `guiElement` must be one of the OWL
 named individuals defined in
-[The SALSAH GUI Ontology](../ontologies/salsah-gui.md#individuals). Some GUI elements
+[The SALSAH GUI Ontology](../../ontologies/salsah-gui.md#individuals). Some GUI elements
 take required or optional attributes, which are provided as objects of
-`salsah-gui:guiAttribute`; see [The SALSAH GUI Ontology](../ontologies/salsah-gui.md)
+`salsah-gui:guiAttribute`; see [The SALSAH GUI Ontology](../../ontologies/salsah-gui.md)
 for details.
 
 A successful response will be a JSON-LD document providing the new
@@ -1422,13 +1422,13 @@ At least one cardinality must be submitted.
 
 `OWL_CARDINALITY_PREDICATE` and `OWL_CARDINALITY_VALUE` must correspond
 to the supported combinations given in
-[OWL Cardinalities](../ontologies/knora-base.md#owl-cardinalities). (The placeholder
+[OWL Cardinalities](../../ontologies/knora-base.md#owl-cardinalities). (The placeholder
 `OWL_CARDINALITY_VALUE` is shown here in quotes, but it should be an
 unquoted integer.)
 
 When a cardinality on a link property is submitted, an identical cardinality
 on the corresponding link value property is automatically added (see
-[Links Between Resources](../ontologies/knora-base.md#links-between-resources)).
+[Links Between Resources](../../ontologies/knora-base.md#links-between-resources)).
 
 A successful response will be a JSON-LD document providing the new class
 definition (but not any of the other entities in the ontology).
@@ -1479,13 +1479,13 @@ HTTP PUT to http://host/v2/ontologies/cardinalities
 
 `OWL_CARDINALITY_PREDICATE` and `OWL_CARDINALITY_VALUE` must correspond
 to the supported combinations given in
-[OWL Cardinalities](../ontologies/knora-base.md#owl-cardinalities). (The placeholder
+[OWL Cardinalities](../../ontologies/knora-base.md#owl-cardinalities). (The placeholder
 `OWL_CARDINALITY_VALUE` is shown here in quotes, but it should be an
 unquoted integer.)
 
 When a cardinality on a link property is submitted, an identical cardinality
 on the corresponding link value property is automatically added (see
-[Links Between Resources](../ontologies/knora-base.md#links-between-resources)).
+[Links Between Resources](../../ontologies/knora-base.md#links-between-resources)).
 
 A successful response will be a JSON-LD document providing the new class
 definition (but not any of the other entities in the ontology).
@@ -1503,7 +1503,7 @@ The property IRI and the ontology's last modification date must be
 URL-encoded.
 
 If the property is a link property, the corresponding link value property
-(see [Links Between Resources](../ontologies/knora-base.md#links-between-resources))
+(see [Links Between Resources](../../ontologies/knora-base.md#links-between-resources))
 will automatically be deleted.
 
 A successful response will be a JSON-LD document providing only the

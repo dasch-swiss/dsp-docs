@@ -150,7 +150,7 @@ resource's creator can be specfied by adding `knora-api:attachedToUser`. For exa
 ```
 
 The format of the object of `knora-api:hasPermissions` is described in
-[Permissions](../ontologies/knora-base.md#permissions).
+[Permissions](../../ontologies/knora-base.md#permissions).
 
 If permissions are not given, configurable default permissions are used (TODO: add documentation about Default Object Access Permissions).
 
@@ -243,7 +243,7 @@ The request body is a JSON-LD object containing the following information about 
 The submitted JSON-LD object must also contain one or more of the following predicates, representing the metadata you want to change:
 
 - `rdfs:label`: a string
-- `knora-api:hasPermissions`, in the format described in [Permissions](../ontologies/knora-base.md#permissions)
+- `knora-api:hasPermissions`, in the format described in [Permissions](../../ontologies/knora-base.md#permissions)
 - `knora-api:newModificationDate`: an [xsd:dateTimeStamp](https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp).
 
 Here is an example:
