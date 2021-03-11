@@ -58,7 +58,7 @@ Currently, the following programming languages, software and formats are used fo
 
 DSP-API has a [base ontology](https://docs.knora.org/paradox/02-knora-ontologies/knora-base.html), i.e. a data model, with pre-defined basic data types. In addition to this base ontology, each project can create its own data model which is capable to describe the types of items it wishes to store. Project specific ontologies **must** be extensions of the `knora-base` ontology.
 
-The `knora-base` ontology is identified by the IRI `http://www.knora.org/ontology/knora-base`. In our documents it will be identified by the prefix `knora-base` or simply `kb`. More information about the `knora-base` ontology can be found [here](ontologies/knora-base.md).
+The `knora-base` ontology is identified by the IRI `http://www.knora.org/ontology/knora-base`. In our documents it will be identified by the prefix `knora-base` or simply `kb`. TODO: add link to `knora-base` doc.
 
 <br>
 
@@ -134,8 +134,8 @@ Once the mapping has been created, an XML like the following could be sent to DS
 </text>
 ```
 
-The text and markup can then be searched using the search language [Gravsearch](api-reference/api-v2/query-language.md). When the document is retrieved, DSP-API converts it back to the original XML.
+The text and markup can then be searched using the search language Gravsearch (TODO: add link). When the document is retrieved, DSP-API converts it back to the original XML.
 
 ## Using Gravsearch for searches
 
-DSP-API provides a search language, [Gravsearch](api-reference/api-v2/query-language.md), that is based on the SPARQL language. Gravsearch supports DSP’s humanites-focused data structures, including calendar-independent dates and standoff markup, as well as fast full-text searches. This allows for combining text-related criteria with any other criteria in searches. Examples for queries and how to build queries you can find [here](api-reference/api-v2/query-language.md).
+DSP-API provides a search language called Gravsearch that is based on the SPARQL language. Gravsearch supports DSP’s humanites-focused data structures, including calendar-independent dates and standoff markup, as well as fast full-text searches. This allows for combining text-related criteria with any other criteria in searches. TODO: add link to Gravsearch doc.
