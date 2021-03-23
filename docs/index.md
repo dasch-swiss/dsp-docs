@@ -24,13 +24,13 @@ The documentation for developers is splited into different groups depending on t
 
 - [Overview](developers/index.md)
 
-- [DSP-API](developers/dsp-api/documentation/index.md) is the main software framework in the back-end. ...
+- [DSP-API](developers/dsp-api/introduction.md) is the main software framework in the back-end. ...
 
-- [DSP Libraries](developers/libraries/documentation/index.md)
+- [DSP Libraries](developers/libraries/index.md)
 
-- [DSP-APP](developers/dsp-app/documentation/index.md)
+- [DSP-APP](developers/dsp-app/index.md)
 
-- [Sipi](developers/sipi/documentation/index.md)
+- [Sipi](developers/sipi/index.md)
 
 ### For the community
 

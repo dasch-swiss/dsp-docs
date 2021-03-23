@@ -1,38 +1,32 @@
 site_name: DaSCH Service Platform Documentation
 
 nav:
-    - User Guide:
-      - Introduction: user-guide/index.md
-      - Project Management: user-guide/project.md
-      - Data Management: user-guide/data.md
-      - User Management: user-guide/user.md
-      - System Management: user-guide/system.md
-      # - Publication: user-guide/publication.md
-    - Developers:
-      - Overview: developers/index.md
-      - DSP Getting Started: developers/dsp-api/getting-started.md
-      - API Reference:
-        - Introduction: developers/dsp-api/api-reference/index.md
-        - Queries: developers/dsp-api/api-reference/queries.md
-      - Documentation:
-        - DSP-API:
-          - Introduction: developers/dsp-api/documentation/index.md
-          - RDF: developers/dsp-api/documentation/rdf.md
-          - Knora-base ontology: developers/dsp-api/documentation/knora-base.md
-          - Admin ontology: developers/dsp-api/documentation/knora-admin.md
-        - DSP-APP: developers/dsp-app/documentation/index.md
-        - Sipi: developers/sipi/documentation/index.md
-        - Librairies: developers/libraries/documentation/index.md
-      - Contribution: 
-        - How to contribute: developers/dsp/contribution/index.md
-        - DSP-API: developers/dsp-api/contribution/index.md
-        - DSP-APP: developers/dsp-app/contribution/index.md
-        - Sipi: developers/sipi/contribution/index.md
-        - Style guide: developers/dsp/contribution/style-guide.md
-    - Community:
-      - FAQ: community/faq.md
-      - Product Updates: community/product-updates.md
-      - About us: community/about-us.md
+  - Overview: index.md
+  - User Guide:
+    - Introduction: user-guide/index.md
+    - Project Management: user-guide/project.md
+    - Data Management: user-guide/data.md
+    - User Management: user-guide/user.md
+    - System Management: user-guide/system.md
+    - Publication: user-guide/publication.md
+  - Developers:
+    - Getting Started: developers/index.md
+    - DSP-API:
+        - Introduction: developers/dsp-api/introduction.md
+        - RDF: developers/dsp-api/rdf.md
+    - DSP-APP: developers/dsp-app/index.md
+    - Sipi: developers/sipi/index.md
+    - Libraries: developers/libraries/index.md
+    - Contribution:
+      - How to contribute: developers/dsp/contribution/index.md
+      - Style guide: developers/dsp/contribution/style-guide.md
+      - How to Contribute to DSP-API: developers/dsp-api/contribution.md
+      - How to Contribute to DSP-APP: developers/dsp-app/contribution.md
+      - How to Contribute to Sipi: developers/sipi/contribution.md
+  - Community:
+    - FAQ: community/faq.md
+    - Product Updates: community/product-updates.md
+    - About us: community/about-us.md
 
 
 theme:
