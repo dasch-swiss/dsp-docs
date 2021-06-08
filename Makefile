@@ -13,6 +13,7 @@ publish-docs: ## build and publish docs to Github Pages
 .PHONY: install-requirements
 install-requirements: ## install requirements
 	pip3 install -r requirements.txt
+	pip3 install -r dsp/dsp-app/docs/requirements.txt
 
 .PHONY: clean
 clean: ## cleans the project directory

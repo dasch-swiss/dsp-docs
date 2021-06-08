@@ -2,6 +2,7 @@ site_name: DaSCH Service Platform Documentation
 
 nav:
   - Overview: index.md
+  - DSP APP: '!include ./dsp/dsp-app/mkdocs.yml'
   - User Guide:
     - Introduction: user-guide/index.md
     - Project Management: user-guide/project.md
@@ -28,6 +29,8 @@ nav:
     - Product Updates: community/product-updates.md
     - About us: community/about-us.md
 
+plugins:
+  - monorepo
 
 theme:
   name: material

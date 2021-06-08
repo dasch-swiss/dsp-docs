@@ -1,0 +1,3 @@
+[submodule "dsp/dsp-app"]
+	path = dsp/dsp-app
+	url = https://github.com/dasch-swiss/dsp-app
