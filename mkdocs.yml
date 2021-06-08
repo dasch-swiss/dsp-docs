@@ -4,19 +4,12 @@ nav:
   - Overview: index.md
   - DSP APP: '!include ./dsp/dsp-app/mkdocs.yml'
   - DSP API: '!include ./dsp/dsp-api/mkdocs.yml'
-  - User Guide:
-    - Introduction: user-guide/index.md
-    - Project Management: user-guide/project.md
-    - Data Management: user-guide/data.md
-    - User Management: user-guide/user.md
-    - System Management: user-guide/system.md
-    - Publication: user-guide/publication.md
   - Developers:
-    - Getting Started: developers/index.md
-    - DSP-API:
-        - Introduction: developers/dsp-api/introduction.md
-        - RDF: developers/dsp-api/rdf.md
-    - DSP-APP: developers/dsp-app/index.md
+    # - Getting Started: developers/index.md
+    # - DSP-API:
+    #     - Introduction: developers/dsp-api/introduction.md
+    #     - RDF: developers/dsp-api/rdf.md
+    # - DSP-APP: developers/dsp-app/index.md
     - Sipi: developers/sipi/index.md
     - Libraries: developers/libraries/index.md
     - Contribution:
