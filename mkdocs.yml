@@ -3,6 +3,7 @@ site_name: DaSCH Service Platform Documentation
 nav:
   - Overview: index.md
   - DSP APP: '!include ./dsp/dsp-app/mkdocs.yml'
+  - DSP API: '!include ./dsp/dsp-api/mkdocs.yml'
   - User Guide:
     - Introduction: user-guide/index.md
     - Project Management: user-guide/project.md
@@ -31,6 +32,9 @@ nav:
 
 plugins:
   - monorepo
+  - include-markdown
+  - search
+  - git-revision-date
 
 theme:
   name: material
