@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Get submodules
+      - name: Checkout submodules
         run: make update-docs
       - name: Build
         uses: jnanadarshan/mkdocs-build-action@v0.24
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
-      - name: Get submodules
+      - name: Checkout submodules
         run: make update-docs
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
