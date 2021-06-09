@@ -12,10 +12,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
           submodules: recursive
-      - name: Get latest version of the submodules
-        run: make update-docs
+      # - name: Get latest version of the submodules
+      #   run: make update-docs
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
