@@ -27,6 +27,8 @@ jobs:
       - name: OUTPUT --> show content!!!
         run: |
           ls -alh
+          ls -alh dsp/dsp-app
+          ls -alh dsp/dsp-api
           more .gitmodules
       - name: Build docs
         run: make build-docs
