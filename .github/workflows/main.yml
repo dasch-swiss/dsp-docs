@@ -31,10 +31,10 @@ jobs:
     # Publish and deploy docs as Pull Requests are merged into "main" branch
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout main
+      - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Checkout submodules
-        run: make update-docs
+        with:
+          submodules: recursive
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
