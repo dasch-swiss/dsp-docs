@@ -14,7 +14,7 @@ jobs:
         with:
           submodules: recursive
       - name: Build docs
-        uses: jnanadarshan/mkdocs-build-action@v1
+        uses: jnanadarshan/mkdocs-build-action@v0.24
 
   publish:
     name: Publish documentation
