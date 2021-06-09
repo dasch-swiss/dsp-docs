@@ -12,14 +12,24 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           submodules: recursive
-      - name: Build docs
-        uses: Tiryoh/actions-mkdocs@v0.4.0
+      - name: Get latest version of the submodules
+        run: make update-docs
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
         with:
-          # mkdocs_version: 'latest' # option
-          mkdocs_version: '1.1.2' # option
-          requirements: 'requirements.txt' # option
-          configfile: 'mkdocs.yml' # option
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: OUTPUT --> show content!!!
+        run: |
+          ls -alh
+          more .gitmodules
+      - name: Build docs
+        run: make build-docs
 
   publish:
     name: Publish documentation
