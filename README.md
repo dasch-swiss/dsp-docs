@@ -23,7 +23,7 @@ The DSP-API and the DSP-APP have their own documentation in their repositories i
 They are integrated into this documentation with [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) and
 the [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin).
 
-Those two documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there. They have to be updated in their own repositories. 
+Those two documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there. They have to be updated in their own repositories.
 To grab the latest version of them run `make update-docs`.
 
 The basics and the general DSP developers guide are stored in the `/docs` folder.
@@ -85,7 +85,7 @@ INFO    -  Cleaning site directory
 [I 160402 15:50:43 handlers:60] Start detecting changes
 ```
 
-Open up http://127.0.0.1:8000/ in your browser, and you'll see the documentation start page being.
+Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentation start page being.
 
 In case you need to clean the project directory, run:
 
