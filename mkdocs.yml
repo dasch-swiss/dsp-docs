@@ -3,21 +3,15 @@ site_name: DaSCH Service Platform Documentation
 nav:
   - Overview: index.md
   - DSP APP: '!include ./dsp/dsp-app/mkdocs.yml'
-  # - DSP API: '!include ./dsp/dsp-api/mkdocs.yml'
+  - DSP API: '!include ./dsp/dsp-api/mkdocs.yml'
   - Developers:
-    # - Getting Started: developers/index.md
-    # - DSP-API:
-    #     - Introduction: developers/dsp-api/introduction.md
-    #     - RDF: developers/dsp-api/rdf.md
-    # - DSP-APP: developers/dsp-app/index.md
-    - Sipi: developers/sipi/index.md
-    - Libraries: developers/libraries/index.md
-    - Contribution:
-      - How to contribute: developers/dsp/contribution/index.md
-      - Style guide: developers/dsp/contribution/style-guide.md
-      - How to Contribute to DSP-API: developers/dsp-api/contribution.md
-      - How to Contribute to DSP-APP: developers/dsp-app/contribution.md
-      - How to Contribute to Sipi: developers/sipi/contribution.md
+    - Getting Started: developers/getting-started.md
+    - Basics:
+        - Introduction: developers/introduction.md
+        - RDF: developers/rdf.md
+        - Sipi: developers/sipi/index.md
+        - Libraries: developers/libraries/index.md
+    - Contribution: developers/contribution.md
   - Community:
     - FAQ: community/faq.md
     - Product Updates: community/product-updates.md
