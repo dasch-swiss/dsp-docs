@@ -44,12 +44,12 @@ Table 2 shows all the triples of the data in Table 1.
 
 Often, the same resource, e.g. a person, is referenced in multiple triples. When more than one triple refers to the same thing, it is more useful to view the triples in a ***directed graph*** where each triple is depicted by nodes and arcs: the subjects and objects of the triples are the nodes while the predicates denote the arcs with the predicate as label on the arc:
 
-![alt text](https://docs.knora.org/paradox/02-knora-ontologies/introduction-fig1.dot.png "Figure 1")
+![Figure 1](https://docs-api.dasch.swiss/02-knora-ontologies/introduction-fig1.dot)
 
 Furthermore, if the subject or object is a URI/IRI or a blank node, it is depicted within an ellipse, if it is a literal value, however, within a rectangle. 
 
 The graph display of the triples in Table 2 then looks as follows:
-![alt text](../assets/images/knora/Table1Graphics.png "Figure 2") 
+![Figure 2](../assets/images/knora/Table1Graphics.png)
 
 Let's assume we possess the information in Table 3 from another source which we intend to merge with our data presented in Table 1.
 |Work|Author|Depiction|
@@ -64,7 +64,7 @@ This provides us with the following triples in Table 4:
 |Iliad|hasDepictionOn|24.97.11|
 |Odyssey|hasDepictionOn|24.97.11|
 The graph display of the triples in Table 2 concerning ID 3 and of the triples in Table 4 looks as follows:
-![alt text](../assets/images/knora/Table2Table4Graphics.png "Figure 3")
+![Figure 3](../assets/images/knora/Table2Table4Graphics.png)
 Since we now look at one specific example, namely "ID 3", all the values are literals and hence depicted in yellow rectangles.
 
 <br>
