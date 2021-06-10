@@ -11,7 +11,7 @@ nav:
         - RDF: developers/rdf.md
         - Sipi: developers/sipi/index.md
         - Libraries: developers/libraries/index.md
-    - Contribution: developers/contribution.md
+    - Contribution: developers/dsp/contribution/index.md
   - Community:
     - FAQ: community/faq.md
     - Product Updates: community/product-updates.md
