@@ -7,8 +7,6 @@ The **S**imple **I**mage **P**resentation **I**nterface (Sipi) takes care of sto
 SIPI implements the **I**nternational **I**mage **I**nteroperability **F**ramework ([IIIF](https://iiif.io/)), which aims at supporting interoperability between different image repositories. SIPI efficiently converts lossless between image formats while preserving the metadata contained in the image files. If images are stored in [JPEG 2000](https://jpeg.org/jpeg2000/) format, SIPI can convert them on the fly to formats that are commonly used on the Internet. 
 SIPI is written in C++ and runs on Linux and Mac OS X. It offers a flexible framework for specifying authentication and authorization logic which is obtained by scripts written in the scripting language [Lua](https://www.lua.org/). SIPI supports restricted access to images, either by reducing the image dimensions or by adding watermarks to the images. 
 
-<br>
-
 ## Interaction of DSP-API and SIPI
 
 If a file is requested from SIPI by e.g. an image link served by DSP-API, a preflight function is called. This function needs three parameters: a prefix, the identifier (the name of the requested file) and a cookie. All file links created by DSP-API use the project number as prefix. An example link from our incunabula project may look as follows: `0.0.0.0:1024/0803/incunabula_0000003328.jp2/full/2613,3505/0/default.jpg`.

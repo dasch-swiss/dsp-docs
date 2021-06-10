@@ -8,8 +8,8 @@ At the DaSCH, the principal development environment is [Apple macOS](https://www
 
 Each developer machine should have the following prerequisites installed:
 
-- Docker Desktop: https://www.docker.com/products/docker-desktop
-- Homebrew: https://brew.sh, which can be used to install:
+- Docker Desktop: <https://www.docker.com/products/docker-desktop>
+- Homebrew: <https://brew.sh>, which can be used to install:
   - `git`
   - `expect`
   - `sbt`
@@ -21,13 +21,13 @@ Each developer machine should have the following prerequisites installed:
 To install, follow these steps:
 
 ```bash
-$ brew tap AdoptOpenJDK/openjdk
-$ brew cask install AdoptOpenJDK/openjdk/adoptopenjdk11
+brew tap AdoptOpenJDK/openjdk
+brew cask install AdoptOpenJDK/openjdk/adoptopenjdk11
 ```
 
 To pin the version of Java, you can add this environment variable to your startup script (bashrc, etc.):
 
-```
+```bash
 export JAVA_HOME=`/usr/libexec/java_home -v 11`
 ```
 
@@ -37,9 +37,9 @@ You can also use [jEnv](https://www.jenv.be/) to use different versions of Java 
 
 To install, follow these steps:
 
-```
-$ npm install -g @bazel/bazelisk
-$ npm install -g @bazel/buildozer
+```bash
+npm install -g @bazel/bazelisk
+npm install -g @bazel/buildozer
 ```
 
 This will install [bazelisk](https://github.com/bazelbuild/bazelisk) which is
@@ -50,34 +50,36 @@ file in the root of the `knora-api` repository.
 ### Clone DSP-API from GitHub
 
 To clone DSP-API from Github open a terminal window and change to the directory where you intend to install DSP-API. Then type
-````
+
+```bash
 git clone https://github.com/dasch-swiss/dsp-api.git
-````
+```
+
 This will install the directory `dsp-api` with subdirectories in the chosen directory.
 
 ### Bazel Commands
 
 Build `webapi`:
 
-```
+```bash
 # build webapi
-$ bazel build //webapi/...
+bazel build //webapi/...
 
 # run all webapi tests
-$ bazel test //webapi/...
+bazel test //webapi/...
 ```
 
 ### Build the docker image
 
 From inside the cloned `dsp-api` repository folder, create a test repository:
 
-```
+```bash
 make init-db-test
 ```
 
 Then start the DSP stack:
 
-```
+```bash
 make stack-up
 ```
 
@@ -88,7 +90,7 @@ those containers running.
 
 To stop everything again, type 
 
-```
+```bash
 make stack-down
 ```
 
@@ -97,10 +99,11 @@ Please see the `Makefile` for other useful `make` targets.
 ### Build Structure
 
 The Bazel build is defined in a number of files:
-  - WORKSPACE - here are external dependencies defined
-  - BUILD - there are a number of BUILD files throughout the directory structure
+
+- WORKSPACE - here are external dependencies defined
+- BUILD - there are a number of BUILD files throughout the directory structure
     where each represents a separate package responsible for everything underneath.
-  - *.bzl - custom extensions loaded and used in BUILD files
+- *.bzl - custom extensions loaded and used in BUILD files
 
 For a more detailed discussion, please see the [Concepts and Terminology](https://docs.bazel.build/versions/master/build-ref.html)
 section in the Bazel documentation.
@@ -108,7 +111,8 @@ section in the Bazel documentation.
 ### Some Notes
 
 1. Override some `.bazelrc` settings in your own copy created at `~/.bazelrc`:
-    ```
+
+    ```bash
     build --action_env=PATH="/usr/local/bin:/opt/local/bin:/usr/bin:/bin"
     build --strategy=Scalac=worker
     build --worker_sandboxing
@@ -125,18 +129,21 @@ section in the Bazel documentation.
     1. Uncomment the `Scala` language and click `Finish`.
 
 1. Run single spec:
+
     ```bash
-    $ bazel test //webapi/src/test/scala/org/knora/webapi/e2e/v1:SearchV1R2RSpec
+    bazel test //webapi/src/test/scala/org/knora/webapi/e2e/v1:SearchV1R2RSpec
     ```
 
 1. Run single spec and only tests containing `gaga` in the description
+
     ```bash
-    $ bazel test //webapi/src/test/scala/org/knora/webapi/e2e/v1:SearchV1R2RSpec --test_arg=-z --test_arg="gaga"
+    bazel test //webapi/src/test/scala/org/knora/webapi/e2e/v1:SearchV1R2RSpec --test_arg=-z --test_arg="gaga"
     ```
 
 1. Start Scala REPL
+
     ```bash
-    $ bazel run //webapi:main_library_repl
+    bazel run //webapi:main_library_repl
     ```
 
 ### Build stamping
@@ -155,7 +162,8 @@ you can use (and certain language rulesets provide support for accessing from co
 Our *workspace status command* is defined in `//tools/buildstamp/get_workspace_status`.
 To use it on every bazel command, we need to supply it to each Bazel invocation,
 which is done by the following line found in `.bazelrc`:
-```
+
+```bash
 build --workspace_status_command=tools/buildstamp/get_workspace_status --stamp=yes
 ```
 
@@ -165,7 +173,7 @@ The `//tools/buildstamp/get_workspace_status` emits additional values
 to `bazel-out/volatile-status.txt` whereas `BUILD_TIMESTAMP` is emitted by
 Bazel itself:
 
-```
+```bash
 BUILD_SCM_REVISION 2d6df6c8fe2d56e3712eb26763f9727916a60164
 BUILD_SCM_STATUS Modified
 BUILD_SCM_TAG v13.0.0-rc.21-17-g2d6df6c-dirty
@@ -186,20 +194,20 @@ target, replaces variables coming from `//third_party:versions.bzl`.
 
 Add the following line to your ~/.bazelrc:
 
-```
+```bash
 query --package_path %workspace%:[PATH TO BAZEL]/base_workspace # set the path to the bazel binary
 ```
 
 Run bazel query inside your project directory, asking it to search for all dependencies
 of //:main (or however the label is to your target of interest):
 
-```
-$ bazel query 'deps(//:main)' --output graph > graph.in
+```bash
+bazel query 'deps(//:main)' --output graph > graph.in
 ```
 
 This creates a file called `graph.in`, which is a text representation of the build graph.
 You can use ```dot``` (install with `brew install graphviz`) to create a png:
 
-```
-$ dot -Tpng < graph.in > graph.png
+```bash
+dot -Tpng < graph.in > graph.png
 ```

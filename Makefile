@@ -1,3 +1,7 @@
+.PHONY: update-docs
+update-docs: ## grab latest documentation from each connected repo
+	git submodule update --init --recursive
+	
 .PHONY: build-docs
 build-docs: ## build docs into the local 'site' folder
 	mkdocs build
