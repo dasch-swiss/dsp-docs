@@ -1,9 +1,9 @@
 .PHONY: init-submodules
-update-docs: ## init the documentation from each connected repo
+init-submodules: ## init the documentation from each connected repo
 	git submodule update --init --remote --recursive
 	
 .PHONY: update-submodules
-update-docs: ## grab latest documentation from each connected repo
+update-submodules: ## grab latest documentation from each connected repo
 	git submodule update --remote --recursive
 	
 .PHONY: build-docs
