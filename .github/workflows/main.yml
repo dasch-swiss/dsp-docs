@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - name: Grab latest commit from submodules
+        run: make update-docs
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -36,10 +36,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - name: Grab latest commit from submodules
+        run: make update-docs
       - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           CUSTOM_DOMAIN: docs.dasch.swiss
