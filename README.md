@@ -69,7 +69,7 @@ make install-requirements
 Get the latest version of DSP-API or DSP-APP documentation by running
 
 ```shell
-make update-docs
+make update-submodules
 ```
 
 ### Getting started
