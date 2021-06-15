@@ -1,6 +1,10 @@
-.PHONY: update-docs
-update-docs: ## grab latest documentation from each connected repo
+.PHONY: init-submodules
+update-docs: ## init the documentation from each connected repo
 	git submodule update --init --remote --recursive
+	
+.PHONY: update-submodules
+update-docs: ## grab latest documentation from each connected repo
+	git submodule update --remote --recursive
 	
 .PHONY: build-docs
 build-docs: ## build docs into the local 'site' folder

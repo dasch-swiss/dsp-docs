@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Grab latest commit from submodules
-        run: make update-docs
+        run: make init-submodules
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -37,7 +37,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Grab latest commit from submodules
-        run: make update-docs
+        run: make init-submodules
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
         env:
