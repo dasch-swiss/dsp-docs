@@ -35,3 +35,7 @@ theme:
     - navigation.tabs
 extra_css:
   - 'assets/style/theme.css'
+extra:
+  analytics:
+    provider: fathom
+    data_site: BWXVRNXV 
