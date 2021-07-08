@@ -16,7 +16,7 @@ In order to fulfill these requirements, DaSCH develops and maintains various sof
 
 ### For researchers
 
-If you are a researcher you're probably most interested in the usage of the generic web application. In this case please have a look at our [DSP-APP documentation](dsp-app/).
+If you are a researcher you're probably most interested in the usage of the generic web application. In this case please have a look at our [DSP-APP documentation](DSP-APP/user-guide/).
 
 ### For developers
 
@@ -24,9 +24,9 @@ The documentation for developers is splited into different groups depending on t
 
 - [Overview](developers/getting-started.md)
 
-- [DSP-API](dsp-api/05-internals/development/) is the main software framework in the back-end.
+- [DSP-API](DSP-API/05-internals/development/) is the main software framework in the back-end.
 
-- [DSP-APP](dsp-app/how-to-contribute/)
+- [DSP-APP](DSP-APP/contribution/)
 
 - [DSP Libraries](developers/libraries/index.md)
 
