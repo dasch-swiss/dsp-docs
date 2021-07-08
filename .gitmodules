@@ -6,3 +6,6 @@
 	path = dsp/dsp-app
 	url = https://github.com/dasch-swiss/dsp-app
 	branch = main
+[submodule "dsp/dsp-tools"]
+	path = dsp/dsp-tools
+	url = https://github.com/dasch-swiss/dsp-tools
