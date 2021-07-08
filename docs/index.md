@@ -24,9 +24,9 @@ The documentation for developers is splited into different groups depending on t
 
 - [Overview](developers/getting-started.md)
 
-- [DSP-API](dsp-api/05-internals/development/) is the main software framework in the back-end.
+- [DSP-API](DSP-API/05-internals/development/) is the main software framework in the back-end.
 
-- [DSP-APP](dsp-app/how-to-contribute/)
+- [DSP-APP](DSP-APP/how-to-contribute/)
 
 - [DSP Libraries](developers/libraries/index.md)
 
