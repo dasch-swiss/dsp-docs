@@ -20,13 +20,15 @@ If you are a researcher you're probably most interested in the usage of the gene
 
 ### For developers
 
-The documentation for developers is splited into different groups depending on the software repository.
+The documentation for developers is split into different groups depending on the software repository.
 
 - [Overview](developers/getting-started.md)
 
 - [DSP-API](dsp-api/05-internals/development/) is the main software framework in the back-end.
 
 - [DSP-APP](dsp-app/how-to-contribute/)
+
+- [DSP-Tools](dsp-tools) is a python library to enable researchers and data stuarts to work with the API (e.g. creating data models, uploading data, etc.).
 
 - [DSP Libraries](developers/libraries/index.md)
 
