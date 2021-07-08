@@ -28,7 +28,7 @@ The documentation for developers is split into different groups depending on the
 
 - [DSP-APP](DSP-APP/contribution/)
 
-- [DSP-Tools](dsp-tools) is a python library to enable researchers and data stuarts to work with the API (e.g. creating data models, uploading data, etc.).
+- [DSP-Tools](TSP-TOOLS) is a python library to enable researchers and data stuarts to work with the API (e.g. creating data models, uploading data, etc.).
 
 - [DSP Libraries](developers/libraries/index.md)
 
