@@ -34,6 +34,8 @@ theme:
     accent: "deep purple"
   features:
     - navigation.tabs
+    - search.suggest
+    - search.highlight
 extra_css:
   - "assets/style/theme.css"
 extra:
