@@ -18,13 +18,13 @@ In all these repositories, we follow the [GitHub flow](https://guides.github.com
 
 ## Create Branch Guidelines
 
-You will work on an own branch to resolve one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/). Each of those issues has a DSP-number which has to be used in the branch name:
+You will work on an own branch to resolve one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/). Each of those issues has a DEV-number which has to be used in the branch name:
 
 ```text
-wip/<DSP-nr>-<subject>
+wip/<DEV-nr>-<subject>
 ```
 
-The prefix `wip` stands for "work in progress" followed by a "/" (slash). The second part starts with the DSP-number followed by a short subject which contains succinct description of the issue/user story. DSP-number and subject have to be written in kebab-case with "-" (hyphens).
+The prefix `wip` stands for "work in progress" followed by a "/" (slash). The second part starts with the DEV-number followed by a short subject which contains succinct description of the issue/user story. DEV-number and subject have to be written in kebab-case with "-" (hyphens).
 
 ## Git Commit Guidelines
 
@@ -74,19 +74,19 @@ Since we started to use the [release-please-action](https://github.com/marketpla
 #### PR Title Format
 
 ```text
-<type>(<scope>): <subject> (<DSP-no.>)
+<type>(<scope>): <subject> (<DEV-no.>)
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` (in brackets and without space between type and scope). `<subject>` should be YouTrack task title or its short version. At the end of the PR title add inside the brackets `<DSP-no.>`, which represents the number of the task(s) related to the PR. Here is an example:
+It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` (in brackets and without space between type and scope). `<subject>` should be YouTrack task title or its short version. At the end of the PR title add inside the brackets `<DEV-no.>`, which represents the number of the task(s) related to the PR. Here is an example:
 
 ```text
-docs(contribution): example pull request title (DSP-001)
+docs(contribution): example pull request title (DEV-001)
 ```
 
 The PR description should contains important informations for its reviewers. Don't copy/paste YouTrack task description here. Instead of that start the description by adding the following:
 
 ```text
-Resolves <DSP-no.>
+Resolves <DEV-no.>
 ```
 
 Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) will automatically generate a link to Youtrack's issue.
