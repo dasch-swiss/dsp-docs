@@ -4,12 +4,7 @@ This is the main documentation for all services the Data and Service Center for 
 
 - [DSP-API](https://github.com/dasch-swiss/dsp-api)
 - [DSP-APP](https://github.com/dasch-swiss/dsp-app)
-
-As well the tools in between:
-
-- [Sipi](https://github.com/dasch-swiss/Sipi)
-- [DSP-JS](https://github.com/dasch-swiss/dsp-js-lib)
-- [DSP-UI](https://github.com/dasch-swiss/dsp-ui-lib)
+- [DSP-Tools](https://github.com/dasch-swiss/dsp-tools)
 
 You'll find the documentaion on [docs.dasch.swiss](https://docs.dasch.swiss).
 
@@ -66,7 +61,7 @@ make install-requirements
 
 ### Update the submodules
 
-Get the latest version of DSP-API or DSP-APP documentation by running
+Get the latest version of DSP-API, DSP-APP and DSP-Tools documentation by running
 
 ```shell
 make update-submodules
