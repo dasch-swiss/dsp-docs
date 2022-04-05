@@ -40,6 +40,8 @@ Images like screenshots and so on has to be stored in `/docs/assets/images`.
 
 The documentation is based on [MkDocs](https://www.mkdocs.org).
 
+**Python**
+
 To run the documentation locally you'll need [Python](https://www.python.org/) installed, as well as the Python package manager, [pip](http://pip.readthedocs.io/en/stable/installing/). You can check if you have these already installed from the command line:
 
 ```shell
@@ -50,6 +52,14 @@ pip 21.1.1
 ```
 
 MkDocs supports Python versions 2.7, 3.4, 3.5, 3.6, 3.7 and [pypy](https://pypy.org).
+
+**Graphviz**
+
+Install Graphviz (Graph visualization software) to work with `.dot` file:
+
+```shell
+brew install graphviz
+```
 
 ### Installing dependencies
 
