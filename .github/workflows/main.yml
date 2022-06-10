@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Grab latest commit from submodules
-        run: make update-submodules
+        run: make init-submodules
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -22,7 +22,7 @@ jobs:
           pip install -r requirements.txt
           sudo apt-get install graphviz
       - name: Build docs
-        run: make build
+        run: mkdocs build
 
   # publish:
   #   name: Publish documentation
