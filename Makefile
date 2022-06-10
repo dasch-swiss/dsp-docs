@@ -2,20 +2,20 @@
 DOT_FIGURES = $(shell find ./ -type f -name '*.dot')
 PNG_FIGURES = $(patsubst %.dot,%.dot.png,$(DOT_FIGURES))
 
-include release.mk
+THIS_FILE := $(abspath $(lastword $(MAKEFILE_LIST)))
+CURRENT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-.PHONY: init-submodules
-init-submodules: ## init the documentation from each connected repo
-	git submodule update --init --remote --recursive
+include release.mk
 	
 .PHONY: update-submodules
-update-submodules: ## grab latest documentation from each connected repo
-	git submodule update --remote --recursive
+update-submodules: ## grab the current documentation from each connected repo
+	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=false
 	
 .PHONY: build
 build: ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
-	mike deploy
+	mike deploy $(DSP) latest
+	mike set-default latest
 
 .PHONY: serve
 serve: ## serve docs for local viewing
@@ -24,7 +24,7 @@ serve: ## serve docs for local viewing
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
-	@./deploy-whit-versioning.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS)
+	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=true
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
