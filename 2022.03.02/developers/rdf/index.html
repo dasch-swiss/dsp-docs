@@ -1,0 +1,3815 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/dasch-favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>RDF - DaSCH Service Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/style/theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+    <script src="https://cdn.usefathom.com/script.js" data-site="BWXVRNXV" data-include-domains="docs.dasch.swiss" defer></script> 
+
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#resource-description-framework-rdf-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../.."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DaSCH Service Platform Documentation" class="md-header__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/dasch-icon-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DaSCH Service Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RDF
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DSP-APP/" class="md-tabs__link">
+        DSP APP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DSP-API/" class="md-tabs__link">
+        DSP API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DSP-TOOLS/" class="md-tabs__link">
+        DSP Tools
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../getting-started/" class="md-tabs__link md-tabs__link--active">
+        Developers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../community/product-updates/" class="md-tabs__link">
+        Community
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DaSCH Service Platform Documentation" class="md-nav__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/dasch-icon-white.svg" alt="logo">
+
+    </a>
+    DaSCH Service Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          DSP APP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP APP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSP APP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/project/" class="md-nav__link">
+        Project Administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/system/" class="md-nav__link">
+        System Administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/data/" class="md-nav__link">
+        Data Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/user/" class="md-nav__link">
+        User Profile
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Contribution
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contribution" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Contribution
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/docs-documentation/" class="md-nav__link">
+        Docs Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/release-notes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSP API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Introduction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/what-is-knora/" class="md-nav__link">
+        What is DSP?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/data-formats/" class="md-nav__link">
+        Data Formats in DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/standoff-rdf/" class="md-nav__link">
+        Standoff/RDF Text Markup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/example-project/" class="md-nav__link">
+        An Example Project
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          DSP Ontologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Ontologies" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Ontologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/knora-base/" class="md-nav__link">
+        The Knora Base Ontology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/salsah-gui/" class="md-nav__link">
+        The SALSAH GUI Ontology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_1" type="checkbox" id="__nav_3_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_1">
+          The DSP APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="The DSP APIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          The DSP APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/feature-toggles/" class="md-nav__link">
+        Feature Toggles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_2" type="checkbox" id="__nav_3_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_2">
+          API V1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V1" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          API V1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/xml-to-standoff-mapping/" class="md-nav__link">
+        XML to Standoff Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/adding-resources/" class="md-nav__link">
+        Adding Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/reading-values/" class="md-nav__link">
+        Reading Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/adding-values/" class="md-nav__link">
+        Adding Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/changing-values/" class="md-nav__link">
+        Changing Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/delete-resources-and-values/" class="md-nav__link">
+        Deleting Resources and Values
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3" type="checkbox" id="__nav_3_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_3">
+          API V2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V2" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          API V2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/knora-iris/" class="md-nav__link">
+        Knora IRIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/reading-user-permissions/" class="md-nav__link">
+        Reading the User's Permissions on Resources and Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/getting-lists/" class="md-nav__link">
+        Getting Lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/xml-to-standoff-mapping/" class="md-nav__link">
+        XML to Standoff Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/query-language/" class="md-nav__link">
+        Gravsearch - Virtual Graph Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/editing-resources/" class="md-nav__link">
+        Editing Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/editing-values/" class="md-nav__link">
+        Editing Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/ontology-information/" class="md-nav__link">
+        Querying, Creating, and Updating Ontologies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/tei-xml/" class="md-nav__link">
+        TEI/XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/permalinks/" class="md-nav__link">
+        Permalinks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_4" type="checkbox" id="__nav_3_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_4">
+          Admin API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Admin API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Admin API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/users/" class="md-nav__link">
+        Users Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/projects/" class="md-nav__link">
+        Projects Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/groups/" class="md-nav__link">
+        Groups Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/lists/" class="md-nav__link">
+        Lists Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/permissions/" class="md-nav__link">
+        Permissions Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/stores/" class="md-nav__link">
+        Stores Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5" type="checkbox" id="__nav_3_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_5">
+          Util API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Util API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Util API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-util/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-util/health/" class="md-nav__link">
+        Health
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-util/version/" class="md-nav__link">
+        Version
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Publishing and Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Publishing and Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Publishing and Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/publishing/" class="md-nav__link">
+        Publishing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/getting-started/" class="md-nav__link">
+        Getting Started with DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/updates/" class="md-nav__link">
+        Updating Repositories when Upgrading DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          DSP Internals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Internals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Internals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Design" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_1" type="checkbox" id="__nav_3_6_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_1">
+          DSP-API Design Principles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API Design Principles" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API Design Principles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/design-overview/" class="md-nav__link">
+        Design Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/futures-with-akka/" class="md-nav__link">
+        Futures with Akka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/http-module/" class="md-nav__link">
+        HTTP Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/store-module/" class="md-nav__link">
+        Store Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/triplestore-updates/" class="md-nav__link">
+        Triplestore Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/consistency-checking/" class="md-nav__link">
+        Consistency Checking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/feature-toggles/" class="md-nav__link">
+        Feature Toggles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/rdf-api/" class="md-nav__link">
+        RDF Processing API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_2" type="checkbox" id="__nav_3_6_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_2">
+          API V1 Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V1 Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          API V1 Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v1/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v1/how-to-add-a-route/" class="md-nav__link">
+        How to Add an API v1 Route
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v1/json/" class="md-nav__link">
+        JSON in API v1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_3" type="checkbox" id="__nav_3_6_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_3">
+          API V2 Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V2 Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          API V2 Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/overview/" class="md-nav__link">
+        API v2 Design Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ontology-schemas/" class="md-nav__link">
+        Ontology Schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/smart-iris/" class="md-nav__link">
+        Smart IRIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/content-wrappers/" class="md-nav__link">
+        Content Wrappers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/how-to-add-a-route/" class="md-nav__link">
+        How to Add an API v2 Route
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/json-ld/" class="md-nav__link">
+        JSON-LD Parsing and Formatting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ontology-management/" class="md-nav__link">
+        Ontology Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/sipi/" class="md-nav__link">
+        DSP-API and Sipi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/gravsearch/" class="md-nav__link">
+        Gravsearch Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/standoff/" class="md-nav__link">
+        Standoff Markup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ark/" class="md-nav__link">
+        Archival Resource Key (ARK) Identifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/query-design/" class="md-nav__link">
+        SPARQL Query Design
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_4" type="checkbox" id="__nav_3_6_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_4">
+          Admin API Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Admin API Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Admin API Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-admin/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-admin/administration/" class="md-nav__link">
+        Administration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/building-and-running/" class="md-nav__link">
+        Build and Running
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/intellij-config/" class="md-nav__link">
+        Setup IntelliJ for development of DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/docker-cheat-sheet/" class="md-nav__link">
+        Docker Cheat Sheet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/monitoring/" class="md-nav__link">
+        Monitoring DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/profiling/" class="md-nav__link">
+        Profiling DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/docker-compose/" class="md-nav__link">
+        Starting the DSP-Stack inside Docker Container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/updating-repositories/" class="md-nav__link">
+        Updating Repositories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/generating-client-test-data/" class="md-nav__link">
+        Generating Client Test Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/graphdb/" class="md-nav__link">
+        Starting GraphDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/third-party/" class="md-nav__link">
+        Third-Party Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          SIPI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SIPI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          SIPI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-sipi/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-sipi/setup-sipi-for-knora/" class="md-nav__link">
+        Setting Up Sipi for DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-sipi/sipi-and-knora/" class="md-nav__link">
+        Interaction between Sipi and DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8">
+          Lucene
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Lucene" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Lucene
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/08-lucene/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/08-lucene/lucene-query-parser-syntax/" class="md-nav__link">
+        Lucene Query Parser Syntax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/faq/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/00-release-notes/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          DSP Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/dsp-tools-usage/" class="md-nav__link">
+        Installation and usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          JSON data model format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JSON data model format" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          JSON data model format
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/dsp-tools-create/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/dsp-tools-create-ontologies/" class="md-nav__link">
+        Ontologies
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/dsp-tools-xmlupload/" class="md-nav__link">
+        Bulk data import
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/dsp-tools-excel/" class="md-nav__link">
+        Excel file processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/dsp-tools-information-for-developers/" class="md-nav__link">
+        Information for developers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-TOOLS/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RDF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RDF
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-about-the-examples-in-this-document" class="md-nav__link">
+    A note about the examples in this document
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces-uniform-resource-identifiers-uris-and-international-resource-identifiers-iris" class="md-nav__link">
+    Namespaces, Uniform Resource Identifiers (URIs) and International Resource Identifiers (IRIs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#literals" class="md-nav__link">
+    Literals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifiers-in-the-rdf-namespace" class="md-nav__link">
+    Identifiers in the RDF namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reification" class="md-nav__link">
+    Reification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressing-rdf-in-textual-form-turtle" class="md-nav__link">
+    Expressing RDF in textual form: Turtle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blank-nodes" class="md-nav__link">
+    Blank nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordered-information-in-rdf" class="md-nav__link">
+    Ordered information in RDF
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sipi/" class="md-nav__link">
+        Sipi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libraries/" class="md-nav__link">
+        Libraries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsp/contribution/" class="md-nav__link">
+        Contribution
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/product-updates/" class="md-nav__link">
+        Product Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/about-us/" class="md-nav__link">
+        About us
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-about-the-examples-in-this-document" class="md-nav__link">
+    A note about the examples in this document
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces-uniform-resource-identifiers-uris-and-international-resource-identifiers-iris" class="md-nav__link">
+    Namespaces, Uniform Resource Identifiers (URIs) and International Resource Identifiers (IRIs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#literals" class="md-nav__link">
+    Literals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifiers-in-the-rdf-namespace" class="md-nav__link">
+    Identifiers in the RDF namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reification" class="md-nav__link">
+    Reification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressing-rdf-in-textual-form-turtle" class="md-nav__link">
+    Expressing RDF in textual form: Turtle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blank-nodes" class="md-nav__link">
+    Blank nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordered-information-in-rdf" class="md-nav__link">
+    Ordered information in RDF
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="resource-description-framework-rdf-basics">Resource Description Framework (RDF) basics</h1>
+<p>The Resource Description Framework (RDF) is the basic representation language and foundation of the Semantic Web. It addresses the fundamental issue of managing distributed data. All things in the world are referred to as <strong><em>resources</em></strong>. Resources can be anything: documents, people, physical objects as well as abstract concepts. The Resource Description Framework (RDF) is the framework for expressing information about such resources. It is useful if information on the Web is not only displayed, but needs to be processed by applications. </p>
+<p>The following introduction to RDF draws heavily on the book of <strong>Dean Allemang &amp; James Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 27–50</strong> which we warmly recommend for reading. Further information can be found in the <a href="https://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/">RDF 1.1 Primer</a>.</p>
+<p><br></p>
+<h2 id="a-note-about-the-examples-in-this-document">A note about the examples in this document</h2>
+<p>It was aimed for to explain all following language features by using only one exemplary project. The setting of the chosen project is the following: It is about archaeological objects stemming from different findspots - known and unknown - and kept in different institutions around the world today. These objects show depictions of mythological scenes that illustrate episodes known from ancient literature, e.g. the Iliad or the Odyssey of Homer, or reflect thoughts of various ancient philosophers about the nature of our world and all creatures living therein. For some of these objects other data and documents exist on the Web, e.g. entries in museum databases, and we may possess low or high resolution images of them. Furthermore, the findspots - if known - can be identified unambigously by reference to geographical databases, e.g. GeoNames. </p>
+<p><br></p>
+<p>If data are available in tabular form, the rows represent the items we intend to describe and each column represents some property of these items. The cells in the table then denote particular values for these properties. Table 1 shows a small excerpt of such a table from our exemplary project.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th align="center">Category</th>
+<th align="center">City</th>
+<th align="center">Institution</th>
+<th>InventoryNr.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td align="center">Ceramics</td>
+<td align="center">Boston</td>
+<td align="center">Museum of Fine Arts</td>
+<td>28.46</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center">Glyptics</td>
+<td align="center">London</td>
+<td align="center">British Museum</td>
+<td>2717</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center">Relief</td>
+<td align="center">New York</td>
+<td align="center">Metropolitan Museum</td>
+<td>24.97.11</td>
+</tr>
+</tbody>
+</table>
+<p>In RDF, each of these cells has to be represented with three values which are called <strong><em>triples</em></strong>: a global reference for the row, a global reference for the column, and the value in the cell itself. The identifier for the row is the <strong>subject</strong> of the triple, the identifier for the column the <strong>predicate</strong> of the triple, and the value in the cell the <strong>object</strong> of the triple. </p>
+<p>There are three types of RDF data that can occur in triples: <strong>I</strong>nternational <strong>R</strong>esource <strong>I</strong>dentifiers (<strong>IRI</strong>s) / <strong>U</strong>niversal <strong>R</strong>esource <strong>I</strong>dentifiers (<strong>URI</strong>s), <strong>literals</strong> and <strong>blank nodes</strong>.</p>
+<p>A triple now describes the relationship between two resources which are the subject and the object of the triple. The predicate represents the nature of the relationship between subject and object. The relationship is directional - the predicate always points from the subject to the object - and is called a <strong>property</strong>. </p>
+<p>Table 2 shows all the triples of the data in Table 1.
+|Subject|Predicate|Object|
+|-----|:----:|---|
+|ID 1|belongsToCategory|Ceramics|
+|ID 1|todayIn|Boston|
+|ID 1|isKeptIn|Museum of Fine Arts|
+|ID 1|hasInventory|28.46|
+|ID 2|belongsToCategory|Glyptics|
+|ID 2|todayIn|London|
+|ID 2|isKeptIn|British Museum|
+|ID 2|hasInventory|2717|
+|ID 3|belongsToCategory|Relief|
+|ID 3|todayIn|New York|
+|ID 3|isKeptIn|Metropolitan Museum|
+|ID 3|hasInventory|24.97.11|</p>
+<p>Often, the same resource, e.g. a person, is referenced in multiple triples. When more than one triple refers to the same thing, it is more useful to view the triples in a <strong><em>directed graph</em></strong> where each triple is depicted by nodes and arcs: the subjects and objects of the triples are the nodes while the predicates denote the arcs with the predicate as label on the arc:</p>
+<p><img alt="Figure 1" src="https://docs-api.dasch.swiss/02-knora-ontologies/introduction-fig1.dot" /></p>
+<p>Furthermore, if the subject or object is a URI/IRI or a blank node, it is depicted within an ellipse, if it is a literal value, however, within a rectangle. </p>
+<p>The graph display of the triples in Table 2 then looks as follows:
+<img alt="Figure 2" src="../../assets/images/knora/Table1Graphics.png" /></p>
+<p>Let's assume we possess the information in Table 3 from another source which we intend to merge with our data presented in Table 1.
+|Work|Author|Depiction|
+|-----|:----:|---|
+|Iliad|Homer|24.97.11|
+|Odyssey|Homer|24.97.11|
+This provides us with the following triples in Table 4:
+|Subject|Predicate|Object|
+|-----|:----:|---|
+|Iliad|hasAuthor|Homer|
+|Odyssey|hasAuthor|Homer|
+|Iliad|hasDepictionOn|24.97.11|
+|Odyssey|hasDepictionOn|24.97.11|
+The graph display of the triples in Table 2 concerning ID 3 and of the triples in Table 4 looks as follows:
+<img alt="Figure 3" src="../../assets/images/knora/Table2Table4Graphics.png" />
+Since we now look at one specific example, namely "ID 3", all the values are literals and hence depicted in yellow rectangles.</p>
+<p><br></p>
+<h2 id="namespaces-uniform-resource-identifiers-uris-and-international-resource-identifiers-iris">Namespaces, Uniform Resource Identifiers (URIs) and International Resource Identifiers (IRIs)</h2>
+<p>If we intend to merge information from different sources, an essential question is whether a node in one graph is <em>the same node</em> as a node in another graph. RDF solves this issue through use of <a href="https://tools.ietf.org/html/rfc3986"><strong>U</strong>niform <strong>R</strong>esource <strong>I</strong>dentifiers</a> (URIs) or <a href="https://tools.ietf.org/html/rfc3987"><strong>I</strong>nternational <strong>R</strong>esource <strong>I</strong>dentifiers</a> (IRIs). Our well known web addresses, the URLs, are just a special case of URIs and IRIs. An International Resource Identifier is the internationalised form of a URI. IRIs extend the allowed characters in URIs from a subset of the ASCII character set to almost all characters of the Universal Code Character Set (Unicode / ISO 10646). </p>
+<p>The syntax of the URI/IRI allows to deference it, i.e. to use all the information in the URI/IRI such as server name, protocol, port number, file name etc. to locate a file or a location on the Web. The possibility of dereferencing enables participation in a global Web infrastructure.</p>
+<p>URIs and IRIs are painful to write out in detail when expressing models. Hence, it is common to use an abbreviation scheme. Then a URI/IRI has two parts: a <strong><em>namespace</em></strong> and an <strong><em>identifier</em></strong> with a colon in between. The representation for the identifier <em>United Kingdom</em> in the namespace <em>geonames</em> is <code>geonames:UnitedKingdom</code>.</p>
+<p>URIs/IRIs may not contain embedded spaces. Hence, the so-called InterCap convention is followed: names that consist of multiple words are transformed to identifiers without spaces by capitalizing each word: "part of" becomes <code>partOf</code>, "Measure for Measure" <code>MeasureForMeasure</code>, and so on. The selection of namespaces is unrestricted. However, it is common practice to refer to related identifiers in a single namespace. Following the above example all geographical information would be placed into the suggestive namespace <em>geonames</em>. These names correspond to fully qualified URIs - <em>geonames</em> stands for material in the geographical database <a href="https://www.geonames.org/">GeoNames</a>. </p>
+<p>Using URIs/IRIs as standard for global identifiers enables for a worldwide reference and thus, two peolpe anywhere in the world to refer to the same thing unequivocally. This property allows for specifying certain terms by a standard organization such as W3C. <a href="https://www.w3.org/">W3C</a> standards provide definitions for terms such as e.g. <code>type</code>, <code>Class</code>, <code>subClassOf</code> which are intended to apply <strong><em>globally</em></strong> across the Semantic Web.</p>
+<p>W3C has defined a number of standard namespaces for use with Web technologies. The most important are:
+* <code>xsd:</code> Indicates identifiers for XML schema definition. The global IRI for the <em>xsd</em> namespace is <a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>.
+* <code>xslns:</code>  Indicates identifiers for XML namespaces. The global IRI for the <em>xslns</em> namespace is <a href="https://www.w3.org/XML/1998/namespace">https://www.w3.org/XML/1998/namespace</a>.
+* <code>rdf:</code> Indicates identifiers used in RDF. The global IRI for the <em>rdf</em> namespace is <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>.
+* <code>rdfs:</code> Indicates identifiers used for the RDF Schema language (RDFS). The global IRI for the <em>rdfs</em> namespace is <a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>.
+* <code>owl:</code> Indicates identifiers used for the Web Ontology Language (OWL). The global IRI for the <em>owl</em> namespace is <a href="http://www.w3.org/2002/07/owl#">http://www.w3.org/2002/07/owl#</a>.</p>
+<p>Any URI in one of these namespaces - e.g. <code>rdfs:subClassOf</code> which is short for <a href="http://www.w3.org/2000/01/rdf-schema#subClassOf">http://www.w3.org/2000/01/rdf-schema#subClassOf</a> - refers to a particular term defined in the RDFS standard by the W3C. The term can also be dereferenced: at the server <em>www.w3.org</em> there is a page at the location <code>2000/01/rdf-schema</code> with an entry about <code>rdfs:subClassOf</code> which gives additional information about this resource.</p>
+<p><br></p>
+<h2 id="literals">Literals</h2>
+<p>Literals are values that are not URIs/IRIs. They may be simple strings such as "Homer", dates such as "April 30th, 700 BCE", numbers such as "2.71828". They are often associated with one of the following datatypes (list non-exhaustive):
+* boolean with value true or false
+* string with value character string
+* decimal with an arbitrary-precision decimal number as value
+* integer with an arbitrary-precision integer number as value
+* date with value in format yyyy-mm-dd</p>
+<p>Literals may only appear as <strong>object</strong> of a triple.</p>
+<p><br></p>
+<h2 id="identifiers-in-the-rdf-namespace">Identifiers in the RDF namespace</h2>
+<p>The RDF data model specifies the notion of triples and the merging of sets of triples. With the introduction of namespaces RDF provides agreements on how to refer to a particular entity. The RDF standard defines a small number of standard identifiers in the namespace <strong><em>rdf</em></strong>.</p>
+<ul>
+<li>
+<p><code>rdf:type</code> is a property that provides an elementary system in RDF to define types. <code>rdf:type</code> can be the predicate of a triple, the subject of the triple can be any identifier and the object of the triple is understood to be a type. <code>rdf:type</code> can be used to e.g. state, that Homers works belong to a group of literary works we call Poetry:</p>
+<table>
+<thead>
+<tr>
+<th>Subject</th>
+<th align="center">Predicate</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iliad</td>
+<td align="center">rdf:type</td>
+<td>Poetry</td>
+</tr>
+<tr>
+<td>Odyssey</td>
+<td align="center">rdf:type</td>
+<td>Poetry</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>rdf:Property</code> is an identifier to indicate when another identifier is to be used as a predicate rather than as subject or object. Some triples from our examples in Table 2 and Table 4 can be expressed with <code>rdf:Property</code> in the following way:</p>
+<table>
+<thead>
+<tr>
+<th>Subject</th>
+<th align="center">Predicate</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrote</td>
+<td align="center">rdf:type</td>
+<td>rdf:Property</td>
+</tr>
+<tr>
+<td>isKeptIn</td>
+<td align="center">rdf:type</td>
+<td>rdf:Property</td>
+</tr>
+<tr>
+<td>hasDepictionOn</td>
+<td align="center">rdf:type</td>
+<td>rdf:Property</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><br></p>
+<h2 id="reification">Reification</h2>
+<p>The strict subject - predicate - object form of RDF triples is limiting if one wants to qualify a statement further, if a statement about another statement seems desireable. We may wish to express that our object with ID 3 in Table 1 was bought by the Metropolitan Museum in 1924. Such a process of a statement about a statement is called <strong><em>reification</em></strong>. Reification can be achieved by different approaches. The easiest approach is to add just further triples expressing the desired relationship. </p>
+<pre><code>myonto:ID3 myonto:todayIn &quot;New York&quot; .
+myonto:ID3 myonto:keptIn &quot;Metropolitan Museum&quot; .
+myonto:ID3 myonto:hasAccessionDate 1924 .
+</code></pre>
+<p>The namespace <em>myonto</em> is used in the above example to express that the statements concern resources and properties which are defined in our own namespace. In contrast, <em>otheronto</em> will be used in following examples to express that an external not further defined namespace is referred to.</p>
+<p>The simple approach shown above works well if more information about some event or statement needs to be specified. However, it doesn't work well in cases when information about the statement itself shall be expressed: We may wish to express that the information that on our object with ID 3 in Table 1 scenes from the Iliad are depicted (information contained in Table 3) stems from the catalogue entry of this object in the online collection of the Metropolitan Museum.
+Such metadata about statements are often related with provenance indications, likelihood expressions, context information or time spans. In such cases it is necessary to explicitly make a statement about a statement. This process, called <strong><em>explicit reification</em></strong> is supported by the RDF standard with three resources called <code>rdf:subject</code>, <code>rdf:predicate</code> and <code>rdf:object</code>. With the following set of triples we can express that in the online collection of the Metropolitan Museum is written that ID 3 contains a depiction of scenes from the Iliad: </p>
+<pre><code>myonto:n1 rdf:subject myonto:Iliad ;
+          rdf:predicate myonto:hasDepictionOn ;
+          rdf:object myonto:ID 3 .
+web:MetropolitanMuseum myonto:says myonto:n1 .
+</code></pre>
+<p><br></p>
+<h2 id="expressing-rdf-in-textual-form-turtle">Expressing RDF in textual form: Turtle</h2>
+<p>When data are published in RDF on the Web the issue of representing RDF in text arises. There are multiple ways of achieving this. We are using a compact serialization of RDF which is called <strong>Turtle</strong>. It uses pre-defined shortcuts or namespaces. Since a binding between the local used namespaces and the global URIs/IRIs have to be achieved, Turtle begins with a preamble in which these bindings are defined:</p>
+<pre><code>@prefix myonto: http://www.myontology
+@prefix rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# 
+</code></pre>
+<p>With these abbreviations the triples can be expressed in subject/predicate/object order followed by a period.</p>
+<pre><code>myonto:HomerWorks rdf:type myonto:Poetry .
+</code></pre>
+<p>This statement expresses that Homer's literary works belong to the category of poetry.</p>
+<p>If several triples share a common subject it need not be repeated each time. Instead of terminating the first triple with a period, a semicolon (;) is used to indicate that another triple with the same subject follows. </p>
+<pre><code>myonto:Homer rdf:type myonto:Author ;
+             myonto:wrote &quot;Iliad&quot; .
+</code></pre>
+<p>This statement expresses that in my ontology named <em>myonto</em> Homer is part of my class Author and that he wrote the Iliad.</p>
+<p>If there are several triples that share both subject and predicate, a comma (,) is used to separate the objects. E.g. to express, that Homer wrote both the Iliad and the Odyssey, I can use the following statement:</p>
+<pre><code>myonto:Homer myonto:wrote myonto:Iliad, myonto:Odyssey .
+</code></pre>
+<p>To improve terseness and readability Turtle provides some abbreviations. The most widley used abbreviation is the word <strong><em>a</em></strong> to mean <code>rdf:type</code>. Thus, the following two triples are equivalent, both telling that the class Ceramics in my ontology is part of a larger class called Category:</p>
+<pre><code>myonto:Ceramics rdf:type myonto:Category .
+myonto:Ceramics a myonto:Category .
+</code></pre>
+<p><br></p>
+<h2 id="blank-nodes">Blank nodes</h2>
+<p>Sometimes we are aware of that something exists, that we know some things about it, but its identity is unknown. We want to express what we know about this resource without bothering to use a global identifier. Such a resource without a global identifier can be represented by a blank node. Blank nodes are comparable to the unknown variables x or y in an equation - they represent something without saying what their value is. Blank nodes can be the <strong>subject</strong> and/or the <strong>object</strong> of a triple. Within the framework of our example of archaeological objects showing depictions of Homeric poetry which are held by different institutions, the exact provenience of some objects may be unknown since they stem from illicit excavations and were bought on the antiquities market many years ago. Nevertheless, we know that each object possesses a provenience.  </p>
+<p>A blank node is indicated by square brackets ([]). All triples of which it is a subject are placed within these brackets. The information that if an object was bought on the antiquities market no detail information about its find context is available can be put inside a blank node:</p>
+<pre><code> [ rdf:type myonto:Market ;
+   myonto:noInfo myonto:FindContext ]
+</code></pre>
+<p>Such a blank node can then be referred to in other triples by including the entire bracketed sequence in place of the blank node. The following example expresses that all my objects which belong to the class UnprovenancedObj in my ontology <em>myonto</em> were bought on the antiquities market and for them I have no detail information about their find contexts available: </p>
+<pre><code>myonto:UnprovenancedObj myonto:isPartOf 
+    [ rdf:type myonto:Market ;
+      myonto:noInfo myonto:FindContext ]
+</code></pre>
+<p><br></p>
+<h2 id="ordered-information-in-rdf">Ordered information in RDF</h2>
+<p>Ordering of RDF triples has to be specified explicitly: elements can be ordered in a list format. In Turtle an ordered list can be expressed by putting a sequence of objects within brackets (()). If we want to express that the king of Mykene, Agamemnon, was the father of four children, Iphigeneia being the oldest and Orestes being the youngest, we can express that in the following way:</p>
+<pre><code>Agamemnon myonto:isFatherOf (Iphigeneia,
+                             Elektra, 
+                             Chrysothemis, 
+                             Orestes) .
+</code></pre>
+<p><br></p>
+<h1 id="rdf-schema-rdfs">RDF Schema (RDFS)</h1>
+<p>RDF simply creates a graph structure to represent data. The <strong>RDF S</strong>chema (RDFS) is a semantic extension of RDF wich provides some guidelines about how to use this graph structure, i.e. it imposes special syntactic conditions or restrictions upon RDF graphs. The schema is informaton about the data. It should help to provide meaning to the data. Thus, it is a layer on top of the RDF layer to describe consistency constraints in the data. The key to these levels is <strong><em>inferencing</em></strong>. The statements of meaning are given in the form of an inference pattern: "Given some initial information, the following new information can be derived." That's the way the RDF Schema language (RDFS) and also the Web Ontology Language (OWL) work. All schema information in RDFS is expressed by RDF triples. The meaning of asserted triples is defined with new inferred triples. The structures that describe the meaning of the data are also in triples. </p>
+<p>The following introduction to RDF Schema draws heavily on the book of <strong>Dean Allemang &amp; James Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 113–152</strong> which we warmly recommend for reading. Further information can be found in the Recommendations of <a href="https://www.w3.org/TR/2014/REC-rdf-schema-20140225/">RDF Schema 1.1</a>.</p>
+<p><br></p>
+<h2 id="asserted-triples-and-inferred-triples">Asserted triples and inferred triples</h2>
+<p>Asserted triples are triple data that were explicitly added in the original RDF store. Inferred triples are additional triples that are inferred by one of the inference rules. There is no logical distinction between inferred and asserted triples. Hence, one should be careful concerning inference rules and how to implement them. The RDFS and OWL standards define for certain patterns of triples which inferences are valid.</p>
+<p>The simplest approach is to store all triples in a single store and to ignore whether they are asserted or inferred. This approach is called <strong><em>cached inferencing</em></strong> since all inferences are stored with the data. It is simple, but the number of triples in the triple store increases and some inferred triples may later turn out to be incorrect und unwarranted. The other extreme is to never actually store any inferred triples in any persistent store. Then, inferencing is done in response to queries only. This approach can be called <strong><em>just in time inferencing</em></strong>, since the inferences are made just in time. The query responses are produced such that they respect all the appropriate inferences, but no inferred triple is retained. Both approaches have an important impact if data sources change, i.e. if a triple is deleted or a new triple added. If <em>cached inferencing</em> was chosen, originally inferred triples which are no longer valid must be identified and removed or new ones added. An important variant of <em>just in time inferencing</em> is where explicit inferencing is undesired.</p>
+<p>What kind of inferencing is needed depends on the required level of expressivity for a certain task. There are different inferencing levels. RDFS operates on a small number of inference rules that deal mostly with relating classes to subclasses and properties to classes. OWL includes constraints on properties and notions of equality and includes rules for describing classes based on allowed values for properties. All these standards use inferencing, but they differ in the inferencing that they support.</p>
+<p><br></p>
+<h2 id="classes">Classes</h2>
+<p>Resources can be grouped in <strong>classes</strong> which are themselves resources. The members of such a class are known as <strong><em>instances</em></strong> of the class. Classes are often identified by URIs/IRIs. All RDF datatypes are classes. The instances of a class that is a datatype are the members of the value space of the datatype. Thus, "3.14" is an instance of the class decimal, "4" is an instance of the class integer, "2000-01-01" is an instance of the class date, etc.</p>
+<p>The basic construct for specifying a group of related resources in RDFS is called an <code>rdfs:Class</code>. The way to express that something is a class is with a triple in which the predicate is <code>rdf:type</code> and the object is <code>rdfs:Class</code> as in the following examples: </p>
+<pre><code>myonto:Ceramics rdf:type rdfs:Class .
+myonto:BlackFigured rdf:type rdfs:Class .
+</code></pre>
+<p>These triples express that our resources <code>Ceramics</code> and <code>BlackFigured</code> are classes.</p>
+<p>One of the basic terms is <code>rdfs:subClassOf</code>. The meaning of "<em>B</em> is a <code>subClassOf</code> <em>C</em>" is "every member of class B is also a member of class C", expressed in the form of an inference. From a further information "<em>x</em> is a member of <em>B</em>" one can derive the new information "<em>x</em> is a member of <em>C</em>". Speaking more generally, if a class A is a subclass of another class B, then anything of type A is also of type B. This is called the <strong><em>type propagation rule</em></strong>. This feature of inference systems is particulary useful in a Semantic Web context in which new combinations of relationships likely occur as data from multiple sources are merged. In the framework of our example the class <code>BlackFigured</code> is a subclass of the class <code>Ceramics</code>. For any member of the class <code>BlackFigured</code> we can then derive that it is also a member of the class <code>Ceramics</code>due to the following statement :</p>
+<pre><code>myonto:BlackFigured rdfs:subClassOf myonto:Ceramics .
+</code></pre>
+<p>A class may be a member of its own class extension and an instance of itself, this applies e.g. for <code>rdfs:Class</code>. </p>
+<p><br></p>
+<h2 id="properties">Properties</h2>
+<p>An RDF property describes the relationship between a subject resource and an object resource. </p>
+<h3 id="properties-with-inferences">Properties with inferences</h3>
+<p>One of the most fundemantal terms in RDFS is <code>rdfs:subPropertyOf</code>. It is a transitive property and allows a modeler to describe a hierarchy of related properties. If we want to express that some of the people who work for a museum are permanently employed while others possess only loose contracts we could express this fact with the following triples:</p>
+<pre><code>myonto:isEmployedBy rdfs:subPropertyOf myonto:worksFor .
+myonto:contractsTo rdfs:subPropertyOf myonto:worksFor .
+</code></pre>
+<p>Regardless whether a person is employed by the museum or is a contractor, the person works for the museum.</p>
+<p>Other basic properties are <code>rdfs:range</code> and <code>rdfs:domain</code>. They have meanings inspired by the mathematical use of the words <em>range</em> and <em>domain</em>: the domain of a function is the set of values for which it is defined, its range is the set of values it can take. Both give informaton about how a property <code>P</code> is to be used: <code>domain</code> refers to the subject of any triple that uses <code>P</code> as its predicate, <code>range</code> refers to the object of any such triple.</p>
+<h4 id="rdfsdomain"><code>rdfs:domain</code></h4>
+<pre><code>P rdfs:domain D .
+</code></pre>
+<p>means that property <code>P</code> has domain <code>D</code>. From this we can infer that the subject of that triple is a member of the class <code>D</code>. <code>rdfs:domain</code> can be used to specify with which class the defined property can be used with. It is possible to specify multiple <code>rdfs:domain</code> properties when defining a property. We pick just two classes from our example - <code>Ceramics</code> and <code>BlackFigured</code> - which show a subclass relation: </p>
+<pre><code>myonto:BlackFigured rdfs:subClassOf myonto:Ceramics .
+</code></pre>
+<p>We now have a property called <code>incised</code> whose domain is <code>BlackFigured</code>.</p>
+<pre><code>myonto:incised rdfs:domain myonto:BlackFigured .
+</code></pre>
+<p>This means that all my objects with incised decoration belong to the class <code>BlackFigured</code>.</p>
+<h4 id="rdfsrange"><code>rdfs:range</code></h4>
+<pre><code>P rdfs:range R .
+</code></pre>
+<p>means that the property <code>P</code> has range <code>R</code>. From this we can infer that the object (the value of <code>P</code>) of that triple is a member of class <code>R</code>. If the predicate of a triple has more than one <code>rdfs:range</code> property, the resources denoted by the objects of triples are instances of all the classes stated by the <code>rdfs:range</code> properties. If we want to specify that queens who gave birth to a son could theoretically become queen mothers, we could do that with the following combination of 
+<code>rdfs:domain</code> and <code>rdfs:range</code>:</p>
+<pre><code>myonto:hasSon rdfs:domain myonto:Queen .
+myonto:hasSon rdfs:range myonto:QueenMother .
+</code></pre>
+<p>It is important to know that if <code>P</code> is used in an inconsistent way with this declaration, RDFS does not signal an error, but rather infers the necessary type information to bring <code>P</code> into accordance with its domain and range declarations! In RDFS, there is no notion of an incorrect or inconsistent inference, i.e. it will never proclaim an input as invalid but simply infer appropriate type information. Domains and ranges are not used to validate information, but to determine new information based on old information. In practice, there are often better and more appropriate options to use instead of <code>rdfs:domain</code> and <code>rdfs:range</code> alone.</p>
+<p><br></p>
+<h3 id="properties-without-inferences">Properties without inferences</h3>
+<p>RDFS provides some properties from which no inferences can be drawn, i.e. no inference semantics is defined for them. They are useful and important for documentation purposes. These are <code>rdfs:label</code>, <code>rdfs:comment</code>, <code>rdfs:seeAlso</code> and <code>rdfs:isDefinedBy</code>.</p>
+<p>Resources on the Semantic Web are specified by IRIs/URIs which are not meaningful to people. Thus, RDFS provides the property <code>rdfs:label</code> whose intended use is to provide a human-readable version for any resource's name. Multilingual labels are possible if the language tagging facility of RDF literals is used. </p>
+<pre><code>myonto:BlackFigured rdfs:label 
+                &quot;black-figured vessels&quot;@en, 
+                &quot;schwarzfigurige Gefässe&quot;@de .
+</code></pre>
+<p>Frequently it is useful to add comments about a model, i.e. to document it properly. In RDFS, <code>rdfs:comment</code> is an instance of <code>rdf:Property</code> that can be used to provide a human-readable description of a resource. Multilingual documentation is possible if the language tagging facility of RDF literals is used. To make a comment a triple using the property <code>rdfs:comment</code> as a predicate has to be asserted. </p>
+<pre><code>myonto:BlackFigured rdfs:comment &quot;The class BlackFigured contains ceramic vessels where the decoration is painted with black paint.&quot; .
+</code></pre>
+<p>In the case where a resource is an URL, supplementary information about this resource may be useful. This additional information is often included in documents. <code>rdfs:seeAlso</code> provides a way to specify the web location of such supplementary information. The web location has to be given in the form of an IRI/URI! The precise behaviour of a processor is not specified, but most tools that encounter <code>rdfs:seeAlso</code> link them to those links in a browser or application interface. In our example we could link findspots of archaeological objects to a web resource with geodata, e.g. GeoNames, in the following way:</p>
+<pre><code>myonto:latitude rdfs:seeAlso geonames:lat .
+</code></pre>
+<p><code>rdfs:isDefinedby</code> provides a link to the primary resource of information about a resource. Thus, the definitional description of a resource can be found, e.g. <code>rdfs:isDefinedBy</code> is defined in RDF to be a <code>rdfs:subPropertyOf</code> of <code>rdfs:seeAlso</code>.</p>
+<p><br></p>
+<h3 id="combinations-and-patterns">Combinations and patterns</h3>
+<h4 id="intersection">Intersection</h4>
+<p>RDFS inference rules are few and rather simple. More specific patterns can be obtained by combining basic RDFS features. One such case is set intersection. If we intend to draw the inference that if a resource <code>x</code> is an instance of class <code>C</code>, then it should also be an instance of classes <code>A</code> and <code>B</code>, expressing the formal relationship <code>C</code> &#8838; <code>A</code> &#8745; <code>B</code>. Such an inference can be obtained by making <code>C</code> a subclass of <code>A</code> and <code>B</code>:</p>
+<pre><code>:C rdfs:subClassOf :A .
+:C rdfs:subClassOf :B .
+</code></pre>
+<p>Due to the inference rule defined for <code>rdfs:subClassOf</code> we can infer from the triple</p>
+<pre><code>x rdf:type :C .
+</code></pre>
+<p>the desired triples</p>
+<pre><code>x rdf:type :A .
+x rdf:type :B .
+</code></pre>
+<p>Thus, from a membership in <code>C</code> membership in <code>A</code> and <code>B</code> can be inferred. But from membership in <code>A</code> and <code>B</code> membership in <code>C</code> <strong>cannot</strong> be inferred! Inferences can only be drawn in one direction.</p>
+<p>In an analogous way to the treatment of classes, set intersection can be defined for properties using the construct <code>rdfs:subPropertyOf</code>.</p>
+<h4 id="union">Union</h4>
+<p>The union of two sets (<code>A</code> &#8746; <code>B</code> &#8838; <code>C</code>) can be obtained by making <code>C</code> a superclass of <code>A</code> and <code>B</code>. </p>
+<pre><code>:A rdfs:subClassOf :C .
+:B rdfs:subClassOf :C .
+</code></pre>
+<p>Then, for any instance <code>x</code> that is either a member of class <code>A</code> or of <code>B</code> it will be inferred that it is also a member of class <code>C</code>.</p>
+<p>In an analogous way to the treatment of classes, set union can be defined for properties using <code>rdfs:subPropertyOf</code>.</p>
+<p><br></p>
+<h2 id="collections">Collections</h2>
+<p>A collection is represented as a list of items. <code>rdf:List</code> is an instance of <code>rdfs:Class</code> that can be used to build descriptions of lists and other list-like structures.</p>
+<p><br></p>
+<h2 id="summary">Summary</h2>
+<p>The following Figure 4 illustrates the concepts of resource, class, and sub-class based on our example project. 
+<img alt="alt text" src="../../assets/images/knora/RDFFigure4.png" title="Figure 4" /></p>
+<p>Figure 5 shows the same in a more general way: resources are denoted by a large black dot and arrows are drawn from a resource to the class it defines. A sub-class is shown by a rectangle (the sub-class) completely enclosed by another (the super-class), i.e. class ConstraintProperty is a subclass of class Property. The notion <code>rdf:type</code> specifies that something is a member of a group, i.e. an instance of a class. By using <code>rdfs:Class</code> instead of <code>rdf:type</code> a description of the meaning of a membership in a group is gained. Meaning is expressed through the mechanisms of inference in RDFS that can be drawn when a resource is used in a certain way.</p>
+<p><img alt="alt text" src="../../assets/images/knora/RDFFigure5.png" title="Figure 5" /></p>
+<p>The following Figure 6 expresses the same information about the class hierarchy, but does so using a graphic representation of the RDF data model. If a class is a subset of another, there is an arc labelled "s" from the node representing the first class to the node representing the second one ("s" stands for <code>rdfs:subClassOf</code>). If a resource was an instance of a class, then there is an arc labelled "t" from the resource to the node representing the class ("t" stands for <code>rdf:type</code>). Not all arcs are drawn, e.g. <code>rdfs:ConstraintProperty</code> is a subclass of <code>rdfs:Resource</code> because it is a subclass of <code>rdf:Property</code> which is a subclass of <code>rdfs:Resource</code>.</p>
+<p><img alt="alt text" src="../../assets/images/knora/RDFFigure6.png" title="Figure 6" /></p>
+<p>Examples: 
+- The class <code>rdfs:Literal</code> is an instance of <code>rdfs:Class</code> and an instance of <code>rdfs:Resource</code>. 
+- The class <code>rdf:Property</code> is the class of RDF properties and an instance of <code>rdfs:Class</code>.</p>
+<p><br></p>
+<h1 id="web-ontology-language-owl">Web Ontology Language (OWL)</h1>
+<p>OWL is intended to be used when information contained in documents needs to be processed by applications, it explicitly represents the meaning of terms in vocabularies and the relationship between those terms. The representation of terms and their interrelationships are called an <strong>ontology</strong>. A concrete syntax is needed in order to store ontologies and to exchange them among tools and applications. The primary exchange syntax for OWL is the XML syntax for RDF (RDF/XML), but other syntaxes such as e.g. <a href="https://www.w3.org/TR/turtle/">Turtle</a> are also frequently used. The data described by an OWL ontology is interpreted as a set of "individuals" and a set of "property assertions" which relate these individuals to each other. An ontology consists of a set of axioms which place constraints on sets of individuals called "classes" and the types of relationships permitted between them. OWL ontologies can import other ontologies, adding information from the imported ontology to the current ontology.</p>
+<p>The main building blocks of the OWL language are an RDF graph and at least one concrete syntax - there may be more than one - that can be used to serialize and exchange ontologies. </p>
+<p>OWL has been designed to meet the needs for a Web Ontology Language. It is part of the W3C recommendations related to the Semantic Web:
+- <a href="https://www.w3.org/XML/">XML</a> provides a surface syntax for structured documents, but imposes no semantic constraints.
+- <a href="https://www.w3.org/XML/Schema">XML Schema</a> is a language for restricting the structure of XML documents and extends XML with datatypes.
+- <a href="https://www.w3.org/TR/rdf-concepts/">RDF</a> is a datamodel for objects and relations between them. Furthermore, it provides a simple semantics for this datamodel and these datamodels can be represented in an XML syntax.
+- <a href="https://www.w3.org/TR/rdf-schema/">RDF Schema</a> is a vocabulary for describing properties and classes of RDF resources, with a semantics for generalization-hierarchies of such properties and classes.
+- OWL then adds more vocabulary to RDF for describing properties and classes: e.g. relations between classes, cardinality, equality, characteristics of properties and enumerated classes.</p>
+<p>The following introduction to OWL draws heavily on the book of <strong>Dean Allemang &amp; James Hendler, Semantic Web for the Working Ontologist. Effective Modeling in RDFS and OWL, Second Edition, 2011, 153–305</strong> which we warmly recommend for reading. Further information can be found in the Recommendations of the <a href="https://www.w3.org/TR/2012/REC-owl2-overview-20121211/">OWL 2 Web Ontology Language Document Overview (Second Edition)</a> and the Wikipedia entry of <a href="https://en.wikipedia.org/wiki/Web_Ontology_Language">OWL</a>.</p>
+<p><br></p>
+<h2 id="owlclass"><code>owl:Class</code></h2>
+<p>In OWL, a <a href="https://www.w3.org/TR/owl-guide/#owl_Class">Class</a> defines a group of individuals that belong together because they share some properties. An <code>owl:Class</code> differs from an <code>rdfs:Class</code> - an <code>owl:Class</code> is a special case of an <code>rdfs:Class</code>. Classes can be organised in a hierarchy using <code>rdfs:subClassOf</code>. Thus, <code>owl:Class</code> is defined as a subclass of <code>rdfs:Class</code>:</p>
+<pre><code>owl:Class rdfs:subClassOf rdfs:Class .
+</code></pre>
+<p>This means that every member of an <code>owl:Class</code>  is also a member of <code>rdfs:Class</code>. </p>
+<p>There is a built-in most general class named <code>owl:Thing</code> which is the class of all individuals. It is a superclass of all OWL classes. There is also a built-in class named <code>owl:Nothing</code> which is the class that has no instances. It is a subclass of all OWL classes. </p>
+<p><br></p>
+<h2 id="owlinverseof"><code>owl:inverseOf</code></h2>
+<p>Extra language features that are not directly provided by OWL, but that one may desire, such as e.g. <code>superClassOf</code>, are often supported by OWL as a combination of other features. The construct <code>owl:inverseOf</code> inverses a property, i.e. the direction of the property is reversed. This property can be used to define e.g. the <code>superClassOf</code> of a resource by combining it with <code>rdfs:subClassOf</code> in the following way:</p>
+<pre><code>myonto:superClassOf owl:inverseOf rdfs:subClassOf .
+</code></pre>
+<p><br></p>
+<h2 id="owlsymmetricproperty"><code>owl:SymmetricProperty</code></h2>
+<p>For a symmetric property holds that if a pair (x,y) is an instance of the property P, then also the pair (y,x) is an instance of this property P. Such a property is provided by <code>owl:SymmetricProperty</code> and expressed in OWL as a Class. An example for such a property is to be married - if Agamemnon is married to Klytaimnestra, Klytaimnestra is also married to Agamemnon. Thus we can define a property <code>married</code> in our ontology with the following triples:</p>
+<pre><code>myonto:married rdf:type owl:SymmetricProperty .
+Agamemnon myonto:married Klytaimnestra .
+</code></pre>
+<p>Be aware - to make sure that <code>owl:inverseOf</code> works in both directions, one has to assert that</p>
+<pre><code>owl:inverseOf rdf:type owl:SymmetricProperty .
+</code></pre>
+<p><br></p>
+<h2 id="owltransitiveproperty"><code>owl:TransitiveProperty</code></h2>
+<p>Another important property is transitivity. Transitivity is a relation between three elements such that if it holds between the first and second and it also holds between the second and third, it must necessarily hold between the first and the third. In OWL, transitivity is provided by the construct <code>owl:TransitiveProperty</code> which is a class of properties. To model the property <code>isLocatedIn</code> in our ontology as a member of the transitive class we can state</p>
+<pre><code>myonto:isLocatedIn rdf:type owl:TransitiveProperty .
+</code></pre>
+<p>Together with the triples</p>
+<pre><code>Rome myonto:isLocatedIn Italy .
+Italy myonto:isLocatedIn Europe .
+</code></pre>
+<p>we can infer that Rome is located in Europe.</p>
+<p><br></p>
+<h2 id="owlequivalentclass"><code>owl:equivalentClass</code></h2>
+<p>A frequent situation is that if information about the same entity from different sources is merged then the two providers of this information will not have used the same URI/IRI for refering to the same entity. When combining these data it may be useful to state that two URIs/IRIs actually refer to the same entity. When two classes are known to always have the same members, they are said to be <strong><em>equivalent</em></strong>. Such a situation can be expressed with one simple statement using <code>owl:equivalentClass</code>:</p>
+<pre><code> owl:equivalentClass rdf:type owl:SymmetricProperty .
+ myonto:GreekGods owl:equivalentClass otheronto:Deities .
+</code></pre>
+<p>The second triple expresses that the class <code>GreekGods</code> in our ontology is equivalent to the class <code>Deities</code> in some other ontology we refer to.</p>
+<p>Note that when two classes are equivalent, it only means that they have the same members. But other properties of these classes aren't shared!</p>
+<p><br></p>
+<h2 id="owlequivalentproperty"><code>owl:equivalentProperty</code></h2>
+<p>If one intends to state that two properties are equivalent, <code>owl:equivalentProperty</code> can be used: </p>
+<pre><code> myonto:isInvisible owl:equivalentClass otheronto:notSeen .
+</code></pre>
+<p>This statement expresses that the property which is called <code>isInvisible</code> in our ontology, is named <code>notSeen</code> in some other ontology.</p>
+<p><br></p>
+<h2 id="owlsameas"><code>owl:sameAs</code></h2>
+<p>If it turns out that two individuals are actually one and the same, <code>owl:sameAs</code> can be used to state this fact:</p>
+<pre><code> myonto:Puteoli owl:sameAs otheronto:Puzzeoli .
+</code></pre>
+<p>This statement expresses that the site which is called <code>Puteoli</code> in our ontology, is the same as a site named <code>Puzzeoli</code> in some other ontology.</p>
+<p><br></p>
+<h2 id="owlfunctionalproperty"><code>owl:FunctionalProperty</code></h2>
+<p>A functional property <code>owl:FunctionalProperty</code>is a property which can only have one single value. An everyday example for such a property is e.g. <code>hasBirthplace</code> since each person has only one birth place. Functional properties can be useful to infer sameness, e.g. if names with foreign characters are transliterated differently in two sources - a Greek "B" may be transliterated either as "B" or as "V", we can state:</p>
+<pre><code> myonto:GreekB owl:FunctionalProperty otheronto:GreekV .
+</code></pre>
+<p><br></p>
+<h2 id="owlinversefunctionalproperty"><code>owl:InverseFunctionalProperty</code></h2>
+<p>However, it is more common to use the related notion of <code>owl:InverseFunctionalProperty</code>. One can think of this construct to be the inverse of <code>owl:FunctionalProperty</code> as its name suggests. Especially identifying numbers are inverse functional properties. </p>
+<pre><code> myonto:hasInventoryNumber rdf:type owl:InverseFunctionalProperty .
+ myonto:ID3 myonto:hasInventoryNumber &quot;24.97.11&quot; .
+ otheronto:ID2435 myonto:hasInventoryNumber &quot;24.97.11&quot; .
+</code></pre>
+<p>From the above example follows that ID 3 in my data set is the same object as ID 2435 in another data set.</p>
+<p>It is sometimes useful for a single property to be an <code>owl:FunctionalProperty</code> <strong>and</strong> an <code>owl:InverseFunctionalProperty</code>. This means that it is a <em>one-to-one</em> property: for each individual 
+there is exactly one value for the property and the other way round. This feature is intended in the case of unique identifiers as in the following example: </p>
+<pre><code> myonto:hasID rdfs:domain myonto:Monument .
+ myonto:hasID rdfs:range xsd:Integer .
+ myonto:hasID rfd:type owl:FunctionalProperty .
+ myonto:hasID rfd:type owl:InverseFunctionalProperty .
+</code></pre>
+<p>This means that each member of class <code>Monument</code> possesses a unique identifier that is an integer number. Any two monuments that share an <code>ID</code> must be the same (due to inverse functionality) and in addition, each monument can have at most one ID (due to functionality).</p>
+<p><br></p>
+<h2 id="owlobjectproperty-and-owldatatypeproperty"><code>owl:ObjectProperty</code> and <code>owl:DatatypeProperty</code></h2>
+<p>The constructs <code>owl:sameAs</code>, <code>owl:FunctionalProperty</code> and <code>owl:InverseFunctionalProperty</code> especially help to describe how information from multiple sources can be merged. OWL can also provide useful information for editing tools if a value of some property may be either a link to another object or a widget for a particular data type. For this purpose OWL distinguishes between <code>owl:DatatypeProperty</code> and <code>owl:ObjectProperty</code>. <code>owl:DatatypeProperty</code> can have a data value as object, <code>owl:ObjectProperty</code> can have a resource as object. </p>
+<pre><code>myonto:inSameMuseum rdf:type owl:ObjectProperty.
+myonto:shipVoyage rdf:type owl:DatatypeProperty. 
+</code></pre>
+<p>The first example may be used to express that one archaeological object is kept in the same museum as another archaeological object while the second example may select those individuals who participated in a ship voyage such as e.g. the Argonauts.</p>
+<p><br></p>
+<h2 id="restrictions">Restrictions</h2>
+<p>The construct <code>owl:Restriction</code> allows to describe individuals of classes in terms of existing properties and classes that have already been modeled. The class of all things in OWL called <code>owl:Thing</code> is unrestricted. A restriction provides some description that limits the kinds of things that can be said about a member of the class. A restriction class in OWL is defined by the keyword <code>owl:onProperty</code>. A description of how the new class is constrained can be provided e.g. by <code>owl:allValuesFrom</code>, <code>owl:someValuesFrom</code> and <code>owl:hasValue</code>. The membership in a restriction class must satisfy the specified conditions as well as the <code>owl:onProperty</code> specification. </p>
+<p><br></p>
+<h3 id="property-constraints">Property constraints</h3>
+<p><code>owl:someValuesFrom</code> selects all individuals from a class for which at least one value of the property <code>P</code> comes from class <code>C</code>. In our example we can formulate such a restriction as:</p>
+<pre><code>[a owl:Restriction;
+   owl:onProperty myonto:isLocatedIn;
+   owl:someValuesFrom myonto:Museum]
+</code></pre>
+<p>All archaeological objects kept in a museum today thus have been defined as all archaeological objects for which at least one value of the property <code>isLocatedIn</code> comes from the class <code>Museum</code>. The [ ] notation refers to a blank node which is described by the properties listed here. This restriction class has no specific name associated with it - it is defined by the properties of the restriction and is hence called an <strong><em>unnamed class</em></strong>.</p>
+<p><br></p>
+<p><code>owl:allValuesFrom</code> selects all individuals from a class for which all values of the property <code>P</code> come from class <code>C</code>. In our example we can formulate such a restriction as:</p>
+<pre><code>[a owl:Restriction;
+   owl:onProperty myonto:hasProvenience;
+   owl:allValuesFrom myonto:Findspot]
+</code></pre>
+<p>This restriction selects all our archaeological objects for which the findspot is known.</p>
+<p>A noteworthy difference between <code>owl:someValuesFrom</code> and <code>owl:allValuesFrom</code> is that the former implies that there must be such a member, while the latter technically means <em>if there are any members, then they all must have this property</em> which doesn't imply that there are any members.</p>
+<p><br></p>
+<p><code>owl:hasValue</code> is used to produce a restriction of the form "all individuals that have the value <code>A</code> for the property <code>P</code>". We can formulate such a restriction as:</p>
+<pre><code>[ a owl:Restriction ;
+    owl:onProperty myonto:P ;
+    owl:hasValue myonto:A ] .
+</code></pre>
+<p>Let's assume we defined a property <code>myonto:hasImage</code> which helps to select archaeological objects for which we possess images. We can now state a restriction for those with high resolution images:</p>
+<pre><code>myonto:HighResolutionObject owl:equivalentClass
+ [ a owl:Restriction ;
+     owl:onProperty myonto:hasImage;
+     owl:hasValue myonto:hasHighresImage ] .
+</code></pre>
+<p>That we have such a high resolution image of a certain object we can formulate with the following triple:</p>
+<pre><code>myonto:ID3 myonto:hasImage myonto:hasHighresImage .
+</code></pre>
+<p>Then it is possible to deduce</p>
+<pre><code>myonto:ID3 a myonto:HighResolutionObject .
+</code></pre>
+<p><code>owl:hasValue</code> is just a special case of the <code>owl:someValuesFrom</code> restriction. Nevertheless, it is very useful because it effectively turns specific instance descriptions into class descriptions.</p>
+<p><br></p>
+<p>OWL provides a facility for defining new classes as unions (<code>owl:unionOf</code>) and intersections (<code>owl:intersectionOf</code>) of previously defined classes. The union of two or more classes includes the members of all those classes while the intersection includes only those that belong to every one of the classes. </p>
+<p><br></p>
+<p>OWL allows to enumerate the members of a class using the construct <code>owl:oneOf</code>. If I have a class <code>myonto:ObjectsSomeSmallMuseum</code> with the members "vase1", "vase2" and "relief1", then:</p>
+<pre><code>myonto:ObjectsSomeSmallMuseum rdf:type owl:Class;
+       owl:oneOf (myonto:vase1 myonto:vase2 myonto:relief1).
+</code></pre>
+<p>My class <code>myonto:ObjectsSomeSmallMuseum</code> is related via the property <code>owl:oneOf</code> to a list of the members of the class. However, <code>owl:oneOf</code> should be used only in situations in which the definition of the class is not likely to change at all or at least not frequently. One such case would e.g. be the number of planets in the solar system. In contrast, the above example may be appropriate for our own immediate needs, but not for a more general approach: although we include only three objects of this small museum in our data, the museum itself for sure owns many more. </p>
+<p><br></p>
+<p>Sometimes it may be useful to state that one thing is different from another thing. OWL provides <code>owl:differentFrom</code> for this. An example is the following:</p>
+<pre><code>myonto:Zenon owl:differentFrom otheronto:Zenon.
+</code></pre>
+<p>Two different ancient Greek philosophers with the name Zenon are known. The above triple states that the Zenon in our ontology (e.g. Zenon of Elea) is not the same Zenon as in another ontology (e.g. Zenon of Kition).</p>
+<p><br></p>
+<h3 id="cardinalities">Cardinalities</h3>
+<p>OWL also includes restrictions that refer to <strong><em>cardinalities</em></strong>, i.e. the number of values for a specific property. Cardinality restrictions can be used to define sets of particular interest. Cardinality refers to the number of <em>distinct</em> values a property has. The fact that we only know about two works attributed to Homer - the Iliad and the Odyssey - we may state by using <code>owl:cardinality</code>:</p>
+<pre><code>[a owl:Restriction;
+   owl:onProperty myonto:HomerWorks;
+   owl:cardinality 2]
+</code></pre>
+<p>Cardinality restrictions can also be used to specify upper and lower boundaries, the respective constructs are named <code>owl:maxCardinality</code> and <code>owl:minCardinality</code>. The restriction to cardinalities of 0 and 1 have special modeling utility:</p>
+<ul>
+<li><code>minCardinality 0</code> indicates a set of individuals for which some value for a specified property is optional</li>
+<li><code>minCardinality 1</code> indicates a set of individuals for which some value for a specified property is required</li>
+<li><code>maxCardinality 0</code> specifies that no value for the specified property is allowed</li>
+<li><code>maxCardinality 1</code> specifies that a value is unique (but need not exist)</li>
+</ul>
+<p><br></p>
+<h2 id="reasoning-with-individuals-and-classes">Reasoning with individuals and classes</h2>
+<p>From an RDF perspective inferences about individuals and inferences about classes are very similar: in both cases new triples are added to the model based on the asserted triples. However, from a modeling perspective, these two kinds of reasoning are very different. The former draws specific conclusions about individuals while the latter draws general conclusions about classes of individuals. In the case of reasoning about individuals the information specified in one source is transformed according to a model for use in another context with the help of constructs such as <code>rdfs:subClassOf</code>, <code>rdfs:subPropertyOf</code> and various <code>owl:Restriction</code>. Class reasoning determines how data are related in general with constructs such as <code>rdfs:subClassOf</code>, <code>rdfs:subPropertyOf</code>, <code>rdfs:domain</code> or <code>rdfs:range</code>. Once these more general relationships have been inferred, the processing of the data can be done much easier.</p>
+<p><br></p>
+<h2 id="composing-files">Composing files</h2>
+<p>OWL provides a built-in class <code>owl:Ontology</code>. The URI/IRI of an ontology usually corresponds to the URL of the file on the Web where the ontology is stored. The corresponding URI/IRI can be eclosed in angle brackets as follows:</p>
+<pre><code>&lt;http://www.knora.org/ontology/knora-base&gt; rdf:type owl:Ontology.
+</code></pre>
+<p>This can be useful when modularity of semantic models is specified. The most frequent way to specify modularity is with the property <code>owl:imports</code>. This property connects two instances of the class <code>owl:Ontology</code>.</p>
+<p><br></p>
+<h1 id="summary-of-constructs">Summary of constructs</h1>
+<ul>
+<li><code>rdfs:subClassOf</code> - the members of a subclass are also a member of a superclass</li>
+<li><code>rdfs:subPropertyOf</code> - relations described by a subproperty also hold for the superproperty</li>
+<li><code>rdfs:domain</code> - the subject of a triple is classified into the domain of the predicate</li>
+<li><code>rdfs:range</code> - the object of a triple is classified into the range of the predicate</li>
+<li><code>rdfs:label</code> - human-readable name of a resource, no semantics inferable</li>
+<li><code>rdfs:comment</code> - human-readable information of the model, no semantics inferable</li>
+<li><code>owl:equivalentClass</code> - the members of each class are also members of the other class</li>
+<li><code>owl:equivalentProperty</code> - relations that hold for each property also hold for the other property</li>
+<li><code>owl:sameAs</code> - all statements about one instance hold for the other instance</li>
+<li><code>owl:inverseOf</code> - exchanges subject and object</li>
+<li><code>owl:TransitiveProperty</code> - the chains of a relationship collapse into a single relationship</li>
+<li><code>owl:SymmetricProperty</code> - the property is its own inverse</li>
+<li><code>owl:FunctionalProperty</code> - only one value as object allowed</li>
+<li><code>owl:InverseFunctionalProperty</code> - only one value as subject allowed</li>
+<li><code>owl:ObjectProperty</code> - the property can have a resource as object</li>
+<li><code>owl:DatatypeProperty</code> - the property can have a data value as object</li>
+<li><code>owl:Restriction</code> - a building block in OWL that describes classes by restricting the values that are allowed for certain properties</li>
+<li><code>owl:hasValue</code> - a type of restriction that refers to a single value for a property</li>
+<li><code>owl:someValuesFrom</code> - a type of restriction that refers to a set from which some value for a property must come</li>
+<li><code>owl:allValuesFrom</code> -  a type of restriction that refers to a set from which all values for a property must come</li>
+<li><code>owl:onProperty</code> - a link from a restriction to the property it restricts.   </li>
+<li><code>owl:unionOf</code> - unites classes and creates a new class</li>
+<li><code>owl:intersectionOf</code> - determines the intersection of classes and creates a new class</li>
+<li><code>owl:complementOf</code> - determines the compliment of a class and creates a new class</li>
+<li><code>owl:oneOf</code> - specifies that a class consists just of the listed members</li>
+<li><code>owl:differentFrom</code> - specifies that one individual is not identical to another one</li>
+<li><code>owl:disjointWith</code> - specifies that two classes cannot share a member</li>
+<li><code>owl:cardinality</code> - specifies information about the number of distict values for some property</li>
+<li><code>owl:minCardinality</code> - specifies information about the minimum number of distinct values for a property</li>
+<li><code>owl:maxCardinality</code> - specifies information about the maximum number of distinct values for a property</li>
+<li><code>owl:imports</code> -  allows one ontology to refer explicitly to another ontology.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2021-06-10
+    
+  </small>
+</div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../sipi/" class="md-footer__link md-footer__link--next" aria-label="Next: Sipi" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Sipi
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.suggest", "search.highlight", "version"], "search": "../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+    
+  </body>
+</html>
