@@ -1,0 +1,4427 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/dasch-favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>Ontologies - DaSCH Service Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/style/theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+    <script src="https://cdn.usefathom.com/script.js" data-site="BWXVRNXV" data-include-domains="docs.dasch.swiss" defer></script> 
+
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ontologies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../.."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DaSCH Service Platform Documentation" class="md-header__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/dasch-icon-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DaSCH Service Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ontologies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DSP-APP/" class="md-tabs__link">
+        DSP APP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DSP-API/" class="md-tabs__link">
+        DSP API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        DSP Tools
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../developers/getting-started/" class="md-tabs__link">
+        Developers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../community/product-updates/" class="md-tabs__link">
+        Community
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DaSCH Service Platform Documentation" class="md-nav__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/dasch-icon-white.svg" alt="logo">
+
+    </a>
+    DaSCH Service Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          DSP APP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP APP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSP APP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/project/" class="md-nav__link">
+        Project Administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/system/" class="md-nav__link">
+        System Administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/data/" class="md-nav__link">
+        Data Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/user/" class="md-nav__link">
+        User Profile
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Contribution
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contribution" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Contribution
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/docs-documentation/" class="md-nav__link">
+        Docs Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/release-notes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSP API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Introduction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/what-is-knora/" class="md-nav__link">
+        What is DSP?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/data-formats/" class="md-nav__link">
+        Data Formats in DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/standoff-rdf/" class="md-nav__link">
+        Standoff/RDF Text Markup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/example-project/" class="md-nav__link">
+        An Example Project
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          DSP Ontologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Ontologies" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Ontologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/knora-base/" class="md-nav__link">
+        The Knora Base Ontology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-knora-ontologies/salsah-gui/" class="md-nav__link">
+        The SALSAH GUI Ontology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_1" type="checkbox" id="__nav_3_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_1">
+          The DSP APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="The DSP APIs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          The DSP APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/feature-toggles/" class="md-nav__link">
+        Feature Toggles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_2" type="checkbox" id="__nav_3_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_2">
+          API V1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V1" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          API V1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/xml-to-standoff-mapping/" class="md-nav__link">
+        XML to Standoff Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/adding-resources/" class="md-nav__link">
+        Adding Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/reading-values/" class="md-nav__link">
+        Reading Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/adding-values/" class="md-nav__link">
+        Adding Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/changing-values/" class="md-nav__link">
+        Changing Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v1/delete-resources-and-values/" class="md-nav__link">
+        Deleting Resources and Values
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3" type="checkbox" id="__nav_3_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_3">
+          API V2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V2" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          API V2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/knora-iris/" class="md-nav__link">
+        Knora IRIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/reading-user-permissions/" class="md-nav__link">
+        Reading the User's Permissions on Resources and Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/getting-lists/" class="md-nav__link">
+        Getting Lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/xml-to-standoff-mapping/" class="md-nav__link">
+        XML to Standoff Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/query-language/" class="md-nav__link">
+        Gravsearch - Virtual Graph Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/editing-resources/" class="md-nav__link">
+        Editing Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/editing-values/" class="md-nav__link">
+        Editing Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/ontology-information/" class="md-nav__link">
+        Querying, Creating, and Updating Ontologies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/tei-xml/" class="md-nav__link">
+        TEI/XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-v2/permalinks/" class="md-nav__link">
+        Permalinks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_4" type="checkbox" id="__nav_3_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_4">
+          Admin API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Admin API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Admin API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/users/" class="md-nav__link">
+        Users Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/projects/" class="md-nav__link">
+        Projects Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/groups/" class="md-nav__link">
+        Groups Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/lists/" class="md-nav__link">
+        Lists Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/permissions/" class="md-nav__link">
+        Permissions Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-admin/stores/" class="md-nav__link">
+        Stores Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5" type="checkbox" id="__nav_3_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_5">
+          Util API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Util API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Util API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-util/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-util/health/" class="md-nav__link">
+        Health
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-apis/api-util/version/" class="md-nav__link">
+        Version
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Publishing and Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Publishing and Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Publishing and Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/publishing/" class="md-nav__link">
+        Publishing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/getting-started/" class="md-nav__link">
+        Getting Started with DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/updates/" class="md-nav__link">
+        Updating Repositories when Upgrading DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          DSP Internals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Internals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Internals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Design" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_1" type="checkbox" id="__nav_3_6_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_1">
+          DSP-API Design Principles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API Design Principles" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API Design Principles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/design-overview/" class="md-nav__link">
+        Design Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/futures-with-akka/" class="md-nav__link">
+        Futures with Akka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/http-module/" class="md-nav__link">
+        HTTP Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/store-module/" class="md-nav__link">
+        Store Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/triplestore-updates/" class="md-nav__link">
+        Triplestore Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/consistency-checking/" class="md-nav__link">
+        Consistency Checking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/feature-toggles/" class="md-nav__link">
+        Feature Toggles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/rdf-api/" class="md-nav__link">
+        RDF Processing API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_2" type="checkbox" id="__nav_3_6_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_2">
+          API V1 Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V1 Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          API V1 Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v1/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v1/how-to-add-a-route/" class="md-nav__link">
+        How to Add an API v1 Route
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v1/json/" class="md-nav__link">
+        JSON in API v1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_3" type="checkbox" id="__nav_3_6_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_3">
+          API V2 Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API V2 Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          API V2 Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/overview/" class="md-nav__link">
+        API v2 Design Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ontology-schemas/" class="md-nav__link">
+        Ontology Schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/smart-iris/" class="md-nav__link">
+        Smart IRIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/content-wrappers/" class="md-nav__link">
+        Content Wrappers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/how-to-add-a-route/" class="md-nav__link">
+        How to Add an API v2 Route
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/json-ld/" class="md-nav__link">
+        JSON-LD Parsing and Formatting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ontology-management/" class="md-nav__link">
+        Ontology Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/sipi/" class="md-nav__link">
+        DSP-API and Sipi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/gravsearch/" class="md-nav__link">
+        Gravsearch Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/standoff/" class="md-nav__link">
+        Standoff Markup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ark/" class="md-nav__link">
+        Archival Resource Key (ARK) Identifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/query-design/" class="md-nav__link">
+        SPARQL Query Design
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1_4" type="checkbox" id="__nav_3_6_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1_4">
+          Admin API Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Admin API Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_6_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Admin API Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-admin/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-admin/administration/" class="md-nav__link">
+        Administration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/building-and-running/" class="md-nav__link">
+        Build and Running
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/intellij-config/" class="md-nav__link">
+        Setup IntelliJ for development of DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/bazel/" class="md-nav__link">
+        Bazel Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/docker-cheat-sheet/" class="md-nav__link">
+        Docker Cheat Sheet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/monitoring/" class="md-nav__link">
+        Monitoring DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/profiling/" class="md-nav__link">
+        Profiling DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/docker-compose/" class="md-nav__link">
+        Starting the DSP-Stack inside Docker Container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/updating-repositories/" class="md-nav__link">
+        Updating Repositories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/generating-client-test-data/" class="md-nav__link">
+        Generating Client Test Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/graphdb/" class="md-nav__link">
+        Starting GraphDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/third-party/" class="md-nav__link">
+        Third-Party Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          SIPI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SIPI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          SIPI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-sipi/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-sipi/setup-sipi-for-knora/" class="md-nav__link">
+        Setting Up Sipi for DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-sipi/sipi-and-knora/" class="md-nav__link">
+        Interaction between Sipi and DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8">
+          Lucene
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Lucene" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Lucene
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/08-lucene/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/08-lucene/lucene-query-parser-syntax/" class="md-nav__link">
+        Lucene Query Parser Syntax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/faq/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/00-release-notes/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          DSP Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsp-tools-usage/" class="md-nav__link">
+        Installation and usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          JSON data model format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JSON data model format" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          JSON data model format
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsp-tools-create/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ontologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ontologies
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ontologies-object-in-detail" class="md-nav__link">
+    Ontologies Object in Detail
+  </a>
+  
+    <nav class="md-nav" aria-label="Ontologies Object in Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    Label
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-object-in-detail" class="md-nav__link">
+    Properties Object in Detail
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties Object in Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name_1" class="md-nav__link">
+    Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    Labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subject" class="md-nav__link">
+    Subject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-gui_element-gui_attributes" class="md-nav__link">
+    Object / gui_element / gui_attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Object / gui_element / gui_attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#textvalue" class="md-nav__link">
+    TextValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colorvalue" class="md-nav__link">
+    ColorValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datevalue" class="md-nav__link">
+    DateValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timevalue" class="md-nav__link">
+    TimeValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimalvalue" class="md-nav__link">
+    DecimalValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geomvalue" class="md-nav__link">
+    GeomValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geonamevalue" class="md-nav__link">
+    GeonameValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intvalue" class="md-nav__link">
+    IntValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleanvalue" class="md-nav__link">
+    BooleanValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urivalue" class="md-nav__link">
+    UriValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intervalvalue" class="md-nav__link">
+    IntervalValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listvalue" class="md-nav__link">
+    ListValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkvalue" class="md-nav__link">
+    LinkValue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    Super
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-object-in-detail" class="md-nav__link">
+    Resources Object in Detail
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources Object in Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name_2" class="md-nav__link">
+    Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels_1" class="md-nav__link">
+    Labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super_1" class="md-nav__link">
+    Super
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalities" class="md-nav__link">
+    Cardinalities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencing-ontologies" class="md-nav__link">
+    Referencing Ontologies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsp-tools-xmlupload/" class="md-nav__link">
+        Bulk data import
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsp-tools-excel/" class="md-nav__link">
+        Excel file processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsp-tools-information-for-developers/" class="md-nav__link">
+        Information for developers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/rdf/" class="md-nav__link">
+        RDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/sipi/" class="md-nav__link">
+        Sipi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/libraries/" class="md-nav__link">
+        Libraries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/dsp/contribution/" class="md-nav__link">
+        Contribution
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/product-updates/" class="md-nav__link">
+        Product Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/about-us/" class="md-nav__link">
+        About us
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ontologies-object-in-detail" class="md-nav__link">
+    Ontologies Object in Detail
+  </a>
+  
+    <nav class="md-nav" aria-label="Ontologies Object in Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    Label
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-object-in-detail" class="md-nav__link">
+    Properties Object in Detail
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties Object in Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name_1" class="md-nav__link">
+    Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    Labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subject" class="md-nav__link">
+    Subject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-gui_element-gui_attributes" class="md-nav__link">
+    Object / gui_element / gui_attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Object / gui_element / gui_attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#textvalue" class="md-nav__link">
+    TextValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colorvalue" class="md-nav__link">
+    ColorValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datevalue" class="md-nav__link">
+    DateValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timevalue" class="md-nav__link">
+    TimeValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimalvalue" class="md-nav__link">
+    DecimalValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geomvalue" class="md-nav__link">
+    GeomValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geonamevalue" class="md-nav__link">
+    GeonameValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intvalue" class="md-nav__link">
+    IntValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booleanvalue" class="md-nav__link">
+    BooleanValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urivalue" class="md-nav__link">
+    UriValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intervalvalue" class="md-nav__link">
+    IntervalValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listvalue" class="md-nav__link">
+    ListValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkvalue" class="md-nav__link">
+    LinkValue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    Super
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-object-in-detail" class="md-nav__link">
+    Resources Object in Detail
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources Object in Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name_2" class="md-nav__link">
+    Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels_1" class="md-nav__link">
+    Labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super_1" class="md-nav__link">
+    Super
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalities" class="md-nav__link">
+    Cardinalities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencing-ontologies" class="md-nav__link">
+    Referencing Ontologies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="ontologies">Ontologies</h1>
+<p>An ontology is a formal representation of a set of terminologies which finally represent real world objects.
+Dependencies, attributes and relations of and between the individual components of the set are recorded in a logical,
+formal language. In contrast to a taxonomy, which defines a mere hierarchical structure within a range of terms, an
+ontology is much more a network of information of logical dependencies of term elements. Or, in other words, an ontology
+defines a strict, formal "data model" for real world <em>concepts</em> such as "Person", "Work", "Artist" etc.</p>
+<p>A full-fledged ontology thus has to offer at least <em>two</em> things: a set of <em>concepts</em> or terms (called <em>resources</em>,
+actually "resource classes") that represent <em>concepts</em> of real world objects, as well as attributes or <em>properties</em>
+describing these resources. These properties are linked either to a final value or may define a relationship to another
+resource. Let's assume that we define a resource called "Person" and two properties called "hasBirthday" and "hasParent"
+. For a specific incarnation of a
+"Person" (we call this an <em>instance</em>), "hasBirthday" will have a final value such as "1960-05-21", whereas
+"hasParent" will link to another instance of a "Person".</p>
+<p>Within DSP, properties may be re-used for different resources. E.g. a property "description" may be used for a resource
+called "image" as well as "movie". Therefore, the list of properties is separated from the list of resources. The
+properties are assigned to the resources by defining "<em>cardinalities</em>". A cardinality indicates if a property is
+mandatory or can be omitted (e.g. if unknown), and if a property may be used several times on the same instance of a
+resource or not. The cardinality definitions are explained <a href="#cardinalities">further below</a>.</p>
+<p>Example of an <code>ontologies</code> object:</p>
+<pre><code class="language-json">{
+  &quot;ontologies&quot;: [
+    {
+      &quot;name&quot;: &quot;seworon&quot;,
+      &quot;label&quot;: &quot;Secrets of the World Ontology&quot;,
+      &quot;properties&quot;: [
+        ...
+      ],
+      &quot;resources&quot;: [
+        ...
+      ]
+    },
+    {
+      ...
+    },
+    {
+      ...
+    }
+  ]
+}
+</code></pre>
+<h2 id="ontologies-object-in-detail">Ontologies Object in Detail</h2>
+<p>The following properties can occur within each object in <code>ontologies</code>.</p>
+<h3 id="name">Name</h3>
+<p>(required)</p>
+<p><code>"name": "&lt;string&gt;"</code></p>
+<p>The ontology's (short) name should be in the form of a <a href="https://www.w3.org/TR/xmlschema11-2/#NCName">xsd:NCNAME</a>. This
+means a string without blanks or special characters but <code>-</code> and <code>_</code> are allowed (although not as first character).</p>
+<h3 id="label">Label</h3>
+<p>(required)</p>
+<p><code>"label": "&lt;string&gt;"</code></p>
+<p>A string that provides the full name of the ontology.</p>
+<h3 id="properties">Properties</h3>
+<p>(required)</p>
+<p><code>"properties": [&lt;property-definition&gt;, &lt;property-definition&gt;, ...]</code></p>
+<p>A <code>properties</code> array contains all properties used to describe resources in the ontology. A property has to be of a
+certain data type. It is not possible to create a custom data type.</p>
+<p>The following fields are mandatory:</p>
+<ul>
+<li><code>name</code></li>
+<li><code>labels</code></li>
+<li><code>object</code></li>
+<li><code>gui_element</code></li>
+</ul>
+<p>The following fields are optional:</p>
+<ul>
+<li><code>subject</code></li>
+</ul>
+<p>A detailed description of <code>properties</code> can be found <a href="#properties-object-in-detail">below</a>.</p>
+<h3 id="resources">Resources</h3>
+<p>(required)</p>
+<p>The resource classes are the primary entities of the data model. They are the actual objects inside a terminology space.
+A resource class can be seen as a template for the representation of a real object that is represented in the DSP. A
+resource class defines properties (<em>data fields</em>). For each of these properties a data type as well as the cardinality
+has to be provided.</p>
+<p><code>"resources": [&lt;resource-definition&gt;, &lt;resource-definition&gt;, ...]</code></p>
+<p>A resource object needs to have the following fields:</p>
+<ul>
+<li><code>name</code></li>
+<li><code>labels</code></li>
+<li><code>super</code></li>
+<li><code>cardinalities</code></li>
+</ul>
+<p>The following field is optional:</p>
+<ul>
+<li><code>comments</code></li>
+</ul>
+<p>A detailed description of <code>resources</code> can be found <a href="#properties-object-in-detail">below</a>.</p>
+<h2 id="properties-object-in-detail">Properties Object in Detail</h2>
+<p>Please note that <code>object</code> is used to define the data type. The <code>gui_element</code> depends on the value of the <code>object</code>.</p>
+<p>The <code>gui_attributes</code> depends on the value of the <code>gui_element</code>.</p>
+<h3 id="name_1">Name</h3>
+<p>(required)</p>
+<p><code>"name": "&lt;string&gt;"</code></p>
+<p>A name for the property, e.g. "pageOf", "hasBirthdate", "createdBy". It should be in the form of
+a <a href="https://www.w3.org/TR/xmlschema11-2/#NCName">xsd:NCNAME</a>. This means a string without blanks or special characters
+but <code>-</code> and <code>_</code> are allowed (although not as first character).</p>
+<p>By convention, property names start with a lower case letter.</p>
+<h3 id="labels">Labels</h3>
+<p>(required)</p>
+<p><code>"labels": {"&lt;language&gt;": "&lt;string&gt;", ...}</code></p>
+<p>Collection of <code>labels</code> for the property as strings with language tag (currently "en", "de", "fr"
+and "it" are supported).</p>
+<h3 id="subject">Subject</h3>
+<p>(optional)</p>
+<p><code>"subject": "&lt;resource-class&gt;"</code></p>
+<p>The <code>subject</code> defines the resource class the property can be used on. It has to be provided as prefixed name of the 
+resource class (see <a href="#referencing-ontologies">below</a> on how prefixed names are used).</p>
+<h3 id="object-gui_element-gui_attributes">Object / gui_element / gui_attributes</h3>
+<ul>
+<li><code>object</code>: required</li>
+<li><code>gui_element</code>: required</li>
+<li><code>gui_attributes</code>: optional</li>
+</ul>
+<p><code>"object": "&lt;data-type&gt;"</code></p>
+<p>The <code>object</code> defines the data type of the value that the property will store. <code>gui_element</code> and <code>gui_attributes</code> depend on the data type. The following data types are allowed:</p>
+<ul>
+<li><code>TextValue</code></li>
+<li><code>ColorValue</code></li>
+<li><code>DateValue</code></li>
+<li><code>TimeValue</code></li>
+<li><code>DecimalValue</code></li>
+<li><code>GeomValue</code></li>
+<li><code>GeonameValue</code></li>
+<li><code>IntValue</code></li>
+<li><code>BooleanValue</code></li>
+<li><code>UriValue</code></li>
+<li><code>IntervalValue</code></li>
+<li><code>ListValue</code></li>
+<li><code>LinkValue</code></li>
+</ul>
+<h4 id="textvalue">TextValue</h4>
+<p><code>"object": "TextValue"</code></p>
+<p>Represents a text that may contain standoff markup.</p>
+<p><em>gui_elements / gui_attributes</em>:</p>
+<ul>
+<li><code>SimpleText</code>: A GUI element for <em>TextValue</em>. A simple text entry box (one line only). The attributes are:<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>maxlength=integer</code> (optional): maximal length (number of characters accepted)</li>
+<li><code>size=integer</code> (optional): size (width) of widget</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Textarea</code>: A GUI element for <em>TextValue</em>. Presents a multiline text entry box. The optional attributes are:<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>cols=integer</code> (optional): number of columns of the textarea</li>
+<li><code>rows=integer</code> (optional): number of rows of the textarea</li>
+<li><code>width=percent</code> (optional): width of the textarea on screen</li>
+<li><code>wrap=soft|hard</code> (optional): wrapping of text</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Richtext</code>: A GUI element for <em>TextValue</em>. Provides a richtext editor.<ul>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasPictureTitle&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;TextValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Title&quot;
+  },
+  &quot;gui_element&quot;: &quot;SimpleText&quot;,
+  &quot;gui_attributes&quot;: {
+    &quot;maxlength&quot;: 255,
+    &quot;size&quot;: 80
+  }
+}
+</code></pre>
+<h4 id="colorvalue">ColorValue</h4>
+<p><code>"object": "ColorValue"</code></p>
+<p>A string representation of the color in the hexadecimal form e.g. "#ff8000".</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Colorpicker</code>: The only GUI element for <em>ColorValue</em>. It's used to choose a color.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>ncolors=integer</code> (optional): Number of colors the color picker should present.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasColor&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;ColorValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Color&quot;
+  },
+  &quot;gui_element&quot;: &quot;Colorpicker&quot;
+}
+</code></pre>
+<h4 id="datevalue">DateValue</h4>
+<p><code>object": "DateValue"</code><br />
+Represents a date. It's a string with the format <code>calendar:start:end</code></p>
+<p>Please note that the DateValue is an extremely flexible data type. It can represent an exact date or a date with a given
+uncertainty, and the date can be given in several calendars (currently the Gregorian and the Julian calendars are
+supported, with the Jewish and Islamic coming soon). Internally, a date is always represented as a start and end date.
+If start and end date match, it's an exact date. A value like "1893" will automatically be expanded to a range from
+January 1st 1893 to December 31st 1893.</p>
+<ul>
+<li><em>calendar</em> is either <em>GREGORIAN</em> or <em>JULIAN</em></li>
+<li><em>start</em> has the form <em>yyyy</em>-<em>mm</em>-<em>dd</em>. If only the year is given, the precision is to the year. If only the year and
+  month is given, the precision is to the month.</li>
+<li><em>end</em> is optional if the date represents a clearly defined period or uncertainty.</li>
+</ul>
+<p>In total, a DateValue has the following form: "GREGORIAN:1925:1927-03-22"
+which means anytime in between 1925 and the 22nd March 1927.</p>
+<p><em>gui_elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Date</code>: The only GUI element for <em>DateValue</em>. A date picker gui.</li>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasDate&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;DateValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Date&quot;
+  },
+  &quot;gui_element&quot;: &quot;Date&quot;
+}
+</code></pre>
+<h4 id="timevalue">TimeValue</h4>
+<p><code>"object": "TimeValue"</code></p>
+<p>A time value represents a precise moment in time in the Gregorian calendar. Since nanosecond precision can be included, it is suitable for use as a timestamp.</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>TimeStamp</code>: A GUI element for <em>TimeValue</em> which contains a date picker and a time picker.</li>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasTime&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;TimeValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Time&quot;
+  },
+  &quot;gui_element&quot;: &quot;TimeStamp&quot;
+}
+</code></pre>
+<h4 id="decimalvalue">DecimalValue</h4>
+<p><code>"object": "DecimalValue"</code></p>
+<p>A number with decimal point.</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Slider</code>: A GUI element for <em>DecimalValue</em>. Provides a slider to select a decimal value.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>max=decimal</code> (mandatory): maximal value</li>
+<li><code>min=decimal</code> (mandatory): minimal value</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>SimpleText</code>: A GUI element for <em>TextValue</em>. A simple text entry box (one line only). The attributes
+  "maxlength=integer" and "size=integer" are optional.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>maxlength=integer</code> (optional): maximum number of characters accepted</li>
+<li><code>size=integer</code> (optional): size of the input field</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasDecimal&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;DecimalValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Decimal number&quot;
+  },
+  &quot;gui_element&quot;: &quot;SimpleText&quot;,
+  &quot;gui_attributes&quot;: {
+    &quot;maxlength&quot;: 255,
+    &quot;size&quot;: 80
+  }
+}
+</code></pre>
+<h4 id="geomvalue">GeomValue</h4>
+<p><code>"object": "GeomValue"</code></p>
+<p>Represents a geometrical shape as JSON. Geometrical shapes are used to define regions of interest (ROI) on still images
+or moving images.</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Geometry</code>: not yet implemented.<ul>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+</li>
+<li><code>SimpleText</code>: A GUI element for <em>TextValue</em>. A simple text entry box (one line only). The attributes
+  "maxlength=integer" and "size=integer" are optional.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>maxlength=integer</code> (optional): The maximum number of characters accepted</li>
+<li><code>size=integer</code> (optional): The size of the input field</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example</em>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasGeometry&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;GeomValue&quot;,
+  &quot;labels&quot;: &quot;Geometry&quot;,
+  &quot;gui_element&quot;: &quot;SimpleText&quot;
+}
+</code></pre>
+<h4 id="geonamevalue">GeonameValue</h4>
+<p>Represents a location ID in geonames.org. The DSP platform uses identifiers provided by
+<a href="https://geonames.orgs">geonames.org</a> to identify geographical locations.</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Geonames</code>: The only valid GUI element for <em>GeonameValue</em>. It interfaces are with geonames.org and it allows to select
+  a location.<ul>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasGeoname&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;GeonameValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Geoname&quot;
+  },
+  &quot;gui_element&quot;: &quot;Geonames&quot;
+}
+</code></pre>
+<h4 id="intvalue">IntValue</h4>
+<p><code>"object": "IntValue"</code></p>
+<p>Represents an integer value.</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>SimpleText</code>: A GUI element for <em>TextValue</em>. A simple text entry box (one line only). The attributes
+  "maxlength=integer" and "size=integer" are optional.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>maxlength=integer</code> (optional): The maximum number of characters accepted</li>
+<li><code>size=integer</code> (optional): The size of the input field</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Spinbox</code>: A GUI element for <em>IntegerValue</em>. A text field with and "up"- and "down"-button for increment/decrement.
+  The attributes "max=decimal" and "min=decimal" are optional.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>max=decimal</code> (optional): Maximal value</li>
+<li><code>min=decimal</code> (optional): Minimal value</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasInteger&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;IntValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Integer&quot;
+  },
+  &quot;gui_element&quot;: &quot;Spinbox&quot;,
+  &quot;gui_attributes&quot;: {
+    &quot;max&quot;: 10.0,
+    &quot;min&quot;: 0.0
+  }
+}
+</code></pre>
+<h4 id="booleanvalue">BooleanValue</h4>
+<p><code>"object": "BooleanValue"</code></p>
+<p>Represents a Boolean ("true" or "false).</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Checkbox</code>: A GUI element for <em>BooleanValue</em>.<ul>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasBoolean&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;BooleanValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Boolean value&quot;
+  },
+  &quot;gui_element&quot;: &quot;Checkbox&quot;
+}
+</code></pre>
+<h4 id="urivalue">UriValue</h4>
+<p><code>"object": "UriValue"</code></p>
+<p>Represents an URI</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>SimpleText</code>: A GUI element for <em>TextValue</em>. A simple text entry box (one line only). The attributes
+  "maxlength=integer" and "size=integer" are optional.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>maxlength=integer</code> (optional): The maximum number of characters accepted</li>
+<li><code>size=integer</code> (optional): The size of the input field</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasUri&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;UriValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;URI&quot;
+  },
+  &quot;gui_element&quot;: &quot;SimpleText&quot;,
+  &quot;gui_attributes&quot;: {
+    &quot;maxlength&quot;: 255,
+    &quot;size&quot;: 80
+  }
+}
+</code></pre>
+<h4 id="intervalvalue">IntervalValue</h4>
+<p><code>"object": "IntervalValue"</code></p>
+<p>Represents a time-interval</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>SimpleText</code>: A GUI element for <em>TextValue</em>. A simple text entry box (one line only). The attributes
+  "maxlength=integer" and "size=integer" are optional.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>maxlength=integer</code> (optional): The maximum number of characters accepted</li>
+<li><code>size=integer</code> (optional): The size of the input field</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Interval</code>: not yet implemented.<ul>
+<li><em>gui_attributes</em>: No attributes</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasInterval&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;IntervalValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;Time interval&quot;
+  },
+  &quot;gui_element&quot;: &quot;Interval&quot;
+}
+</code></pre>
+<h4 id="listvalue">ListValue</h4>
+<p><code>"object": "ListValue"</code></p>
+<p>Represents a node of a (possibly hierarchical) list</p>
+<p><em>gui-elements / gui_attributes</em>:</p>
+<ul>
+<li><code>Radio</code>: A GUI element for <em>ListValue</em>. A set of radio buttons. This works only with flat lists.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>hlist=&lt;list-name&gt;</code> (required): The reference of a <a href="#lists">list</a> root node</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>List</code>: A GUI element for <em>ListValue</em>. A list of values to select one from. This GUI element should be chosen for
+  hierarchical lists or flat lists that could be expanded to hierarchical lists in the future.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>hlist=&lt;list-name&gt;</code> (required): The reference of a <a href="#lists">list</a> root node</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasListItem&quot;,
+  &quot;super&quot;: [
+    &quot;hasValue&quot;
+  ],
+  &quot;object&quot;: &quot;ListValue&quot;,
+  &quot;labels&quot;: {
+    &quot;en&quot;: &quot;List element&quot;
+  },
+  &quot;gui_element&quot;: &quot;List&quot;,
+  &quot;gui_attributes&quot;: {
+    &quot;hlist&quot;: &quot;treelistroot&quot;
+  }
+}
+</code></pre>
+<h4 id="linkvalue">LinkValue</h4>
+<p><code>"object": ":&lt;resource-name&gt;"</code></p>
+<p>LinkValues do not follow the pattern of the previous data types, because they do not connect to a final value but to
+another resource which has to be defined. Thus, the "object" denominates the resource class the link will point to. If
+the resource is defined in the same ontology, the name has to be prepended by a ":", if the resource is defined in
+another (previously defined)
+ontology, the ontology name has to be prepended separated by a colon ":", e.g.
+"other-onto:MyResource". The "super"-element has to be "hasLinkTo" or at least derived from "hasLinkTo" (how to derive a
+resource or property from another one is not part of this documentation).</p>
+<p><em>gui-elements/gui_attributes</em>:</p>
+<ul>
+<li><code>Searchbox</code>: Has to be used with <em>hasLinkTo</em> property. Allows searching resources by entering a resource that the given resource
+  should link to. It has one gui_attribute that indicates how many properties of the found resources should be
+  indicated. This is mandatory.<ul>
+<li><em>gui_attributes</em>:<ul>
+<li><code>numprops=integer</code> (optional): While dynamically displaying the search result, the number of properties that
+  should be displayed.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hasOtherThing&quot;,
+  &quot;super&quot;: [
+    &quot;hasLinkTo&quot;
+  ],
+  &quot;object&quot;: &quot;:Thing&quot;,
+  &quot;labels&quot;: &quot;Another thing&quot;,
+  &quot;gui_element&quot;: &quot;Searchbox&quot;
+}
+</code></pre>
+<p>Like already mentioned before: The following two fields are optional (can be omitted), with the notable exception of
+the "super"
+clause in case of LinkValues where the super clause is mandatory:</p>
+<h3 id="super">Super</h3>
+<p><code>"super": ["&lt;super-property&gt;", "&lt;super-property&gt;, ...]</code></p>
+<p>A property has to be derived from at least one base property. The most generic base property that the DSP offers is
+<em>hasValue</em>. In addition, the property may be a sub-property of properties defined in external or other ontologies.
+External ontologies like <code>dcterms</code> or <code>foaf</code> must be defined in the "prefix" section.</p>
+<p>In this case the qualified name - including the prefix of the external or internal ontology - has to be given.</p>
+<p>The following base properties are defined by DSP:</p>
+<ul>
+<li><code>hasValue</code>: This is the most generic base.</li>
+<li><code>hasLinkTo</code>: This value represents a link to another resource. You have to indicate the "<em>object</em>" as a prefixed name
+  that identifies the resource class this link points to (a ":" prepended to the name is sufficient if the resource is
+  defined in the current ontology).</li>
+<li><code>hasColor</code>: Defines a color value (<em>ColorValue</em>)</li>
+<li><code>hasComment</code>: Defines a "standard" comment</li>
+<li><code>hasGeometry</code>: Defines a geometry value (a JSON describing a polygon, circle or rectangle), see <em>ColorValue</em></li>
+<li><code>isPartOf</code>: A special variant of <em>hasLinkTo</em>. It says that an instance of the given resource class is an integral part
+  of another resource class. E.g. a "page" is part of a "book".</li>
+<li><code>isRegionOf</code>: A special variant of <em>hasLinkTo</em>. It means that the given resource class is a "region" of another
+  resource class. This is typically used to describe regions of interest in images.</li>
+<li><code>isAnnotationOf</code>: A special variant of <em>hasLinkTo</em>. It denotes the given resource class as an annotation to another
+  resource class.</li>
+<li><code>seqnum</code>: An integer that is used to define a sequence number in an ordered set of instances, e.g. the ordering of the
+  pages in a book (independent of the page naming)</li>
+</ul>
+<p>Example of a <code>properties</code> object:</p>
+<pre><code class="language-json">{
+  &quot;properties&quot;: [
+    {
+      &quot;name&quot;: &quot;id&quot;,
+      &quot;subject&quot;: &quot;:School&quot;,
+      &quot;object&quot;: &quot;TextValue&quot;,
+      &quot;super&quot;: [
+          &quot;hasValue&quot;
+      ],
+      &quot;labels&quot;: {
+        &quot;en&quot;: &quot;School ID&quot;,
+        &quot;de&quot;: &quot;ID der Schule&quot;
+        &quot;fr&quot;: &quot;ID de l'école&quot;
+      },
+      &quot;gui_element&quot;: &quot;SimpleText&quot;,
+      &quot;gui_attributes&quot;: {
+        &quot;size&quot;: 32,
+        &quot;maxlength&quot;: 128
+      }
+    },
+    {
+      &quot;name&quot;: &quot;name&quot;,
+      &quot;subject&quot;: &quot;:School&quot;,
+      &quot;object&quot;: &quot;TextValue&quot;,
+      &quot;super&quot;: [
+          &quot;hasValue&quot;
+      ],
+      &quot;labels&quot;: {
+        &quot;en&quot;: &quot;Name of the school&quot;,
+        &quot;de&quot;: &quot;Name der Schule&quot;,
+        &quot;fr&quot;: &quot;Nom de l'école&quot;
+      },
+      &quot;gui_element&quot;: &quot;SimpleText&quot;,
+      &quot;gui_attributes&quot;: {
+        &quot;size&quot;: 32,
+        &quot;maxlength&quot;: 128
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="resources-object-in-detail">Resources Object in Detail</h2>
+<h3 id="name_2">Name</h3>
+<p>(required)</p>
+<p><code>"name": "&lt;string&gt;"</code></p>
+<p>A name for the resource, e.g. "Book", "Manuscript", "Person". It should be in the form of
+a <a href="https://www.w3.org/TR/xmlschema11-2/#NCName">xsd:NCNAME</a>. This means a string without blanks or special characters
+but <code>-</code> and <code>_</code> are allowed (although not as first character).</p>
+<p>By convention, resource names start with a upper case letter.</p>
+<h3 id="labels_1">Labels</h3>
+<p>(required)</p>
+<p><code>"labels": {"&lt;language&gt;": "&lt;string&gt;", ...}</code></p>
+<p>Collection of <code>labels</code> for the resource as strings with language tag (currently "en", "de", "fr"
+and "it" are supported).</p>
+<h3 id="super_1">Super</h3>
+<p>(required)</p>
+<p><code>"super": ["&lt;super-resource&gt;", "&lt;super-resource&gt;", ...]</code></p>
+<p>A resource is always derived from at least one other resource. The most generic resource class for DSP is <code>Resource</code>. A resource may be derived from resources defined in external ontologies.</p>
+<p>The following predefined resources are provided by DSP:</p>
+<ul>
+<li><code>Resource</code>: A generic resource that represents an item from the real world</li>
+<li><code>StillImageRepresentation</code>: An object that is connected to a still image</li>
+<li><code>TextRepresentation</code>: An object that is connected to an (external) text (not yet implemented)</li>
+<li><code>AudioRepresentation</code>: An object representing audio data (not yet implemented)</li>
+<li><code>DDDRepresentation</code>: An object representing a 3-D representation (not yet implemented)</li>
+<li><code>DocumentRepresentation</code>: An object representing an opaque document (e.g. a PDF)</li>
+<li><code>MovingImageRepresentation</code>: An object representing a moving image (video, film)</li>
+<li><code>ArchiveRepresentation</code>: An object representing a archive file (e.g. Zip)</li>
+<li><code>Annotation</code>: A predefined annotation object. It has automatically the following predefined properties defined:<ul>
+<li><code>hasComment</code> (1-n)</li>
+<li><code>isAnnotationOf</code> (1)</li>
+</ul>
+</li>
+<li><code>LinkObj</code>: A resource class linking together several other, generic, resource classes. The class has the following
+  properties:<ul>
+<li><code>hasComment</code> (1-n)</li>
+<li><code>hasLinkTo</code> (1-n)</li>
+</ul>
+</li>
+<li><code>Region</code>: Represents a simple region. The class has the following properties:<ul>
+<li><code>hasColor</code> (1)</li>
+<li><code>isRegionOf</code> (1)</li>
+<li><code>hasGeometry</code> (1)</li>
+<li><code>hasComment</code> (0-n)</li>
+</ul>
+</li>
+</ul>
+<p>Additionally, resources can be derived from external ontologies or from resources specified in the present document.</p>
+<h3 id="cardinalities">Cardinalities</h3>
+<p>(required)</p>
+<p><code>"cardinalities": [...]</code></p>
+<p>An array that contains information about the relation between resources and properties. It tells what properties a
+resource can have as well as how many times the relation is established.</p>
+<ul>
+<li><code>cardinalities</code>: Array of references to the properties that the resource may hold including the cardinality. A
+  cardinality has the following properties:<ul>
+<li><code>propname</code> (1): The name of the property. If it's used in the form <code>:my_propname</code>, the current ontology is referenced.
+  Otherwise, the prefix of the ontology the property is part of has to be used.</li>
+<li><code>gui_order</code> (0-1): An integer number which will help the GUI to display the properties in the desired order (optional)</li>
+<li><code>cardinality</code> (1): Indicates how often a given property may occur. The possible values are:<ul>
+<li><code>"1"</code>: exactly once (mandatory one value and only one)</li>
+<li><code>"0-1"</code>: The value may be omitted, but can occur only once.</li>
+<li><code>"1-n"</code>: At least one value must be present, but multiple values may be present.</li>
+<li><code>"0-n"</code>: The value may be omitted, but may also occur multiple times.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="comments">Comments</h3>
+<p>(optional)</p>
+<p><code>"comments": { "&lt;lang&gt;": "&lt;comment&gt;", "&lt;lang&gt;": "&lt;comment&gt;", ... }</code></p>
+<p>Comments with language tags. The <code>comments</code> element is optional. Currently, "de", "en", "fr" and "it" are supported.</p>
+<p>Example for a resource definition:</p>
+<pre><code class="language-json">{
+  &quot;resources&quot;: [
+    {
+      &quot;name&quot;: &quot;Schule&quot;,
+      &quot;labels&quot;: {
+        &quot;de&quot;: &quot;Schule&quot;,
+        &quot;en&quot;: &quot;School&quot;,
+        &quot;fr&quot;: &quot;Ecole&quot;,
+        &quot;it&quot;: &quot;Scuola&quot;
+      },
+      &quot;super&quot;: &quot;Resource&quot;,
+      &quot;comments&quot;: {
+        &quot;de&quot;: &quot;Ein Kommentar&quot;,
+        &quot;en&quot;: &quot;A comment&quot;,
+        &quot;fr&quot;: &quot;Une commentaire&quot;,
+        &quot;it&quot;: &quot;Un commento&quot;
+      },
+      &quot;cardinalities&quot;: [
+        {
+          &quot;propname&quot;: &quot;:schulcode&quot;,
+          &quot;gui_order&quot;: 1,
+          &quot;cardinality&quot;: &quot;1&quot;
+        },
+        {
+          &quot;propname&quot;: &quot;:schulname&quot;,
+          &quot;gui_order&quot;: 2,
+          &quot;cardinality&quot;: &quot;1&quot;
+        },
+        {
+          &quot;propname&quot;: &quot;:bildungsgang&quot;,
+          &quot;gui_order&quot;: 3,
+          &quot;cardinality&quot;: &quot;1&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="referencing-ontologies">Referencing Ontologies</h2>
+<p>For several fields, such as <code>super</code> in both <code>resources</code> and <code>properties</code> or <code>propname</code> in <code>cardinalities</code>,
+it is necessary to reference entities that are defined elsewhere. The following cases are possible.</p>
+<ul>
+<li>DSP-API internals: These must be written <em>without</em> leading colon and should not be a fully qualified IRI.<br />
+  E.g. <code>Resource</code>, <code>DocumentRepresentation</code> or <code>hasValue</code></li>
+<li>An external ontology: The ontology must be defined in the <a href="../dsp-tools-create/#prefixes-object">prefixes</a>
+  This prefix should be used for referencing the ontology.<br />
+  E.g. <code>foaf:familyName</code> or <code>sdo:Organization</code></li>
+<li>The current ontology: Within an ontology definition, references can be made by prepending a colon without a prefix.<br />
+  E.g. <code>:hasName</code><br />
+  Optionally, an explicit prefix can be used, in this case the ontology must be added to the
+  <a href="../dsp-tools-create/#prefixes-object">prefixes</a> and the prefix must be identical to the ontology's <code>name</code>.  </li>
+<li>A different ontology defined in the same file: Within one data model file, multiple ontologies can be defined.
+  These will be created in the exact order they appear in the <code>ontologies</code> array. Once an ontology has been created,
+  it can be referenced by the following ontologies, provided it is added in the
+  <a href="../dsp-tools-create/#prefixes-object">prefixes</a>.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-06-10
+    
+  </small>
+</div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../dsp-tools-create/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../dsp-tools-xmlupload/" class="md-footer__link md-footer__link--next" aria-label="Next: Bulk data import" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Bulk data import
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.suggest", "search.highlight", "version"], "search": "../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+    
+  </body>
+</html>
