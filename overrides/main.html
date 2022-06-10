@@ -7,3 +7,10 @@
 {% block analytics %}
     <script src="https://cdn.usefathom.com/script.js" data-site="{{ data_site }}" data-include-domains="docs.dasch.swiss" defer></script> 
 {% endblock %}
+
+{% block outdated %}
+  You're not viewing the latest version.
+  <a href="{{ '../' ~ base_url }}"> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+{% endblock %}
