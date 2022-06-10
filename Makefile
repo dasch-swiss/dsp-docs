@@ -6,7 +6,7 @@ THIS_FILE := $(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 include release.mk
-	
+
 .PHONY: update-submodules
 update-submodules: ## grab the current documentation from each connected repo
 	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=false
