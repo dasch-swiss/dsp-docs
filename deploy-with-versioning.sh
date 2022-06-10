@@ -41,11 +41,6 @@ for ARGUMENT in "$@"; do
     fi
 done
 
-echo "Update main branch"
-git commit -m "Deploy DSP version ${dsp}"
-git push
-
-echo $sep
 echo "Deploy version ${dsp} now"
 alias="latest"
 if [[ $dsp == *"-rc"* ]]; then
@@ -59,5 +54,8 @@ mike deploy --push --branch gh-pages --update-aliases ${dsp} ${alias}
 mike set-default --push --branch gh-pages latest
 
 
-
+echo $sep
+echo "Update main branch"
+git commit -m "Deploy DSP version ${dsp}"
+git push
 
