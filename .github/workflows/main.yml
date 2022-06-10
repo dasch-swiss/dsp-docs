@@ -1,50 +1,47 @@
-name: CI
+# name: CI
 
-on:
-  push:
-  schedule:
-  # * is a special character in YAML so you have to quote this string
-    - cron: "30 5 * * *"
+# on:
+#   push:
 
-jobs:
-  build:
-    name: Build documentation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Grab latest commit from submodules
-        run: make init-submodules
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          sudo apt-get install graphviz
-      - name: Build docs
-        run: make build-docs
+# jobs:
+#   build:
+#     name: Build documentation
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v2
+#       - name: Grab latest commit from submodules
+#         run: make init-submodules
+#       - name: Set up Python 3.9
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.9
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+#           sudo apt-get install graphviz
+#       - name: Build docs
+#         run: make build-docs
 
-  publish:
-    name: Publish documentation
-    needs: build
-    runs-on: ubuntu-latest
-    # Publish and deploy docs as Pull Requests are merged into "main" branch
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Grab latest commit from submodules
-        run: make init-submodules
-      - name: Install graphviz
-        run: sudo apt-get install graphviz
-      - name: Generate PNG images
-        run: make graphvizfigures
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          CUSTOM_DOMAIN: docs.dasch.swiss
-          REQUIREMENTS: requirements.txt
+#   publish:
+#     name: Publish documentation
+#     needs: build
+#     runs-on: ubuntu-latest
+#     # Publish and deploy docs as Pull Requests are merged into "main" branch
+#     if: github.ref == 'refs/heads/main'
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v2
+#       - name: Grab latest commit from submodules
+#         run: make init-submodules
+#       - name: Install graphviz
+#         run: sudo apt-get install graphviz
+#       - name: Generate PNG images
+#         run: make graphvizfigures
+#       - name: Deploy docs
+#         uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+#           CUSTOM_DOMAIN: docs.dasch.swiss
+#           REQUIREMENTS: requirements.txt
