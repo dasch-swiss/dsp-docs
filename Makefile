@@ -14,12 +14,12 @@ update-submodules: ## grab the current documentation from each connected repo
 .PHONY: build
 build: ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
-	mike deploy $(DSP) latest
+	mike deploy $(DSP) latest --update-aliases
 	mike set-default latest
 
 .PHONY: serve
 serve: ## serve docs for local viewing
-	@$(MAKE) graphvizfigures
+	@$(MAKE) build
 	mike serve
 
 .PHONY: deploy
