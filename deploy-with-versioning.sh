@@ -41,6 +41,9 @@ for ARGUMENT in "$@"; do
     fi
 done
 
+# generates images from dot files
+make graphvizfigures
+
 echo "Deploy version ${dsp} now"
 alias="latest"
 if [[ $dsp == *"-rc"* ]]; then

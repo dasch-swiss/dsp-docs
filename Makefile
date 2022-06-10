@@ -2,6 +2,8 @@
 DOT_FIGURES = $(shell find ./ -type f -name '*.dot')
 PNG_FIGURES = $(patsubst %.dot,%.dot.png,$(DOT_FIGURES))
 
+include release.mk
+
 .PHONY: init-submodules
 init-submodules: ## init the documentation from each connected repo
 	git submodule update --init --remote --recursive
@@ -10,20 +12,19 @@ init-submodules: ## init the documentation from each connected repo
 update-submodules: ## grab latest documentation from each connected repo
 	git submodule update --remote --recursive
 	
-.PHONY: build-docs
-build-docs: ## build docs into the local 'site' folder
+.PHONY: build
+build: ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
-	mkdocs build
+	mike deploy
 
-.PHONY: serve-docs
-serve-docs: ## serve docs for local viewing
+.PHONY: serve
+serve: ## serve docs for local viewing
 	@$(MAKE) graphvizfigures
-	mkdocs serve
+	mike serve
 
-.PHONY: publish-docs
-publish-docs: ## build and publish docs to Github Pages
-	@$(MAKE) graphvizfigures
-	mkdocs gh-deploy
+.PHONY: deploy
+deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
+	@./deploy-whit-versioning.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS)
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
@@ -32,6 +33,7 @@ install-requirements: ## install requirements
 .PHONY: clean
 clean: ## cleans the project directory
 	@rm -rf site/
+	mike delete --all
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files
