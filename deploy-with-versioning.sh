@@ -11,11 +11,11 @@ die() {
 }
 
 usage() {
-    echo "usage: <command> -v [main version] -i [api version]  -p [app version]  -t [tools version] "
+    echo "usage: <command> dsp=[main version] api=[api version] app=[app version] tools=[tools version]"
     echo ${sep}
 }
 
-v=""
+dsp=""
 api=""
 app=""
 tools=""
@@ -25,9 +25,9 @@ for ARGUMENT in "$@"; do
 
     KEY_LENGTH=${#KEY}
     VALUE="${ARGUMENT:$KEY_LENGTH+1}"
-    if [[ $KEY == "v" ]]; then
+    if [[ $KEY == "dsp" ]]; then
         echo "Prepare new release ${VALUE}"
-        v=$VALUE
+        dsp=$VALUE
         echo $sep
         echo $sep
     else 
@@ -42,18 +42,18 @@ for ARGUMENT in "$@"; do
 done
 
 echo "Update main branch"
-git commit -m "Deploy DSP version ${v}"
+git commit -m "Deploy DSP version ${dsp}"
 git push
 
 echo $sep
-echo "Deploy version ${v} now"
+echo "Deploy version ${dsp} now"
 alias="latest"
-if [[ $v == *"-rc"* ]]; then
+if [[ $dsp == *"-rc"* ]]; then
     echo "This version is a release candidate"
     alias="release candidate"
 fi
 
-mike deploy --push --branch gh-pages --update-aliases ${v} ${alias}
+mike deploy --push --branch gh-pages --update-aliases ${dsp} ${alias}
 
 # keep the latest stable version as default
 mike set-default --push --branch gh-pages latest
