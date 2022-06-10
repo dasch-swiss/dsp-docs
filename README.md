@@ -79,15 +79,10 @@ make update-submodules
 
 ### Getting started
 
-MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in the same directory as the mkdocs.yml configuration file, and then start the server by running the following command:
+MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in the same directory as the `mkdocs.yml` configuration file, and then start the server by running the following command:
 
 ```shell
-$ make serve-docs
-INFO    -  Building documentation...
-INFO    -  Cleaning site directory
-[I 160402 15:50:43 server:271] Serving on http://127.0.0.1:8000
-[I 160402 15:50:43 handlers:58] Start watching changes
-[I 160402 15:50:43 handlers:60] Start detecting changes
+make serve
 ```
 
 Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentation start page being.
@@ -109,11 +104,13 @@ make help
 To build the documentation just run
 
 ```shell
-make build-docs
+make build
 ```
 
 ### Deploying github page
 
-On each push into `main` branch, a Github actions script will build and deploy the documentation on [docs.dasch.swiss](https://docs.dasch.swiss).
+Deploying the documentation to the github pages has to be done manually. Be sure that the `release.mk` file is up to date and you are in the main branch. Then run following command:
 
-Be aware that you have to review the built site before pushing it to `main` branch! Please create an own branch for any changes and review it before merging!
+```shell
+make deploy
+```

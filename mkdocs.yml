@@ -14,11 +14,11 @@ nav:
           - Libraries: developers/libraries/index.md
       - Contribution: developers/dsp/contribution/index.md
   - Community:
-      - FAQ: community/faq.md
       - Product Updates: community/product-updates.md
       - About us: community/about-us.md
 
 plugins:
+  - mike
   - monorepo
   - include-markdown
   - search
@@ -36,9 +36,12 @@ theme:
     - navigation.tabs
     - search.suggest
     - search.highlight
+    - version
 extra_css:
   - "assets/style/theme.css"
 extra:
   analytics:
     provider: fathom
     data_site: BWXVRNXV
+  version:
+    provider: mike
