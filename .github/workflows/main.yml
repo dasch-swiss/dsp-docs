@@ -20,7 +20,7 @@ jobs:
           pip install -r requirements.txt
           sudo apt-get install graphviz
       - name: Build docs
-        run: make build
+        run: mkdocs build
 
   # publish:
   #   name: Publish documentation
