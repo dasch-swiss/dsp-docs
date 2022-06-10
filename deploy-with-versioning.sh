@@ -45,7 +45,7 @@ echo "Deploy version ${dsp} now"
 alias="latest"
 if [[ $dsp == *"-rc"* ]]; then
     echo "This version is a release candidate"
-    alias="release candidate"
+    alias="prerelease"
 fi
 
 mike deploy --push --branch gh-pages --update-aliases ${dsp} ${alias}
