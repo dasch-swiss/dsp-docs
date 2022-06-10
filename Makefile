@@ -7,6 +7,10 @@ CURRENT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 include release.mk
 
+-.PHONY: init-submodules
+init-submodules: ## init the documentation from each connected repo; this command takes commit from main branch; used only in github actions!
+	git submodule update --init --remote --recursive
+
 .PHONY: update-submodules
 update-submodules: ## grab the current documentation from each connected repo
 	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=false

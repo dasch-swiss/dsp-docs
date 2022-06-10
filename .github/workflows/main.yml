@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Grab latest commit from submodules
+        run: make init-submodules
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -19,6 +21,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           sudo apt-get install graphviz
+      - name: Update submodules
+        run: make update-submodules
       - name: Build docs
         run: mkdocs build
 
