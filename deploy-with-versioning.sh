@@ -56,7 +56,7 @@ fi
 mike deploy --push --branch gh-pages --update-aliases ${v} ${alias}
 
 # keep the latest stable version as default
-# mike set-default --push latest
+mike set-default --push --branch gh-pages latest
 
 
 
