@@ -44,6 +44,5 @@ jobs:
           sudo apt-get install graphviz
       - name: Deploy docs
         run: make deploy
-        uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
