@@ -107,10 +107,18 @@ To build the documentation just run
 make build
 ```
 
+In some cases, the submodules have changed (depending on the defined version in `release.mk` file). In this case run `git update-submodules` first.
+
 ### Deploying github page
 
-Deploying the documentation to the github pages has to be done manually. Be sure that the `release.mk` file is up to date and you are in the main branch. Then run following command:
+Deploying the documentation to the github pages has to be done manually. 
+
+Be sure that the `release.mk` file is up to date with the corresponding versions and you are in the main branch. Then run the following commands:
 
 ```shell
 make deploy
 ```
+
+This will update the submodules and pushes the documentation to the gh-pages branch.
+
+If the submodules had to be updated, it would be good to commit and push those changes to the main branch.
