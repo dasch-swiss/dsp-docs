@@ -38,6 +38,7 @@ for ARGUMENT in "$@"; do
         echo "Update submodule dsp-${KEY} ${VALUE}"
         cd dsp/dsp-${KEY}
         echo $(pwd)
+        git fetch
         git checkout ${VALUE}
         cd ${home}
         git add dsp/dsp-${KEY}
