@@ -5,9 +5,9 @@ set -e
 home=$(pwd)
 sep='---------------------------------'
 
-die() {
+stop() {
     echo >&2 "$@"
-    exit 1
+    exit 0
 }
 
 usage() {
@@ -46,7 +46,6 @@ for ARGUMENT in "$@"; do
 done
 
 
-
 # set alias: default is latest, rc is prerelease
 alias="latest"
 if [[ $v == *"-rc"* ]]; then
@@ -55,8 +54,7 @@ if [[ $v == *"-rc"* ]]; then
 fi
 
 if [ $deploy = false ]; then
-    die "do not deploy"
-
+    stop "do not deploy"
 else
     # generates images from dot files
     make graphvizfigures
@@ -67,9 +65,6 @@ else
     # keep the latest stable version as default
     mike set-default --push --branch gh-pages latest
     echo $sep
-    
-    echo "Update main branch"
-    git commit -m "Deploy DSP version ${v}"
 fi
 
 

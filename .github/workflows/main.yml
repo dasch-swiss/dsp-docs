@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Grab latest commit from submodules
-        run: make init-submodules
+      - name: Grab latest commit from submodules depending on release.mk versions
+        run: make update-submodules
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
