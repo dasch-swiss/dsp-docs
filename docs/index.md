@@ -36,4 +36,4 @@ The documentation for developers is split into different groups depending on the
 
 ### For the community
 
-In case of further questions, bug reports or if you want to get in contact with us have a look at our [community page](community/faq.md).
+In case of further questions, bug reports or if you want to get in contact with us, send us a message at [support@dasch.swiss](mailto:support@dasch.swiss).
