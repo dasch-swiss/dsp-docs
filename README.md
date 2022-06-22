@@ -69,6 +69,14 @@ Install the required packages by running
 make install-requirements
 ```
 
+### Initializing submodules
+
+It might be necessary for the first time to initialize submodules by running:
+
+```shell
+make init-submodules
+```
+
 ### Update the submodules
 
 Get the latest version of DSP-API, DSP-APP and DSP-Tools documentation by running
