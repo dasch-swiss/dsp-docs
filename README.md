@@ -71,7 +71,7 @@ make install-requirements
 
 ### Initializing submodules
 
-This step is required to perform if you work with `dsp-docs` repository for the first time, just run:
+This step is required to be performed if you work with `dsp-docs` repository for the first time, just run:
 
 ```shell
 make init-submodules
