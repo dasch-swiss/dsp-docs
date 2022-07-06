@@ -69,6 +69,14 @@ Install the required packages by running
 make install-requirements
 ```
 
+### Initializing submodules
+
+This step is required to be performed if you work with `dsp-docs` repository for the first time, just run:
+
+```shell
+make init-submodules
+```
+
 ### Update the submodules
 
 Get the latest version of DSP-API, DSP-APP and DSP-Tools documentation by running
@@ -93,7 +101,7 @@ In case you need to clean the project directory, run:
 make clean
 ```
 
-To get some help about the `make` commands, run:
+To get help about the `make` commands, run:
 
 ```shell
 make help
@@ -101,7 +109,7 @@ make help
 
 ### Building the documentation
 
-To build the documentation just run
+To build the documentation just run:
 
 ```shell
 make build
@@ -113,12 +121,10 @@ In some cases, the submodules have changed (depending on the defined version in 
 
 Deploying the documentation to the github pages has to be done manually. 
 
-Be sure that the `release.mk` file is up to date with the corresponding versions and you are in the main branch. Then run the following commands:
+Make sure that the `release.mk` file is up to date with the corresponding versions and you are in the main branch. Then run the following command:
 
 ```shell
 make deploy
 ```
 
-This will update the submodules and pushes the documentation to the gh-pages branch.
-
-If the submodules had to be updated, it would be good to commit and push those changes to the main branch.
+It updates the submodules and pushes the documentation to the gh-pages branch.
