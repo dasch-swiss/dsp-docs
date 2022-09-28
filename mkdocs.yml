@@ -30,8 +30,14 @@ theme:
   logo: "assets/images/dasch-icon-white.svg"
   favicon: "assets/images/dasch-favicon.ico"
   palette:
-    primary: "deep purple"
-    accent: "deep purple"
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
     - search.suggest
