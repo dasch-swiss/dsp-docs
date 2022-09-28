@@ -27,8 +27,8 @@ plugins:
 theme:
   name: material
   custom_dir: overrides
-  logo: "assets/images/dasch-icon-white.svg"
-  favicon: "assets/images/dasch-favicon.ico"
+  logo: "assets/images/logo_bw.svg"
+  favicon: "assets/images/logo_bw.svg"
   palette:
     - scheme: default
       toggle:
