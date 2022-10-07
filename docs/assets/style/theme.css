@@ -18,3 +18,11 @@
 .md-content a {
   text-decoration: underline;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
+  padding-top: 50px;
+}
