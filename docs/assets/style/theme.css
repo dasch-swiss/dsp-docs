@@ -19,18 +19,9 @@
   text-decoration: underline;
 }
 
-h1 {
-  font-weight: bold;
-  padding-top: 50px;
-}
-h2 {
-  font-weight: bold;
-  padding-top: 50px;
-}
-h3 {
-  font-weight: bold;
-  padding-top: 50px;
-}
+h1,
+h2,
+h3,
 h4 {
   font-weight: bold;
   padding-top: 50px;
