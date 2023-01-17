@@ -2,9 +2,9 @@ site_name: DaSCH Service Platform Documentation
 
 nav:
   - Overview: index.md
-  - DSP APP: "!include ./dsp/dsp-app/mkdocs.yml"
-  - DSP API: "!include ./dsp/dsp-api/mkdocs.yml"
-  - DSP Tools: "!include ./dsp/dsp-tools/mkdocs.yml"
+  - DSP-APP: "!include ./dsp/dsp-app/mkdocs.yml"
+  - DSP-API: "!include ./dsp/dsp-api/mkdocs.yml"
+  - DSP-TOOLS: "!include ./dsp/dsp-tools/mkdocs.yml"
   - Developers:
       - Getting Started: developers/getting-started.md
       - Basics:
