@@ -1,34 +1,42 @@
 # How to contribute to the development of the DSP
 
-The DSP software is developed under git version control using [GitHub](https://github.com/dasch-swiss). It includes the following main repositories:
+The DSP software is developed under git version control using [GitHub](https://github.com/dasch-swiss). It includes the 
+following main repositories:
 
-[![DSP-API](https://img.shields.io/github/v/release/dasch-swiss/knora-api?include_prereleases&label=DSP-API)](https://github.com/dasch-swiss/knora-api)
-[![DSP-JS](https://img.shields.io/github/v/release/dasch-swiss/dsp-js-lib?include_prereleases&label=DSP-JS-LIB)](https://github.com/dasch-swiss/dsp-js-lib)
-[![DSP-UI](https://img.shields.io/github/v/release/dasch-swiss/dsp-ui-lib?include_prereleases&label=DSP-UI-LIB)](https://github.com/dasch-swiss/dsp-ui-lib)
+[![DSP-API](https://img.shields.io/github/v/release/dasch-swiss/dsp-api?include_prereleases&label=DSP-API)](https://github.com/dasch-swiss/dsp-api)
 [![DSP-APP](https://img.shields.io/github/v/release/dasch-swiss/dsp-app?include_prereleases&label=DSP-APP)](https://github.com/dasch-swiss/dsp-app)
-[![DSP-Docs](https://img.shields.io/github/v/release/dasch-swiss/dsp-docs?include_prereleases&label=DSP-Docs)](https://github.com/dasch-swiss/dsp-docs)
+[![DSP-TOOLS](https://img.shields.io/github/v/release/dasch-swiss/dsp-tools?include_prereleases&label=DSP-TOOLS)](https://github.com/dasch-swiss/dsp-tools)
+[![DSP-JS-LIB](https://img.shields.io/github/v/release/dasch-swiss/dsp-js-lib?include_prereleases&label=DSP-JS-LIB)](https://github.com/dasch-swiss/dsp-js-lib)
+[![DSP-UI-LIB](https://img.shields.io/github/v/release/dasch-swiss/dsp-ui-lib?include_prereleases&label=DSP-UI-LIB)](https://github.com/dasch-swiss/dsp-ui-lib)
+[![docs.dasch.swiss](https://img.shields.io/github/v/release/dasch-swiss/dsp-docs?include_prereleases&label=DSP-DOCS)](https://github.com/dasch-swiss/dsp-docs)
 
-In all these repositories, we follow the [GitHub flow](https://guides.github.com/introduction/flow/) recommondations:
+In all these repositories, we follow the [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow) 
+recommendations:
 
 1. [Create a branch from main](#create-branch-guidelines).
-1. [Add commits](#git-commit-guidelines).
-1. [Open a pull request](#pull-request-guidelines).
-1. [Discuss and review your code](#code-review-guidelines).
-1. Merge into `main` branch.
+2. [Add commits](#git-commit-guidelines).
+3. [Open a pull request](#pull-request-guidelines).
+4. [Discuss and review your code](#code-review-guidelines).
+5. Merge into `main` branch.
 
 ## Create Branch Guidelines
 
-You will work on an own branch to resolve one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/). Each of those issues has a DEV-number which has to be used in the branch name:
+You will work on an own branch to resolve one issue or user story defined on [Jira](https://dasch.atlassian.net/jira). 
+Each of those issues has a DEV-number which has to be used in the branch name:
 
 ```text
 wip/<DEV-nr>-<subject>
 ```
 
-The prefix `wip` stands for "work in progress" followed by a "/" (slash). The second part starts with the DEV-number followed by a short subject which contains succinct description of the issue/user story. DEV-number and subject have to be written in kebab-case with "-" (hyphens).
+The prefix `wip` stands for "work in progress" followed by a "/" (slash). The second part starts with the DEV-number 
+followed by a short subject which contains a succinct description of the issue/user story. DEV-number and subject have 
+to be written in kebab-case with "-" (hyphens).
 
 ## Git Commit Guidelines
 
-We follow strict rules how a commit message has to look like. This leads to more readable messages that are easy to follow when looking through the project history and release notes. Since release notes are automatically generated from commits, it is important to follow the [Conventional Commit messages](https://www.conventionalcommits.org/).
+We follow strict rules how a commit message has to look like. This leads to more readable messages that are easy to 
+follow when looking through the project history and release notes. Since release notes are automatically generated from 
+commits, it is important to follow the [Conventional Commit messages](https://www.conventionalcommits.org/).
 
 ### Commit Message Format
 
@@ -68,8 +76,12 @@ The subject contains succinct description of the change:
 
 ### Set title and add description
 
-A pull request usually resolves one issue or user story defined on [Youtrack](https://dasch.myjetbrains.com/youtrack/).
-Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's very important to set the PR title in the correct way, especially because all commits added within the pull request are squashed. Otherwise PR's with bad titles won't be added to the automatically generated CHANGELOG and release notes. Thus PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small modifications. 
+A pull request usually resolves one issue or user story defined on [Jira](https://dasch.atlassian.net/jira).
+Since we started to use the [release-please-action](https://github.com/marketplace/actions/release-please-action) it's 
+very important to set the PR title in the correct way, especially because all commits added within the pull request are 
+squashed. Otherwise, PRs with bad titles won't be added to the automatically generated CHANGELOG and release notes. 
+Thus, every PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small 
+modifications. 
 
 #### PR Title Format
 
@@ -77,23 +89,29 @@ Since we started to use the [release-please-action](https://github.com/marketpla
 <type>(<scope>): <subject> (<DEV-no.>)
 ```
 
-It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` (in brackets and without space between type and scope). `<subject>` should be YouTrack task title or its short version. At the end of the PR title add inside the brackets `<DEV-no.>`, which represents the number of the task(s) related to the PR. Here is an example:
+It's crucial to start the PR title with the `<type>` ([allowed types](#type)), followed by optional`<scope>` 
+(in brackets and without space between type and scope). `<subject>` should be Jira task title or its short version. At 
+the end of the PR title add inside the brackets `<DEV-no.>`, which represents the number of the task(s) related to the 
+PR. Here is an example:
 
 ```text
 docs(contribution): example pull request title (DEV-001)
 ```
 
-The PR description should contains important informations for its reviewers. Don't copy/paste YouTrack task description here. Instead of that start the description by adding the following:
+The PR description should contain important information for its reviewers. Don't copy/paste the Jira task description 
+here. Instead, start the description by adding the following:
 
 ```text
 Resolves <DEV-no.>
 ```
 
-Github's [Autolink Setting](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) will automatically generate a link to Youtrack's issue.
+GitHub's [Autolink Setting](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/configuring-autolinks-to-reference-external-resources) 
+will automatically generate a link to the Jira issue.
 
 ### Add a label (optional)
 
-This step is optional, since it has no impact on the release process anymore. However adding at least one of the corresponding label to your PR will help quickly realize its purpose:
+This step is optional, since it has no impact on the release process anymore. However, adding at least one of the 
+corresponding labels to your PR will help quickly realize its purpose:
 
 - **breaking**: breaking changes.
 - **enhancement**: new feature.
@@ -107,7 +125,9 @@ This step is optional, since it has no impact on the release process anymore. Ho
 
 ### Make a draft
 
-Please [convert the pull request to draft](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) as long it isn't ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), click on the corresponding button "Ready for review".
+Please [convert the pull request to draft](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft) 
+as long it isn't ready for reviewing. As soon as the PR is [ready for review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review), 
+click on the corresponding button "Ready for review".
 
 ### Branch protection rules
 
@@ -123,7 +143,7 @@ When the PR is merged, the branch will be deleted automatically.
 
 ## Code Review Guidelines
 
-- Rewievers should pay attention to proper [PR title setting](#pr-title-format).
+- Reviewers should pay attention to proper [PR title setting](#pr-title-format).
 
 ## General GitHub actions workflows (CI)
 
@@ -131,21 +151,20 @@ We use [GitHub actions](https://github.com/features/actions) to automate some pr
 
 ### Run tests
 
-With each push to GitHub, the tests of the repository are executed. Successfull tests are needed to merge code into repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
-
-[![DSP-API CI](https://img.shields.io/github/workflow/status/dasch-swiss/knora-api/CI?label=DSP-API%20CI)](https://github.com/dasch-swiss/knora-api/actions)
-[![DSP-JS CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-js-lib/CI?label=DSP-JS-LIB%20CI)](https://github.com/dasch-swiss/dsp-js-lib/actions)
-[![DSP-UI CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-ui-lib/CI?label=DSP-UI-LIB%20CI)](https://github.com/dasch-swiss/dsp-ui-lib/actions)
-[![DSP-APP CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-app/CI?label=DSP-APP%20CI)](https://github.com/dasch-swiss/dsp-app/actions)
-[![DSP-Docs CI](https://img.shields.io/github/workflow/status/dasch-swiss/dsp-docs/Publish?label=DSP-Docs%20CI)](https://github.com/dasch-swiss/dsp-docs/actions)
+With each push to GitHub, the tests of the repository are executed. Successful tests are needed to merge code into the 
+repository's main branch (s. [Branch protection rules](#branch-protection-rules)).
 
 ### Prepare release
 
-We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release. This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, it creates a release PR which updates itself with each push into main branch following the commit messages. It's important to use the defined rules from [above](#git-commit-guidelines) in all commits and in [PR titles](#pr-title-format).
+We use [release-please-action](https://github.com/marketplace/actions/release-please-action) to prepare the next release. 
+This action script automates the CHANGELOG generation, the creation of GitHub releases, and version bumps. In doing so, 
+it creates a release PR which updates itself with each push into main branch following the commit messages. It's 
+important to use the defined rules from [above](#git-commit-guidelines) in all commits and in [PR titles](#pr-title-format).
 
 ### Create release
 
-When we are ready to tag a release, simply merge the release PR. This will create a release on Github, builds the npm package or the docker image and publishes on the corresponding platform.
+When we are ready to tag a release, simply merge the release PR. This will create a release on GitHub, builds the npm 
+package or the docker image and publishes on the corresponding platform.
 
 [![DSP-API Docker Image](https://img.shields.io/docker/v/daschswiss/knora-api?label=DSP-API%20Docker%20Image)](https://hub.docker.com/r/daschswiss/knora-api)
 [![DSP-JS NPM Package](https://img.shields.io/npm/v/@dasch-swiss/dsp-js?label=DSP-JS%20NPM%20package)](https://www.npmjs.com/package/@dasch-swiss/dsp-js)
