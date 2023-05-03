@@ -1,0 +1,4464 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/logo_bw.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+    
+    
+      
+        <title>Projects Endpoint - DaSCH Service Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.fd896c8a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/style/theme.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+    <script src="https://cdn.usefathom.com/script.js" data-site="BWXVRNXV" data-include-domains="docs.dasch.swiss" defer></script> 
+
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#projects-endpoint" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../../.."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="DaSCH Service Platform Documentation" class="md-header__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DaSCH Service Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projects Endpoint
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../.." class="md-tabs__link">
+      Overview
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../DSP-APP/" class="md-tabs__link">
+        DSP-APP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../01-introduction/what-is-dsp/" class="md-tabs__link md-tabs__link--active">
+        DSP-API
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../DSP-TOOLS/" class="md-tabs__link">
+        DSP-TOOLS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../developers/getting-started/" class="md-tabs__link">
+        Developers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../community/product-updates/" class="md-tabs__link">
+        Community
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DaSCH Service Platform Documentation" class="md-nav__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    DaSCH Service Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          DSP-APP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-APP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-APP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/project/" class="md-nav__link">
+        Project Administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/system/" class="md-nav__link">
+        System Administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" type="checkbox" id="__nav_2_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_4">
+          Data Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Management" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/data/start/" class="md-nav__link">
+        Start from scratch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/data/search/" class="md-nav__link">
+        Search and browse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/data/search-results/" class="md-nav__link">
+        Search results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/data/work-on-data/" class="md-nav__link">
+        Work on your data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/user-guide/user/" class="md-nav__link">
+        User Profile
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Contribution
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contribution" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Contribution
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/docs-documentation/" class="md-nav__link">
+        Docs Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/release-notes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          DSP-API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Introduction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/what-is-dsp/" class="md-nav__link">
+        What is DSP?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/file-formats/" class="md-nav__link">
+        File Formats in DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/standoff-rdf/" class="md-nav__link">
+        Standoff/RDF Text Markup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/example-project/" class="md-nav__link">
+        An Example Project
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          DSP Ontologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Ontologies" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Ontologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/knora-base/" class="md-nav__link">
+        The Knora Base Ontology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/salsah-gui/" class="md-nav__link">
+        The SALSAH GUI Ontology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          DSP-API Endpoints
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API Endpoints" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API Endpoints
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          DSP-API V1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API V1" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API V1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/xml-to-standoff-mapping/" class="md-nav__link">
+        XML to Standoff Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/adding-resources/" class="md-nav__link">
+        Adding Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/reading-values/" class="md-nav__link">
+        Reading Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/adding-values/" class="md-nav__link">
+        Adding Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/changing-values/" class="md-nav__link">
+        Changing Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v1/delete-resources-and-values/" class="md-nav__link">
+        Deleting Resources and Values
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          DSP-API V2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API V2" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API V2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/knora-iris/" class="md-nav__link">
+        Knora IRIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/reading-and-searching-resources/" class="md-nav__link">
+        Reading and Searching Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/reading-user-permissions/" class="md-nav__link">
+        Reading the User's Permissions on Resources and Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/getting-lists/" class="md-nav__link">
+        Getting Lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/xml-to-standoff-mapping/" class="md-nav__link">
+        XML to Standoff Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/query-language/" class="md-nav__link">
+        Gravsearch - Virtual Graph Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/editing-resources/" class="md-nav__link">
+        Creating and Editing Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/editing-values/" class="md-nav__link">
+        Creating and Editing Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/ontology-information/" class="md-nav__link">
+        Querying, Creating, and Updating Ontologies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/tei-xml/" class="md-nav__link">
+        TEI/XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-v2/permalinks/" class="md-nav__link">
+        Permalinks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_3" type="checkbox" id="__nav_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3">
+          Admin API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Admin API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Admin API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        Users Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projects Endpoint
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projects Endpoint
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-operations" class="md-nav__link">
+    Project Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-projects" class="md-nav__link">
+    Get All Projects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    Create a New Project
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a New Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-set-of-permissions-for-a-new-project" class="md-nav__link">
+    Default set of permissions for a new project:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-project-by-id" class="md-nav__link">
+    Get Project by ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-project-information" class="md-nav__link">
+    Update Project Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-project" class="md-nav__link">
+    Delete a Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-data-of-a-project" class="md-nav__link">
+    Get all Data of a Project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-member-operations" class="md-nav__link">
+    Project Member Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Member Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-project-members-by-id" class="md-nav__link">
+    Get Project Members by ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-project-admins-by-id" class="md-nav__link">
+    Get Project Admins by ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-project-operations" class="md-nav__link">
+    Other Project Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Project Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-keywords" class="md-nav__link">
+    Get all Keywords
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-keywords-of-a-project" class="md-nav__link">
+    Get Keywords of a Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricted-view-settings" class="md-nav__link">
+    Restricted View Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../groups/" class="md-nav__link">
+        Groups Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lists/" class="md-nav__link">
+        Lists Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../permissions/" class="md-nav__link">
+        Permissions Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stores/" class="md-nav__link">
+        Stores Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_4" type="checkbox" id="__nav_3_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4">
+          Util API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Util API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Util API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-util/version/" class="md-nav__link">
+        Version
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_5" type="checkbox" id="__nav_3_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_5">
+          Instrumentation API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Instrumentation API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Instrumentation API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/health/" class="md-nav__link">
+        Health Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instrumentation/metrics/" class="md-nav__link">
+        Metrics Endpoint
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Publishing and Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Publishing and Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Publishing and Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-publishing-deployment/publishing/" class="md-nav__link">
+        Publishing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-publishing-deployment/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-publishing-deployment/updates/" class="md-nav__link">
+        Updating Repositories when Upgrading DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          DSP Internals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Internals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Internals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1">
+          Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Design" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1_1" type="checkbox" id="__nav_3_5_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1_1">
+          Architectural Decision Records (ADR)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architectural Decision Records (ADR)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Architectural Decision Records (ADR)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0001-record-architecture-decisions/" class="md-nav__link">
+        0001 Record Architectural Decisions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0002-change-cache-service-manager-from-akka-actor-to-zlayer/" class="md-nav__link">
+        0002 Change Cache Service Manager from Akka-Actor to ZLayer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0003-change-iiif-service-manager-and-sipi-implementation-to-zlayer/" class="md-nav__link">
+        0003 Change IIIF Service Manager and Sipi implementation to zlayer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0004-change-triplestore-service-manager-and-fuseki-implementation-to-zlayer/" class="md-nav__link">
+        0004 Change Triplestore Service Manager and Fuseki implementation to ZLayer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0005-change-respondermanager-to-a-simple-case-class/" class="md-nav__link">
+        0005 Change ResponderManager to a simple case class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0006-use-zio-http/" class="md-nav__link">
+        0006 Gradually Replace AKKA-HTTP with ZIO-HTTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/adr/ADR-0007-zio-fication-of-responders/" class="md-nav__link">
+        0007 ZIO-fication of Responders
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1_2" type="checkbox" id="__nav_3_5_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1_2">
+          DSP-API Design Principles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API Design Principles" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API Design Principles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/design-overview/" class="md-nav__link">
+        Design Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/futures-with-akka/" class="md-nav__link">
+        Futures with Akka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/http-module/" class="md-nav__link">
+        HTTP Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/store-module/" class="md-nav__link">
+        Store Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/triplestore-updates/" class="md-nav__link">
+        Triplestore Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/consistency-checking/" class="md-nav__link">
+        Consistency Checking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/rdf-api/" class="md-nav__link">
+        RDF Processing API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1_3" type="checkbox" id="__nav_3_5_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1_3">
+          DSP-API V1 Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API V1 Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_5_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API V1 Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v1/how-to-add-a-route/" class="md-nav__link">
+        How to Add an API v1 Route
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v1/json/" class="md-nav__link">
+        JSON in API v1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1_4" type="checkbox" id="__nav_3_5_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1_4">
+          DSP-API V2 Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-API V2 Design" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_5_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-API V2 Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/overview/" class="md-nav__link">
+        API v2 Design Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/ontology-schemas/" class="md-nav__link">
+        Ontology Schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/smart-iris/" class="md-nav__link">
+        Smart IRIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/content-wrappers/" class="md-nav__link">
+        Content Wrappers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/how-to-add-a-route/" class="md-nav__link">
+        How to Add an API v2 Route
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/json-ld/" class="md-nav__link">
+        JSON-LD Parsing and Formatting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/ontology-management/" class="md-nav__link">
+        Ontology Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/sipi/" class="md-nav__link">
+        DSP-API and Sipi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/gravsearch/" class="md-nav__link">
+        Gravsearch Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/standoff/" class="md-nav__link">
+        Standoff Markup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/ark/" class="md-nav__link">
+        Archival Resource Key (ARK)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/query-design/" class="md-nav__link">
+        SPARQL Query Design
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-admin/administration/" class="md-nav__link">
+        Admin API Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1_6" type="checkbox" id="__nav_3_5_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1_6">
+          DSP Domain
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP Domain" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_5_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          DSP Domain
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/domain/domain-entities-and-relations/" class="md-nav__link">
+        Domain Entities and Relations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/domain/system-instances/" class="md-nav__link">
+        System Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/domain/class-and-property-hierarchies/" class="md-nav__link">
+        Class and Property Hierarchies
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_2">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/building-and-running/" class="md-nav__link">
+        Build and Running
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/vscode-config/" class="md-nav__link">
+        Setup Visual Studio Code for development of DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/docker-cheat-sheet/" class="md-nav__link">
+        Docker Cheat Sheet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/docker-compose/" class="md-nav__link">
+        Starting the DSP-Stack inside Docker Container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/updating-repositories/" class="md-nav__link">
+        Updating Repositories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/generating-client-test-data/" class="md-nav__link">
+        Generating Client Test Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/third-party/" class="md-nav__link">
+        Third-Party Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          SIPI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SIPI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          SIPI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-sipi/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-sipi/setup-sipi-for-dsp-api/" class="md-nav__link">
+        Setting Up Sipi for DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-sipi/sipi-and-dsp-api/" class="md-nav__link">
+        Interaction between Sipi and DSP-API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          Lucene
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Lucene" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Lucene
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-lucene/lucene-query-parser-syntax/" class="md-nav__link">
+        Lucene Query Parser Syntax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-faq/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" type="checkbox" id="__nav_3_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_9">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09-release-notes/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          DSP-TOOLS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DSP-TOOLS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          DSP-TOOLS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/cli-commands/" class="md-nav__link">
+        CLI commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          File formats
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File formats" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          File formats
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_1" type="checkbox" id="__nav_4_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3_1">
+          JSON project file
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JSON project file" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          JSON project file
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/file-formats/json-project/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/file-formats/json-project/ontologies/" class="md-nav__link">
+        Ontologies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/file-formats/json-project/caveats/" class="md-nav__link">
+        Caveats
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/file-formats/xml-data-file/" class="md-nav__link">
+        XML data file
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/file-formats/excel2json/" class="md-nav__link">
+        excel2json
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/file-formats/excel2xml/" class="md-nav__link">
+        excel2xml
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/incremental-xmlupload/" class="md-nav__link">
+        Incremental xmlupload
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/excel2xml-module/" class="md-nav__link">
+        excel2xml module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/start-stack/" class="md-nav__link">
+        Running DSP locally
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          Information for developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Information for developers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Information for developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/" class="md-nav__link">
+        Developers documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/packaging/" class="md-nav__link">
+        Dependencies, packaging & distribution
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/git-submodules/" class="md-nav__link">
+        Git submodules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/start-stack-command/" class="md-nav__link">
+        Maintaining the start-stack command
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/user-data/" class="md-nav__link">
+        User data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/github-actions/" class="md-nav__link">
+        GitHub actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/mkdocs/" class="md-nav__link">
+        MkDocs and markdown-link-validator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/rdf/" class="md-nav__link">
+        RDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/sipi/" class="md-nav__link">
+        Sipi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/libraries/" class="md-nav__link">
+        Libraries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/dsp/contribution/" class="md-nav__link">
+        Contribution
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../community/product-updates/" class="md-nav__link">
+        Product Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../community/about-us/" class="md-nav__link">
+        About us
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-operations" class="md-nav__link">
+    Project Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-projects" class="md-nav__link">
+    Get All Projects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    Create a New Project
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a New Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-set-of-permissions-for-a-new-project" class="md-nav__link">
+    Default set of permissions for a new project:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-project-by-id" class="md-nav__link">
+    Get Project by ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-project-information" class="md-nav__link">
+    Update Project Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-project" class="md-nav__link">
+    Delete a Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-data-of-a-project" class="md-nav__link">
+    Get all Data of a Project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-member-operations" class="md-nav__link">
+    Project Member Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Member Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-project-members-by-id" class="md-nav__link">
+    Get Project Members by ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-project-admins-by-id" class="md-nav__link">
+    Get Project Admins by ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-project-operations" class="md-nav__link">
+    Other Project Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Project Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-keywords" class="md-nav__link">
+    Get all Keywords
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-keywords-of-a-project" class="md-nav__link">
+    Get Keywords of a Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricted-view-settings" class="md-nav__link">
+    Restricted View Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<!---
+ * Copyright © 2021 - 2023 Swiss National Data and Service Center for the Humanities and/or DaSCH Service Platform contributors.
+ * SPDX-License-Identifier: Apache-2.0
+-->
+
+<h1 id="projects-endpoint">Projects Endpoint</h1>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Route</th>
+<th>Operations</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-all-projects">get all projects</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects</code></td>
+<td><code>POST</code></td>
+<td><a href="#create-a-new-project">create a project</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects/shortname/{shortname}</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-by-id">get a single project</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects/shortcode/{shortcode}</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-by-id">get a single project</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects/iri/{iri}</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-by-id">get a single project</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects/iri/{iri}</code></td>
+<td><code>PUT</code></td>
+<td><a href="#update-project-information">update a project</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects/iri/{iri}</code></td>
+<td><code>DELETE</code></td>
+<td><a href="#delete-a-project">delete a project</a></td>
+</tr>
+<tr>
+<td>projects</td>
+<td><code>/admin/projects/iri/{iri}/AllData</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-all-data-of-a-project">get all data of a project</a></td>
+</tr>
+<tr>
+<td>project members</td>
+<td><code>/admin/projects/shortname/{shortname}/members</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-members-by-id">get all project members</a></td>
+</tr>
+<tr>
+<td>project members</td>
+<td><code>/admin/projects/shortcode/{shortcode}/members</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-members-by-id">get all project members</a></td>
+</tr>
+<tr>
+<td>project members</td>
+<td><code>/admin/projects/iri/{iri}/members</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-members-by-id">get all project members</a></td>
+</tr>
+<tr>
+<td>project members</td>
+<td><code>/admin/projects/shortname/{shortname}/admin-members</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-admins-by-id">get all project admins</a></td>
+</tr>
+<tr>
+<td>project members</td>
+<td><code>/admin/projects/shortcode/{shortcode}/admin-members</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-admins-by-id">get all project admins</a></td>
+</tr>
+<tr>
+<td>project members</td>
+<td><code>/admin/projects/iri/{iri}/admin-members</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-project-admins-by-id">get all project admins</a></td>
+</tr>
+<tr>
+<td>keywords</td>
+<td><code>/admin/projects/Keywords</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-all-keywords">get all project keywords</a></td>
+</tr>
+<tr>
+<td>keywords</td>
+<td><code>/admin/projects/iri/{iri}/Keywords</code></td>
+<td><code>GET</code></td>
+<td><a href="#get-keywords-of-a-project">get project keywords of a single project</a></td>
+</tr>
+<tr>
+<td>view settings</td>
+<td><code>/admin/projects/shortname/{shortname}/RestrictedViewSettings</code></td>
+<td><code>GET</code></td>
+<td><a href="#restricted-view-settings">get restricted view settings for a project</a></td>
+</tr>
+<tr>
+<td>view settings</td>
+<td><code>/admin/projects/shortcode/{shortcode}/RestrictedViewSettings</code></td>
+<td><code>GET</code></td>
+<td><a href="#restricted-view-settings">get restricted view settings for a project</a></td>
+</tr>
+<tr>
+<td>view settings</td>
+<td><code>/admin/projects/iri/{iri}/RestrictedViewSettings</code></td>
+<td><code>GET</code></td>
+<td><a href="#restricted-view-settings">get restricted view settings for a project</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="project-operations">Project Operations</h2>
+<h3 id="get-all-projects">Get All Projects</h3>
+<p>Permissions: No permissions required</p>
+<p>Request definition: <code>GET /admin/projects</code></p>
+<p>Description: Returns a list of all projects except built-in system ones.</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span>--url<span class="w"> </span>http://localhost:3333/admin/projects
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;projects&quot;: [
+    {
+      &quot;description&quot;: [
+        {
+          &quot;value&quot;: &quot;A demo project of a collection of images&quot;,
+          &quot;language&quot;: &quot;en&quot;
+        }
+      ],
+      &quot;id&quot;: &quot;http://rdfh.ch/projects/00FF&quot;,
+      &quot;keywords&quot;: [
+        &quot;collection&quot;,
+        &quot;images&quot;
+      ],
+      &quot;logo&quot;: null,
+      &quot;longname&quot;: &quot;Image Collection Demo&quot;,
+      &quot;ontologies&quot;: [
+        &quot;http://0.0.0.0:3333/ontology/00FF/images/v2&quot;
+      ],
+      &quot;selfjoin&quot;: false,
+      &quot;shortcode&quot;: &quot;00FF&quot;,
+      &quot;shortname&quot;: &quot;images&quot;,
+      &quot;status&quot;: true
+    },
+    {
+      // ...
+    }
+  ]
+}
+</code></pre></div>
+<h3 id="create-a-new-project">Create a New Project</h3>
+<p>Permissions: SystemAdmin</p>
+<p>Request definition: <code>POST /admin/projects</code></p>
+<p>Description: Create a new project.</p>
+<p>Required payload:</p>
+<ul>
+<li><code>shortcode</code> (unique, 4-digits)</li>
+<li><code>shortname</code> (unique, it should be in the form of a <a href="https://www.w3.org/TR/xmlschema11-2/#NCName">xsd:NCNAME</a> and it 
+  should be URL safe)</li>
+<li><code>description</code> (collection of descriptions as strings with language tag)</li>
+<li><code>keywords</code> (collection of keywords)</li>
+<li><code>status</code> (true, if project is active. false, if project is inactive)</li>
+<li><code>selfjoin</code></li>
+</ul>
+<p>Optional payload:</p>
+<ul>
+<li><code>id</code> (unique, custom DSP IRI, e.g. used for migrating a project from one server to another)</li>
+<li><code>longname</code></li>
+<li><code>logo</code></li>
+</ul>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--url<span class="w"> </span>http://localhost:3333/admin/projects<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;shortname&quot;: &quot;newproject&quot;,</span>
+<span class="s1">    &quot;shortcode&quot;: &quot;3333&quot;,</span>
+<span class="s1">    &quot;longname&quot;: &quot;project longname&quot;,</span>
+<span class="s1">    &quot;description&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;value&quot;: &quot;project description&quot;,</span>
+<span class="s1">            &quot;language&quot;: &quot;en&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">    ],</span>
+<span class="s1">    &quot;keywords&quot;: [</span>
+<span class="s1">        &quot;test project&quot;</span>
+<span class="s1">    ],</span>
+<span class="s1">    &quot;logo&quot;: &quot;/fu/bar/baz.jpg&quot;,</span>
+<span class="s1">    &quot;status&quot;: true,</span>
+<span class="s1">    &quot;selfjoin&quot;: false</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;project&quot;: {
+        &quot;description&quot;: [
+            {
+                &quot;value&quot;: &quot;project description&quot;,
+                &quot;language&quot;: &quot;en&quot;
+            }
+        ],
+        &quot;id&quot;: &quot;http://rdfh.ch/projects/3333&quot;,
+        &quot;keywords&quot;: [
+            &quot;test project&quot;
+        ],
+        &quot;logo&quot;: &quot;/fu/bar/baz.jpg&quot;,
+        &quot;longname&quot;: &quot;project longname&quot;,
+        &quot;ontologies&quot;: [],
+        &quot;selfjoin&quot;: false,
+        &quot;shortcode&quot;: &quot;3333&quot;,
+        &quot;shortname&quot;: &quot;newproject&quot;,
+        &quot;status&quot;: true
+    }
+}
+</code></pre></div>
+<p>Errors:</p>
+<ul>
+<li><code>400 Bad Request</code> if the project already exists or any of the provided properties is invalid.</li>
+<li><code>401 Unauthorized</code> if authorization failed.</li>
+</ul>
+<h4 id="default-set-of-permissions-for-a-new-project">Default set of permissions for a new project:</h4>
+<p>When a new project is created, following default permissions are added to its admins and members:</p>
+<ul>
+<li>
+<p>ProjectAdmin group receives an administrative permission to do all project level operations and to create resources 
+within the new project. This administrative permission is retrievable through its IRI:
+<code>http://rdfh.ch/permissions/[projectShortcode]/defaultApForAdmin</code></p>
+</li>
+<li>
+<p>ProjectAdmin group also gets a default object access permission to change rights (which includes delete, modify, view, 
+and restricted view permissions) of any entity that belongs to the project. This default object access permission is retrievable 
+through its IRI: 
+<code>http://rdfh.ch/permissions/[projectShortcode]/defaultDoapForAdmin</code></p>
+</li>
+<li>
+<p>ProjectMember group receives an administrative permission to create resources within the new project. This 
+administrative permission is retrievable through its IRI:
+<code>http://rdfh.ch/permissions/[projectShortcode]/defaultApForMember</code></p>
+</li>
+<li>
+<p>ProjectMember group also gets a default object access permission to modify (which includes view and restricted view 
+permissions) of any entity that belongs to the project. This default object access permission is retrievable through its IRI: 
+<code>http://rdfh.ch/permissions/[projectShortcode]/defaultDoapForMember</code></p>
+</li>
+</ul>
+<h3 id="get-project-by-id">Get Project by ID</h3>
+<p>The ID can be shortcode, shortname or IRI.</p>
+<p>Permissions: No permissions required</p>
+<p>Request definition:</p>
+<ul>
+<li><code>GET /admin/projects/shortcode/{shortcode}</code></li>
+<li><code>GET /admin/projects/shortname/{shortname}</code></li>
+<li><code>GET /admin/projects/iri/{iri}</code></li>
+</ul>
+<p>Description: Returns a single project identified by shortcode, shortname or IRI.</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span>--url<span class="w"> </span>http://localhost:3333/admin/projects/shortcode/0001
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span>--url<span class="w"> </span>http://localhost:3333/admin/projects/shortname/anything
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span>--url<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>http://localhost:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;project&quot;: {
+    &quot;description&quot;: [
+      {
+        &quot;value&quot;: &quot;Anything Project&quot;
+      }
+    ],
+    &quot;id&quot;: &quot;http://rdfh.ch/projects/0001&quot;,
+    &quot;keywords&quot;: [
+      &quot;arbitrary test data&quot;,
+      &quot;things&quot;
+    ],
+    &quot;logo&quot;: null,
+    &quot;longname&quot;: &quot;Anything Project&quot;,
+    &quot;ontologies&quot;: [
+      &quot;http://0.0.0.0:3333/ontology/0001/something/v2&quot;,
+      &quot;http://0.0.0.0:3333/ontology/0001/sequences/v2&quot;,
+      &quot;http://0.0.0.0:3333/ontology/0001/freetest/v2&quot;,
+      &quot;http://0.0.0.0:3333/ontology/0001/minimal/v2&quot;,
+      &quot;http://0.0.0.0:3333/ontology/0001/anything/v2&quot;
+    ],
+    &quot;selfjoin&quot;: false,
+    &quot;shortcode&quot;: &quot;0001&quot;,
+    &quot;shortname&quot;: &quot;anything&quot;,
+    &quot;status&quot;: true
+  }
+}
+</code></pre></div>
+<p>Errors:</p>
+<ul>
+<li><code>400 Bad Request</code> if the provided ID is not valid.</li>
+<li><code>404 Not Found</code> if no project with the provided ID is found.</li>
+</ul>
+<p>NB:</p>
+<ul>
+<li>IRI must be URL-encoded.</li>
+</ul>
+<h3 id="update-project-information">Update Project Information</h3>
+<p>Permissions: SystemAdmin / ProjectAdmin</p>
+<p>Request definition: <code>PUT /admin/projects/iri/{iri}</code></p>
+<p>Description: Update a project identified by its IRI.</p>
+<p>Payload: The following properties can be changed:</p>
+<ul>
+<li><code>longname</code></li>
+<li><code>description</code></li>
+<li><code>keywords</code></li>
+<li><code>logo</code></li>
+<li><code>status</code></li>
+<li><code>selfjoin</code></li>
+</ul>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--url<span class="w"> </span>http://localhost:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">  &quot;longname&quot;: &quot;other longname&quot;</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;project&quot;: {
+    &quot;description&quot;: [
+      {
+        &quot;value&quot;: &quot;Anything Project&quot;
+      }
+    ],
+    &quot;id&quot;: &quot;http://rdfh.ch/projects/0001&quot;,
+    &quot;keywords&quot;: [
+      &quot;arbitrary test data&quot;,
+      &quot;things&quot;
+    ],
+    &quot;logo&quot;: null,
+    &quot;longname&quot;: &quot;other longname&quot;,
+    &quot;ontologies&quot;: [
+      &quot;http://api.knora.org/ontology/0001/something/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/sequences/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/freetest/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/minimal/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/anything/v2&quot;
+    ],
+    &quot;selfjoin&quot;: false,
+    &quot;shortcode&quot;: &quot;0001&quot;,
+    &quot;shortname&quot;: &quot;anything&quot;,
+    &quot;status&quot;: true
+  }
+}
+</code></pre></div>
+<p>Errors:</p>
+<ul>
+<li><code>400 Bad Request</code></li>
+<li>if the provided IRI is not valid.</li>
+<li>if the provided payload is not valid.</li>
+<li><code>404 Not Found</code> if no project with the provided IRI is found.</li>
+</ul>
+<h3 id="delete-a-project">Delete a Project</h3>
+<p>Permissions: SystemAdmin / ProjectAdmin</p>
+<p>Request definition: <code>DELETE /admin/projects/iri/{iri}</code></p>
+<p>Description: Mark a project as deleted (by setting the <code>status</code> flag to <code>false</code>).</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>DELETE<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--url<span class="w"> </span>http://localhost:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;project&quot;: {
+    &quot;description&quot;: [
+      {
+        &quot;value&quot;: &quot;Anything Project&quot;
+      }
+    ],
+    &quot;id&quot;: &quot;http://rdfh.ch/projects/0001&quot;,
+    &quot;keywords&quot;: [
+      &quot;arbitrary test data&quot;,
+      &quot;things&quot;
+    ],
+    &quot;logo&quot;: null,
+    &quot;longname&quot;: &quot;other longname&quot;,
+    &quot;ontologies&quot;: [
+      &quot;http://api.knora.org/ontology/0001/something/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/sequences/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/freetest/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/minimal/v2&quot;,
+      &quot;http://api.knora.org/ontology/0001/anything/v2&quot;
+    ],
+    &quot;selfjoin&quot;: false,
+    &quot;shortcode&quot;: &quot;0001&quot;,
+    &quot;shortname&quot;: &quot;anything&quot;,
+    &quot;status&quot;: false
+  }
+}
+</code></pre></div>
+<p>Errors:</p>
+<ul>
+<li><code>400 Bad Request</code> if the provided IRI is not valid.</li>
+<li><code>404 Not Found</code> if no project with the provided IRI is found.</li>
+</ul>
+<h3 id="get-all-data-of-a-project">Get all Data of a Project</h3>
+<p>Permissions: ProjectAdmin / SystemAdmin</p>
+<p>Request definition: <code>POST /admin/projects/iri/{iri}/AllData</code></p>
+<p>Description: Gets all data of a project as a TriG file (ontologies, resource data, admin data, and permissions).</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--url<span class="w"> </span>http://localhost:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F00FF/AllData<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>@prefix images: &lt;http://www.knora.org/ontology/00FF/images#&gt; .
+@prefix knora-admin: &lt;http://www.knora.org/ontology/knora-admin#&gt; .
+@prefix knora-base: &lt;http://www.knora.org/ontology/knora-base#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix salsah-gui: &lt;http://www.knora.org/ontology/salsah-gui#&gt; .
+@prefix standoff: &lt;http://www.knora.org/ontology/standoff#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://www.knora.org/ontology/00FF/images&gt; {
+    &lt;http://www.knora.org/ontology/00FF/images&gt;
+            rdf:type                      owl:Ontology ;
+            rdfs:label                    &quot;The images demo ontology&quot; ;
+            knora-base:attachedToProject  &lt;http://rdfh.ch/projects/00FF&gt; ;
+            knora-base:lastModificationDate  &quot;2012-12-12T12:12:12.12Z&quot;^^xsd:dateTime .
+    images:lastname  rdf:type        owl:ObjectProperty ;
+            rdfs:comment             &quot;Nachname einer Person&quot;@de ;
+            rdfs:comment             &quot;Last name of a person&quot;@en ;
+            rdfs:label               &quot;Name&quot;@de ;
+            rdfs:subPropertyOf       knora-base:hasValue ;
+            knora-base:objectClassConstraint  knora-base:TextValue ;
+            knora-base:subjectClassConstraint  images:person ;
+            salsah-gui:guiAttribute  &quot;size=32&quot; ;
+            salsah-gui:guiAttribute  &quot;maxlength=32&quot; ;
+            salsah-gui:guiElement    salsah-gui:SimpleText .
+    # ...
+}
+
+&lt;http://www.knora.org/data/00FF/images&gt; {
+    &lt;http://rdfh.ch/00FF/0cb8286054d5&gt;
+            rdf:type                      images:bild ;
+            rdfs:label                    &quot;1 Alpinismus&quot; ;
+            images:bearbeiter             &lt;http://rdfh.ch/00FF/0cb8286054d5/values/0b80b43aee0f04&gt; ;
+            images:titel                  &lt;http://rdfh.ch/00FF/0cb8286054d5/values/cea90774ee0f04&gt; ;
+            images:urheber                &lt;http://rdfh.ch/00FF/df1260ad43d5&gt; ;
+            images:urheberValue           &lt;http://rdfh.ch/00FF/0cb8286054d5/values/e346ff38-6b03-4a27-a11b-b0818a2e5ee3&gt; ;
+            knora-base:attachedToProject  &lt;http://rdfh.ch/projects/00FF&gt; ;
+            knora-base:attachedToUser     &lt;http://rdfh.ch/users/c266a56709&gt; ;
+            knora-base:creationDate       &quot;2016-03-02T15:05:57Z&quot;^^xsd:dateTime ;
+            knora-base:hasPermissions     &quot;CR knora-admin:ProjectMember,knora-admin:Creator|V knora-admin:KnownUser|RV knora-admin:UnknownUser&quot; ;
+            knora-base:hasStillImageFileValue  &lt;http://rdfh.ch/00FF/0cb8286054d5/values/c66133bf942f01&gt; ;
+            knora-base:isDeleted          false .
+    # ...
+}
+
+&lt;http://www.knora.org/data/admin&gt; {
+  # ...
+}
+
+&lt;http://www.knora.org/data/permissions&gt; {
+  # ...
+}
+</code></pre></div>
+<h2 id="project-member-operations">Project Member Operations</h2>
+<h3 id="get-project-members-by-id">Get Project Members by ID</h3>
+<p>Permissions: SystemAdmin / ProjectAdmin</p>
+<p>Request definition: </p>
+<ul>
+<li><code>GET /admin/projects/shortcode/{shortcode}/members</code></li>
+<li><code>GET /admin/projects/shortname/{shortname}/members</code></li>
+<li><code>GET /admin/projects/iri/{iri}/members</code></li>
+</ul>
+<p>Description: returns all members part of a project identified through iri, shortname or shortcode</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/shortcode/0001/members&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/shortname/anything/members&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001/members&#39;</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;members&quot;: [
+        {
+            &quot;email&quot;: &quot;anything.user01@example.org&quot;,
+            &quot;familyName&quot;: &quot;UserFamilyName&quot;,
+            &quot;givenName&quot;: &quot;UserGivenName&quot;,
+            &quot;groups&quot;: [],
+            &quot;id&quot;: &quot;http://rdfh.ch/users/BhkfBc3hTeS_IDo-JgXRbQ&quot;,
+            &quot;lang&quot;: &quot;de&quot;,
+            &quot;password&quot;: null,
+            &quot;permissions&quot;: {
+                &quot;administrativePermissionsPerProject&quot;: {
+                    &quot;http://rdfh.ch/projects/0001&quot;: [
+                        {
+                            &quot;additionalInformation&quot;: null,
+                            &quot;name&quot;: &quot;ProjectResourceCreateAllPermission&quot;,
+                            &quot;permissionCode&quot;: null
+                        }
+                    ]
+                },
+                &quot;groupsPerProject&quot;: {
+                    &quot;http://rdfh.ch/projects/0001&quot;: [
+                        &quot;http://www.knora.org/ontology/knora-admin#ProjectMember&quot;
+                    ]
+                }
+            },
+            &quot;projects&quot;: [
+                {
+                    &quot;description&quot;: [
+                        {
+                            &quot;value&quot;: &quot;Anything Project&quot;
+                        }
+                    ],
+                    &quot;id&quot;: &quot;http://rdfh.ch/projects/0001&quot;,
+                    &quot;keywords&quot;: [
+                        &quot;arbitrary test data&quot;,
+                        &quot;things&quot;
+                    ],
+                    &quot;logo&quot;: null,
+                    &quot;longname&quot;: &quot;Anything Project&quot;,
+                    &quot;ontologies&quot;: [
+                        &quot;http://0.0.0.0:3333/ontology/0001/something/v2&quot;,
+                        &quot;http://0.0.0.0:3333/ontology/0001/anything/v2&quot;
+                    ],
+                    &quot;selfjoin&quot;: false,
+                    &quot;shortcode&quot;: &quot;0001&quot;,
+                    &quot;shortname&quot;: &quot;anything&quot;,
+                    &quot;status&quot;: true
+                }
+            ],
+            &quot;sessionId&quot;: null,
+            &quot;status&quot;: true,
+            &quot;token&quot;: null,
+            &quot;username&quot;: &quot;anything.user01&quot;
+        }
+    ]
+}
+</code></pre></div>
+<p>Errors:</p>
+<ul>
+<li><code>400 Bad Request</code> if the provided ID is not valid.</li>
+<li><code>404 Not Found</code> if no project with the provided ID is found.</li>
+</ul>
+<p>NB:</p>
+<ul>
+<li>IRI must be URL-encoded.</li>
+</ul>
+<h3 id="get-project-admins-by-id">Get Project Admins by ID</h3>
+<p>Permissions: SystemAdmin / ProjectAdmin</p>
+<p>Request definition: 
+- <code>GET /admin/projects/shortcode/{shortcode}/admin-members</code>
+- <code>GET /admin/projects/shortname/{shortname}/admin-members</code>
+- <code>GET /admin/projects/iri/{iri}/admin-members</code></p>
+<p>Description: returns all admin members part of a project identified through iri, shortname or shortcode</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/shortcode/0001/admin-members&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/shortname/anything/admin-members&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001/admin-members&#39;</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;members&quot;: [
+        {
+            &quot;email&quot;: &quot;anything.admin@example.org&quot;,
+            &quot;familyName&quot;: &quot;Admin&quot;,
+            &quot;givenName&quot;: &quot;Anything&quot;,
+            &quot;groups&quot;: [],
+            &quot;id&quot;: &quot;http://rdfh.ch/users/AnythingAdminUser&quot;,
+            &quot;lang&quot;: &quot;de&quot;,
+            &quot;password&quot;: null,
+            &quot;permissions&quot;: {
+                &quot;administrativePermissionsPerProject&quot;: {
+                    &quot;http://rdfh.ch/projects/0001&quot;: [
+                        {
+                            &quot;additionalInformation&quot;: null,
+                            &quot;name&quot;: &quot;ProjectResourceCreateAllPermission&quot;,
+                            &quot;permissionCode&quot;: null
+                        },
+                        {
+                            &quot;additionalInformation&quot;: null,
+                            &quot;name&quot;: &quot;ProjectAdminAllPermission&quot;,
+                            &quot;permissionCode&quot;: null
+                        }
+                    ]
+                },
+                &quot;groupsPerProject&quot;: {
+                    &quot;http://rdfh.ch/projects/0001&quot;: [
+                        &quot;http://www.knora.org/ontology/knora-admin#ProjectMember&quot;,
+                        &quot;http://www.knora.org/ontology/knora-admin#ProjectAdmin&quot;
+                    ]
+                }
+            },
+            &quot;projects&quot;: [
+                {
+                    &quot;description&quot;: [
+                        {
+                            &quot;value&quot;: &quot;Anything Project&quot;
+                        }
+                    ],
+                    &quot;id&quot;: &quot;http://rdfh.ch/projects/0001&quot;,
+                    &quot;keywords&quot;: [
+                        &quot;arbitrary test data&quot;,
+                        &quot;things&quot;
+                    ],
+                    &quot;logo&quot;: null,
+                    &quot;longname&quot;: &quot;Anything Project&quot;,
+                    &quot;ontologies&quot;: [
+                        &quot;http://0.0.0.0:3333/ontology/0001/something/v2&quot;,
+                        &quot;http://0.0.0.0:3333/ontology/0001/sequences/v2&quot;,
+                        &quot;http://0.0.0.0:3333/ontology/0001/freetest/v2&quot;,
+                        &quot;http://0.0.0.0:3333/ontology/0001/minimal/v2&quot;,
+                        &quot;http://0.0.0.0:3333/ontology/0001/anything/v2&quot;
+                    ],
+                    &quot;selfjoin&quot;: false,
+                    &quot;shortcode&quot;: &quot;0001&quot;,
+                    &quot;shortname&quot;: &quot;anything&quot;,
+                    &quot;status&quot;: true
+                }
+            ],
+            &quot;sessionId&quot;: null,
+            &quot;status&quot;: true,
+            &quot;token&quot;: null,
+            &quot;username&quot;: &quot;anything.admin&quot;
+        }
+    ]
+}
+</code></pre></div>
+<p>Errors:</p>
+<ul>
+<li><code>400 Bad Request</code> if the provided ID is not valid.</li>
+<li><code>404 Not Found</code> if no project with the provided ID is found.</li>
+</ul>
+<p>NB:</p>
+<ul>
+<li>IRI must be URL-encoded.</li>
+</ul>
+<h2 id="other-project-operations">Other Project Operations</h2>
+<h3 id="get-all-keywords">Get all Keywords</h3>
+<p>Permissions:</p>
+<p>Request definition: <code>GET /admin/projects/Keywords</code></p>
+<p>Description: returns keywords of all projects as a list</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/Keywords&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;keywords&quot;: [
+        &quot;Annotation&quot;,
+        &quot;Arabe&quot;,
+        &quot;Arabic&quot;,
+        &quot;Arabisch&quot;,
+        &quot;Audio&quot;,
+        &quot;Basel&quot;,
+        &quot;Basler Frühdrucke&quot;,
+        &quot;Bilder&quot;,
+        &quot;Bilderfolgen&quot;,
+        &quot;Contectualisation of images&quot;,
+        &quot;Cyrillic&quot;,
+        &quot;Cyrillique&quot;,
+        &quot;Data and Service Center for the Humanities (DaSCH)&quot;,
+        &quot;Grec&quot;,
+        &quot;Greek&quot;,
+        &quot;Griechisch&quot;,
+        &quot;Hebrew&quot;,
+        &quot;Hebräisch&quot;,
+        &quot;Hieroglyphen&quot;,
+        &quot;Hébreu&quot;,
+        &quot;Inkunabel&quot;,
+        &quot;Japanese&quot;,
+        &quot;Japanisch&quot;,
+        &quot;Japonais&quot;,
+        &quot;Keilschrift&quot;,
+        &quot;Kunsthistorisches Seminar Universität Basel&quot;,
+        &quot;Kyrillisch&quot;,
+        &quot;Late Middle Ages&quot;,
+        &quot;Letterpress Printing&quot;,
+        &quot;Markup&quot;,
+        &quot;Narrenschiff&quot;,
+        &quot;Objekte&quot;,
+        &quot;Sebastian Brant&quot;,
+        &quot;Sonderzeichen&quot;,
+        &quot;Texteigenschaften&quot;,
+        &quot;Textquellen&quot;,
+        &quot;Wiegendrucke&quot;,
+        &quot;XML&quot;,
+        &quot;arbitrary test data&quot;,
+        &quot;asdf&quot;,
+        &quot;audio&quot;,
+        &quot;caractères spéciaux&quot;,
+        &quot;collection&quot;,
+        &quot;cuneiform&quot;,
+        &quot;cunéiforme&quot;,
+        &quot;early print&quot;,
+        &quot;hieroglyphs&quot;,
+        &quot;hiéroglyphes&quot;,
+        &quot;images&quot;,
+        &quot;incunabula&quot;,
+        &quot;objects&quot;,
+        &quot;objets&quot;,
+        &quot;propriétés de texte&quot;,
+        &quot;ship of fools&quot;,
+        &quot;sources&quot;,
+        &quot;special characters&quot;,
+        &quot;textual properties&quot;,
+        &quot;textual sources&quot;,
+        &quot;things&quot;
+    ]
+}
+</code></pre></div>
+<h3 id="get-keywords-of-a-project">Get Keywords of a Project</h3>
+<p>Permissions:</p>
+<p>Request definition:
+- <code>GET /admin/projects/iri/{iri}/Keywords</code></p>
+<p>Description: returns the keywords of a single project</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001/Keywords&#39;</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;keywords&quot;: [
+        &quot;arbitrary test data&quot;,
+        &quot;things&quot;
+    ]
+}
+</code></pre></div>
+<h3 id="restricted-view-settings">Restricted View Settings</h3>
+<p>Permissions: ProjectAdmin</p>
+<p>Request definition:
+- <code>GET /admin/projects/shortcode/{shortcode}/RestrictedViewSettings</code>
+- <code>GET /admin/projects/shortname/{shortname}/RestrictedViewSettings</code>
+- <code>GET /admin/projects/iri/{iri}/RestrictedViewSettings</code></p>
+<p>Description: returns the project's restricted view settings</p>
+<p>Example request:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/shortcode/0001/RestrictedViewSettings&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/shortname/anything/RestrictedViewSettings&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:3333/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001/RestrictedViewSettings&#39;</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span>
+</code></pre></div>
+<p>Example response:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;settings&quot;: {
+        &quot;size&quot;: &quot;!512,512&quot;,
+        &quot;watermark&quot;: &quot;path_to_image&quot;
+    }
+}
+</code></pre></div>
+<p>Operates on the following properties:
+ - <code>knora-admin:projectRestrictedViewSize</code>: the IIIF size value
+ - <code>knora-admin:projectRestrictedViewWatermark</code>: the path to the watermark image. <strong>Currently not used!</strong></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-05-03
+    
+  </small>
+</div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../users/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Users Endpoint" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Users Endpoint
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../groups/" class="md-footer__link md-footer__link--next" aria-label="Next: Groups Endpoint" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Groups Endpoint
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "search.suggest", "search.highlight", "version"], "search": "../../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      
+    
+  </body>
+</html>
