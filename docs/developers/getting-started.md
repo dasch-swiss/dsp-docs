@@ -34,7 +34,7 @@ If you want to run DSP-API/DSP-APP on your local machine, you also have to
 
 - install Docker Desktop from [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/).
     - Make sure to use the correct chip architecture: Intel versus Apple M1 chip.
-- follow [these instructions](https://docs.dasch.swiss/2023.05.02/DSP-TOOLS/cli-commands/#start-stack) to start up the DSP stack
+- follow [these instructions](https://docs.dasch.swiss/2023.05.02/DSP-TOOLS/start-stack/) to start up the DSP stack
 
 After this, you might want to check out the test project rosetta:
 
