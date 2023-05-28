@@ -23,6 +23,9 @@ This page is divided in 2 sections:
 - Developers must install everything, which is described in the
   [second paragraph](#install-dsp-instructions-for-developers)
 
+
+
+
 ## Install DSP: Instructions for users
 
 Researchers and data stewards who want to use DSP to manage their data can get started quite quickly.
@@ -68,7 +71,8 @@ to start up DSP-API and DSP-APP.
 
 ### Try out our test project "rosetta"
 
-After this, you might want to check out our test project "rosetta":
+After this, you might want to check out our test project "rosetta".
+To do so, open a Terminal window and type:
 
 ```bash
 git clone https://github.com/dasch-swiss/082E-rosetta-scripts.git
@@ -77,15 +81,19 @@ dsp-tools create rosetta.json
 dsp-tools xmlupload rosetta.xml
 ```
 
-You can then look at the data in DSP-APP at [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
+You can then look at the data in a browser at the address [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
 
-From time to time, you have to upgrade DSP-TOOLS to the latest version. This is done with
+From time to time, you have to upgrade DSP-TOOLS to the latest version. 
+This is done in a Terminal window with the command
 
 ```bash
 pip3 install -upgrade dsp-tools
 ```
 
 That's it, already!
+
+
+
 
 ## Install DSP: Instructions for developers
 
@@ -101,13 +109,21 @@ Install the XCode command line tools (not to be confused with the entire XCode a
 xcode-select --install
 ```
 
+### Homebrew
+
+[Homebrew](https://brew.sh) is a package manager that allows us to install other software. It can be installed with
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ### Docker Desktop
 
 DSP-API and DSP-APP are shipped as Docker containers.
 [Docker Desktop](https://www.docker.com/products/docker-desktop/) can be installed with
 
 ```bash
-brew install -cask docker
+brew install --cask docker
 ```
 
 ### Python
@@ -122,14 +138,6 @@ brew install python
 
 You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
-### Homebrew
-
-[Homebrew](https://brew.sh) is a package manager that allows us to install other software. It can be installed with
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
 ### Git
 
 All software developed by DaSCH is under [Git](https://git-scm.com/downloads) version control,
@@ -143,9 +151,10 @@ brew install git
 ### OpenJDK 17
 
 DSP-API is written in Scala, so building DSP-API from source requires Java.
-The recommended way to install it is [SDK Man](https://sdkman.io/)),
+The recommended way to install it is [SDK Man](https://sdkman.io/),
 because SDK Man takes care of the environment variable `JAVA_HOME`.
-Installing Java by other means (e.g. Homebrew) is also possible, but requires some manual work and has caused problems in the past.
+Installing Java by other means (e.g. Homebrew) is also possible,
+but requires some manual work and has caused problems in the past.
 
 First, install SDK Man with
 
