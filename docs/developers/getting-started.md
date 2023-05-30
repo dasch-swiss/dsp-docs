@@ -1,41 +1,43 @@
 # Getting started with DSP
 
 The DaSCH Service Platform (DSP) is a bundle of software that runs on servers hosted by DaSCH.
-For certain purposes, it is necessary to run the DSP software stack on a local machine.
+For some purposes, it is necessary to run the DSP software stack on a local machine.
 
 Follow the instructions on this page to install the DSP software stack on your local machine.
 
 The basic components of DSP are:
 
-| Component | Description                                                                                    |
-| --------- | ---------------------------------------------------------------------------------------------- |
-| DSP-API   | The core of our software stack, the RDF database that offers an access via API                 |
-| DSP-APP   | The web application that allows you to view and edit data in your browser                      |
-| DSP-TOOLS | A Python library and command line tool to upload data models and big data sets to a DSP server |
+| Component                                             | Description                                                                                    |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [DSP-API](https://github.com/dasch-swiss/dsp-api)     | The core of our software stack: the RDF database that offers an access via API                 |
+| [DSP-APP](https://github.com/dasch-swiss/dsp-app)     | The web application that allows you to view and edit data in your browser                      |
+| [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools) | A Python library and command line tool to upload data models and big data sets to a DSP server |
 
 The DSP software can only be run on macOS and Linux.
-Unfortunately, Windows is not supported.
+Windows is not supported.
 
 This page is divided in 2 sections:
 
-- Researchers, data stewards, and other users can take the shortcut described in the
-  [first paragraph](#install-dsp-instructions-for-users)
-- Developers must install everything, which is described in the
-  [second paragraph](#install-dsp-instructions-for-developers)
-
+- [Install DSP: Instructions for users](#install-dsp-instructions-for-users):  
+  Researchers, data stewards, and other users can take this shortcut.
+- [Install DSP: Instructions for developers](#install-dsp-instructions-for-developers):  
+  Developers must install everything.
 
 
 
 ## Install DSP: Instructions for users
 
-Researchers and data stewards who want to use DSP to manage their data can get started quite quickly.
-In order to run DSP-TOOLS on your computer, it is enough if you install the following software:
+If you are a researcher or data steward who wants to use DSP to manage your data,
+you can get started quite quickly.
 
-### XCode command line tools
+DSP-TOOLS offers you a shortcut,
+so you only have to install DSP-TOOLS and its prerequisites:
+
+### 1. XCode command line tools
 
 Some Terminal commands used for the instructions below are not shipped with macOS by default.
 They must be installed separately.
-Install the XCode command line tools (not to be confused with the entire XCode application)
+Install the XCode command line tools *(not to be confused with the entire XCode application)*
 by opening a Terminal window and typing:
 
 ```bash
@@ -44,49 +46,59 @@ xcode-select --install
 
 You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
-### Docker Desktop
+### 2. Docker Desktop
 
 DSP-API and DSP-APP are shipped as Docker containers.
 Install Docker Desktop from [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/).
 Make sure to use the correct chip architecture (Intel versus Apple M1 chip).
 
-### Python
+### 3. Python
 
-DSP-TOOLS is written in Python.
+Python is the language in which DSP-TOOLS is written.
 Even if there is a pre-installed version of Python on your computer,
 we recommend installing it separately.
 It can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/).
+We recommend installing the latest version,
+but DSP-TOOLS will also work with older versions (3.9 and newer).
 
-### DSP-TOOLS
+### 4. DSP-TOOLS
 
-DSP-TOOLS is installed via Terminal: Open a Terminal window and type
+With these prerequisites installed,
+you are now ready to install DSP-TOOLS!
+
+Open a Terminal window and type:
 
 ```bash
 pip3 install dsp-tools
 ```
 
-From time to time, you have to upgrade DSP-TOOLS to the latest version.
-This is done in a Terminal window with the command
+Before using DSP-TOOLS,
+you should always execute the upgrade command:
 
 ```bash
 pip3 install --upgrade dsp-tools
 ```
 
-### DSP-API and DSP-APP
+This command upgrades DSP-TOOLS to the latest version.
 
-Follow [these instructions](https://docs.dasch.swiss/latest/DSP-TOOLS/start-stack/)
-to start up DSP-API and DSP-APP.
+### 5. DSP-API and DSP-APP: run from within DSP-TOOLS
 
-### Try out our test project *Rosetta*
+Now that you have DSP-TOOLS installed,
+you can use it to run DSP-API and DSP-APP
+according to [these instructions](https://docs.dasch.swiss/latest/DSP-TOOLS/start-stack/).
 
-After this, you might want to experiment with our test project *Rosetta*.
-To do so, open a Terminal window and type:
+### 6. Test project *Rosetta*
+
+Now you are ready to try out our test project *Rosetta*.
+Make sure that DSP-API and DSP-APP are running,
+then open a Terminal window and type:
 
 ```bash
-git clone https://github.com/dasch-swiss/082E-rosetta-scripts.git
-cd 082E-rosetta-scripts
-dsp-tools create rosetta.json
-dsp-tools xmlupload rosetta.xml
+cd ~/Desktop                                                        # go to your Desktop  
+git clone https://github.com/dasch-swiss/082E-rosetta-scripts.git   # clone the repository
+cd 082E-rosetta-scripts                                             # enter the repository
+dsp-tools create rosetta.json                                       # create the data model
+dsp-tools xmlupload rosetta.xml                                     # upload the data
 ```
 
 You can then look at the data in a browser at the address [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
@@ -96,16 +108,17 @@ restart DSP-API,
 create `rosetta.json` and upload `rosetta.xml` again,
 and see how the data changes in DSP-APP.
 
-That's it, already!
+That's it, you are ready to start working!
 
 
 
 
 ## Install DSP: Instructions for developers
 
-If you want to contribute to the development of DSP, you have to install a few more dependencies.
+If you want to work with the code of the DSP software,
+you have to install the prerequisites used to build the code from source.
 
-### XCode command line tools
+### 1. XCode command line tools
 
 Some Terminal commands used for the instructions below are not shipped with macOS by default.
 They must be installed separately.
@@ -117,27 +130,28 @@ xcode-select --install
 
 You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
-### Homebrew
+### 2. Homebrew
 
-[Homebrew](https://brew.sh) is a package manager that allows us to install other software. It can be installed with
+[Homebrew](https://brew.sh) is a package manager that allows us to install other software.
+Install it with
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Docker Desktop
+### 3. Docker Desktop
 
 DSP-API and DSP-APP are shipped as Docker containers.
-[Docker Desktop](https://www.docker.com/products/docker-desktop/) can be installed with
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) with
 
 ```bash
 brew install --cask docker
 ```
 
-### Python
+### 4. Python
 
-DSP-TOOLS is written in [Python](https://www.python.org/downloads/),
-and the documentation of DSP-API and DSP-APP is built with Python's [MkDocs](https://www.mkdocs.org/).
+[Python](https://www.python.org/downloads/) is the language in which DSP-TOOLS is written.
+It is also required to build the documentation of DSP-API and DSP-APP.
 Even if there is a pre-installed version of Python on your computer,
 we recommend installing it separately, with
 
@@ -145,17 +159,18 @@ we recommend installing it separately, with
 brew install python
 ```
 
-### Git
+### 5. Git
 
 All software developed by DaSCH is under [Git](https://git-scm.com/downloads) version control,
 and hosted on [GitHub](https://github.com/).
-Git comes with the XCode command line tools, but we recommend installing it separately, with
+Git comes with the XCode command line tools,
+but we recommend installing it separately, with
 
 ```bash
 brew install git
 ```
 
-### OpenJDK 17
+### 6. OpenJDK 17
 
 DSP-API is written in Scala, so building DSP-API from source requires Java.
 The recommended way to install it is [SDK Man](https://sdkman.io/),
@@ -183,7 +198,7 @@ Then, exit the list view with `q`, and install the version you copied with
 sdk install java 17.0.5-tem
 ```
 
-### sbt
+### 7. sbt
 
 DSP-API uses [sbt](https://www.scala-sbt.org/) as a build tool.
 Install sbt with
@@ -192,25 +207,25 @@ Install sbt with
 brew install sbt
 ```
 
-### Node.js, npm, and Angular
+### 8. Node.js, npm, and Angular
 
 Parts of DSP-APP are written in [Angular](https://angular.io/guide/setup-local),
 which requires [Node.js](https://nodejs.org/en/download/)
 and its package manager [npm](https://www.npmjs.com/).
 
-Node.js and npm can be installed with
+Install node.js and npm with
 
 ```bash
 brew install node
 ```
 
-Angular can be installed with
+Install Angular with
 
 ```bash
 npm install -g @angular/cli
 ```
 
-### yarn
+### 9. yarn
 
 DSP-APP uses [yarn](https://yarnpkg.com/getting-started/install) as a package manager.
 Install yarn with
@@ -219,7 +234,7 @@ Install yarn with
 brew install yarn
 ```
 
-### DSP-API and DSP-APP
+### 10. DSP-API and DSP-APP: build from source
 
 Clone DSP-API from [GitHub](https://github.com/dasch-swiss/dsp-api) and build the Docker image from source:
 
@@ -247,7 +262,7 @@ make stack-down-delete-volumes
 
 Please see the `Makefile` for other useful `make` targets.
 
-### DSP-TOOLS
+### 11. DSP-TOOLS and *Rosetta*
 
 [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools) is a command line tool
 used for creating complex data models and uploading big data sets.
