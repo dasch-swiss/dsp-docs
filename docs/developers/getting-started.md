@@ -35,12 +35,14 @@ In order to run DSP-TOOLS on your computer, it is enough if you install the foll
 
 Some Terminal commands used for the instructions below are not shipped with macOS by default.
 They must be installed separately.
-Install the XCode command line tools (not to be confused with the entire XCode application) as follows:
-Open a Terminal window and type
+Install the XCode command line tools (not to be confused with the entire XCode application)
+by opening a Terminal window and typing:
 
 ```bash
 xcode-select --install
 ```
+
+You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
 ### Docker Desktop
 
@@ -48,12 +50,11 @@ DSP-API and DSP-APP are shipped as Docker containers.
 Install Docker Desktop from [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/).
 Make sure to use the correct chip architecture (Intel versus Apple M1 chip).
 
-You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
-
 ### Python
 
-DSP-TOOLS is written in [Python](https://www.python.org/downloads/).
-Python comes with the XCode command line tools, but we recommend installing it separately.
+DSP-TOOLS is written in Python.
+Even if there is a pre-installed version of Python on your computer,
+we recommend installing it separately.
 It can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/).
 
 ### DSP-TOOLS
@@ -64,14 +65,21 @@ DSP-TOOLS is installed via Terminal: Open a Terminal window and type
 pip3 install dsp-tools
 ```
 
+From time to time, you have to upgrade DSP-TOOLS to the latest version.
+This is done in a Terminal window with the command
+
+```bash
+pip3 install --upgrade dsp-tools
+```
+
 ### DSP-API and DSP-APP
 
-Follow [these instructions](https://docs.dasch.swiss/2023.05.02/DSP-TOOLS/start-stack/)
+Follow [these instructions](https://docs.dasch.swiss/latest/DSP-TOOLS/start-stack/)
 to start up DSP-API and DSP-APP.
 
-### Try out our test project "rosetta"
+### Try out our test project *Rosetta*
 
-After this, you might want to check out our test project "rosetta".
+After this, you might want to experiment with our test project *Rosetta*.
 To do so, open a Terminal window and type:
 
 ```bash
@@ -83,12 +91,10 @@ dsp-tools xmlupload rosetta.xml
 
 You can then look at the data in a browser at the address [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
 
-From time to time, you have to upgrade DSP-TOOLS to the latest version. 
-This is done in a Terminal window with the command
-
-```bash
-pip3 install -upgrade dsp-tools
-```
+Feel free to modify `rosetta.json` and `rosetta.xml` to your liking,
+restart DSP-API,
+create `rosetta.json` and upload `rosetta.xml` again,
+and see how the data changes in DSP-APP.
 
 That's it, already!
 
@@ -108,6 +114,8 @@ Install the XCode command line tools (not to be confused with the entire XCode a
 ```bash
 xcode-select --install
 ```
+
+You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
 ### Homebrew
 
@@ -130,13 +138,12 @@ brew install --cask docker
 
 DSP-TOOLS is written in [Python](https://www.python.org/downloads/),
 and the documentation of DSP-API and DSP-APP is built with Python's [MkDocs](https://www.mkdocs.org/).
-Python comes with the XCode command line tools, but we recommend installing it separately, with
+Even if there is a pre-installed version of Python on your computer,
+we recommend installing it separately, with
 
 ```bash
 brew install python
 ```
-
-You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
 ### Git
 
@@ -168,7 +175,7 @@ Then, pick a version to install:
 sdk ls java
 ```
 
-This command shows you a table of all available versions.
+This command gives you a list of all available versions.
 Scroll down with the `Arrow Down` key and copy the name of the most recent version 17 of Temurin, e.g. `17.0.5-tem`.
 Then, exit the list view with `q`, and install the version you copied with
 
@@ -228,11 +235,11 @@ Fuseki, DSP-API, SIPI, and DSP-APP.
 If everything worked properly, the Dashboard in Docker Desktop should show those containers running.
 
 Please note that the DSP-APP container that was automatically started from within the DSP-API repo is just for convenience.
-If you want to work on DSP-APP,
-you should clone the [DSP-DAS repo](https://github.com/dasch-swiss/dsp-das) repo separately
-and start it according to its own instructions.
+If you want to actively work on DSP-APP,
+you should clone the [DSP-DAS repo](https://github.com/dasch-swiss/dsp-das) separately
+and run it according to its own instructions.
 
-To stop everything again, type
+To stop everything, type
 
 ```bash
 make stack-down-delete-volumes
@@ -250,7 +257,8 @@ Install it with
 pip3 install dsp-tools
 ```
 
-If DSP-API and DSP-APP are running on your machine, you can create the test project rosetta:
+If DSP-API and DSP-APP are running on your machine,
+you can try out DSP-TOOLS with our test project *Rosetta*:
 
 ```bash
 git clone https://github.com/dasch-swiss/082E-rosetta-scripts.git
@@ -261,6 +269,6 @@ dsp-tools xmlupload rosetta.xml
 
 You can then look at the data in DSP-APP at [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
 
-If you want to work on DSP-TOOLS,
-you should clone the [DSP-TOOLS repo](https://github.com/dasch-swiss/dsp-tools) repo separately
-and follow the instructions therein.
+If you want to actively work on DSP-TOOLS,
+you should clone the [DSP-TOOLS repo](https://github.com/dasch-swiss/dsp-tools) separately
+and run it according to its own instructions.
