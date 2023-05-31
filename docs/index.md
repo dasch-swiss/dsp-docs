@@ -39,7 +39,7 @@ The documentation for developers is split into different groups depending on the
 - [Overview](developers/getting-started.md)
 - [DSP-API](DSP-API/05-internals/development/overview) is the main software framework in the back-end.
 - [DSP-APP](DSP-APP/contribution/)
-- [DSP-TOOLS](DSP-TOOLS/developers-index) is a python library to enable researchers and data stewards to work with DSP-API (e.g. creating data models, uploading data, etc.).
+- [DSP-TOOLS](DSP-TOOLS/developers/) is a python library to enable researchers and data stewards to work with DSP-API (e.g. creating data models, uploading data, etc.).
 - [DSP Libraries](developers/libraries/index.md)
 - [SIPI](developers/sipi/index.md)
 

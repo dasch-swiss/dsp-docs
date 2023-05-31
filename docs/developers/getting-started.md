@@ -1,213 +1,289 @@
-# Developer Overview
+# Getting started with DSP
 
-## Getting started with the DaSCH Service Platform (DSP)
+The DaSCH Service Platform (DSP) is a bundle of software that runs on servers hosted by DaSCH.
+For some purposes, it is necessary to run the DSP software stack on a local machine.
 
-### Local Development Environment
+Follow the instructions on this page to install the DSP software stack on your local machine.
 
-At the DaSCH, the principal development environment is [Apple macOS](https://www.apple.com/macos).
+The basic components of DSP are:
 
-Each developer machine should have the following prerequisites installed:
+| Component                                             | Description                                                                                    |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [DSP-API](https://github.com/dasch-swiss/dsp-api)     | The core of our software stack: the RDF database that offers an access via API                 |
+| [DSP-APP](https://github.com/dasch-swiss/dsp-app)     | The web application that allows you to view and edit data in your browser                      |
+| [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools) | A Python library and command line tool to upload data models and big data sets to a DSP server |
 
-- Docker Desktop: <https://www.docker.com/products/docker-desktop>
-- Homebrew: <https://brew.sh>, which can be used to install:
-  - `git`
-  - `expect`
-  - `sbt`
-  - `python` (Python 3)
-  - `node`
+The DSP software can only be run on macOS and Linux.
+Windows is not supported.
 
-### Java AdoptOpenJDK 11
+This page is divided in 2 sections:
 
-To install, follow these steps:
+- [Install DSP: Instructions for users](#install-dsp-instructions-for-users):  
+  Researchers, data stewards, and other users can take this shortcut.
+- [Install DSP: Instructions for developers](#install-dsp-instructions-for-developers):  
+  Developers must install everything.
+
+
+
+## Install DSP: Instructions for users
+
+If you are a researcher or data steward who wants to use DSP to manage your data,
+you can get started quite quickly.
+
+DSP-TOOLS offers you a shortcut,
+so you only have to install DSP-TOOLS and its prerequisites:
+
+### 1. XCode command line tools
+
+Some Terminal commands used for the instructions below are not shipped with macOS by default.
+They must be installed separately.
+Install the XCode command line tools *(not to be confused with the entire XCode application)*
+by opening a Terminal window and typing:
 
 ```bash
-brew tap AdoptOpenJDK/openjdk
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk11
+xcode-select --install
 ```
 
-To pin the version of Java, you can add this environment variable to your startup script (bashrc, etc.):
+You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
+
+### 2. Docker Desktop
+
+DSP-API and DSP-APP are shipped as Docker containers.
+Install Docker Desktop from [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/).
+Make sure to use the correct chip architecture (Intel versus Apple M1 chip).
+
+### 3. Python
+
+Python is the language in which DSP-TOOLS is written.
+Even if there is a pre-installed version of Python on your computer,
+we recommend installing it separately.
+It can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/).
+We recommend installing the latest version,
+but DSP-TOOLS will also work with older versions (3.9 and newer).
+
+### 4. DSP-TOOLS
+
+With these prerequisites installed,
+you are now ready to install DSP-TOOLS!
+
+Open a Terminal window and type:
 
 ```bash
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
+pip3 install dsp-tools
 ```
 
-You can also use [jEnv](https://www.jenv.be/) to use different versions of Java for different things.
-
-### Bazel build tools
-
-To install, follow these steps:
+Before using DSP-TOOLS,
+you should always execute the upgrade command:
 
 ```bash
-npm install -g @bazel/bazelisk
-npm install -g @bazel/buildozer
+pip3 install --upgrade dsp-tools
 ```
 
-This will install [bazelisk](https://github.com/bazelbuild/bazelisk) which is
-a wrapper to the `bazel` binary. It will, when the `bazel` command ir run,
-automatically install the supported Bazel version, defined in the `.bazelversion`
-file in the root of the `knora-api` repository.
+This command upgrades DSP-TOOLS to the latest version.
 
-### Clone DSP-API from GitHub
+### 5. DSP-API and DSP-APP: run from within DSP-TOOLS
 
-To clone DSP-API from Github open a terminal window and change to the directory where you intend to install DSP-API. Then type
+Now that you have DSP-TOOLS installed,
+you can use it to run DSP-API and DSP-APP
+according to [these instructions](https://docs.dasch.swiss/latest/DSP-TOOLS/start-stack/).
+
+### 6. Test project *Rosetta*
+
+Now you are ready to try out our test project *Rosetta*.
+Make sure that DSP-API and DSP-APP are running,
+then open a Terminal window and type:
+
+```bash
+cd ~/Desktop                                                        # go to your Desktop  
+git clone https://github.com/dasch-swiss/082E-rosetta-scripts.git   # clone the repository
+cd 082E-rosetta-scripts                                             # enter the repository
+dsp-tools create rosetta.json                                       # create the data model
+dsp-tools xmlupload rosetta.xml                                     # upload the data
+```
+
+You can then look at the data in a browser at the address [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
+
+Feel free to modify `rosetta.json` and `rosetta.xml` to your liking,
+restart DSP-API,
+create `rosetta.json` and upload `rosetta.xml` again,
+and see how the data changes in DSP-APP.
+
+That's it, you are ready to start working!
+
+
+
+
+## Install DSP: Instructions for developers
+
+If you want to work with the code of the DSP software,
+you have to install the prerequisites used to build the code from source.
+
+### 1. XCode command line tools
+
+Some Terminal commands used for the instructions below are not shipped with macOS by default.
+They must be installed separately.
+Install the XCode command line tools (not to be confused with the entire XCode application) as follows:
+
+```bash
+xcode-select --install
+```
+
+You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
+
+### 2. Homebrew
+
+[Homebrew](https://brew.sh) is a package manager that allows us to install other software.
+Install it with
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### 3. Docker Desktop
+
+DSP-API and DSP-APP are shipped as Docker containers.
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) with
+
+```bash
+brew install --cask docker
+```
+
+### 4. Python
+
+[Python](https://www.python.org/downloads/) is the language in which DSP-TOOLS is written.
+It is also required to build the documentation of DSP-API and DSP-APP.
+Even if there is a pre-installed version of Python on your computer,
+we recommend installing it separately, with
+
+```bash
+brew install python
+```
+
+### 5. Git
+
+All software developed by DaSCH is under [Git](https://git-scm.com/downloads) version control,
+and hosted on [GitHub](https://github.com/).
+Git comes with the XCode command line tools,
+but we recommend installing it separately, with
+
+```bash
+brew install git
+```
+
+### 6. OpenJDK 17
+
+DSP-API is written in Scala, so building DSP-API from source requires Java.
+The recommended way to install it is [SDK Man](https://sdkman.io/),
+because SDK Man takes care of the environment variable `JAVA_HOME`.
+Installing Java by other means (e.g. Homebrew) is also possible,
+but requires some manual work and has caused problems in the past.
+
+First, install SDK Man with
+
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+
+Then, pick a version to install:
+
+```bash
+sdk ls java
+```
+
+This command gives you a list of all available versions.
+Scroll down with the `Arrow Down` key and copy the name of the most recent version 17 of Temurin, e.g. `17.0.5-tem`.
+Then, exit the list view with `q`, and install the version you copied with
+
+```bash
+sdk install java 17.0.5-tem
+```
+
+### 7. sbt
+
+DSP-API uses [sbt](https://www.scala-sbt.org/) as a build tool.
+Install sbt with
+
+```bash
+brew install sbt
+```
+
+### 8. Node.js, npm, and Angular
+
+Parts of DSP-APP are written in [Angular](https://angular.io/guide/setup-local),
+which requires [Node.js](https://nodejs.org/en/download/)
+and its package manager [npm](https://www.npmjs.com/).
+
+Install node.js and npm with
+
+```bash
+brew install node
+```
+
+Install Angular with
+
+```bash
+npm install -g @angular/cli
+```
+
+### 9. yarn
+
+DSP-APP uses [yarn](https://yarnpkg.com/getting-started/install) as a package manager.
+Install yarn with
+
+```bash
+brew install yarn
+```
+
+### 10. DSP-API and DSP-APP: build from source
+
+Clone DSP-API from [GitHub](https://github.com/dasch-swiss/dsp-api) and build the Docker image from source:
 
 ```bash
 git clone https://github.com/dasch-swiss/dsp-api.git
-```
-
-This will install the directory `dsp-api` with subdirectories in the chosen directory.
-
-### Bazel Commands
-
-Build `webapi`:
-
-```bash
-# build webapi
-bazel build //webapi/...
-
-# run all webapi tests
-bazel test //webapi/...
-```
-
-### Build the docker image
-
-From inside the cloned `dsp-api` repository folder, create a test repository:
-
-```bash
-make init-db-test
-```
-
-Then start the DSP stack:
-
-```bash
+cd dsp-api
+make init-db-test-minimal
 make stack-up
 ```
 
-This should start the complete Knora stack consisting of
-Fuseki, DSP-API, Redis, and Sipi.
-If everything worked properly, the Dashboard in Docker Desktop should show
-those containers running.
+This starts the DSP stack consisting of
+Fuseki, DSP-API, SIPI, and DSP-APP.
+If everything worked properly, the Dashboard in Docker Desktop should show those containers running.
 
-To stop everything again, type 
+Please note that the DSP-APP container that was automatically started from within the DSP-API repo is just for convenience.
+If you want to actively work on DSP-APP,
+you should clone the [DSP-DAS repo](https://github.com/dasch-swiss/dsp-das) separately
+and run it according to its own instructions.
+
+To stop everything, type
 
 ```bash
-make stack-down
+make stack-down-delete-volumes
 ```
 
 Please see the `Makefile` for other useful `make` targets.
 
-### Build Structure
+### 11. DSP-TOOLS and *Rosetta*
 
-The Bazel build is defined in a number of files:
-
-- WORKSPACE - here are external dependencies defined
-- BUILD - there are a number of BUILD files throughout the directory structure
-    where each represents a separate package responsible for everything underneath.
-- *.bzl - custom extensions loaded and used in BUILD files
-
-For a more detailed discussion, please see the [Concepts and Terminology](https://docs.bazel.build/versions/master/build-ref.html)
-section in the Bazel documentation.
-
-### Some Notes
-
-1. Override some `.bazelrc` settings in your own copy created at `~/.bazelrc`:
-
-    ```bash
-    build --action_env=PATH="/usr/local/bin:/opt/local/bin:/usr/bin:/bin"
-    build --strategy=Scalac=worker
-    build --worker_sandboxing
-    query --package_path %workspace%:/usr/local/bin/bazel/base_workspace
-    startup --host_jvm_args=-Djavax.net.ssl.trustStore=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/lib/security/cacerts \
-            --host_jvm_args=-Djavax.net.ssl.trustStorePassword=changeit
-    ```
-
-1. Add Bazel Plugin and Project to IntelliJ
-    1. The latest version of the [Bazel plugin](https://plugins.jetbrains.com/plugin/8609-bazel/versions)
-       supports only IntelliJ upto version `2020.01.04`. After you make sure to
-       run this version of IntelliJ, install the plugin from inside IntelliJ.
-    1. Click on `File -> Import Bazel Project` and select twice `next`.
-    1. Uncomment the `Scala` language and click `Finish`.
-
-1. Run single spec:
-
-    ```bash
-    bazel test //webapi/src/test/scala/org/knora/webapi/e2e/v1:SearchV1R2RSpec
-    ```
-
-1. Run single spec and only tests containing `gaga` in the description
-
-    ```bash
-    bazel test //webapi/src/test/scala/org/knora/webapi/e2e/v1:SearchV1R2RSpec --test_arg=-z --test_arg="gaga"
-    ```
-
-1. Start Scala REPL
-
-    ```bash
-    bazel run //webapi:main_library_repl
-    ```
-
-### Build stamping
-
-By default, Bazel tries not to include anything about the system state in build
-outputs. However, released binaries and libraries often want to include
-something like the version they were built at or the branch or tag they came
-from.
-
-To reconcile this, Bazel has an option called the *workspace status command*.
-This command is run outside of any sandboxes on the local machine, so it can
-access anything about your source control, OS, or anything else you might want
-to include. It then dumps its output into `bazel-out/volatile-status.txt`, which
-you can use (and certain language rulesets provide support for accessing from code).
-
-Our *workspace status command* is defined in `//tools/buildstamp/get_workspace_status`.
-To use it on every bazel command, we need to supply it to each Bazel invocation,
-which is done by the following line found in `.bazelrc`:
+[DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools) is a command line tool
+used for creating complex data models and uploading big data sets.
+Install it with
 
 ```bash
-build --workspace_status_command=tools/buildstamp/get_workspace_status --stamp=yes
+pip3 install dsp-tools
 ```
 
-Any line added to `.bazelrc` is invoked on each corresponding command.
-
-The `//tools/buildstamp/get_workspace_status` emits additional values
-to `bazel-out/volatile-status.txt` whereas `BUILD_TIMESTAMP` is emitted by
-Bazel itself:
+If DSP-API and DSP-APP are running on your machine,
+you can try out DSP-TOOLS with our test project *Rosetta*:
 
 ```bash
-BUILD_SCM_REVISION 2d6df6c8fe2d56e3712eb26763f9727916a60164
-BUILD_SCM_STATUS Modified
-BUILD_SCM_TAG v13.0.0-rc.21-17-g2d6df6c-dirty
-BUILD_TIMESTAMP 1604401028
+git clone https://github.com/dasch-swiss/082E-rosetta-scripts.git
+cd 082E-rosetta-scripts
+dsp-tools create rosetta.json
+dsp-tools xmlupload rosetta.xml
 ```
 
-The value of `BUILD_SCM_TAG` is used in `//webapi/src/main/scala/org/knora/webapi/http/version/versioninfo`,
-which emits a JAR containing `VersionInfo.scala`. This file is generated based on
-`VersionInfoTemplate.scala` found in the same Bazel package.
+You can then look at the data in DSP-APP at [http://0.0.0.0:4200/](http://0.0.0.0:4200/).
 
-In short, the `versioninfo` target producing the JAR library depends on
-the `version_info_with_build_tag` target which emits the `VersionInfo.scala`
-file which has the `{BUILD_TAG}` variable replaced by the current value of
-`BUILD_SCM_TAG`. In an intermediary step, the `version_info_without_build_tag`
-target, replaces variables coming from `//third_party:versions.bzl`.
-
-### Visualize your Build
-
-Add the following line to your ~/.bazelrc:
-
-```bash
-query --package_path %workspace%:[PATH TO BAZEL]/base_workspace # set the path to the bazel binary
-```
-
-Run bazel query inside your project directory, asking it to search for all dependencies
-of //:main (or however the label is to your target of interest):
-
-```bash
-bazel query 'deps(//:main)' --output graph > graph.in
-```
-
-This creates a file called `graph.in`, which is a text representation of the build graph.
-You can use ```dot``` (install with `brew install graphviz`) to create a png:
-
-```bash
-dot -Tpng < graph.in > graph.png
-```
+If you want to actively work on DSP-TOOLS,
+you should clone the [DSP-TOOLS repo](https://github.com/dasch-swiss/dsp-tools) separately
+and run it according to its own instructions.
