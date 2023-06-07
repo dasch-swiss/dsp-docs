@@ -31,10 +31,6 @@ The basics and the general DSP developers guide are stored in the `/docs` folder
     - RDF = all about the resource description framework, which is main part of the data management
     - Contribution = All about the tools we are using for version control and releasing
 
-2. **Community** almost links to other services and support pages
-      - FAQ = List of questions and answers (NOT YET IMPLEMENTED)
-      - Product Updates = List of release notes
-      - About us = all about the DaSCH and the DaSCH developers
 
 Images like screenshots and so on have to be stored in `/docs/assets/images`.
 
