@@ -1,7 +1,7 @@
 # Product Updates
 
-You'll find the general list of features, updates and bug fixes of the DaSCH Service Platform (DSP) on our confluence 
-**[DSP Changelog page](https://dasch.atlassian.net/wiki/spaces/changelog/overview)**.
+You'll find the general list of features, updates and bug fixes of the DaSCH Service Platform (DSP)
+on our **[releasenotes page](https://dasch.releasenotes.io/)**.
 
 Each DSP repository has also its own release notes:
 
