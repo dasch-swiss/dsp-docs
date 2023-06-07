@@ -14,8 +14,8 @@ nav:
           - Libraries: developers/libraries.md
       - Contribution: developers/contribution.md
   - Community:
-    - Product Updates: community/product-updates.md
-    - About us: community/about-us.md
+      - Product Updates: community/product-updates.md
+      - About us: community/about-us.md
 
 plugins:
   - mike
