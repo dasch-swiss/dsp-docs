@@ -7,6 +7,6 @@ Each DSP repository has also its own release notes:
 
 - **[DSP-API release notes](https://github.com/dasch-swiss/dsp-api/releases)**
 - **[DSP-JS-LIB release notes](https://github.com/dasch-swiss/dsp-js-lib/releases)**
-- **[DSP-APP release notes](https://github.com/dasch-swiss/dsp-app/releases)**
+- **[DSP-APP release notes](https://github.com/dasch-swiss/dsp-das/releases)**
 - **[DSP-TOOLS release notes](https://github.com/dasch-swiss/dsp-tools/releases)**
 - **[SIPI release notes](https://github.com/dasch-swiss/sipi/releases)**

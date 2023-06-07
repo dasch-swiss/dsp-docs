@@ -4,7 +4,7 @@ The DSP software is developed under git version control using [GitHub](https://g
 following main repositories:
 
 [![DSP-API](https://img.shields.io/github/v/release/dasch-swiss/dsp-api?include_prereleases&label=DSP-API)](https://github.com/dasch-swiss/dsp-api)
-[![DSP-APP](https://img.shields.io/github/v/release/dasch-swiss/dsp-app?include_prereleases&label=DSP-APP)](https://github.com/dasch-swiss/dsp-app)
+[![DSP-APP](https://img.shields.io/github/v/release/dasch-swiss/dsp-das?include_prereleases&label=DSP-APP)](https://github.com/dasch-swiss/dsp-das)
 [![DSP-TOOLS](https://img.shields.io/github/v/release/dasch-swiss/dsp-tools?include_prereleases&label=DSP-TOOLS)](https://github.com/dasch-swiss/dsp-tools)
 [![DSP-JS-LIB](https://img.shields.io/github/v/release/dasch-swiss/dsp-js-lib?include_prereleases&label=DSP-JS-LIB)](https://github.com/dasch-swiss/dsp-js-lib)
 [![DSP-UI-LIB](https://img.shields.io/github/v/release/dasch-swiss/dsp-ui-lib?include_prereleases&label=DSP-UI-LIB)](https://github.com/dasch-swiss/dsp-ui-lib)

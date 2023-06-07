@@ -10,7 +10,7 @@ The basic components of DSP are:
 | Component                                             | Description                                                                                    |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [DSP-API](https://github.com/dasch-swiss/dsp-api)     | The core of our software stack: the RDF database that offers an access via API                 |
-| [DSP-APP](https://github.com/dasch-swiss/dsp-app)     | The web application that allows you to view and edit data in your browser                      |
+| [DSP-APP](https://github.com/dasch-swiss/dsp-das)     | The web application that allows you to view and edit data in your browser                      |
 | [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools) | A Python library and command line tool to upload data models and big data sets to a DSP server |
 
 The DSP software can only be run on macOS and Linux.

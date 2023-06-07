@@ -5,7 +5,7 @@ on [docs.dasch.swiss](https://docs.dasch.swiss) is generated.
 It includes three main components:
 
 - [DSP-API](https://github.com/dasch-swiss/dsp-api)
-- [DSP-APP](https://github.com/dasch-swiss/dsp-app)
+- [DSP-APP](https://github.com/dasch-swiss/dsp-das)
 - [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools)
 
 If you want to contribute, please read the following information carefully.
