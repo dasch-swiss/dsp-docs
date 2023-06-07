@@ -1,69 +1,85 @@
 # DaSCH Service Platform Documentation
 
-This is the main documentation for all services the Data and Service Center for the Humanities DaSCH develops and 
-supports. It includes three main components:
+This repository is the source from which the DSP documentation
+on [docs.dasch.swiss](https://docs.dasch.swiss) is generated.
+It includes three main components:
 
 - [DSP-API](https://github.com/dasch-swiss/dsp-api)
-- [DSP-APP](https://github.com/dasch-swiss/dsp-app)
+- [DSP-APP](https://github.com/dasch-swiss/dsp-das)
 - [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools)
 
-You'll find the documentation on [docs.dasch.swiss](https://docs.dasch.swiss).
+If you want to contribute, please read the following information carefully.
 
-## Contribute
-
-If you have to contribute, and you want to add or edit entries, please read the following information about file 
-structure and developing carefully.
-
-### File structure
+## File structure
 
 DSP-API, DSP-APP, and DSP-TOOLS have their own documentation in their repositories itself.
 They are integrated into this documentation with [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) and
 the [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin).
 
-Those three documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there. 
+Those three documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there.
 They have to be updated in their own repositories. To grab the latest version of them run `make update-docs`.
 
-The basics and the general DSP developers guide are stored in the `/docs` folder.
+In addition to those embedded contents, there are contents that live in this repository.
+They are stored in the `/docs` folder:
 
-1. **Developers** contains all information for people who want to contribute to one of the DSP components or to help improving one of the software mentioned above.
-    - Getting Started = Information about local installation and how to set up a local DSP environment
-    - Introduction = General information about the DSP software
-    - RDF = all about the resource description framework, which is main part of the data management
-    - Contribution = All about the tools we are using for version control and releasing
-
+- main landing page
+- general DSP developers guide, with basics about DSP and how to contribute to the DSP software
 
 Images like screenshots and so on have to be stored in `/docs/assets/images`.
 
-## Developers
+## How to build the documentation from source
 
-The documentation is based on [MkDocs](https://www.mkdocs.org).
+In order to build the documentation from source,
+you need to install the following prerequisites:
 
-**Python**
+### XCode command line tools
 
-To run the documentation locally you'll need [Python](https://www.python.org/) installed, as well as the Python package 
-manager, [pip](http://pip.readthedocs.io/en/stable/installing/). You can check if you have these already installed from 
-the command line:
+Some Terminal commands used for the instructions below are not shipped with macOS by default.
+They must be installed separately.
+Install the XCode command line tools (not to be confused with the entire XCode application) as follows:
+
+```bash
+xcode-select --install
+```
+
+You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
+
+### Homebrew
+
+[Homebrew](https://brew.sh) is a package manager that allows us to install other software.
+Install it with
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### Python
+
+The documentation is built with [MkDocs](https://www.mkdocs.org),
+which requires [Python](https://www.python.org/).
+You can check if you have it already installed with:
 
 ```shell
 python --version
-Python 3.9.5
-$ pip --version
-pip 21.1.1
 ```
 
-MkDocs supports Python versions 2.7, 3.4, 3.5, 3.6, 3.7 and [pypy](https://pypy.org).
+If this command doesn't output a version number, then run
 
-**Graphviz**
+```bash
+brew install python
+```
 
-Install Graphviz (Graph visualization software) to work with `.dot` file:
+### Graphviz
+
+Install Graphviz (Graph visualization software) to work with `.dot` files:
 
 ```shell
 brew install graphviz
 ```
 
-### Installing dependencies
+### Python packages
 
-Install the required packages by running
+Install the required python packages by running
 
 ```shell
 make install-requirements
@@ -71,7 +87,7 @@ make install-requirements
 
 ### Initializing submodules
 
-This step is required to be performed if you work with `dsp-docs` repository for the first time, just run:
+This step is required if you work with the `dsp-docs` repository for the first time:
 
 ```shell
 make init-submodules
@@ -87,26 +103,15 @@ make update-submodules
 
 ### Getting started
 
-MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in 
-the same directory as the `mkdocs.yml` configuration file, and then start the server by running the following command:
+MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it.
+Make sure you're in the same directory as the `mkdocs.yml` configuration file,
+and then start the server by running the following command:
 
 ```shell
 make serve
 ```
 
-Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentation start page being.
-
-In case you need to clean the project directory, run:
-
-```shell
-make clean
-```
-
-To get help about the `make` commands, run:
-
-```shell
-make help
-```
+Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentation landing page.
 
 ### Building the documentation
 
@@ -116,18 +121,26 @@ To build the documentation just run:
 make build
 ```
 
-In some cases, the submodules have changed (depending on the defined version in `release.mk` file). In this case run 
-`git update-submodules` first.
+In some cases, the submodules have changed (depending on the defined version in `release.mk` file).
+In this case run `git update-submodules` first.
 
 ### Deploying GitHub page
 
-Deploying the documentation to the GitHub pages has to be done manually. 
+Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) has to be done manually.
 
-Make sure that the `release.mk` file is up-to-date with the corresponding versions, and you are in the main branch. 
+Make sure that the `release.mk` file is up-to-date with the corresponding versions, and that you are in the main branch.
 Then run the following command:
 
 ```shell
 make deploy
 ```
 
-It updates the submodules and pushes the documentation to the gh-pages branch.
+This updates the submodules and pushes the documentation to the gh-pages branch.
+
+### Help for the `make` commands
+
+To get help for the `make` commands, run:
+
+```shell
+make help
+```
