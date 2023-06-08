@@ -1,6 +1,6 @@
 # DaSCH Service Platform Documentation
 
-Welcome to DaSCH, the Swiss National Data and Service Center for the Humanities (DaSCH)!
+Welcome to DaSCH - Swiss National Data and Service Center for the Humanities!
 
 Our mission is to operate a platform for Humanities research data
 that ensures long-term availability of this data.
