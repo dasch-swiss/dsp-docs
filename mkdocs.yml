@@ -18,11 +18,11 @@ nav:
       - About us: community/about-us.md
 
 plugins:
+  - git-revision-date-localized
   - mike
   - monorepo
   - include-markdown
   - search
-  - git-revision-date
 
 theme:
   name: material
