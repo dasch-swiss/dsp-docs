@@ -77,28 +77,41 @@ Install Graphviz (Graph visualization software) to work with `.dot` files:
 brew install graphviz
 ```
 
-### Python packages
+### Clone this repository and initialize the submodules
 
-Install the required python packages by running
-
-```shell
-make install-requirements
-```
-
-### Initializing submodules
-
-This step is required if you work with the `dsp-docs` repository for the first time:
+Clone this repository from GitHub with
 
 ```shell
+git clone https://github.com/dasch-swiss/dsp-docs.git
+cd dsp-docs
 make init-submodules
 ```
 
 ### Update the submodules
 
-Get the latest version of DSP-API, DSP-APP and DSP-TOOLS documentation by running
+If you have been away for a while, you might want to update the submodules
+to get the latest version of DSP-API, DSP-APP and DSP-TOOLS documentation.
+Make sure you are inside the dsp-docs repository, then run:
 
 ```shell
 make update-submodules
+```
+
+### Install Python packages in a virtual environment
+
+Make sure you are inside the dsp-docs repository, then create a new virtual environment:
+
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+The virtual environment is now active,
+as can be seen from the `(.venv)` at the beginning of the command line:
+Install the required python packages by running
+
+```shell
+make install-requirements
 ```
 
 ### Getting started
