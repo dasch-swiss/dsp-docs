@@ -107,7 +107,7 @@ source .venv/bin/activate
 ```
 
 The virtual environment is now active,
-as can be seen from the `(.venv)` at the beginning of the command line:
+as can be seen from the `(.venv)` at the beginning of the command line.
 Install the required python packages by running
 
 ```shell
