@@ -117,8 +117,11 @@ make install-requirements
 ### Getting started
 
 MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it.
-Make sure you're in the same directory as the `mkdocs.yml` configuration file,
-and then start the server by running the following command:
+
+Make sure you're at the root of the dsp-docs repo,
+and that the virtual environment is active (`(.venv)` at the beginning of the command line).
+
+Then start the server with:
 
 ```shell
 make serve
@@ -128,7 +131,11 @@ Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentati
 
 ### Building the documentation
 
-To build the documentation just run:
+To build the documentation,
+make sure you're at the root of the dsp-docs repo,
+and that the virtual environment is active (`(.venv)` at the beginning of the command line).
+
+Then build the docs with:
 
 ```shell
 make build
@@ -141,7 +148,13 @@ In this case run `git update-submodules` first.
 
 Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) has to be done manually.
 
-Make sure that the `release.mk` file is up-to-date with the corresponding versions, and that you are in the main branch.
+Make sure that 
+
+- the `release.mk` file is up-to-date with the corresponding versions,
+- that you are in the main branch
+- that you're at the root of the dsp-docs repo
+- that the virtual environment is active (`(.venv)` at the beginning of the command line)
+
 Then run the following command:
 
 ```shell
