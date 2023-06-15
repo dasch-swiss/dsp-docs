@@ -148,7 +148,7 @@ In this case run `git update-submodules` first.
 
 Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) has to be done manually.
 
-Make sure that 
+Make sure that
 
 - the `release.mk` file is up-to-date with the corresponding versions,
 - that you are in the main branch
