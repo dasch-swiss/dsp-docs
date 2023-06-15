@@ -17,7 +17,7 @@ They are integrated into this documentation with [git submodule](https://git-scm
 the [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin).
 
 Those three documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there.
-They have to be updated in their own repositories. To grab the latest version of them run `make update-docs`.
+They have to be updated in their own repositories. To grab the latest version of them run `make update-submodules`.
 
 In addition to those embedded contents, there are contents that live in this repository.
 They are stored in the `/docs` folder:
@@ -114,12 +114,15 @@ Install the required python packages by running
 make install-requirements
 ```
 
-### Getting started
+### Serving the documentation locally
 
 MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it.
 
-Make sure you're at the root of the dsp-docs repo,
-and that the virtual environment is active (`(.venv)` at the beginning of the command line).
+Make sure that
+
+- you're at the root of the dsp-docs repo
+- the virtual environment is active (`(.venv)` at the beginning of the command line)
+- the submodules are up to date (run `git update-submodules`)
 
 Then start the server with:
 
@@ -131,18 +134,17 @@ Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentati
 
 ### Building the documentation
 
-To build the documentation,
-make sure you're at the root of the dsp-docs repo,
-and that the virtual environment is active (`(.venv)` at the beginning of the command line).
+Make sure that
+
+- you're at the root of the dsp-docs repo
+- the virtual environment is active (`(.venv)` at the beginning of the command line)
+- the submodules are up to date (run `git update-submodules`)
 
 Then build the docs with:
 
 ```shell
 make build
 ```
-
-In some cases, the submodules have changed (depending on the defined version in `release.mk` file).
-In this case run `git update-submodules` first.
 
 ### Deploying GitHub page
 
