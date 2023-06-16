@@ -18,6 +18,7 @@ update-submodules: ## grab the current documentation from each connected repo
 .PHONY: build
 build: ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
+	@$(MAKE) install-requirements
 	mike deploy $(DSP) latest --update-aliases
 	mike set-default latest
 
@@ -28,6 +29,7 @@ serve: ## serve docs for local viewing
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
+	@$(MAKE) install-requirements	
 	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=true
 
 .PHONY: install-requirements

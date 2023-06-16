@@ -3,3 +3,4 @@ site/
 .idea/
 env/
 .vscode/
+.venv
