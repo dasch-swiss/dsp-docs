@@ -152,7 +152,9 @@ Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) has
 
 Make sure that
 
-- the `release.mk` file is up-to-date with the corresponding versions,
+- the `release.mk` file is up-to-date with the corresponding versions
+    - for DSP, API, APP, see [here](https://github.com/dasch-swiss/ops-deploy/blob/main/roles/dsp-deploy/files/RELEASE.json)
+    - for TOOLS, see [here](https://github.com/dasch-swiss/dsp-tools/releases)
 - that you are in the main branch
 - that you're at the root of the dsp-docs repo
 - that the virtual environment is active (`(.venv)` at the beginning of the command line)
