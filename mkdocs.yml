@@ -15,11 +15,11 @@ nav:
       - Contribution: developers/contribution.md
 
 plugins:
+  - git-revision-date-localized
   - mike
   - monorepo
   - include-markdown
   - search
-  - git-revision-date
 
 theme:
   name: material

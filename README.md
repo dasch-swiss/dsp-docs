@@ -17,7 +17,7 @@ They are integrated into this documentation with [git submodule](https://git-scm
 the [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin).
 
 Those three documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there.
-They have to be updated in their own repositories. To grab the latest version of them run `make update-docs`.
+They have to be updated in their own repositories. To grab the latest version of them run `make update-submodules`.
 
 In addition to those embedded contents, there are contents that live in this repository.
 They are stored in the `/docs` folder:
@@ -77,35 +77,54 @@ Install Graphviz (Graph visualization software) to work with `.dot` files:
 brew install graphviz
 ```
 
-### Python packages
+### Clone repository and initialize submodules
 
+Clone this repository from GitHub and initialize the submodules:
+
+```shell
+git clone https://github.com/dasch-swiss/dsp-docs.git
+cd dsp-docs
+make init-submodules
+```
+
+### Update the submodules
+
+If you have been away for a while, you might want to update the submodules
+to get the latest version of DSP-API, DSP-APP and DSP-TOOLS documentation.
+Make sure you are at the root of the dsp-docs repository, then run:
+
+```shell
+make update-submodules
+```
+
+### Install Python packages in a virtual environment
+
+Make sure you are at the root of the dsp-docs repository, then create a new virtual environment:
+
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+The virtual environment is now active,
+as can be seen from the `(.venv)` at the beginning of the command line.
 Install the required python packages by running
 
 ```shell
 make install-requirements
 ```
 
-### Initializing submodules
-
-This step is required if you work with the `dsp-docs` repository for the first time:
-
-```shell
-make init-submodules
-```
-
-### Update the submodules
-
-Get the latest version of DSP-API, DSP-APP and DSP-TOOLS documentation by running
-
-```shell
-make update-submodules
-```
-
-### Getting started
+### Serving the documentation locally
 
 MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it.
-Make sure you're in the same directory as the `mkdocs.yml` configuration file,
-and then start the server by running the following command:
+
+Make sure that
+
+- you're at the root of the dsp-docs repo
+- the virtual environment is active (`(.venv)` at the beginning of the command line)
+- the submodules are up to date (run `git update-submodules`)
+
+Then start the server with:
 
 ```shell
 make serve
@@ -115,20 +134,31 @@ Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentati
 
 ### Building the documentation
 
-To build the documentation just run:
+Make sure that
+
+- you're at the root of the dsp-docs repo
+- the virtual environment is active (`(.venv)` at the beginning of the command line)
+- the submodules are up to date (run `git update-submodules`)
+
+Then build the docs with:
 
 ```shell
 make build
 ```
 
-In some cases, the submodules have changed (depending on the defined version in `release.mk` file).
-In this case run `git update-submodules` first.
-
 ### Deploying GitHub page
 
 Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) has to be done manually.
 
-Make sure that the `release.mk` file is up-to-date with the corresponding versions, and that you are in the main branch.
+Make sure that
+
+- the `release.mk` file is up-to-date with the corresponding versions
+    - for DSP, API, APP, see [here](https://github.com/dasch-swiss/ops-deploy/blob/main/roles/dsp-deploy/files/RELEASE.json)
+    - for TOOLS, see [here](https://github.com/dasch-swiss/dsp-tools/releases)
+- that you are in the main branch
+- that you're at the root of the dsp-docs repo
+- that the virtual environment is active (`(.venv)` at the beginning of the command line)
+
 Then run the following command:
 
 ```shell
