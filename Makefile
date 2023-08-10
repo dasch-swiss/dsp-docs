@@ -34,7 +34,7 @@ deploy: ## build and publish docs to Github Pages with versioning from the relea
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
-	pip3 install -r requirements.txt
+	pip3 install -r requirements.txt > /dev/null
 
 .PHONY: clean
 clean: ## cleans the project directory
