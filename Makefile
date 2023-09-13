@@ -1,3 +1,7 @@
+# bash script that generates dot files with UMLs from python code
+PYREVERSE_SCRIPT := $(shell find dsp/dsp-tools -type f -name 'pyreverse.sh')
+PYREVERSE_SCRIPT_WORKING_DIRECTORY := $(subst dsp/dsp-tools/,,$(PYREVERSE_SCRIPT))
+
 # Graphviz diagrams to be converted to PNG
 DOT_FIGURES = $(shell find ./ -type f -name '*.dot')
 PNG_FIGURES = $(patsubst %.dot,%.dot.png,$(DOT_FIGURES))
@@ -17,6 +21,7 @@ update-submodules: ## grab the current documentation from each connected repo
 	
 .PHONY: build
 build: ## build docs into the local 'site' folder
+	@$(MAKE) generate-pyreverse
 	@$(MAKE) graphvizfigures
 	@$(MAKE) install-requirements
 	mike deploy $(DSP) latest --update-aliases
@@ -40,6 +45,12 @@ install-requirements: ## install requirements
 clean: ## cleans the project directory
 	@rm -rf site/
 	mike delete --all
+
+.PHONY: generate-pyreverse
+generate-pyreverse: ## execute the bash script that generates dot files with UMLs from python code
+	@echo "Generating dot files with $(PYREVERSE_SCRIPT_WORKING_DIRECTORY)"
+	@chmod +x $(PYREVERSE_SCRIPT)
+	@cd dsp/dsp-tools && bash ./$(PYREVERSE_SCRIPT_WORKING_DIRECTORY) > /dev/null
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files

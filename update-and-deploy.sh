@@ -58,6 +58,7 @@ if [ $deploy = false ]; then
     stop "do not deploy"
 else
     # generates images from dot files
+    make generate-pyreverse
     make graphvizfigures
 
     echo "Deploy version ${v} to github pages now"
