@@ -48,9 +48,13 @@ clean: ## cleans the project directory
 
 .PHONY: generate-pyreverse
 generate-pyreverse: ## execute the bash script that generates dot files with UMLs from python code
+ifeq ($(strip $(PYREVERSE_SCRIPT_WORKING_DIRECTORY)),)
+	$(warning pyreverse.sh not found in dsp-tools repository! There will be missing images in the dsp-tools documentation!)
+else
 	@echo "Generating dot files with $(PYREVERSE_SCRIPT_WORKING_DIRECTORY)"
 	@chmod +x $(PYREVERSE_SCRIPT)
 	@cd dsp/dsp-tools && bash ./$(PYREVERSE_SCRIPT_WORKING_DIRECTORY) > /dev/null
+endif
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files
