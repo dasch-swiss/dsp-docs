@@ -1,6 +1,6 @@
 # bash script that generates dot files with UMLs from python code
 PYREVERSE_SCRIPT := $(shell find dsp/dsp-tools -type f -name 'pyreverse.sh')
-PYREVERSE_SCRIPT_WORKING_DIRECTORY := $(subst dsp/dsp-tools/,,$(PYREVERSE_SCRIPT))
+PYREVERSE_SCRIPT_FROM_DSP_TOOLS := $(subst dsp/dsp-tools/,,$(PYREVERSE_SCRIPT))
 
 # Graphviz diagrams to be converted to PNG
 DOT_FIGURES = $(shell find ./ -type f -name '*.dot')
@@ -47,13 +47,13 @@ clean: ## cleans the project directory
 	mike delete --all
 
 .PHONY: generate-pyreverse
-generate-pyreverse: ## execute the bash script that generates dot files with UMLs from python code
-ifeq ($(strip $(PYREVERSE_SCRIPT_WORKING_DIRECTORY)),)
+generate-pyreverse: ## execute the bash script that generates dot files with UMLs for DSP-TOOLS
+ifeq ($(strip $(PYREVERSE_SCRIPT_FROM_DSP_TOOLS)),)
 	$(warning pyreverse.sh not found in dsp-tools repository! There will be missing images in the dsp-tools documentation!)
 else
-	@echo "Generating dot files with $(PYREVERSE_SCRIPT_WORKING_DIRECTORY)"
+	@echo "Generating dot files with $(PYREVERSE_SCRIPT_FROM_DSP_TOOLS)"
 	@chmod +x $(PYREVERSE_SCRIPT)
-	@cd dsp/dsp-tools && bash ./$(PYREVERSE_SCRIPT_WORKING_DIRECTORY) > /dev/null
+	@cd dsp/dsp-tools && bash ./$(PYREVERSE_SCRIPT_FROM_DSP_TOOLS) > /dev/null
 endif
 
 .PHONY: graphvizfigures
