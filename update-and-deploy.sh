@@ -40,7 +40,7 @@ for ARGUMENT in "$@"; do
         echo $(pwd)
         git fetch
         git checkout ${VALUE}
-        cd ${home}
+        cd "${home}"
         git add dsp/dsp-${KEY}
         echo $sep
     fi
