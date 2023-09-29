@@ -3,7 +3,7 @@ DOT_FIGURES = $(shell find ./ -type f -name '*.dot')
 PNG_FIGURES = $(patsubst %.dot,%.dot.png,$(DOT_FIGURES))
 
 THIS_FILE := $(abspath $(lastword $(MAKEFILE_LIST)))
-CURRENT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+CURRENT_DIR := $(shell dirname "$(realpath $(firstword $(MAKEFILE_LIST)))")
 
 include release.mk
 
@@ -13,7 +13,7 @@ init-submodules: ## init the documentation from each connected repo; this comman
 
 .PHONY: update-submodules
 update-submodules: ## grab the current documentation from each connected repo
-	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=false
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=false
 	
 .PHONY: build
 build: ## build docs into the local 'site' folder
@@ -30,7 +30,7 @@ serve: ## serve docs for local viewing
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
 	@$(MAKE) install-requirements	
-	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=true
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=true
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
