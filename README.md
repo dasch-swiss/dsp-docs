@@ -32,11 +32,11 @@ Images like screenshots and so on have to be stored in `/docs/assets/images`.
 In order to build the documentation from source,
 you need to install the following prerequisites:
 
-### XCode command line tools
+### Xcode command line tools
 
 Some Terminal commands used for the instructions below are not shipped with macOS by default.
 They must be installed separately.
-Install the XCode command line tools (not to be confused with the entire XCode application) as follows:
+Install the Xcode command line tools (not to be confused with the entire Xcode application) as follows:
 
 ```bash
 xcode-select --install
@@ -122,7 +122,7 @@ Make sure that
 
 - you're at the root of the dsp-docs repo
 - the virtual environment is active (`(.venv)` at the beginning of the command line)
-- the submodules are up to date (run `git update-submodules`)
+- the submodules are up-to-date (run `git update-submodules`)
 
 Then start the server with:
 
@@ -138,7 +138,7 @@ Make sure that
 
 - you're at the root of the dsp-docs repo
 - the virtual environment is active (`(.venv)` at the beginning of the command line)
-- the submodules are up to date (run `git update-submodules`)
+- the submodules are up-to-date (run `git update-submodules`)
 
 Then build the docs with:
 
