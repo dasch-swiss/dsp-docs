@@ -61,10 +61,10 @@ else
     make graphvizfigures
 
     echo "Deploy version ${v} to github pages now"
-    mike deploy --push --branch gh-pages --update-aliases ${v} ${alias}
+    .venv/bin/mike deploy --push --branch gh-pages --update-aliases ${v} ${alias}
 
     # keep the latest stable version as default
-    mike set-default --push --branch gh-pages latest
+    .venv/bin/mike set-default --push --branch gh-pages latest
     echo $sep
 fi
 
