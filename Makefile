@@ -19,13 +19,13 @@ update-submodules: ## grab the current documentation from each connected repo
 build: ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
 	@$(MAKE) install-requirements
-	mike deploy $(DSP) latest --update-aliases
-	mike set-default latest
+	.venv/bin/mike deploy $(DSP) latest --update-aliases
+	.venv/bin/mike set-default latest
 
 .PHONY: serve
 serve: ## serve docs for local viewing
 	@$(MAKE) build
-	mike serve
+	.venv/bin/mike serve
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
@@ -34,12 +34,12 @@ deploy: ## build and publish docs to Github Pages with versioning from the relea
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
-	pip3 install -r requirements.txt > /dev/null
+	.venv/bin/pip3 install -r requirements.txt > /dev/null
 
 .PHONY: clean
 clean: ## cleans the project directory
 	@rm -rf site/
-	mike delete --all
+	.venv/bin/mike delete --all
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files
