@@ -451,6 +451,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#e2e-tests" class="md-nav__link">
+    E2E Tests
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3499,6 +3506,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#e2e-tests" class="md-nav__link">
+    E2E Tests
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3599,7 +3613,7 @@ $<span class="w"> </span>npx<span class="w"> </span>nx<span class="w"> </span>ru
 <p>The monorepo is implemented using <a href="https://nx.dev/..">NX</a>.</p>
 <p>The most common commands are defined in <code>package.json</code>.</p>
 <blockquote>
-<p><strong><em>NOTE:</em></strong> You can install <code>nx</code> globally with <code>npm install -g nx</code>. If not, then all <code>nx</code> commands bellow need to be prefixed with <code>npx</code>.</p>
+<p><strong><em>NOTE:</em></strong> You can install <code>nx</code> globally with <code>npm install -g nx</code>. If not, then all <code>nx</code> commands below need to be prefixed with <code>npx</code>.</p>
 </blockquote>
 <table>
 <thead>
@@ -3614,8 +3628,16 @@ $<span class="w"> </span>npx<span class="w"> </span>nx<span class="w"> </span>ru
 <td><code>npm run test-local</code></td>
 </tr>
 <tr>
-<td><code>nx run dsp-app:test --watch=false --browsers=ChromeHeadless</code></td>
+<td><code>nx run dsp-app:test:ci</code></td>
 <td><code>npm run test-ci</code></td>
+</tr>
+<tr>
+<td><code>nx run-many --all --target=test --configuration=ci</code></td>
+<td><code>npm run test-ci-all</code></td>
+</tr>
+<tr>
+<td><code>nx run dsp-app:serve</code></td>
+<td><code>npm run start-dev</code></td>
 </tr>
 <tr>
 <td><code>nx run dsp-app:serve:test-server</code></td>
@@ -3646,11 +3668,11 @@ $<span class="w"> </span>npx<span class="w"> </span>nx<span class="w"> </span>ru
 <td><code>npm run lint-local</code></td>
 </tr>
 <tr>
-<td><code>nx run dsp-app-e2e:e2e</code></td>
-<td><code>npm run e2e</code></td>
+<td><code>nx run dsp-app-e2e:e2e:development</code></td>
+<td><code>npm run e2e-ci-dev</code></td>
 </tr>
 <tr>
-<td><code>nx run dsp-app-e2e:e2e-ci --webdriver-update=false</code></td>
+<td><code>nx run dsp-app-e2e:e2e:production</code></td>
 <td><code>npm run e2e-ci</code></td>
 </tr>
 <tr>
@@ -3663,10 +3685,31 @@ $<span class="w"> </span>npx<span class="w"> </span>nx<span class="w"> </span>ru
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr>
+<th>npx</th>
+<th>npm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd apps/dsp-app-e2e &amp;&amp; npx cypress open</code></td>
+<td><code>npm run e2e-local</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="ide-plugins">IDE plugins</h3>
 <ul>
 <li>https://plugins.jetbrains.com/plugin/15101-nx-console-idea</li>
 <li>https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console</li>
+</ul>
+<h3 id="e2e-tests">E2E Tests</h3>
+<ul>
+<li>There are three spm scripts to run the E2E tests.</li>
+<li><code>npm run e2e-ci-dev</code> will run the E2E tests in the console in a development environment.</li>
+<li><code>npm run e2e-ci</code> will run the E2E tests in the console in a production environment. This is the command that is run on GitHub CI.</li>
+<li><code>npm run e2e-local</code> will open the Cypress UI which will enable you to easy run individual tests and see every step as it runs.</li>
 </ul>
 <h2 id="further-documentation">Further Documentation</h2>
 <h3 id="user-guide">User guide</h3>
