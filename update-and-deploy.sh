@@ -60,6 +60,9 @@ else
 	# generates images from dot files
 	make graphvizfigures
 
+	# update openapi
+	make openapi-update
+
 	echo "Deploy version ${v} to github pages now"
 	.venv/bin/mike deploy --push --branch gh-pages --update-aliases ${v} ${alias}
 
