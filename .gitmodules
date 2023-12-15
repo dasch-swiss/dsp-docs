@@ -9,4 +9,4 @@
 	url = https://github.com/dasch-swiss/dsp-tools
 [submodule "dsp/dsp-ingest"]
 	path = dsp/dsp-ingest
-	url = git@github.com:dasch-swiss/dsp-ingest.git
+	url = https://github.com/dasch-swiss/dsp-ingest
