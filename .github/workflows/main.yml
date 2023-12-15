@@ -22,5 +22,7 @@ jobs:
           pip install -r requirements.txt
           sudo apt-get install graphviz
       - name: Build docs
-        run: mkdocs build
+        run: |
+          make openapi-update
+          mkdocs build
 
