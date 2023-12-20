@@ -7,3 +7,6 @@
 [submodule "dsp/dsp-tools"]
 	path = dsp/dsp-tools
 	url = https://github.com/dasch-swiss/dsp-tools
+[submodule "dsp/dsp-ingest"]
+	path = dsp/dsp-ingest
+	url = https://github.com/dasch-swiss/dsp-ingest
