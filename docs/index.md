@@ -1,49 +1,25 @@
 # DaSCH Service Platform Documentation
 
-Since 2017, the Data and Service Center for the Humanities (DaSCH) has been a member of the Swiss Academy of Humanities 
-and Social Sciences. Our mission is to operate a platform for Humanities research data that ensures access to this data. 
-In addition, the networking of data with other databases is to be promoted (linked open data), thus creating added value 
-for research and the interested public.
+Welcome to DaSCH - Swiss National Data and Service Center for the Humanities!
 
-## Services
+Our mission is to operate a platform for Humanities research data
+that ensures long-term availability of this data.
 
-The task of the DaSCH is to promote and support the generation, use and long-term availability of research data in the 
-Humanities in Switzerland. The focus is on making research data in the Humanities available online over the long term in 
-the most direct and easy-to-use way possible and supporting researchers in using them for further research projects 
-("re-use of research data"). The DaSCH operates the necessary infrastructures (a so called "keep-alive" archive) and 
-supports researchers in using this infrastructure. In order to reach this goal, the DaSCH offers the following services:
+We operate the necessary infrastructure (a so called "keep-alive" archive)
+and support researchers in using this infrastructure.
+This is done with various open source software tools, all developed in-house.
 
-### Long term hosting of research data
+Our software consists of 3 main components, which are documented here:
 
-The infrastructure of the DaSCH is designed to host and keep accessible complex qualitative research data (e.g. any kind 
-of databases and associated digital objects such as digital texts, images, movies, audio). The data has to be migrated 
-to the infrastructure (both hardware and software) maintained by the DaSCH. All data will be held with a minimal 
-redundancy of 6 identical copies at two geographically different locations in Switzerland (based on switchEngines) for 
-an indefinite amount of time. Access to the data is provided by an API based on widely adopted standards (e.g. RESTful 
-based on JSON-LD, IIIF, RDF, TEI/XML etc.) and through a generic web interface.
+- [DSP-APP](DSP-APP/): The web application that allows you to view and edit data in your browser
+- [DSP-API](DSP-API/): The core of our software stack: the RDF database that offers an access via API
+- [DSP-TOOLS](DSP-TOOLS/): A command line tool to upload data models and big data sets to a DSP server
 
-In order to fulfill these requirements, DaSCH develops and maintains various software tools which are described and 
-documented here.
+!!! tip "Quick start for researchers"
 
-## Documentation
+    If you are a researcher, you're probably most interested in the usage of the generic web application.<br/>
+    In this case, have a look at our [DSP-APP user guide](DSP-APP/user-guide/).
 
-### For researchers
-
-If you are a researcher, you're probably most interested in the usage of the generic web application. In this case 
-please have a look at our [DSP-APP documentation](DSP-APP/user-guide/).
-
-### For developers
-
-The documentation for developers is split into different groups depending on the software repository.
-
-- [Overview](developers/getting-started.md)
-- [DSP-API](DSP-API/05-internals/development/overview) is the main software framework in the back-end.
-- [DSP-APP](DSP-APP/contribution/)
-- [DSP-TOOLS](DSP-TOOLS/developers/) is a python library to enable researchers and data stewards to work with DSP-API (e.g. creating data models, uploading data, etc.).
-- [DSP Libraries](developers/libraries.md)
-- [SIPI](developers/sipi.md)
-
-### For the community
-
-In case of further questions, bug reports or if you want to get in contact with us have a look at our 
-[community page](community/about-us.md).
+Do you want to install and use DSP locally?
+Learn more about how to get started and how you can contribute to our software tools
+on the [developers page](developers/getting-started).

@@ -14,9 +14,6 @@ nav:
           - Sipi: developers/sipi.md
           - Libraries: developers/libraries.md
       - Contribution: developers/contribution.md
-  - Community:
-      - Product Updates: community/product-updates.md
-      - About us: community/about-us.md
 
 plugins:
   - git-revision-date-localized

@@ -122,7 +122,7 @@ Make sure that
 
 - you're at the root of the dsp-docs repo
 - the virtual environment is active (`(.venv)` at the beginning of the command line)
-- the submodules are up-to-date (run `git update-submodules`)
+- the submodules are up-to-date (run `make update-submodules`)
 
 Then start the server with:
 
@@ -138,7 +138,7 @@ Make sure that
 
 - you're at the root of the dsp-docs repo
 - the virtual environment is active (`(.venv)` at the beginning of the command line)
-- the submodules are up-to-date (run `git update-submodules`)
+- the submodules are up-to-date (run `make update-submodules`)
 
 Then build the docs with:
 
