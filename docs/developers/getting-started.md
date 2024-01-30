@@ -33,7 +33,7 @@ you can get started quite quickly.
 DSP-TOOLS offers you a shortcut,
 so you only have to install DSP-TOOLS and its prerequisites:
 
-### 1. XCode command line tools
+### XCode command line tools
 
 Some Terminal commands used for the instructions below are not shipped with macOS by default.
 They must be installed separately.
@@ -46,22 +46,20 @@ xcode-select --install
 
 You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
-### 2. Docker Desktop
+### Docker Desktop
 
 DSP-API and DSP-APP are shipped as Docker containers.
 Install Docker Desktop from [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/).
 Make sure to use the correct chip architecture (Intel versus Apple M1 chip).
 
-### 3. Python
+### Python
 
 Python is the language in which DSP-TOOLS is written.
 Even if there is a pre-installed version of Python on your computer,
 we recommend installing it separately.
 It can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/).
-We recommend installing the latest version,
-but DSP-TOOLS will also work with older versions (3.9 and newer).
 
-### 4. DSP-TOOLS
+### DSP-TOOLS
 
 With these prerequisites installed,
 you are now ready to install DSP-TOOLS!
@@ -81,13 +79,13 @@ pip3 install --upgrade dsp-tools
 
 This command upgrades DSP-TOOLS to the latest version.
 
-### 5. DSP-API and DSP-APP: run from within DSP-TOOLS
+### DSP-API and DSP-APP: run from within DSP-TOOLS
 
 Now that you have DSP-TOOLS installed,
 you can use it to run DSP-API and DSP-APP
 according to [these instructions](https://docs.dasch.swiss/latest/DSP-TOOLS/start-stack/).
 
-### 6. Test project *Rosetta*
+### Test project *Rosetta*
 
 Now you are ready to try out our test project *Rosetta*.
 Make sure that DSP-API and DSP-APP are running,
@@ -118,7 +116,7 @@ That's it, you are ready to start working!
 If you want to work with the code of the DSP software,
 you have to install the prerequisites used to build the code from source.
 
-### 1. XCode command line tools
+### XCode command line tools
 
 Some Terminal commands used for the instructions below are not shipped with macOS by default.
 They must be installed separately.
@@ -130,7 +128,7 @@ xcode-select --install
 
 You will be asked in a prompt if you want to install the command line developer tools. Click "Install".
 
-### 2. Homebrew
+### Homebrew
 
 [Homebrew](https://brew.sh) is a package manager that allows us to install other software.
 Install it with
@@ -139,7 +137,7 @@ Install it with
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 3. Docker Desktop
+### Docker Desktop
 
 DSP-API and DSP-APP are shipped as Docker containers.
 Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) with
@@ -148,7 +146,7 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) with
 brew install --cask docker
 ```
 
-### 4. Python
+### Python
 
 [Python](https://www.python.org/downloads/) is the language in which DSP-TOOLS is written.
 It is also required to build the documentation of DSP-API and DSP-APP.
@@ -159,7 +157,7 @@ we recommend installing it separately, with
 brew install python
 ```
 
-### 5. Git
+### Git
 
 All software developed by DaSCH is under [Git](https://git-scm.com/downloads) version control,
 and hosted on [GitHub](https://github.com/).
@@ -170,7 +168,7 @@ but we recommend installing it separately, with
 brew install git
 ```
 
-### 6. OpenJDK 17
+### OpenJDK 21
 
 DSP-API is written in Scala, so building DSP-API from source requires Java.
 The recommended way to install it is [SDK Man](https://sdkman.io/),
@@ -191,14 +189,19 @@ sdk ls java
 ```
 
 This command gives you a list of all available versions.
-Scroll down with the `Arrow Down` key and copy the name of the most recent version 17 of Temurin, e.g. `17.0.5-tem`.
+Scroll down with the `Arrow Down` key and copy the name of the most recent version 21 of Temurin, e.g. `21.0.1-tem`.
 Then, exit the list view with `q`, and install the version you copied with
 
 ```bash
 sdk install java 17.0.5-tem
 ```
 
-### 7. sbt
+Technical note:
+SDKMAN will take care of the environment variable JAVA_HOME.
+If we had installed Java with Homebrew, we would have to take care that JAVA_HOME points to the correct directory,
+which might vary from machine to machine.
+
+### sbt
 
 DSP-API uses [sbt](https://www.scala-sbt.org/) as a build tool.
 Install sbt with
@@ -207,7 +210,17 @@ Install sbt with
 brew install sbt
 ```
 
-### 8. Node.js, npm, and Angular
+### Just
+
+[just](https://just.systems/man/en/) is a command runner run project-specific commands.
+It is used in the DSP-API repository. Install it with
+
+```bash
+brew install just
+```
+
+
+### Node.js, npm, and Angular
 
 Parts of DSP-APP are written in [Angular](https://angular.io/guide/setup-local),
 which requires [Node.js](https://nodejs.org/en/download/)
@@ -225,16 +238,7 @@ Install Angular with
 npm install -g @angular/cli
 ```
 
-### 9. yarn
-
-DSP-APP uses [yarn](https://yarnpkg.com/getting-started/install) as a package manager.
-Install yarn with
-
-```bash
-brew install yarn
-```
-
-### 10. DSP-API and DSP-APP: build from source
+### DSP-API and DSP-APP: build from source
 
 Clone DSP-API from [GitHub](https://github.com/dasch-swiss/dsp-api) and build the Docker image from source:
 
@@ -262,7 +266,7 @@ make stack-down-delete-volumes
 
 Please see the `Makefile` for other useful `make` targets.
 
-### 11. DSP-TOOLS and *Rosetta*
+### DSP-TOOLS and *Rosetta*
 
 [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools) is a command line tool
 used for creating complex data models and uploading big data sets.
