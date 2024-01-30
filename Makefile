@@ -3,7 +3,7 @@ DOT_FIGURES = $(shell find ./ -type f -name '*.dot')
 PNG_FIGURES = $(patsubst %.dot,%.dot.png,$(DOT_FIGURES))
 
 THIS_FILE := $(abspath $(lastword $(MAKEFILE_LIST)))
-CURRENT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+CURRENT_DIR := $(shell dirname "$(realpath $(firstword $(MAKEFILE_LIST)))")
 
 include release.mk
 
@@ -13,33 +13,39 @@ init-submodules: ## init the documentation from each connected repo; this comman
 
 .PHONY: update-submodules
 update-submodules: ## grab the current documentation from each connected repo
-	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=false
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) deploy=false
 	
+.PHONY: openapi-update
+openapi-update: ## mkdocs cannot resolve relative path to the dsp-ingest openapi yml, need to copy them to the right location 
+	rm -rf ./docs/openapi
+	mkdir -p ./docs/openapi/
+	cp -r ./dsp/dsp-ingest/docs/openapi/*.yml ./docs/openapi/
+
 .PHONY: build
-build: ## build docs into the local 'site' folder
+build: openapi-update ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
 	@$(MAKE) install-requirements
-	mike deploy $(DSP) latest --update-aliases
-	mike set-default latest
+	.venv/bin/mike deploy $(DSP) latest --update-aliases
+	.venv/bin/mike set-default latest
 
 .PHONY: serve
 serve: ## serve docs for local viewing
 	@$(MAKE) build
-	mike serve
+	.venv/bin/mike serve
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
 	@$(MAKE) install-requirements	
-	$(CURRENT_DIR)/update-and-deploy.sh dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=true
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) deploy=true
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
-	pip3 install -r requirements.txt > /dev/null
+	.venv/bin/pip3 install -r requirements.txt > /dev/null
 
 .PHONY: clean
 clean: ## cleans the project directory
 	@rm -rf site/
-	mike delete --all
+	.venv/bin/mike delete --all
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files

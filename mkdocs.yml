@@ -5,6 +5,7 @@ nav:
   - DSP-APP: "!include ./dsp/dsp-app/mkdocs.yml"
   - DSP-API: "!include ./dsp/dsp-api/mkdocs.yml"
   - DSP-TOOLS: "!include ./dsp/dsp-tools/mkdocs.yml"
+  - DSP-INGEST: "!include ./dsp/dsp-ingest/mkdocs.yml"
   - Developers:
       - Getting Started: developers/getting-started.md
       - Basics:
@@ -20,6 +21,8 @@ plugins:
   - monorepo
   - include-markdown
   - search
+  - neoteroi.mkdocsoad:
+      use_pymdownx: true
 
 theme:
   name: material
@@ -42,6 +45,8 @@ theme:
     - version
 extra_css:
   - "assets/style/theme.css"
+  - dsp/dsp-ingest/docs/css/mkdocsoad-v1.0.2.css
+
 extra:
   analytics:
     provider: fathom
@@ -60,3 +65,6 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+
