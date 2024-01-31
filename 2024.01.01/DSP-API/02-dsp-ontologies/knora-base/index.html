@@ -4552,27 +4552,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../DSP-TOOLS/developers/git-submodules/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Git submodules
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../DSP-TOOLS/developers/start-stack-command/" class="md-nav__link">
         
   
@@ -4666,10 +4645,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_8_8" id="__nav_4_8_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_8_7" id="__nav_4_8_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4680,8 +4659,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8_8">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_7">
             <span class="md-nav__icon md-icon"></span>
             Code quality tools
           </label>
@@ -5003,6 +4982,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/ingest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingesting Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -5013,10 +5013,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5027,8 +5027,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_1_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3">
             <span class="md-nav__icon md-icon"></span>
             API documentation
           </label>
@@ -5142,10 +5142,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_4" >
         
           
-          <label class="md-nav__link" for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_1_4" id="__nav_5_1_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5156,8 +5156,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_1_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_4">
             <span class="md-nav__icon md-icon"></span>
             Service documentation
           </label>
@@ -5986,7 +5986,7 @@
 
 
 <!---
- * Copyright © 2021 - 2023 Swiss National Data and Service Center for the Humanities and/or DaSCH Service Platform contributors.
+ * Copyright © 2021 - 2024 Swiss National Data and Service Center for the Humanities and/or DaSCH Service Platform contributors.
  * SPDX-License-Identifier: Apache-2.0
 -->
 
@@ -6032,8 +6032,10 @@ and <a href="#properties-of-resource">Properties of Resource</a>). Users are ass
 the <code>kb:isInProject</code> property, as described in
 <a href="#users-and-groups">Users and Groups</a>.</p>
 <h3 id="ontologies">Ontologies</h3>
-<p>Each user-created ontology must be defined as an <code>owl:Ontology</code> with the properties <code>rdfs:label</code> and <code>kb:attachedToProject</code>. 
-Since <a href="https://github.com/dasch-swiss/dsp-api/releases/tag/v20.0.0">DSP-API v20</a> <code>kb:lastModificationDate</code> property is also required. </p>
+<p>Each user-created ontology must be defined as an <code>owl:Ontology</code> with the properties <code>rdfs:label</code>
+and <code>kb:attachedToProject</code>.
+Since <a href="https://github.com/dasch-swiss/dsp-api/releases/tag/v20.0.0">DSP-API v20</a> <code>kb:lastModificationDate</code> property is
+also required.</p>
 <h3 id="resources">Resources</h3>
 <p>All the content produced by a project (e.g. digitised primary source materials or research data) must be stored in
 objects that belong to subclasses of <code>kb:Resource</code>, so that Knora can query and update that content. Each project using
@@ -6135,8 +6137,7 @@ property, which its subclasses override:</p>
 <p>There are two ways for a project to design classes for representations. The simpler way is to create a resource class
 that represents a thing in the world (such as <code>ex:Painting</code>) and also belongs to a subclass of <code>Representation</code>. This is
 adequate if the class can have only one type of file attached to it. For example, if paintings are represented only by
-still images, <code>ex:Painting</code> could be a subclass of <code>StillImageRepresentation</code>. This is the only approach supported in
-DSP-API v1.</p>
+still images, <code>ex:Painting</code> could be a subclass of <code>StillImageRepresentation</code>.</p>
 <p>The more flexible approach, which is supported by DSP-API v2, is for each <code>ex:Painting</code> to
 link (using <code>kb:hasRepresentation</code> or a subproperty) to other resources containing files that represent the painting.
 Each of these other resources can extend a different subclass of <code>Representation</code>. For example, a painting could have a
@@ -6539,39 +6540,41 @@ as the <code>kb:LinkValue</code>.</p>
 <h3 id="part-whole-relations-between-resources">Part-Whole-Relations between Resources</h3>
 <h4 id="ispartof">isPartOf</h4>
 <p>A special case of linked resources are <em>part-of related resources</em>, i.e. a resource consisting of several other
-resources. In order to create a part-of relation between two resources, the resource that is part of another resource 
+resources. In order to create a part-of relation between two resources, the resource that is part of another resource
 needs to have a property that is either <code>kb:isPartOf</code> or a subproperty thereof.
-<code>kb:isPartOf</code> itself is a subproperty of <code>kb:hasLinkTo</code>. Same as described above for link properties, a corresponding 
-part-of value property is created automatically. This value property has the same name as the part-of property with 
-<code>Value</code> appended. For example, if in an ontology <code>data</code> a property <code>data:partOf</code> was defined, the corresponding value 
-property would be named <code>data:partOfValue</code>. This newly created property <code>data:partOfValue</code> is defined as a subproperty 
+<code>kb:isPartOf</code> itself is a subproperty of <code>kb:hasLinkTo</code>. Same as described above for link properties, a corresponding
+part-of value property is created automatically. This value property has the same name as the part-of property with
+<code>Value</code> appended. For example, if in an ontology <code>data</code> a property <code>data:partOf</code> was defined, the corresponding value
+property would be named <code>data:partOfValue</code>. This newly created property <code>data:partOfValue</code> is defined as a subproperty
 of <code>kb:isPartOfValue</code>.</p>
-<p>Part-of relations are recommended for resources of type <code>kb:StillImageRepresentation</code>. In that case, the resource that 
-is part of another resource needs to have a property <code>kb:seqnum</code> or a subproperty thereof, with an integer as value. A 
+<p>Part-of relations are recommended for resources of type <code>kb:StillImageRepresentation</code>. In that case, the resource that
+is part of another resource needs to have a property <code>kb:seqnum</code> or a subproperty thereof, with an integer as value. A
 client can then use this information to leaf through the parts of the compound resource (p.ex. to leaf through the pages
 of a book like in <a href="../../01-introduction/example-project/#resource-classes">this</a> example).</p>
 <h4 id="issequenceof">isSequenceOf</h4>
 <p>Similar to <code>kb:isPartOf</code> for <code>kb:StillImageRepresentations</code>, part-whole-relations can be defined for resources that have
-a time dimension by using <code>kb:isSequenceOf</code>. You can use it for video or audio resources that are subtypes of 
+a time dimension by using <code>kb:isSequenceOf</code>. You can use it for video or audio resources that are subtypes of
 <code>kb:MovingImageRepresentation</code> and <code>kb:AudioRepresentation</code>.</p>
-<p><code>kb:isSequenceOf</code> is intended to be used in combination with the property <code>kb:hasSequenceBounds</code> which points to a 
-<code>kb:IntervalValue</code>. This defines the start and end point of the subseqence in relation to the entire audio/video 
+<p><code>kb:isSequenceOf</code> is intended to be used in combination with the property <code>kb:hasSequenceBounds</code> which points to a
+<code>kb:IntervalValue</code>. This defines the start and end point of the subseqence in relation to the entire audio/video
 resource as an <a href="#intervalvalue">interval</a>. When the properties are used in this combination, a dedicated behavior in the
 frontend allows to display the sequences alongside the main resource.</p>
-<p>There is an important difference between <code>kb:isSequenceOf</code> and <code>kb:isPartOf</code>: For <code>kb:isPartOf</code>, each part <em>is a</em> 
+<p>There is an important difference between <code>kb:isSequenceOf</code> and <code>kb:isPartOf</code>: For <code>kb:isPartOf</code>, each part <em>is a</em>
 <code>kb:StillImageRepresentation</code> and the whole consists of multiple such parts. In <code>kb:isSequenceOf</code> on the other hand, the
 whole is one <code>kb:MovingImageRepresentation</code> or <code>kb:AudioRepresentation</code>. The parts only define which sub-sequence of
 this representation they are.</p>
 <h3 id="text-with-standoff-markup">Text with Standoff Markup</h3>
 <p>DSP-API is designed to be able to store text with markup, which can indicate formatting and structure, as well as the
 complex observations involved in transcribing handwritten manuscripts. One popular way of representing text in the
-humanities is to encode it in XML using the Text Encoding Initiative (<a href="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">TEI</a>)
+humanities is to encode it in XML using the Text Encoding
+Initiative (<a href="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">TEI</a>)
 guidelines. In DSP-API, a TEI/XML document can be stored as a file with attached metadata, but this is not recommended,
 because it does not allow to perform searches across multiple documents.</p>
 <p>The recommended way to store text with markup in DSP-API is to use the built-in support for "standoff" markup, which
 is stored separately from the text. This has some advantages over embedded markup such as XML. While XML requires markup
 to have a hierarchical structure, and does not allow overlapping tags, standoff nodes do not have these limitations
-(see <a href="https://doi.org/10.1515/itit-2015-0030">Using Standoff Properties for Marking-up Historical Documents in the Humanities</a>).
+(
+see <a href="https://doi.org/10.1515/itit-2015-0030">Using Standoff Properties for Marking-up Historical Documents in the Humanities</a>).
 A standoff tag can be attached to any substring in the text by giving its start and end positions. Unlike in corpus
 linguistics, we do not use any tokenisation resulting in a form of predefined segmentation, which would limit the user's
 ability to freely annotate any ranges in the text.</p>
@@ -6594,27 +6597,35 @@ end positions of a substring in the text that has a particular attribute. The OW
 <ul>
 <li><code>standoffTagHasStart</code> (1): The index of the first character in the text that has the attribute.</li>
 <li><code>standoffTagHasEnd</code> (1): The index of the last character in the text that has the attribute, plus 1.</li>
-<li><code>standoffTagHasUUID</code> (1): A UUID identifying this instance and those corresponding to it in later versions of the <code>TextValue</code> it belongs to.
-  The UUID is a means to maintain a reference to a particular range of a text also when new versions are made and standoff
-tag IRIs change.</li>
+<li><code>standoffTagHasUUID</code> (1): A UUID identifying this instance and those corresponding to it in later versions of
+  the <code>TextValue</code> it belongs to.
+  The UUID is a means to maintain a reference to a particular range of a text also when new versions are made and
+  standoff
+  tag IRIs change.</li>
 <li><code>standoffTagHasOriginalXMLID</code> (0-1): The original ID of the XML element that the standoff tag represents, if any.</li>
-<li><code>standoffTagHasStartIndex</code> (1): The start index of the standoff tag. Start indexes are numbered from 0 within the context of a particular text.
+<li><code>standoffTagHasStartIndex</code> (1): The start index of the standoff tag. Start indexes are numbered from 0 within the
+  context of a particular text.
   When several standoff tags share the same start position, they can be nested correctly with this information when
-transforming them to XML.</li>
-<li><code>standoffTagHasEndIndex</code> (1): The end index of the standoff tag. Start indexes are numbered from 0 within the context of a particular text. 
-  When several standoff tags share the same end position, they can be nested correctly with this information when transforming
-them to XML.</li>
-<li><code>standoffTagHasStartParent</code> (0-1): Points to the parent standoff tag. This corresponds to the original nesting of tags in XML. If a standoff tag has no parent, it represents the XML root element.
+  transforming them to XML.</li>
+<li><code>standoffTagHasEndIndex</code> (1): The end index of the standoff tag. Start indexes are numbered from 0 within the context
+  of a particular text.
+  When several standoff tags share the same end position, they can be nested correctly with this information when
+  transforming
+  them to XML.</li>
+<li><code>standoffTagHasStartParent</code> (0-1): Points to the parent standoff tag. This corresponds to the original nesting of tags
+  in XML. If a standoff tag has no parent, it represents the XML root element.
   If the original XML element is a CLIX tag, it represents the start of a virtual (non syntactical) hierarchy.</li>
-<li><code>standoffTagHasEndParent</code> (0-1): Points to the parent standoff tag if the original XML element is a CLIX tag and represents the end of a virtual (non syntactical) hierarchy.</li>
+<li><code>standoffTagHasEndParent</code> (0-1): Points to the parent standoff tag if the original XML element is a CLIX tag and
+  represents the end of a virtual (non syntactical) hierarchy.</li>
 </ul>
 <p>The <code>StandoffTag</code> class is not used directly in RDF data; instead, its subclasses are used. A few subclasses are
-currently provided in <code>standoff-onto.ttl</code>, and more will be added to support TEI semantics. 
+currently provided in <code>standoff-onto.ttl</code>, and more will be added to support TEI semantics.
 Projects are able to define their own custom standoff tag classes (direct subclasses of <code>StandoffTag</code>
 or one of the standoff data type classes or subclasses of one of the standoff classes defined in <code>standoff-onto.ttl</code>).</p>
 <h4 id="subclasses-of-standofftag">Subclasses of StandoffTag</h4>
 <h5 id="standoff-data-type-tags">Standoff Data Type Tags</h5>
-<p>Associates data in some Knora value type with a substring in a text. Standoff data type tags are subclasses of <code>ValueBase</code> classes.</p>
+<p>Associates data in some Knora value type with a substring in a text. Standoff data type tags are subclasses
+of <code>ValueBase</code> classes.</p>
 <ul>
 <li><code>StandoffLinkTag</code> Indicates that a substring refers to another <code>kb:Resource</code>. See <a href="#standofflinktag">StandoffLinkTag</a>.</li>
 <li><code>StandoffInternalReferenceTag</code> Indicates that a substring refers to another standoff tag in the same text value.
@@ -6648,7 +6659,8 @@ containing resource and the target resource, along with an RDF reification (a <c
 discussed in <a href="#links-between-resources">Links Between Resources</a>. In this case, the link property is
 always <code>kb:hasStandoffLinkTo</code>, and the link value property (which points to the <code>LinkValue</code>) is always
 <code>kb:hasStandoffLinkToValue</code>.</p>
-<p>DSP-API automatically updates direct links and reifications for standoff resource references when text values are updated.
+<p>DSP-API automatically updates direct links and reifications for standoff resource references when text values are
+updated.
 To do this, it keeps track of the number of text values in each resource that contain at least one standoff reference to
 a given target resource. It stores this number as the reference count of the <code>LinkValue</code> (see
 <a href="#linkvalue">LinkValue</a>) describing the direct link. Each time this number changes, it makes a new version of
@@ -6656,24 +6668,31 @@ the <code>LinkValue</code>, with an updated reference count. When the reference 
 makes a new version of the <code>LinkValue</code>, marked with <code>kb:isDeleted</code>.</p>
 <p>For example, if <code>data:R1</code> is a resource with a text value in which the resource <code>data:R2</code> is referenced, the repository
 could contain the following triples:</p>
-<div class="highlight"><pre><span></span><code><span class="nn">data</span><span class="p">:</span><span class="nt">R1</span> <span class="nn">ex</span><span class="p">:</span><span class="nt">hasComment</span> <span class="nn">data</span><span class="p">:</span><span class="nt">V1</span> <span class="p">.</span>
+<div class="highlight"><pre><span></span><code><span class="nn">data</span><span class="p">:</span><span class="nt">R1</span>
+    <span class="nn">ex</span><span class="p">:</span><span class="nt">hasComment</span> <span class="nn">data</span><span class="p">:</span><span class="nt">V1</span> <span class="p">.</span>
 
-<span class="nn">data</span><span class="p">:</span><span class="nt">V1</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">kb</span><span class="p">:</span><span class="nt">TextValue</span> <span class="p">;</span>
-    <span class="nn">kb</span><span class="p">:</span><span class="nt">valueHasString</span> <span class="s">&quot;This link is internal.&quot;</span> <span class="p">;</span>
+<span class="nn">data</span><span class="p">:</span><span class="nt">V1</span>
+    <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span>            <span class="nn">kb</span><span class="p">:</span><span class="nt">TextValue</span> <span class="p">;</span>
+    <span class="nn">kb</span><span class="p">:</span><span class="nt">valueHasString</span>   <span class="s">&quot;This link is internal.&quot;</span> <span class="p">;</span>
     <span class="nn">kb</span><span class="p">:</span><span class="nt">valueHasStandoff</span> <span class="nn">data</span><span class="p">:</span><span class="nt">SO1</span> <span class="p">.</span>
 
-<span class="nn">data</span><span class="p">:</span><span class="nt">SO1</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">kb</span><span class="p">:</span><span class="nt">StandoffLinkTag</span> <span class="p">;</span>
+<span class="nn">data</span><span class="p">:</span><span class="nt">SO1</span>
+    <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span>                <span class="nn">kb</span><span class="p">:</span><span class="nt">StandoffLinkTag</span> <span class="p">;</span>
     <span class="nn">kb</span><span class="p">:</span><span class="nt">standoffTagHasStart:</span> <span class="mi">5</span> <span class="p">;</span>
-    <span class="nn">kb</span><span class="p">:</span><span class="nt">standoffTagHasEnd:</span> <span class="mi">9</span> <span class="p">;</span>
-    <span class="nn">kb</span><span class="p">:</span><span class="nt">standoffTagHasLink</span> <span class="nn">data</span><span class="p">:</span><span class="nt">R2</span> <span class="p">.</span>
+    <span class="nn">kb</span><span class="p">:</span><span class="nt">standoffTagHasEnd:</span>   <span class="mi">9</span> <span class="p">;</span>
+    <span class="nn">kb</span><span class="p">:</span><span class="nt">standoffTagHasLink</span>   <span class="nn">data</span><span class="p">:</span><span class="nt">R2</span> <span class="p">.</span>
 
-<span class="nn">data</span><span class="p">:</span><span class="nt">R1</span> <span class="nn">kb</span><span class="p">:</span><span class="nt">hasStandoffLinkTo</span> <span class="nn">data</span><span class="p">:</span><span class="nt">R2</span> <span class="p">.</span>
-<span class="nn">data</span><span class="p">:</span><span class="nt">R1</span> <span class="nn">kb</span><span class="p">:</span><span class="nt">hasStandoffLinkToValue</span> <span class="nn">data</span><span class="p">:</span><span class="nt">LV1</span> <span class="p">.</span>
+<span class="nn">data</span><span class="p">:</span><span class="nt">R1</span>
+    <span class="nn">kb</span><span class="p">:</span><span class="nt">hasStandoffLinkTo</span> <span class="nn">data</span><span class="p">:</span><span class="nt">R2</span> <span class="p">.</span>
 
-<span class="nn">data</span><span class="p">:</span><span class="nt">LV1</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">kb</span><span class="p">:</span><span class="nt">LinkValue</span> <span class="p">;</span>
-    <span class="nn">rdf</span><span class="p">:</span><span class="nt">subject</span> <span class="nn">data</span><span class="p">:</span><span class="nt">R1</span> <span class="p">;</span>
-    <span class="nn">rdf</span><span class="p">:</span><span class="nt">predicate</span> <span class="nn">kb</span><span class="p">:</span><span class="nt">hasStandoffLinkTo</span> <span class="p">;</span>
-    <span class="nn">rdf</span><span class="p">:</span><span class="nt">object</span> <span class="nn">data</span><span class="p">:</span><span class="nt">R2</span> <span class="p">;</span>
+<span class="nn">data</span><span class="p">:</span><span class="nt">R1</span>
+    <span class="nn">kb</span><span class="p">:</span><span class="nt">hasStandoffLinkToValue</span> <span class="nn">data</span><span class="p">:</span><span class="nt">LV1</span> <span class="p">.</span>
+
+<span class="nn">data</span><span class="p">:</span><span class="nt">LV1</span>
+    <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span>            <span class="nn">kb</span><span class="p">:</span><span class="nt">LinkValue</span> <span class="p">;</span>
+    <span class="nn">rdf</span><span class="p">:</span><span class="nt">subject</span>         <span class="nn">data</span><span class="p">:</span><span class="nt">R1</span> <span class="p">;</span>
+    <span class="nn">rdf</span><span class="p">:</span><span class="nt">predicate</span>       <span class="nn">kb</span><span class="p">:</span><span class="nt">hasStandoffLinkTo</span> <span class="p">;</span>
+    <span class="nn">rdf</span><span class="p">:</span><span class="nt">object</span>          <span class="nn">data</span><span class="p">:</span><span class="nt">R2</span> <span class="p">;</span>
     <span class="nn">kb</span><span class="p">:</span><span class="nt">valueHasRefCount</span> <span class="mi">1</span> <span class="p">.</span>
 </code></pre></div>
 <p>The result can be visualized like this:</p>
@@ -6685,32 +6704,42 @@ the user has permission to see the source and target resources.</p>
 <h4 id="internal-links-in-a-textvalue">Internal Links in a TextValue</h4>
 <p>Internal links in a <code>TextValue</code> can be represented using the data type standoff class <code>StandoffInternalReferenceTag</code> or
 a subclass of it. It has the following property:</p>
-<p><code>standoffTagHasInternalReference</code> (1): Points to a <code>StandoffTag</code> that belongs to the same <code>TextValue</code>. It has an <code>objectClassConstraint</code> of <code>StandoffTag</code>.</p>
+<p><code>standoffTagHasInternalReference</code> (1): Points to a <code>StandoffTag</code> that belongs to the same <code>TextValue</code>. It has
+an <code>objectClassConstraint</code> of <code>StandoffTag</code>.</p>
 <p>For links to a <code>kb:Resource</code>, see <a href="#standofflinktag">StandoffLinkTag</a>.</p>
 <h4 id="mapping-to-create-standoff-from-xml">Mapping to Create Standoff From XML</h4>
 <p>A mapping allows for the conversion of an XML document to RDF-standoff and back. A mapping defines one-to-one relations
-between XML elements (with or without a class) and attributes and standoff classes and properties (see 
+between XML elements (with or without a class) and attributes and standoff classes and properties (see
 <a href="../../03-endpoints/api-v2/text/custom-standoff/">XML to Standoff Mapping</a>).</p>
 <p>A mapping is represented by a <code>kb:XMLToStandoffMapping</code> which contains one or more <code>kb:MappingElement</code>.
 A <code>kb:MappingElement</code> maps an XML element (including attributes) to a standoff class and standoff properties. It has the
 following properties:</p>
 <ul>
 <li><code>mappingHasXMLTagname</code> (1): The name of the XML element that is mapped to a standoff class.</li>
-<li><code>mappingHasXMLNamespace</code> (1): The XML namespace of the XML element that is mapped to a standoff class. If no namespace is given, <code>noNamespace</code> is used.</li>
+<li><code>mappingHasXMLNamespace</code> (1): The XML namespace of the XML element that is mapped to a standoff class. If no namespace
+  is given, <code>noNamespace</code> is used.</li>
 <li><code>mappingHasXMLClass</code> (1): The name of the class of the XML element. If it has no class, <code>noClass</code> is used.</li>
 <li><code>mappingHasStandoffClass</code> (1): The standoff class the XML element is mapped to.</li>
 <li><code>mappingHasXMLAttribute</code> (0-n): Maps XML attributes to standoff properties using <code>MappingXMLAttribute</code>. See below.</li>
-<li><code>mappingHasStandoffDataTypeClass</code> (0-1): Indicates the standoff data type class of the standoff class the XML element is mapped to.</li>
-<li><code>mappingElementRequiresSeparator</code> (1): Indicates if there should be an invisible word separator inserted after the XML element in the RDF-standoff representation.
+<li><code>mappingHasStandoffDataTypeClass</code> (0-1): Indicates the standoff data type class of the standoff class the XML element
+  is mapped to.</li>
+<li><code>mappingElementRequiresSeparator</code> (1): Indicates if there should be an invisible word separator inserted after the XML
+  element in the RDF-standoff representation.
   Once the markup is stripped, text segments that belonged to different elements may be concatenated.</li>
 </ul>
-<p>A <code>MappingXMLAttribute</code> has the following properties:
-- <code>mappingHasXMLAttributename</code>: The name of the XML attribute that is mapped to a standoff property.
-- <code>mappingHasXMLNamespace</code>: The namespace of the XML attribute that is mapped to a standoff property. If no namespace is given, <code>noNamespace</code> is used.
-- <code>mappingHasStandoffProperty</code>: The standoff property the XML attribute is mapped to.</p>
-<p>DSP-API includes a standard mapping used by the DSP APP. It has the IRI <code>http://rdfh.ch/standoff/mappings/StandardMapping</code> and defines mappings for a few elements used to write texts with simple markup.</p>
+<p>A <code>MappingXMLAttribute</code> has the following properties:</p>
+<ul>
+<li><code>mappingHasXMLAttributename</code>: The name of the XML attribute that is mapped to a standoff property.</li>
+<li><code>mappingHasXMLNamespace</code>: The namespace of the XML attribute that is mapped to a standoff property. If no namespace is
+  given, <code>noNamespace</code> is used.</li>
+<li><code>mappingHasStandoffProperty</code>: The standoff property the XML attribute is mapped to.</li>
+</ul>
+<p>DSP-API includes a standard mapping used by the DSP APP. It has the
+IRI <code>http://rdfh.ch/standoff/mappings/StandardMapping</code> and defines mappings for a few elements used to write texts with
+simple markup.</p>
 <h4 id="standoff-in-digital-editions">Standoff in Digital Editions</h4>
-<p>DSP-API's standoff is designed to make it possible to convert XML documents to standoff and back. One application for this
+<p>DSP-API's standoff is designed to make it possible to convert XML documents to standoff and back. One application for
+this
 feature is an editing workflow in which an editor works in an XML editor, and the resulting XML documents are converted
 to standoff and stored in the DSP, where they can be searched and annotated.</p>
 <p>If an editor wants to correct text that has been imported from XML into standoff, the text can be exported as XML,
@@ -6726,13 +6755,17 @@ well as the index of its parent tag, if any. The Knora base ontology also suppor
 <a href="https://en.wikipedia.org/wiki/CLIX_(markup)">CLIX</a>, which enables overlapping
 markup to be represented in XML. When non-hierarchical markup is converted to standoff, both the start position and the
 end position of the standoff tag have indexes and parent indexes.</p>
-<p>To support these features, a standoff tag can have these additional properties:
-- <code>standoffTagHasStartIndex</code> (0-1): The index of the start position.
-- <code>standoffTagHasEndIndex</code> (0-1): The index of the end position, if this is a non-hierarchical tag.
-- <code>standoffTagHasStartParent</code> (0-1): The IRI of the tag, if any, that contains the start position.
-- <code>standoffTagHasEndParent</code> (0-1): The IRI of the tag, if any, that contains the end position, if this is a non-hierarchical tag.
-- <code>standoffTagHasUUID</code> (0-1): A UUID that can be used to annotate a standoff tag that may be present in different versions of a text,
-  or in different layers of a text (such as a diplomatic transcription and an edited critical text).</p>
+<p>To support these features, a standoff tag can have these additional properties:</p>
+<ul>
+<li><code>standoffTagHasStartIndex</code> (0-1): The index of the start position.</li>
+<li><code>standoffTagHasEndIndex</code> (0-1): The index of the end position, if this is a non-hierarchical tag.</li>
+<li><code>standoffTagHasStartParent</code> (0-1): The IRI of the tag, if any, that contains the start position.</li>
+<li><code>standoffTagHasEndParent</code> (0-1): The IRI of the tag, if any, that contains the end position, if this is a
+  non-hierarchical tag.</li>
+<li><code>standoffTagHasUUID</code> (0-1): A UUID that can be used to annotate a standoff tag that may be present in different
+  versions of a text,
+  or in different layers of a text (such as a diplomatic transcription and an edited critical text).</li>
+</ul>
 <h4 id="querying-standoff-in-sparql">Querying Standoff in SPARQL</h4>
 <p>A future version of DSP-API may provide an API for querying standoff markup. In the meantime, it is possible to query it
 directly in SPARQL. For example, here is a SPARQL query (using RDFS inference) that finds all the text values that
@@ -7013,7 +7046,7 @@ when Knora is upgraded.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 21, 2023</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 8, 2024</span>
   </span>
 
     
