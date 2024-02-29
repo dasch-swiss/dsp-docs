@@ -12,7 +12,7 @@ This is done with various open source software tools, all developed in-house.
 Our software consists of 3 main components, which are documented here:
 
 - [DSP-APP](DSP-APP/index.md): The web application that allows you to view and edit data in your browser
-- [DSP-API](DSP-API/): The core of our software stack: the RDF database that offers an access via API
+- [DSP-API](DSP-API/index.md): The core of our software stack: the RDF database that offers an access via API
 - [DSP-TOOLS](DSP-TOOLS/index.md): A command line tool to upload data models and big data sets to a DSP server
 
 !!! tip "Quick start for researchers"
