@@ -5251,22 +5251,14 @@ By default, the search is performed in all projects stored in DSP. However, it i
 <p><img alt="Search history panel" src="../../../assets/images/search-history.png" /><em>Search history list is accessible for the full-text search from any webpage.</em></p>
 <h3 id="search-rules">Search rules</h3>
 <ul>
-<li>
-<p>A search value must have a minimum length of <strong>3</strong> characters. If your search term has less than three characters (e.g. <code>is</code>), please add two asterisks (<code>*is*</code>).</p>
-</li>
-<li>
-<p>All terms are interpreted as <strong>lowercase</strong> characters. E.g. <em>My dearest Maria</em> is interpreted as <em>my dearest maria</em>.</p>
-</li>
-<li>
-<p>By default, the logical operator <code>OR</code> is used when submitting several search terms. I.e. the name <code>George Sand</code> is searched as <code>george</code> OR <code>sand</code>. The database will return all results that include the terms <code>George Sand</code>, <code>george</code>, or <code>sand</code>. To find the exact name <code>George Sand</code>, the term must be surrounded by quotes: <code>"George Sand"</code>.</p>
-</li>
-<li>
-<p>Each term separated by a <strong>whitespace</strong> is considered a single term. E.g. the term <code>mon petit chat</code> will be searched as <code>mon</code> OR <code>petit</code> OR <code>chat</code>. To find the exact phrase <code>mon petit chat</code>, the phrase must be surrounded by quotes: <code>"mon petit chat"</code>.</p>
-</li>
+<li>A search value must have a minimum length of <strong>3</strong> characters. If your search term has less than three characters (e.g. <code>is</code>), please add two asterisks (<code>*is*</code>).</li>
+<li>All terms are interpreted as <strong>lowercase</strong> characters. E.g. <em>My dearest Maria</em> is interpreted as <em>my dearest maria</em>.</li>
+<li>By default, the logical operator <code>OR</code> is used when submitting several search terms. I.e. the name <code>George Sand</code> is searched as <code>george</code> OR <code>sand</code>. The database will return all results that include the terms <code>George Sand</code>, <code>george</code>, or <code>sand</code>. To find the exact name <code>George Sand</code>, the term must be surrounded by quotes: <code>"George Sand"</code>.</li>
+<li>Each term separated by a <strong>whitespace</strong> is considered a single term. E.g. the term <code>mon petit chat</code> will be searched as <code>mon</code> OR <code>petit</code> OR <code>chat</code>. To find the exact phrase <code>mon petit chat</code>, the phrase must be surrounded by quotes: <code>"mon petit chat"</code>.</li>
 </ul>
 <h3 id="special-syntax">Special syntax</h3>
 <p>Special characters can be used in order to search for specific text patterns.</p>
-<p>Here is the list of characters with special meaning: +, -, &amp;&amp;, ||, !, (, ), [, ], {, }, ^, ", ~, *, ?, :, \, /</p>
+<p>Here is the list of characters with special meaning: <code>+, -, &amp;&amp;, ||, !, (, ), [, ], {, }, ^, ", ~, *, ?, :, \, /</code></p>
 <p>For more information about them, please read the <a href="https://lucene.apache.org/core/7_7_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html">Lucene documentation</a>.</p>
 <blockquote>
 <p>If you want to search for these special characters <strong>explicitly</strong>, note that the punctuation marks <code>,</code> and <code>.</code> are <strong>NOT</strong> eliminated and stay with the term where they occur. E.g. <code>To be, or not to be, that is the question.</code> -&gt; when searching for <code>be</code> the term <code>be,</code> (comma included) won't be found (and thus also not the entire phrase). We recommend to use the special character <code>*</code> - thus <code>be*</code> - to find all occurrences of a term.
@@ -5289,8 +5281,8 @@ Such an example is <code>r̥tasya</code>, where the <code>r̥</code> must be rep
 <hr />
 <h2 id="advanced-search">Advanced search</h2>
 <p><img alt="search-advanced-link Advanced search link is findable in the search menu at the right of the full-text search field." src="https://github.com/dasch-swiss/dsp-das/assets/136320187/a550b36a-3de9-4788-8fb9-13bd575c1199" /></p>
-<p>The advanced search allows the creation of complex queries using a form. The advanced search can be accessed from the data browser of any project. 
-The form creates a string representing a Gravsearch (SPARQL) query to be sent to DSP-API. </p>
+<p>The advanced search allows the creation of complex queries using a form. The advanced search can be accessed from the data browser of any project.
+The form creates a string representing a Gravsearch (SPARQL) query to be sent to DSP-API.</p>
 <p>A query consists of the following elements:</p>
 <ul>
 <li>selection of the data model (if you have more than one data model within your project)</li>
@@ -5301,7 +5293,7 @@ The form creates a string representing a Gravsearch (SPARQL) query to be sent to
 <p><img alt="advanced-search-form offers many filter combinations and is a powerful search tool." src="https://github.com/dasch-swiss/dsp-das/assets/136320187/cccc1001-f223-485c-8004-99977f6b7015" /></p>
 <h3 id="how-do-i-sort-the-search-results">How do I sort the search results?</h3>
 <p>You can open the "Order by" dropdown, by selecting the checkboy of the property, you specify that it will be sorted by. The order of the entries determines which criterion should be used for sorting first. You can reorder them by clicking and dragging them.</p>
-<p>https://github.com/dasch-swiss/dsp-das/assets/136320187/e43bb484-91b9-48ad-a59d-0e7c79a4df1b</p>
+<p><a href="https://github.com/dasch-swiss/dsp-das/assets/136320187/e43bb484-91b9-48ad-a59d-0e7c79a4df1b">https://github.com/dasch-swiss/dsp-das/assets/136320187/e43bb484-91b9-48ad-a59d-0e7c79a4df1b</a></p>
 <h3 id="comparison-operators">Comparison Operators</h3>
 <p>Depending on the value type of the chosen property,
 one or more of the following comparison operators can be selected:</p>
@@ -5315,9 +5307,11 @@ one or more of the following comparison operators can be selected:</p>
 <li><code>exists</code>: value for the given property exists.</li>
 <li><code>not exists</code>: value for the given property doesn't exist.</li>
 <li><code>is like</code>: search value is contained in a text using the SPARQL <a href="https://www.w3.org/TR/sparql11-query/#func-regex">REGEX</a> function (supports regular expressions).</li>
-<li><code>matches</code>:</li>
+<li><code>matches</code>:<ul>
 <li>text property: search value matches the text (<a href="https://docs.dasch.swiss/latest/DSP-API/07-lucene/lucene-query-parser-syntax/">Lucene Query Parser Syntax</a>).</li>
 <li>linking property: matches the specified linked resource.</li>
+</ul>
+</li>
 </ul>
 <h3 id="search-examples">Search Examples</h3>
 <h4 id="is-like-regular-expressions">is like (regular Expressions)</h4>
@@ -5370,7 +5364,7 @@ In this example, the user writes a query looking for all letters that have an au
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 12, 2023</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 29, 2024</span>
   </span>
 
     
