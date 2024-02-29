@@ -2,6 +2,6 @@
 # for TOOLS, see https://github.com/dasch-swiss/dsp-tools/releases
 DSP := "2024.02.02"
 API := "068ec841633ba0df1c32be3a4fbdea3f4700980a"
-APP := "4e993900defe0ae322185e77a08f8e3d97866dfe"
+APP := "4558e343aa5b3f693e925bc295c8e9e8e59c5f8e"
 TOOLS := "v6.0.0"
 INGEST := "v0.6.2"
