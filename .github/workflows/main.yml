@@ -11,7 +11,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Grab commits from submodules
-        run: make init-submodules
+        run: |
+          make init-submodules
+          make update-submodules
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
