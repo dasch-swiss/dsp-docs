@@ -3687,6 +3687,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#resume-xmlupload" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume-xmlupload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#excel2json" class="md-nav__link">
     <span class="md-ellipsis">
       excel2json
@@ -5117,6 +5126,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#resume-xmlupload" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume-xmlupload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#excel2json" class="md-nav__link">
     <span class="md-ellipsis">
       excel2json
@@ -5325,7 +5343,7 @@ But in this case, the resulting JSON file won't have a "users" section.</p>
 <li><code>-p</code> | <code>--password</code> (optional, default: <code>test</code>): password used for authentication with the DSP-API</li>
 <li><code>-i</code> | <code>--imgdir</code> (optional, default: <code>.</code>): folder from where the paths in the <code>&lt;bitstream&gt;</code> tags are evaluated</li>
 <li><code>-V</code> | <code>--validate</code> (optional): validate the XML file without uploading it</li>
-<li><code>-v</code> | <code>--verbose</code> (optional): print more information about the progress to the console</li>
+<li><code>--interrupt-after=int</code> (optional): interrupt the upload after <code>int</code> resources have been uploaded</li>
 </ul>
 <p>Output:</p>
 <ul>
@@ -5343,6 +5361,40 @@ it is necessary to specify the following options:</p>
 <div class="highlight"><pre><span></span><code>dsp-tools<span class="w"> </span>xmlupload<span class="w"> </span>-s<span class="w"> </span>https://api.dasch.swiss<span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;your@email.com&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span>xml_data_file.xml
 </code></pre></div>
 <p>The expected XML format is <a href="../file-formats/xml-data-file/">documented here</a>.</p>
+<p>If an XML upload is interrupted before it finished (e.g. by hitting <code>Ctrl + C</code>), 
+it can be resumed with the <code>resume-xmlupload</code> command. 
+When an upload is interrupted, 
+the current state of the upload is saved in a pickle file, 
+which is stored in <code>~/.dsp-tools/xmluploads/[server]/resumable/latest.pkl</code>. 
+If the upload should be resumed later,
+this file must remain in place.</p>
+<h2 id="resume-xmlupload"><code>resume-xmlupload</code></h2>
+<table>
+<thead>
+<tr>
+<th><center>Warning</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>We do not guarantee that the state of an xmlupload is cleanly saved after <code>Ctrl + C</code>. We only guarantee this for <code>dsp-tools xmlupload --interrupt-after</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>This command resumes a previously interrupted XML upload.</p>
+<div class="highlight"><pre><span></span><code>dsp-tools<span class="w"> </span>resume-xmlupload<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+<p>The following options are available:</p>
+<ul>
+<li><code>-s</code> | <code>--server</code> (optional, default: <code>0.0.0.0:3333</code>): URL of the DSP server where DSP-TOOLS sends the data to</li>
+<li><code>-u</code> | <code>--user</code> (optional, default: <code>root@example.com</code>): username (e-mail) used for authentication with the DSP-API </li>
+<li><code>-p</code> | <code>--password</code> (optional, default: <code>test</code>): password used for authentication with the DSP-API</li>
+<li><code>--skip-first-resource</code> (optional): the <code>xmlupload</code> should skip the first saved resource. 
+This is not implemented for stashed links.</li>
+</ul>
+<p>For this command to work,
+the pickle file <code>~/.dsp-tools/xmluploads/[server]/resumable/latest.pkl</code> must exist. 
+Currently, only one interrupted upload can be resumed at a time per server.</p>
 <h2 id="excel2json"><code>excel2json</code></h2>
 <p>This command creates a JSON project definition file from a nested folder structure with Excel files.</p>
 <div class="highlight"><pre><span></span><code>dsp-tools<span class="w"> </span>excel2json<span class="w"> </span>excelfolder<span class="w"> </span>project_definition.json
@@ -5497,7 +5549,7 @@ and upload its XML file.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
   </span>
 
     

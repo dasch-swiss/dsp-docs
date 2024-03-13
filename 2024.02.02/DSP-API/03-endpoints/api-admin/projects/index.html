@@ -6128,13 +6128,15 @@ permissions) of any entity that belongs to the project. This default object acce
 }
 </code></pre></div>
 <h3 id="set-restricted-view-settings">Set Restricted View Settings</h3>
-<p>Both routes take String parameter which sets restricted view size in one of two formats: as an image dimensions or a 
-percentage. The dimensions pattern looks like: <code>!X,X</code>, where X is the number representing scaled image dimensions in
-a square, so that the width and height of the returned image are not greater than the requested value.
-Example: <code>!512,512</code> means the image's bigger side will be set to 512 pixels, setting the other side respectively to
-image aspect ratio. The percentage pattern looks like: <code>pct:X</code>, where X is the number between 1-100 representing the
-percentage the image will be scaled to. Example: <code>pct:1</code> means the image will be scaled to 1% of the original image
-size.</p>
+<p>Set how all still image resources of a projects should be displayed when viewed as restricted. 
+This can be either a size restriction or a watermark. </p>
+<p>For that, we support two of the (IIIF size)[https://iiif.io/api/image/3.0/#42-size] forms:</p>
+<ul>
+<li><code>!d,d</code> The returned image is scaled so that the width and height of the returned image are not greater than d, while maintaining the aspect ratio.</li>
+<li><code>pct:n</code> The width and height of the returned image is scaled to n percent of the width and height of the original image. 1&lt;= n &lt;= 100.</li>
+</ul>
+<p>If the watermark is set to <code>true</code>, the returned image will be watermarked, otherwise the default size <code>!128,128</code> is set.
+It is only possible to set either the size or the watermark, not both at the same time.</p>
 <p>Permissions: ProjectAdmin/SystemAdmin</p>
 <p>Request definition:</p>
 <ul>
@@ -6142,28 +6144,31 @@ size.</p>
 <li><code>POST /admin/projects/shortcode/{shortcode}/RestrictedViewSettings</code></li>
 </ul>
 <p>Description: Set the project's restricted view</p>
-<p>Required payload:</p>
-<ul>
-<li><code>size</code> string</li>
-</ul>
-<p>Optional payload:
-- <code>watermark</code> boolean</p>
-<p>Example request:</p>
+<p>The endpoint accepts either a size or a watermark but not both.</p>
+<p>Size:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;!512,512&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>Watermark:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;watermark&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>Examples :</p>
+<p>Request:
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:5555/admin/projects/iri/http%3A%2F%2Frdfh.ch%2Fprojects%2F0001/RestrictedViewSettings&#39;</span><span class="w"> </span><span class="se">\</span>
 --header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span><span class="w"> </span><span class="se">\</span>
 --data<span class="w"> </span><span class="err">&#39;</span><span class="o">{</span><span class="s2">&quot;size&quot;</span>:<span class="w"> </span><span class="s2">&quot;!512,512&quot;</span><span class="o">}</span>
 </code></pre></div>
+Response:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;!512,512&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>Request:
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;http://0.0.0.0:5555/admin/projects/shortcode/0001/RestrictedViewSettings&#39;</span><span class="w"> </span><span class="se">\</span>
 --header<span class="w"> </span><span class="s1">&#39;Authorization: Basic cm9vdEBleGFtcGxlLmNvbTp0ZXN0&#39;</span><span class="w"> </span><span class="se">\</span>
---data<span class="w"> </span><span class="s1">&#39;{&quot;size&quot;: &quot;!512,512&quot;, watermark: true}&#39;</span>
+--data<span class="w"> </span><span class="s1">&#39;{&quot;watermark&quot;: true}&#39;</span>
 </code></pre></div>
-<p>Example response:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;!512,512&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;watermark&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Operates on the following properties:</p>
+Response:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;watermark&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<p>Operates on the following mutually exclusive properties:</p>
 <ul>
 <li><code>knora-admin:projectRestrictedViewSize</code>: the IIIF size value</li>
 <li><code>knora-admin:projectRestrictedViewWatermark</code>: whether images of a project should be protected with a watermark.</li>
@@ -6189,7 +6194,7 @@ size.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 6, 2024</span>
   </span>
 
     
