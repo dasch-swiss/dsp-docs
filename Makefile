@@ -23,8 +23,9 @@ openapi-update: ## mkdocs cannot resolve relative path to the dsp-ingest openapi
 
 .PHONY: build
 build: openapi-update ## build docs into the local 'site' folder
-	@$(MAKE) graphvizfigures
 	@$(MAKE) install-requirements
+	@$(MAKE) graphvizfigures
+	@$(MAKE) openapi-update
 	.venv/bin/mike deploy $(DSP) latest --update-aliases
 	.venv/bin/mike set-default latest
 
