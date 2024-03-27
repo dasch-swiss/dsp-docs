@@ -28,6 +28,7 @@ jobs:
       - name: Build docs in strict mode
         run: |
           make graphvizfigures
+          make openapi-update
           mkdocs build --strict
       - name: Serve docs
         run: make serve
