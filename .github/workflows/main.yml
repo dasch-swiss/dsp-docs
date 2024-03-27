@@ -22,14 +22,16 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: |
-          python -m venv .venv
-          .venv/bin/python -m pip install --upgrade pip
-          .venv/bin/pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
           sudo apt-get install graphviz
+      - name: build graphviz figures
+        run: make graphvizfigures
+      - name: Update OpenAPI docs
+        run: make openapi-update
       - name: Build docs in strict mode
-        run: |
-          make graphvizfigures
-          make openapi-update
-          .venv/bin/mkdocs build --strict
+        run: venv/bin/mkdocs build --strict
       - name: Serve docs
-        run: make serve
+        run: |
+          mike deploy $(DSP) latest --update-aliases
+          mike serve
