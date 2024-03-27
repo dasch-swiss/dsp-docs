@@ -27,7 +27,6 @@ build: openapi-update ## build docs into the local 'site' folder
 	@$(MAKE) graphvizfigures
 	@$(MAKE) openapi-update
 	.venv/bin/mike deploy $(DSP) latest --update-aliases
-	.venv/bin/mike set-default latest
 
 .PHONY: serve
 serve: ## serve docs for local viewing
