@@ -31,7 +31,10 @@ jobs:
         run: make openapi-update
       - name: Build docs in strict mode
         run: mkdocs build --strict
-      - name: Serve docs
+      - name: Build documentation and deploy to the specified version on the target branch (i.e. gh-pages)
         run: |
+          git config --global user.name "foo"
+          git config --global user.email "foo@bar.com"
           mike deploy YYYY.MM.01 latest --update-aliases
-          mike serve
+      - name: Serve docs
+        run: mike serve
