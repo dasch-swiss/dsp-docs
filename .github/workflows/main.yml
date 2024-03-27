@@ -30,6 +30,6 @@ jobs:
         run: |
           make graphvizfigures
           make openapi-update
-          mkdocs build --strict
+          .venv/bin/mkdocs build --strict
       - name: Serve docs
         run: make serve
