@@ -21,16 +21,12 @@ openapi-update: ## mkdocs cannot resolve relative path to the dsp-ingest openapi
 	mkdir -p ./docs/openapi/
 	cp -r ./dsp/dsp-ingest/docs/openapi/*.yml ./docs/openapi/
 
-.PHONY: mike-deploy
-mike-deploy:
-	.venv/bin/mike deploy $(DSP) latest --update-aliases
-
 .PHONY: build
 build: ## build docs into the local 'site' folder
 	@$(MAKE) install-requirements
 	@$(MAKE) graphvizfigures
 	@$(MAKE) openapi-update
-	@$(MAKE) mike-deploy
+	.venv/bin/mike deploy $(DSP) latest --update-aliases
 
 .PHONY: serve
 serve: ## serve docs for local viewing
