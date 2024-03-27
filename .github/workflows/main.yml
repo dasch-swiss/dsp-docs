@@ -30,7 +30,7 @@ jobs:
       - name: Update OpenAPI docs
         run: make openapi-update
       - name: Build docs in strict mode
-        run: venv/bin/mkdocs build --strict
+        run: mkdocs build --strict
       - name: Serve docs
         run: |
           mike deploy $(DSP) latest --update-aliases
