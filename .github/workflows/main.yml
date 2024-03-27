@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Grab commits from submodules
         run: |
           make init-submodules
@@ -23,8 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           sudo apt-get install graphviz
-      - name: Build docs
-        run: |
-          make openapi-update
-          mkdocs build
-
+      - name: build graphviz figures
+        run: make graphvizfigures
+      - name: Update OpenAPI docs
+        run: make openapi-update
+      - name: Build docs in strict mode
+        run: mkdocs build --strict
