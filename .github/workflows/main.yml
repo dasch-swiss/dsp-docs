@@ -28,6 +28,7 @@ jobs:
       - name: build graphviz figures
         run: make graphvizfigures
       - name: Update OpenAPI docs
+        uses: extractions/setup-just@v1
         run: make openapi-update
       - name: Build docs in strict mode
         run: mkdocs build --strict
