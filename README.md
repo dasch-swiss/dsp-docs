@@ -53,6 +53,15 @@ Install it with
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+### Just
+
+[`just`](https://github.com/casey/just) is a handy way to save and run project-specific commands.
+We need it to build the OpenAPI documentation for DSP-API and DSP-INGEST.
+
+```shell
+brew install just
+```
+
 ### Python
 
 The documentation is built with [MkDocs](https://www.mkdocs.org),
