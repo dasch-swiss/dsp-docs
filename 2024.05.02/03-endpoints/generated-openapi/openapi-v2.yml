@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: webapi-v2
-  version: v30.14.0-dirty
+  version: v30.14.0-7-ga464382-docs-fix-openapi-rendering
 servers:
 - url: http://localhost:3333
   description: Local development server
