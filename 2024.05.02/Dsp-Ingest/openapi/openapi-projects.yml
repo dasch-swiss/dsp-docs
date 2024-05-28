@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: dsp-ingest-projects
-  version: v0.5.0-23-gcbbe7a6-dirty
+  version: v0.9.1-dirty
 servers:
 - url: http://localhost:3340
   description: Local development server
@@ -12,6 +12,7 @@ paths:
     get:
       tags:
       - projects
+      description: 'Authorization: admin scope required.'
       operationId: getProjects
       responses:
         '200':
@@ -45,6 +46,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -63,6 +70,7 @@ paths:
     get:
       tags:
       - projects
+      description: 'Authorization: read:project:1234 scope required.'
       operationId: getProjectsShortcode
       parameters:
       - name: shortcode
@@ -99,6 +107,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -117,6 +131,7 @@ paths:
     get:
       tags:
       - projects
+      description: 'Authorization: read:project:1234 scope required.'
       operationId: getProjectsShortcodeChecksumreport
       parameters:
       - name: shortcode
@@ -153,6 +168,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -171,6 +192,7 @@ paths:
     get:
       tags:
       - assets
+      description: 'Authorization: read:project:1234 scope required.'
       operationId: getProjectsShortcodeAssetsAssetid
       parameters:
       - name: shortcode
@@ -213,6 +235,84 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unhealthy'
+      security:
+      - httpAuth: []
+  /projects/{shortcode}/assets/ingest/{filename}:
+    post:
+      tags:
+      - assets
+      operationId: postProjectsShortcodeAssetsIngestFilename
+      parameters:
+      - name: shortcode
+        in: path
+        description: The shortcode of the project must be an exactly 4 characters
+          long hexadecimal string.
+        required: true
+        schema:
+          type: string
+          pattern: ^\p{XDigit}{4,4}$
+        example: '0001'
+      - name: filename
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetInfoResponse'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -231,9 +331,9 @@ paths:
     post:
       tags:
       - bulk-ingest
-      description: Triggers an ingest on the project with the given shortcode. Currently
+      description: 'Triggers an ingest on the project with the given shortcode. Currently
         only supports ingest of images. The files are expected to be in the `tmp/<project_shortcode>`
-        directory.
+        directory. Authorization: admin scope required.'
       operationId: postProjectsShortcodeBulk-ingest
       parameters:
       - name: shortcode
@@ -272,6 +372,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -290,9 +396,9 @@ paths:
     post:
       tags:
       - bulk-ingest
-      description: Finalizes the bulk ingest. This will remove the files from the
+      description: 'Finalizes the bulk ingest. This will remove the files from the
         `tmp/<project_shortcode>` directory and the directory itself. This will remove
-        also the mapping.csv file.
+        also the mapping.csv file. Authorization: admin scope required.'
       operationId: postProjectsShortcodeBulk-ingestFinalize
       parameters:
       - name: shortcode
@@ -331,6 +437,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -350,7 +462,8 @@ paths:
       tags:
       - bulk-ingest
       description: 'Get the current result of the bulk ingest, may be incomplete.
-        The result is a csv with the following structure: original,derivative'
+        The result is a csv with the following structure: `original,derivative`. Authorization:
+        admin scope required.'
       operationId: getProjectsShortcodeBulk-ingestMapping.csv
       parameters:
       - name: shortcode
@@ -367,6 +480,10 @@ paths:
           description: ''
           headers:
             Content-Type:
+              required: true
+              schema:
+                type: string
+            Content-Disposition:
               required: true
               schema:
                 type: string
@@ -392,6 +509,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -410,6 +533,7 @@ paths:
     post:
       tags:
       - import/export
+      description: 'Authorization: admin scope required.'
       operationId: postProjectsShortcodeExport
       parameters:
       - name: shortcode
@@ -456,6 +580,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -474,6 +604,7 @@ paths:
     get:
       tags:
       - import/export
+      description: 'Authorization: admin scope required.'
       operationId: getProjectsShortcodeImport
       parameters:
       - name: shortcode
@@ -523,6 +654,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -540,20 +677,22 @@ paths:
 components:
   schemas:
     Argument:
+      title: Argument
+      type: object
       required:
       - argument
       - reason
-      type: object
       properties:
         argument:
           type: string
         reason:
           type: string
     AssetCheckResultEntry:
+      title: AssetCheckResultEntry
+      type: object
       required:
       - assetId
       - originalFilename
-      type: object
       properties:
         assetId:
           type: string
@@ -564,9 +703,10 @@ components:
           items:
             $ref: '#/components/schemas/SingleFileCheckResultResponse'
     AssetCheckResultResponse:
+      title: AssetCheckResultResponse
+      type: object
       required:
       - summary
-      type: object
       properties:
         summary:
           $ref: '#/components/schemas/AssetCheckResultSummary'
@@ -575,11 +715,12 @@ components:
           items:
             $ref: '#/components/schemas/AssetCheckResultEntry'
     AssetCheckResultSummary:
+      title: AssetCheckResultSummary
+      type: object
       required:
       - numberOfAssets
       - numberOfFiles
       - numberOfChecksumMatches
-      type: object
       properties:
         numberOfAssets:
           type: integer
@@ -591,13 +732,14 @@ components:
           type: integer
           format: int32
     AssetInfoResponse:
+      title: AssetInfoResponse
+      type: object
       required:
       - internalFilename
       - originalInternalFilename
       - originalFilename
       - checksumOriginal
       - checksumDerivative
-      type: object
       properties:
         internalFilename:
           type: string
@@ -626,72 +768,91 @@ components:
         originalMimeType:
           type: string
     BadRequest:
+      title: BadRequest
       type: object
       properties:
         errors:
           type: array
           items:
             $ref: '#/components/schemas/Argument'
+    Conflict:
+      title: Conflict
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
     DOWN:
+      title: DOWN
       type: object
     InternalServerError:
+      title: InternalServerError
+      type: object
       required:
       - errorMessage
-      type: object
       properties:
         errorMessage:
           type: string
     NotFound:
+      title: NotFound
+      type: object
       required:
       - id
       - type
-      type: object
       properties:
         id:
           type: string
         type:
           type: string
     ProjectResponse:
+      title: ProjectResponse
+      type: object
       required:
       - id
-      type: object
       properties:
         id:
           type: string
     SingleFileCheckResultResponse:
+      title: SingleFileCheckResultResponse
+      type: object
       required:
       - filename
       - checksumMatches
-      type: object
       properties:
         filename:
           type: string
         checksumMatches:
           type: boolean
     Status:
+      title: Status
       oneOf:
       - $ref: '#/components/schemas/DOWN'
       - $ref: '#/components/schemas/UP'
     UP:
+      title: UP
       type: object
     Unauthorized:
+      title: Unauthorized
+      type: object
       required:
       - reason
-      type: object
       properties:
         reason:
           type: string
     Unhealthy:
+      title: Unhealthy
+      type: object
       required:
       - status
-      type: object
       properties:
         status:
           $ref: '#/components/schemas/Status'
     UploadResponse:
+      title: UploadResponse
+      type: object
       required:
       - status
-      type: object
       properties:
         status:
           type: string

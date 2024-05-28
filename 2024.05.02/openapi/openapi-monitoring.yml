@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: dsp-ingest-monitoring
-  version: v0.5.0-23-gcbbe7a6-dirty
+  version: v0.9.1-dirty
 servers:
 - url: http://localhost:3340
   description: Local development server
@@ -22,11 +22,11 @@ paths:
                 $ref: '#/components/schemas/InfoEndpointResponse'
               example:
                 name: dsp-ingest
-                version: v0.5.0-23-gcbbe7a6-dirty
+                version: v0.9.1-dirty
                 scalaVersion: 3.3.3
-                sbtVersion: 1.9.8
-                buildTime: 2024-01-10 19:39:26.411+0100
-                gitCommit: cbbe7a6a06ba9dc64a6939ceb7880015a4c3fa9b
+                sbtVersion: 1.10.0
+                buildTime: 2024-05-28 11:16:04.645+0200
+                gitCommit: 25101299c18fcc4eadd63f8b5943576e22ae735d
         '400':
           description: ''
           content:
@@ -45,6 +45,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -89,6 +95,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -131,6 +143,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -146,32 +164,46 @@ paths:
 components:
   schemas:
     Argument:
+      title: Argument
+      type: object
       required:
       - argument
       - reason
-      type: object
       properties:
         argument:
           type: string
         reason:
           type: string
     BadRequest:
+      title: BadRequest
       type: object
       properties:
         errors:
           type: array
           items:
             $ref: '#/components/schemas/Argument'
+    Conflict:
+      title: Conflict
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
     DOWN:
+      title: DOWN
       type: object
     Health:
+      title: Health
+      type: object
       required:
       - status
-      type: object
       properties:
         status:
           $ref: '#/components/schemas/Status'
     InfoEndpointResponse:
+      title: InfoEndpointResponse
+      type: object
       required:
       - name
       - version
@@ -179,7 +211,6 @@ components:
       - sbtVersion
       - buildTime
       - gitCommit
-      type: object
       properties:
         name:
           type: string
@@ -194,39 +225,45 @@ components:
         gitCommit:
           type: string
     InternalServerError:
+      title: InternalServerError
+      type: object
       required:
       - errorMessage
-      type: object
       properties:
         errorMessage:
           type: string
     NotFound:
+      title: NotFound
+      type: object
       required:
       - id
       - type
-      type: object
       properties:
         id:
           type: string
         type:
           type: string
     Status:
+      title: Status
       oneOf:
       - $ref: '#/components/schemas/DOWN'
       - $ref: '#/components/schemas/UP'
     UP:
+      title: UP
       type: object
     Unauthorized:
+      title: Unauthorized
+      type: object
       required:
       - reason
-      type: object
       properties:
         reason:
           type: string
     Unhealthy:
+      title: Unhealthy
+      type: object
       required:
       - status
-      type: object
       properties:
         status:
           $ref: '#/components/schemas/Status'

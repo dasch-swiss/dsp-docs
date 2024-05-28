@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: dsp-ingest-maintenance
-  version: v0.5.0-23-gcbbe7a6-dirty
+  version: v0.9.1-dirty
 servers:
 - url: http://localhost:3340
   description: Local development server
@@ -12,6 +12,7 @@ paths:
     post:
       tags:
       - maintenance
+      description: 'Authorization: admin scope required.'
       operationId: postMaintenanceName
       parameters:
       - name: name
@@ -55,6 +56,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -73,6 +80,7 @@ paths:
     post:
       tags:
       - maintenance
+      description: 'Authorization: admin scope required.'
       operationId: postMaintenanceCreate-originalsShortcode
       parameters:
       - name: shortcode
@@ -113,6 +121,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -131,6 +145,7 @@ paths:
     get:
       tags:
       - maintenance
+      description: 'Authorization: admin scope required.'
       operationId: getMaintenanceNeeds-top-left-correction
       responses:
         '202':
@@ -157,6 +172,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -175,6 +196,7 @@ paths:
     get:
       tags:
       - maintenance
+      description: 'Authorization: admin scope required.'
       operationId: getMaintenanceNeeds-originals
       parameters:
       - name: imagesOnly
@@ -207,6 +229,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
         '500':
           description: ''
           content:
@@ -224,73 +252,92 @@ paths:
 components:
   schemas:
     ActionName:
+      title: ActionName
       type: string
       enum:
       - ApplyTopLeftCorrection
       - UpdateAssetMetadata
     Argument:
+      title: Argument
+      type: object
       required:
       - argument
       - reason
-      type: object
       properties:
         argument:
           type: string
         reason:
           type: string
     BadRequest:
+      title: BadRequest
       type: object
       properties:
         errors:
           type: array
           items:
             $ref: '#/components/schemas/Argument'
+    Conflict:
+      title: Conflict
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
     DOWN:
+      title: DOWN
       type: object
     InternalServerError:
+      title: InternalServerError
+      type: object
       required:
       - errorMessage
-      type: object
       properties:
         errorMessage:
           type: string
     MappingEntry:
+      title: MappingEntry
+      type: object
       required:
       - internalFilename
       - originalFilename
-      type: object
       properties:
         internalFilename:
           type: string
         originalFilename:
           type: string
     NotFound:
+      title: NotFound
+      type: object
       required:
       - id
       - type
-      type: object
       properties:
         id:
           type: string
         type:
           type: string
     Status:
+      title: Status
       oneOf:
       - $ref: '#/components/schemas/DOWN'
       - $ref: '#/components/schemas/UP'
     UP:
+      title: UP
       type: object
     Unauthorized:
+      title: Unauthorized
+      type: object
       required:
       - reason
-      type: object
       properties:
         reason:
           type: string
     Unhealthy:
+      title: Unhealthy
+      type: object
       required:
       - status
-      type: object
       properties:
         status:
           $ref: '#/components/schemas/Status'
