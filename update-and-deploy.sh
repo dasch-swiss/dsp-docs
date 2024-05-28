@@ -54,7 +54,7 @@ if [[ $v == *"-rc"* ]]; then
 	alias="prerelease"
 fi
 
-if [ $deploy = false ]; then
+if [ "${deploy}" = false ]; then
 	stop "do not deploy"
 else
 	# generates images from dot files
@@ -64,7 +64,7 @@ else
 	make openapi-update
 
 	echo "Deploy version ${v} to github pages now"
-	.venv/bin/mike deploy --push --branch gh-pages --update-aliases ${v} ${alias}
+	.venv/bin/mike deploy --push --branch gh-pages --update-aliases "${v}" "${alias}"
 
 	echo $sep
 fi
