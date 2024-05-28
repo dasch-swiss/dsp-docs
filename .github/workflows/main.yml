@@ -27,6 +27,13 @@ jobs:
           sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
+      - name: Install just
+        uses: extractions/setup-just@v1
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
       - name: Update OpenAPI docs
         run: make openapi-update
       - name: Build docs in strict mode
