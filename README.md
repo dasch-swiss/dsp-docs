@@ -62,6 +62,12 @@ We need it to build the OpenAPI documentation for DSP-API and DSP-INGEST.
 brew install just
 ```
 
+### Java
+
+In order to build the OpenAPI documentation for DSP-API and DSP-INGEST you need to have Java 21 installed.
+
+We recommend using [SDKMAN](https://sdkman.io/) to manage Java versions.
+
 ### Python
 
 The documentation is built with [MkDocs](https://www.mkdocs.org),
