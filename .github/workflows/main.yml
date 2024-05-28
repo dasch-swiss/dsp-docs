@@ -27,8 +27,9 @@ jobs:
           sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
-      - name: Update OpenAPI docs
+      - name: Install just
         uses: extractions/setup-just@v1
+      - name: Update OpenAPI docs
         run: make openapi-update
       - name: Build docs in strict mode
         run: mkdocs build --strict
