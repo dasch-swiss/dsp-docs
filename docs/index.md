@@ -19,7 +19,3 @@ Our software consists of 3 main components, which are documented here:
 
     If you are a researcher, you're probably most interested in the usage of the generic web application.<br/>
     In this case, have a look at our [DSP-APP user guide](DSP-APP/user-guide/index.md).
-
-Do you want to install and use DSP locally?
-Learn more about how to get started and how you can contribute to our software tools
-on the [developers page](developers/getting-started.md).
