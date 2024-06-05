@@ -1,0 +1,379 @@
+openapi: 3.1.0
+info:
+  title: dsp-ingest-maintenance
+  version: v0.10.0
+servers:
+- url: http://localhost:3340
+  description: Local development server
+- url: https://ingest.dasch.swiss
+  description: Production server
+paths:
+  /maintenance/{name}:
+    post:
+      tags:
+      - maintenance
+      description: 'Authorization: admin scope required.'
+      operationId: postMaintenanceName
+      parameters:
+      - name: name
+        in: path
+        description: The name of the action to be performed
+        required: true
+        schema:
+          $ref: '#/components/schemas/ActionName'
+        example: UpdateAssetMetadata
+      - name: restrictToProjects
+        in: query
+        description: Restrict the action to a list of projects, if no project is given
+          apply the action to all projects.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '202':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unhealthy'
+      security:
+      - httpAuth: []
+  /maintenance/create-originals/{shortcode}:
+    post:
+      tags:
+      - maintenance
+      description: 'Authorization: admin scope required.'
+      operationId: postMaintenanceCreate-originalsShortcode
+      parameters:
+      - name: shortcode
+        in: path
+        description: The shortcode of the project must be an exactly 4 characters
+          long hexadecimal string.
+        required: true
+        schema:
+          type: string
+          pattern: ^\p{XDigit}{4,4}$
+        example: '0001'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MappingEntry'
+        required: false
+      responses:
+        '202':
+          description: ''
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unhealthy'
+      security:
+      - httpAuth: []
+  /maintenance/needs-top-left-correction:
+    get:
+      tags:
+      - maintenance
+      description: 'Authorization: admin scope required.'
+      operationId: getMaintenanceNeeds-top-left-correction
+      responses:
+        '202':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unhealthy'
+      security:
+      - httpAuth: []
+  /maintenance/needs-originals:
+    get:
+      tags:
+      - maintenance
+      description: 'Authorization: admin scope required.'
+      operationId: getMaintenanceNeeds-originals
+      parameters:
+      - name: imagesOnly
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '202':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unhealthy'
+      security:
+      - httpAuth: []
+components:
+  schemas:
+    ActionName:
+      title: ActionName
+      type: string
+      enum:
+      - ApplyTopLeftCorrection
+      - UpdateAssetMetadata
+    Argument:
+      title: Argument
+      type: object
+      required:
+      - argument
+      - reason
+      properties:
+        argument:
+          type: string
+        reason:
+          type: string
+    BadRequest:
+      title: BadRequest
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Argument'
+    Conflict:
+      title: Conflict
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+    DOWN:
+      title: DOWN
+      type: object
+    Forbidden:
+      title: Forbidden
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+    InternalServerError:
+      title: InternalServerError
+      type: object
+      required:
+      - errorMessage
+      properties:
+        errorMessage:
+          type: string
+    MappingEntry:
+      title: MappingEntry
+      type: object
+      required:
+      - internalFilename
+      - originalFilename
+      properties:
+        internalFilename:
+          type: string
+        originalFilename:
+          type: string
+    NotFound:
+      title: NotFound
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    Status:
+      title: Status
+      oneOf:
+      - $ref: '#/components/schemas/DOWN'
+      - $ref: '#/components/schemas/UP'
+    UP:
+      title: UP
+      type: object
+    Unauthorized:
+      title: Unauthorized
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+    Unhealthy:
+      title: Unhealthy
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+  securitySchemes:
+    httpAuth:
+      type: http
+      scheme: bearer
