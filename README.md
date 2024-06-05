@@ -65,12 +65,13 @@ brew install just
 ### Java
 
 In order to build the OpenAPI documentation for DSP-API and DSP-INGEST you need to have Java 21 installed.
-We recommend using [SDKMAN](https://sdkman.io/) to manage Java versions. You should install the [Temurin](https://adoptium.net/en-GB/temurin/releases/) distribution of Java 21 with the following commands:
+We recommend using [SDKMAN](https://sdkman.io/) to manage Java versions.
+You should install the [Temurin](https://adoptium.net/en-GB/temurin/releases/) distribution of Java 21.
 
 For example, to install Java 21.0.3:
 
 ```shell
-sdk install java 21.0.3.tem
+sdk install java 21.0.3-tem
 ```
 
 ### Python
