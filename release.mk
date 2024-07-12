@@ -1,4 +1,4 @@
-# for DSP, API, APP, see https://github.com/dasch-swiss/ops-deploy/blob/main/roles/dsp-deploy/files/RELEASE.json
+# for DSP, API, APP, see https://github.com/dasch-swiss/ops-deploy/blob/main/versions/RELEASE.json
 # for TOOLS, see https://github.com/dasch-swiss/dsp-tools/releases
 DSP := "2024.07.01"
 API := "v30.17.1"
