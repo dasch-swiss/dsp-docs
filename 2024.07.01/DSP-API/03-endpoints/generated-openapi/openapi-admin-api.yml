@@ -3319,7 +3319,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       responses:
         '200':
           description: ''
@@ -3357,7 +3357,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       responses:
         '200':
           description: ''
@@ -3395,7 +3395,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       responses:
         '200':
           description: ''
@@ -3542,7 +3542,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       responses:
         '200':
           description: ''
@@ -3598,7 +3598,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       responses:
         '200':
           description: ''
@@ -3769,7 +3769,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       - name: projectIri
         in: path
         description: The IRI of a project. Must be URL-encoded.
@@ -3832,7 +3832,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       - name: projectIri
         in: path
         description: The IRI of a project. Must be URL-encoded.
@@ -3896,7 +3896,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       - name: projectIri
         in: path
         description: The IRI of a project. Must be URL-encoded.
@@ -3959,7 +3959,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       - name: projectIri
         in: path
         description: The IRI of a project. Must be URL-encoded.
@@ -4023,7 +4023,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       - name: groupIri
         in: path
         description: The IRI of a group. Must be URL-encoded.
@@ -4086,7 +4086,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       - name: groupIri
         in: path
         description: The IRI of a group. Must be URL-encoded.
@@ -4150,7 +4150,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       requestBody:
         content:
           application/json:
@@ -4213,7 +4213,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       requestBody:
         content:
           application/json:
@@ -4276,7 +4276,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       requestBody:
         content:
           application/json:
@@ -4339,7 +4339,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/users/GSTNOmqZQN6KQwxUn91nqA
+        example: http://rdfh.ch/users/HnNUY3TJQJm2T6GFUS4FVg
       requestBody:
         content:
           application/json:

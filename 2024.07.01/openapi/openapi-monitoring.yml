@@ -25,7 +25,7 @@ paths:
                 version: v0.11.0
                 scalaVersion: 3.3.3
                 sbtVersion: 1.10.0
-                buildTime: 2024-07-13 21:37:29.209+0200
+                buildTime: 2024-07-13 21:40:32.118+0200
                 gitCommit: 580f76d5c20bd92728eaa29ae700029854816c87
         '400':
           description: ''
