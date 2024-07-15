@@ -1,4 +1,4 @@
-name: checks-on-push
+name: pr-checks
 
 on:
   push:
