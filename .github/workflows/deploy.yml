@@ -39,5 +39,5 @@ jobs:
           java-version: 21
       - name: Update OpenAPI docs
         run: make openapi-update
-      - name: Build docs in strict mode
+      - name: Deploy docs
         run: make deploy
