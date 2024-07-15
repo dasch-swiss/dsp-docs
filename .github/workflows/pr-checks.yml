@@ -13,6 +13,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0  # necessary for git-revision-date-localized-plugin
           submodules: 'recursive'
       - name: Set up Python
         uses: actions/setup-python@v5
