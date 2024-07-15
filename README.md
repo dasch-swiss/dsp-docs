@@ -2,22 +2,18 @@
 
 This repository is the source from which the DSP documentation
 on [docs.dasch.swiss](https://docs.dasch.swiss) is generated.
-It includes three main components:
+It includes these components:
 
 - [DSP-API](https://github.com/dasch-swiss/dsp-api)
 - [DSP-APP](https://github.com/dasch-swiss/dsp-das)
 - [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools)
-
-If you want to contribute, please read the following information carefully.
+- [DSP-INGEST](https://github.com/dasch-swiss/dsp-ingest)
 
 ## File structure
 
-DSP-API, DSP-APP, and DSP-TOOLS have their own documentation in their repositories itself.
-They are integrated into this documentation with [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) and
-the [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin).
-
-Those three documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there.
-They have to be updated in their own repositories. To grab the latest version of them run `make update-submodules`.
+Each software component has its own documentation in its repository.
+The individual documentations are stored as git submodules in the `/dsp` folder. Please do not change anything there.
+They have to be updated in their own repositories. To grab the latest version of them, run `make update-submodules`.
 
 In addition to those embedded contents, there are contents that live in this repository.
 They are stored in the `/docs` folder:
@@ -64,7 +60,7 @@ brew install just
 
 ### Java
 
-In order to build the OpenAPI documentation for DSP-API and DSP-INGEST you need to have Java 21 installed.
+In order to build the OpenAPI documentation for DSP-API and DSP-INGEST, you need to have Java 21 installed.
 We recommend using [SDKMAN](https://sdkman.io/) to manage Java versions.
 You should install the [Temurin](https://adoptium.net/en-GB/temurin/releases/) distribution of Java 21.
 
@@ -111,8 +107,7 @@ make init-submodules
 ### Update the submodules
 
 If you have been away for a while, you might want to update the submodules
-to get the latest version of DSP-API, DSP-APP and DSP-TOOLS documentation.
-Make sure you are at the root of the dsp-docs repository, then run:
+to get the latest version of DSP-API, DSP-APP and DSP-TOOLS documentation:
 
 ```shell
 make update-submodules
@@ -120,7 +115,7 @@ make update-submodules
 
 ### Install Python packages in a virtual environment
 
-Make sure you are at the root of the dsp-docs repository, then create a new virtual environment:
+Create a new virtual environment:
 
 ```shell
 python3 -m venv .venv
@@ -141,7 +136,6 @@ MkDocs comes with a built-in dev-server that lets you preview your documentation
 
 Make sure that
 
-- you're at the root of the dsp-docs repo
 - the virtual environment is active (`(.venv)` at the beginning of the command line)
 - the submodules are up-to-date (run `make update-submodules`)
 
@@ -152,20 +146,6 @@ make serve
 ```
 
 Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentation landing page.
-
-### Building the documentation
-
-Make sure that
-
-- you're at the root of the dsp-docs repo
-- the virtual environment is active (`(.venv)` at the beginning of the command line)
-- the submodules are up-to-date (run `make update-submodules`)
-
-Then build the docs with:
-
-```shell
-make build
-```
 
 ### Deploying GitHub page
 
