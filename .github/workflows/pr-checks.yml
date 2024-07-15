@@ -13,11 +13,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Grab commits from submodules
-        run: |
-          make init-submodules
-          make update-submodules
+          submodules: 'recursive'
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -39,4 +35,4 @@ jobs:
       - name: Update OpenAPI docs
         run: make openapi-update
       - name: Build docs in strict mode
-        run: mkdocs build --strict
+        run: mkdocs build --strict --verbose
