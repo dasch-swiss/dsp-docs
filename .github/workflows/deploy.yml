@@ -1,24 +1,16 @@
 name: deploy
 
 on:
-  pull_request:
-    types: 
-        - closed
+  push:
+    branches: 
+        - main
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true
+    if: startsWith(github.event.head_commit.message, 'deploy')
     name: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: interrupt if PR title does not start with "deploy" prefix
-        run: |
-          import re, os, sys
-          if not re.match(r"^deploy: .+", os.environ["PR_TITLE"]):
-              sys.exit(1)
-        env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
-        shell: python
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
