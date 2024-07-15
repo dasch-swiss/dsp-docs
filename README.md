@@ -169,22 +169,17 @@ make build
 
 ### Deploying GitHub page
 
-Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) has to be done manually.
+Deploying the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) is automated via GitHub actions.
+Whenever a PR with the prefix `deploy: ` is merged into the main branch, a deployment is triggered.
+So, to deploy a new version of the docs, follow these steps:
 
-Make sure that
-
-- the `release.mk` file is up-to-date with the corresponding versions
-- that you are in the main branch
-- that you're at the root of the dsp-docs repo
-- that the virtual environment is active (`(.venv)` at the beginning of the command line)
-
-Then run the following command:
-
-```shell
-make deploy
-```
-
-This updates the submodules and pushes the documentation to the gh-pages branch.
+- switch to a new branch
+- update the `release.mk` file with the corresponding versions
+- pull the documentations from the individual software components with `make update-submodules`
+- commit everything (incl. the submodules), and create a PR named `deploy: bump docs to <platform-release>`
+  (e.g. `deploy: bump docs to 2024.07.01`)
+- in order to merge, the automated tests must pass, and you need a review
+- once the PR is merged, the docs are deployed to [docs.dasch.swiss](https://docs.dasch.swiss/)
 
 ### Help for the `make` commands
 

@@ -1,7 +1,9 @@
-name: CI
+name: pr-checks
 
 on:
   push:
+    branches-ignore:
+      - main
 
 jobs:
   build:
