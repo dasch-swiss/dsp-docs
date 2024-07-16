@@ -14,11 +14,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Grab commits from submodules
-        run: |
-          make init-submodules
-          make update-submodules
+          fetch-depth: 0  # necessary for git-revision-date-localized-plugin
+          submodules: 'recursive'
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
