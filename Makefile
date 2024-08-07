@@ -47,6 +47,7 @@ deploy: ## build and publish docs to Github Pages with versioning from the relea
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
+	test -d .venv || python3 -m venv .venv
 	.venv/bin/pip3 install --upgrade pip > /dev/null
 	.venv/bin/pip3 install -r requirements.txt > /dev/null
 

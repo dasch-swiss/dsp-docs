@@ -115,16 +115,7 @@ make update-submodules
 
 ### Install Python packages in a virtual environment
 
-Create a new virtual environment:
-
-```shell
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-The virtual environment is now active,
-as can be seen from the `(.venv)` at the beginning of the command line.
-Install the required python packages by running
+Install the required python packages (this will automatically create a virtual environment):
 
 ```shell
 make install-requirements
@@ -134,10 +125,7 @@ make install-requirements
 
 MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it.
 
-Make sure that
-
-- the virtual environment is active (`(.venv)` at the beginning of the command line)
-- the submodules are up-to-date (run `make update-submodules`)
+Make sure that the submodules are up-to-date (run `make init-submodules` and/or `make update-submodules`).
 
 Then start the server with:
 
