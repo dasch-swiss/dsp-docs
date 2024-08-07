@@ -21,8 +21,8 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: |
-          python3 -m venv .venv
-          make install-requirements
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
           sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
