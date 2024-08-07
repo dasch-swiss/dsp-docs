@@ -35,4 +35,4 @@ jobs:
       - name: Update OpenAPI docs
         run: make openapi-update
       - name: Build docs in strict mode
-        run: mkdocs build --strict --verbose
+        run: .venv/bin/mkdocs build --strict --verbose
