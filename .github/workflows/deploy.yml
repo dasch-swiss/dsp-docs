@@ -22,7 +22,8 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: |
-          make install-requirements
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
           sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
