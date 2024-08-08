@@ -11,6 +11,16 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Authenticate with GitHub
+        env:
+          GH_PAT: ${{ secrets.JOHANNES_PAT_TO_DEPLOY_DSP_DOCS }}
+        run: |
+          echo "https://${GH_PAT}:@github.com" > ~/.git-credentials
+          git config --global credential.helper store
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
