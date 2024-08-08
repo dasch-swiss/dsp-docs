@@ -23,7 +23,7 @@ paths:
               example:
                 webapi: v30.18.2
                 buildCommit: cff47ed25
-                buildTime: '2024-08-08T10:55:27.268752749Z'
+                buildTime: '2024-08-08T11:59:19.149939567Z'
                 fuseki: 5.0.0-3
                 pekkoHttp: 1.0.1
                 scala: 3.3.3
