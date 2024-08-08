@@ -21,8 +21,7 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          make install-requirements
           sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
@@ -36,4 +35,4 @@ jobs:
       - name: Update OpenAPI docs
         run: make openapi-update
       - name: Build docs in strict mode
-        run: mkdocs build --strict --verbose
+        run: .venv/bin/mkdocs build --strict --verbose
