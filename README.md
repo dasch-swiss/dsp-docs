@@ -1,5 +1,7 @@
 # DaSCH Service Platform Documentation
 
+foo
+
 This repository is the source from which the DSP documentation
 on [docs.dasch.swiss](https://docs.dasch.swiss) is generated.
 It includes these components:
