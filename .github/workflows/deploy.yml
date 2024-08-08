@@ -17,7 +17,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
       - name: Authenticate with GitHub
         env:
-          GH_PAT: ${{ secrets.JOHANNES_PAT_TO_DEPLOY_DSP_DOCS }}
+          GH_PAT: ${{ secrets.DASCHBOT_PAT }}
         run: |
           echo "https://${GH_PAT}:@github.com" > ~/.git-credentials
           git config --global credential.helper store
