@@ -4203,9 +4203,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#video-segment-audio-segment" class="md-nav__link">
+  <a href="#video-segment-and-audio-segment" class="md-nav__link">
     <span class="md-ellipsis">
-      &lt;video-segment&gt; / &lt;audio-segment&gt;
+      &lt;video-segment&gt; and &lt;audio-segment&gt;
     </span>
   </a>
   
@@ -5759,9 +5759,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#video-segment-audio-segment" class="md-nav__link">
+  <a href="#video-segment-and-audio-segment" class="md-nav__link">
     <span class="md-ellipsis">
-      &lt;video-segment&gt; / &lt;audio-segment&gt;
+      &lt;video-segment&gt; and &lt;audio-segment&gt;
     </span>
   </a>
   
@@ -6760,7 +6760,7 @@ predefined properties:</p>
 </code></pre></div>
 <p>Technical note: A <code>&lt;link&gt;</code> is in fact a <code>&lt;resource restype="LinkObj"&gt;</code>. But it is mandatory to use the 
 shortcut, so that the XML file can be validated more precisely.</p>
-<h3 id="video-segment-audio-segment"><code>&lt;video-segment&gt;</code> / <code>&lt;audio-segment&gt;</code></h3>
+<h3 id="video-segment-and-audio-segment"><code>&lt;video-segment&gt;</code> and <code>&lt;audio-segment&gt;</code></h3>
 <p><code>&lt;video-segment&gt;</code> and <code>&lt;audio-segment&gt;</code> represent sections of an audio/video file. 
 They can have the following predefined properties:</p>
 <table>
@@ -6769,70 +6769,60 @@ They can have the following predefined properties:</p>
 <th>prop name</th>
 <th>cardinality</th>
 <th>prop type</th>
-<th>text type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>isSegmentOf</code></td>
 <td>1</td>
-<td>resptr-prop</td>
-<td></td>
+<td>link</td>
 </tr>
 <tr>
 <td><code>hasSegmentBounds</code></td>
 <td>1</td>
-<td>interval-prop</td>
-<td></td>
+<td>interval</td>
 </tr>
 <tr>
 <td><code>hasTitle</code></td>
 <td>0-1</td>
-<td>text-prop</td>
-<td>unformatted</td>
+<td>text (unformatted)</td>
 </tr>
 <tr>
 <td><code>hasDescription</code></td>
 <td>0-n</td>
-<td>text-prop</td>
-<td>formatted</td>
+<td>text (formatted)</td>
 </tr>
 <tr>
 <td><code>hasComment</code></td>
 <td>0-n</td>
-<td>text-prop</td>
-<td>formatted</td>
+<td>text (formatted)</td>
 </tr>
 <tr>
 <td><code>hasKeyword</code></td>
 <td>0-n</td>
-<td>text-prop</td>
-<td>unformatted</td>
+<td>text (unformatted)</td>
 </tr>
 <tr>
 <td><code>relatesTo</code></td>
 <td>0-n</td>
-<td>resptr-prop</td>
-<td></td>
+<td>link</td>
 </tr>
 </tbody>
 </table>
-<p>The segment bounds must be entered in seconds. 
-Decimal values for fractions of a second are allowed, e.g. <code>1.4:2</code>.
-The segment from 0h 10min 00s to 0h 20min 00s would thus be represented by the interval <code>600:1200</code>.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;video-segment</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Segment of video_thing_1&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;video_segment_0&quot;</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;res-default&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;resptr-prop</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;isSegmentOf&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;resptr</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>video_thing_1<span class="nt">&lt;/resptr&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/resptr-prop&gt;</span>
-<span class="w">    </span><span class="nt">&lt;interval-prop</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hasSegmentBounds&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;interval</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>10:20<span class="nt">&lt;/interval&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/interval-prop&gt;</span>
-<span class="w">    </span><span class="nt">&lt;text-prop</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hasComment&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">encoding=</span><span class="s">&quot;xml&quot;</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>Optional<span class="w"> </span>comment<span class="nt">&lt;/text&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/text-prop&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;video-segment</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Video Segment&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;video_segment_1&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;isSegmentOf</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>video_thing_1<span class="nt">&lt;/isSegmentOf&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- The segment bounds must be entered in seconds. Decimal (for fractions of a second) are allowed, e.g. `1.4`.--&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hasSegmentBounds</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;600&quot;</span><span class="w"> </span><span class="na">end=</span><span class="s">&quot;1200&quot;</span><span class="nt">/&gt;</span><span class="w"> </span><span class="cm">&lt;!-- from 0h 10min 00s to 0h 20min 00s --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hasTitle</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>Title<span class="w"> </span>of<span class="w"> </span>video<span class="w"> </span>segment<span class="nt">&lt;/hasTitle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hasDescription</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;&lt;strong&gt;</span>Description<span class="nt">&lt;/strong&gt;</span><span class="w"> </span>of<span class="w"> </span>video<span class="w"> </span>segment<span class="nt">&lt;/hasDescription&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hasKeyword</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>Keyword<span class="w"> </span>of<span class="w"> </span>video<span class="w"> </span>segment<span class="nt">&lt;/hasKeyword&gt;</span>
+<span class="w">    </span><span class="nt">&lt;hasComment</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;&lt;strong&gt;</span>Comment<span class="nt">&lt;/strong&gt;</span><span class="w"> </span>of<span class="w"> </span>video<span class="w"> </span>segment<span class="nt">&lt;/hasComment&gt;</span>
+<span class="w">    </span><span class="nt">&lt;relatesTo</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>audio_segment_1<span class="nt">&lt;/relatesTo&gt;</span>
 <span class="nt">&lt;/video-segment&gt;</span>
 </code></pre></div>
+<p>Allowed attributes in these property tags: <code>permissions</code>, <code>comment</code>. 
+Example: <code>&lt;hasTitle permissions="prop-default" comment="Comment to my title"&gt;Title of video segment&lt;/hasTitle&gt;</code></p>
 <p>Technical notes: </p>
 <ul>
 <li><code>&lt;video-segment&gt;</code> / <code>&lt;audio-segment&gt;</code> are in fact a 
@@ -7045,7 +7035,7 @@ upload data. Both of them also contain an XML data file. You can find them here:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 22, 2024</span>
   </span>
 
     

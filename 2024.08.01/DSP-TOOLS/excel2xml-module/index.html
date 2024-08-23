@@ -3955,6 +3955,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#the-special-properties-of-video-segment-and-audio-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Special Properties of &lt;video-segment&gt; and &lt;audio-segment&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#supported-boolean-formats" class="md-nav__link">
     <span class="md-ellipsis">
       Supported Boolean Formats
@@ -5137,6 +5146,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#the-special-properties-of-video-segment-and-audio-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Special Properties of &lt;video-segment&gt; and &lt;audio-segment&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#supported-boolean-formats" class="md-nav__link">
     <span class="md-ellipsis">
       Supported Boolean Formats
@@ -5476,6 +5494,33 @@ the value won't have a comment:</p>
 <span class="w">        </span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">encoding=</span><span class="s">&quot;xml&quot;</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-restricted&quot;</span><span class="w"> </span><span class="na">comment=</span><span class="s">&quot;some comment&quot;</span><span class="nt">&gt;</span>first<span class="w"> </span>text<span class="nt">&lt;/text&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/text-prop&gt;</span>
 </code></pre></div>
+<h4 id="the-special-properties-of-video-segment-and-audio-segment">The Special Properties of <code>&lt;video-segment&gt;</code> and <code>&lt;audio-segment&gt;</code></h4>
+<p><code>&lt;video-segment&gt;</code> and <code>&lt;audio-segment&gt;</code> work differently than normal resources.
+Firstly, because they are knora-base resources that cannot be subclassed in the custom data model.
+So in your JSON file, you must not create a resource class for them. 
+Rather, you use them in your XML file directly.</p>
+<p>Secondly, because they have a dedicated tag (i.e., different from <code>&lt;resource&gt;</code>), 
+and their properties also have dedicated tags.</p>
+<p>Here's how you can create them in your Python script:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dsp_tools</span> <span class="kn">import</span> <span class="n">excel2xml</span>
+
+<span class="n">segment</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_video_segment</span><span class="p">(</span><span class="s2">&quot;label of my video segment&quot;</span><span class="p">,</span> <span class="s2">&quot;segment_1&quot;</span><span class="p">)</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_isSegmentOf_prop</span><span class="p">(</span><span class="s2">&quot;video_resource_id&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasSegmentBounds_prop</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1200</span><span class="p">))</span>  <span class="c1"># from 0h 10min 00s to 0h 20min 00s</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasTitle_prop</span><span class="p">(</span><span class="s2">&quot;title of the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasDescription_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;1st&lt;/strong&gt; description of the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasDescription_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;2nd&lt;/strong&gt; description of the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasComment_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;1st&lt;/strong&gt; comment to the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasComment_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;2nd&lt;/strong&gt; comment to the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasKeyword_prop</span><span class="p">(</span><span class="s2">&quot;keyword 1&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasKeyword_prop</span><span class="p">(</span><span class="s2">&quot;keyword 2&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_relatesTo_prop</span><span class="p">(</span><span class="s2">&quot;id_of_other_resource&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>The audio segment works exactly the same, just with <code>audio</code> instead of <code>video</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">segment</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_audio_segment</span><span class="p">(</span><span class="s2">&quot;label of my audio segment&quot;</span><span class="p">,</span> <span class="s2">&quot;segment_1&quot;</span><span class="p">)</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_isSegmentOf_prop</span><span class="p">(</span><span class="s2">&quot;audio_resource_id&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>See also the <a href="../file-formats/xml-data-file/#video-segment-and-audio-segment">documentation of the resulting XML format</a>.</p>
 <h4 id="supported-boolean-formats">Supported Boolean Formats</h4>
 <p>For <code>make_boolean_prop(cell)</code>, the following formats are supported:</p>
 <ul>
@@ -5683,7 +5728,7 @@ returns the DSP-formatted date string.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 22, 2024</span>
   </span>
 
     

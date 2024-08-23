@@ -26,7 +26,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/lists/0001/5YZ87dJvQtWP83PqT2D3Rg
+        example: http://rdfh.ch/lists/0001/jfte-on4TTagk0hZzOiTpg
       - name: Accept
         in: header
         description: |-
@@ -178,7 +178,7 @@ paths:
         required: true
         schema:
           type: string
-        example: http://rdfh.ch/lists/0001/5YZ87dJvQtWP83PqT2D3Rg
+        example: http://rdfh.ch/lists/0001/jfte-on4TTagk0hZzOiTpg
       - name: Accept
         in: header
         description: |-
