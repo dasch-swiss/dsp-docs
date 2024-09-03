@@ -1,0 +1,5789 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../incremental-xmlupload/">
+      
+      
+        <link rel="next" href="../start-stack/">
+      
+      
+      <link rel="icon" href="../../assets/images/logo_bw.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
+    
+    
+      
+        <title>excel2xml module - DaSCH Service Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/style/theme.css">
+    
+      <link rel="stylesheet" href="../../dsp/dsp-ingest/docs/css/mkdocsoad-v1.0.2.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+    <script src="https://cdn.usefathom.com/script.js" data-site="BWXVRNXV" data-include-domains="docs.dasch.swiss" defer></script> 
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-excel2xml-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../.."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DaSCH Service Platform Documentation" class="md-header__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DaSCH Service Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              excel2xml module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../DSP-APP/" class="md-tabs__link">
+          
+  
+  DSP-APP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../DSP-API/" class="md-tabs__link">
+          
+  
+  DSP-API
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  DSP-TOOLS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Dsp-Ingest/" class="md-tabs__link">
+          
+  
+  DSP-INGEST
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developers/getting-started/" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DaSCH Service Platform Documentation" class="md-nav__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    DaSCH Service Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-APP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-APP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Administration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Management
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Data Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/data/start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Start from scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/data/search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search and browse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/data/search-results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/data/work-on-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Work on your data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/user-guide/user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Profile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contribution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Contribution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to contribute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/docs-documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docs Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-APP/contribution/release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/what-is-dsp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is DSP?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/file-formats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Formats in DSP-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/standoff-rdf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standoff/RDF Text Markup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/01-introduction/example-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    An Example Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP Ontologies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            DSP Ontologies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-dsp-ontologies/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-dsp-ontologies/knora-base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Knora Base Ontology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/02-dsp-ontologies/salsah-gui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The SALSAH GUI Ontology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-API Endpoints
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-API Endpoints
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-API V2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-API V2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/reading-and-searching-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading and Searching Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/reading-user-permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading the User's Permissions on Resources and Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/getting-lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/query-language/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gravsearch - Virtual Graph Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/editing-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating and Editing Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/editing-values/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating and Editing Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/ontology-information/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Querying, Creating, and Updating Ontologies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1_10" id="__nav_3_3_1_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Textual Data in DSP-API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Textual Data in DSP-API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/text/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/text/standard-standoff/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Standoff Markup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/text/custom-standoff/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Standoff Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/text/tei-xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TEI XML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/permalinks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permalinks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-v2/knora-iris/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IRIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Admin API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Admin API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/users/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Users Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Groups Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lists Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/stores/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stores Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-admin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenApi Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Util API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Util API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/api-util/version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Version
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Instrumentation API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Instrumentation API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/instrumentation/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/instrumentation/health/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Health Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/03-endpoints/instrumentation/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics Endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Publishing and Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Publishing and Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/publishing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publishing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/04-publishing-deployment/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP Internals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            DSP Internals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1" id="__nav_3_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1_1" id="__nav_3_5_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architectural Decision Records (ADR)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Architectural Decision Records (ADR)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0001 Record Architectural Decisions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0002-change-cache-service-manager-from-akka-actor-to-zlayer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0002 Change Cache Service Manager from Akka-Actor to ZLayer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0003-change-iiif-service-manager-and-sipi-implementation-to-zlayer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0003 Change IIIF Service Manager and Sipi implementation to zlayer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0004-change-triplestore-service-manager-and-fuseki-implementation-to-zlayer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0004 Change Triplestore Service Manager and Fuseki implementation to ZLayer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0005-change-respondermanager-to-a-simple-case-class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0005 Change ResponderManager to a simple case class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0006-use-zio-http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0006 Gradually Replace Akka-HTTP with ZIO-HTTP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0007-zio-fication-of-responders/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0007 ZIO-fication of Responders
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/adr/ADR-0008-replace-akka-with-pekko/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0008 Replace Akka with Pekko
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1_2" id="__nav_3_5_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-API Design Principles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-API Design Principles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/design-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/store-module/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Store Module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/triplestore-updates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Triplestore Updates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/consistency-checking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consistency Checking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/principles/rdf-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDF Processing API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1_3" id="__nav_3_5_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-API V2 Design
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-API V2 Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API v2 Design Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ontology-schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ontology Schemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/smart-iris/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart IRIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/content-wrappers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Content Wrappers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/how-to-add-a-route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Add an API v2 Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/json-ld/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON-LD Parsing and Formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ontology-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ontology Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/sipi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSP-API and Sipi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/gravsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gravsearch Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/standoff/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standoff Markup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/ark/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Archival Resource Key (ARK)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-v2/query-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SPARQL Query Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/api-admin/administration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin API Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1_5" id="__nav_3_5_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP Domain
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            DSP Domain
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/domain/domain-entities-and-relations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Domain Entities and Relations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/domain/system-instances/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Instances
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/design/domain/class-and-property-hierarchies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class and Property Hierarchies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/building-and-running/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build and Running
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/vscode-config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup Visual Studio Code for development of DSP-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/docker-cheat-sheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Cheat Sheet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/docker-compose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starting the DSP-Stack inside Docker Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/updating-repositories/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating Repositories
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/05-internals/development/third-party/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Third-Party Dependencies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SIPI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            SIPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/06-sipi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/06-sipi/sipi-and-dsp-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interaction between Sipi and DSP-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lucene
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Lucene
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/07-lucene/lucene-query-parser-syntax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lucene Query Parser Syntax
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/08-faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/09-release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSP-API/10-migration-guides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration Guides and Deprecations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    DSP-TOOLS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-TOOLS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLI commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    File formats
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            File formats
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JSON project file
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            JSON project file
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/json-project/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/json-project/ontologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ontologies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/json-project/caveats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Caveats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/xml-data-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML data file
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/excel2json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    excel2json
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/excel2xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    excel2xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../incremental-xmlupload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Incremental xmlupload
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    excel2xml module
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    excel2xml module
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-use-cases-two-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Use Cases - Two Approaches
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-excel2xml-convert-a-data-source-to-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module excel2xml: Convert a Data Source to XML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-read-in-your-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Read in Your Data Source
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-root-element-knora" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create Root Element &lt;knora&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-append-the-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Append the Permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-list-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create List Mappings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-iterate-through-the-rows-of-your-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Iterate Through the Rows of Your Data Source
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Iterate Through the Rows of Your Data Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-create-the-resource-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Create the &lt;resource&gt; Tag
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create the <resource> Tag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-append-the-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Append the Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Append the Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fine-tuning-with-the-propertyelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-Tuning With the PropertyElement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-special-properties-of-video-segment-and-audio-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Special Properties of &lt;video-segment&gt; and &lt;audio-segment&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-boolean-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Boolean Formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-characters-in-text-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Characters in Text Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-append-the-resource-to-the-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Append the Resource to the Root
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-save-the-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Save the File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Helper Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Helper Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-if-a-cell-contains-a-usable-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check if a Cell Contains a Usable Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calendar-date-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calendar Date Parsing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../start-stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running DSP locally
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Information for developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Information for developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developers documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/packaging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependencies, packaging & distribution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/user-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MkDocs and markdown-link-validator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7_5" id="__nav_4_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Code quality tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Code quality tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/code-quality-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/general-formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/python-formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/python-docstring-formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python docstring formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/python-type-checking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python type checking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/python-linting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python linting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security checks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/code-quality-tools/python-see-also/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    See also
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSP-INGEST
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            DSP-INGEST
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/ingest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingesting Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            API documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/api-endpoints-projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/api-endpoints-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/api-endpoints-maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/api-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_4" id="__nav_5_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Service documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Service documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/service-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Dsp-Ingest/service-filesystem-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filesystem Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/rdf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/sipi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sipi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/libraries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Libraries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/contribution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contribution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-use-cases-two-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Use Cases - Two Approaches
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-excel2xml-convert-a-data-source-to-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module excel2xml: Convert a Data Source to XML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-read-in-your-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Read in Your Data Source
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-root-element-knora" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create Root Element &lt;knora&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-append-the-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Append the Permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-list-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create List Mappings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-iterate-through-the-rows-of-your-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Iterate Through the Rows of Your Data Source
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Iterate Through the Rows of Your Data Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-create-the-resource-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Create the &lt;resource&gt; Tag
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create the <resource> Tag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-append-the-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Append the Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Append the Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fine-tuning-with-the-propertyelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-Tuning With the PropertyElement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-special-properties-of-video-segment-and-audio-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Special Properties of &lt;video-segment&gt; and &lt;audio-segment&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-boolean-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Boolean Formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-characters-in-text-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Characters in Text Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-append-the-resource-to-the-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Append the Resource to the Root
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-save-the-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Save the File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Helper Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Helper Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-if-a-cell-contains-a-usable-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check if a Cell Contains a Usable Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calendar-date-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calendar Date Parsing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><a href="https://badge.fury.io/py/dsp-tools"><img alt="PyPI version" src="https://badge.fury.io/py/dsp-tools.svg" /></a></p>
+<h1 id="the-excel2xml-module">The excel2xml Module</h1>
+<h2 id="two-use-cases-two-approaches">Two Use Cases - Two Approaches</h2>
+<p>There are two kinds of Excel files that can be transformed into an XML file:</p>
+<table>
+<thead>
+<tr>
+<th>structure</th>
+<th>provenance</th>
+<th>tool</th>
+<th>example screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>custom structure</td>
+<td>customer</td>
+<td>module <code>excel2xml</code></td>
+<td><img alt="" src="../assets/images/img-excel2xml-raw-data-category.png" /></td>
+</tr>
+<tr>
+<td>DSP structure</td>
+<td>DSP server</td>
+<td>CLI command <code>excel2xml</code></td>
+<td><img alt="" src="../assets/images/img-excel2xml-closeup.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>The first use case is the most frequent: The DaSCH receives a data export from a research project. Every project uses 
+different software, so every project will deliver their data in a different structure. The screenshot is just a 
+simplified example. For this use case, it is necessary to write a Python script that transforms the data from an 
+undefined state X into a DSP-conforming XML file that can be uploaded with <code>dsp-tools xmlupload</code>. For this, you need to
+import the module <code>excel2xml</code> into your Python script.</p>
+<p>The second use case is less frequent: In DaSCH we migrate data internally from one server to another. In this case, the 
+data already has the correct structure, and can automatically be transformed to XML. 
+This can be done with the <a href="../cli-commands/#excel2xml">CLI command <code>excel2xml</code></a>.</p>
+<p><strong>This page deals only with the first use case, the module <code>excel2xml</code></strong>.</p>
+<h2 id="module-excel2xml-convert-a-data-source-to-xml">Module <code>excel2xml</code>: Convert a Data Source to XML</h2>
+<p>To demonstrate the usage of the <code>excel2xml</code> module, 
+there is a GitHub repository named <code>00A1-import-scripts</code>.
+It contains:</p>
+<ul>
+<li>a sample JSON project file</li>
+<li>sample data that fits the data model of the JSON project file</li>
+<li>a sample Python script that demonstrates how to use the module <code>excel2xml</code>.</li>
+</ul>
+<p>Navigate to <a href="https://github.com/dasch-swiss/00A1-import-scripts">https://github.com/dasch-swiss/00A1-import-scripts</a>
+and follow the steps described there. 
+The README will teach you some basics that will be necessary to work with <code>excel2xml</code>. 
+Once you are familiar with the basics, 
+return to this page to learn how the sample Python script works. </p>
+<p>This is the simplified pattern how the Python script works:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span>  <span class="n">main_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;excel2xml_sample_data.csv&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="mi">2</span>  <span class="n">root</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_root</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="mi">3</span>  <span class="n">root</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">append_permissions</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="mi">4</span>  <span class="c1"># if necessary: create list mappings, according to explanation below</span>
+<span class="mi">5</span>  <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">main_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<span class="mi">6</span>      <span class="n">resource</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_resource</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="mi">7</span>      <span class="n">resource</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_text_prop</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+<span class="mi">8</span>      <span class="n">root</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+<span class="mi">9</span>  <span class="n">excel2xml</span><span class="o">.</span><span class="n">write_xml</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;data.xml&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1 read in your data source with the pandas library (https://pandas.pydata.org/)  
+2 create the root element `&lt;knora&gt;`  
+3 append the permissions  
+4 if necessary: create list mappings (see below)  
+5 iterate through the rows of your data source:  
+6     create the `&lt;resource&gt;` tag  
+7     append properties to it  
+8     append the resource to the root tag `&lt;knora&gt;`  
+9 save the finished XML file  
+</code></pre></div>
+<p><br>
+These steps are now explained in-depth:</p>
+<h2 id="1-read-in-your-data-source">1. Read in Your Data Source</h2>
+<p>In the first paragraph of the sample script, insert your ontology name, project shortcode, and the path to your data 
+source. If necessary, activate one of the lines that are commented out.  </p>
+<h2 id="2-create-root-element-knora">2. Create Root Element <code>&lt;knora&gt;</code></h2>
+<p>Then, the root element is created, which represents the <code>&lt;knora&gt;</code> tag of the XML document. </p>
+<h2 id="3-append-the-permissions">3. Append the Permissions</h2>
+<p>As first children of <code>&lt;knora&gt;</code>, some standard permissions are added. At the end, please carefully check the permissions 
+of the finished XML file to ensure that they meet your requirements, and adapt them if necessary.  </p>
+<p>The standard permission of a resource is <code>res-default</code>, and of a property <code>prop-default</code>. If you don't specify it 
+otherwise, all resources and properties get these permissions. </p>
+<p>With <code>excel2xml</code>, it is not possible to create resources/properties that don't have permissions, because they would be 
+invisible for all users except project admins and system admins. <a href="../file-formats/xml-data-file/#using-permissions-with-the-permissions-attribute">Read more about permissions 
+here</a>.</p>
+<h2 id="4-create-list-mappings">4. Create List Mappings</h2>
+<p>Let's assume that your data source has a column
+containing list values named after the "label" of the JSON project list, 
+instead of the "name" which is needed for the <code>dsp-tools xmlupload</code>. 
+You need a way to get the names from the labels.
+If your data source uses the labels correctly, 
+this is an easy task: 
+The function <code>create_json_list_mapping()</code> creates a dictionary that maps the labels to the names:  </p>
+<p>The list "category" in <code>00A1-import-scripts/import_project.json</code> looks as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kategorie&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A list containing categories&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eine Liste mit Kategorien&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artwork&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kunstwerk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Artwork&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nature&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Natur&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nature&quot;</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;humans&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Menschen&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Humans&quot;</span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you pass this list to <code>create_json_list_mapping()</code>, it creates the following dictionary:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Kunstwerk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artwork&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kunstwerk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artwork&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Menschen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;humans&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;menschen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;humans&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Natur&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nature&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;natur&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nature&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If, however, your data source has spelling variants, 
+you need the more sophisticated approach of <code>create_json_excel_list_mapping()</code>: 
+This function creates a dictionary 
+that maps the list values in your data source 
+to their correct JSON project node name. 
+This happens based on string similarity. 
+Please carefully check the result if there are no false matches!</p>
+<p>The column "Category" in <code>00A1-import-scripts/data_raw.csv</code> has spelling mistakes:<br />
+<img alt="column category" src="../assets/images/img-excel2xml-raw-data-category.png" /></p>
+<p>The dictionary that results if you call <code>create_json_excel_list_mapping()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Huumans&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;humans&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;huumans&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;humans&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Artwörk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artwork&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;artwörk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;artwork&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The sample Python scripts features an example how to call these two functions, 
+and how the resulting dictionaries can be used.</p>
+<h2 id="5-iterate-through-the-rows-of-your-data-source">5. Iterate Through the Rows of Your Data Source</h2>
+<p>With the help of Pandas, you can then iterate through the rows of your Excel/CSV, and create resources and properties.</p>
+<h3 id="6-create-the-resource-tag">6. Create the <code>&lt;resource&gt;</code> Tag</h3>
+<p>There are several kinds of resources that can be created: </p>
+<table>
+<thead>
+<tr>
+<th>restype</th>
+<th>tag</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Resource</code></td>
+<td><code>&lt;resource&gt;</code></td>
+<td><code>make_resource()</code></td>
+</tr>
+<tr>
+<td><code>Annotation</code></td>
+<td><code>&lt;annotation&gt;</code></td>
+<td><code>make_annotation()</code></td>
+</tr>
+<tr>
+<td><code>Region</code></td>
+<td><code>&lt;region&gt;</code></td>
+<td><code>make_region()</code></td>
+</tr>
+<tr>
+<td><code>LinkObj</code></td>
+<td><code>&lt;link&gt;</code></td>
+<td><code>make_link()</code></td>
+</tr>
+<tr>
+<td><code>AudioSegment</code></td>
+<td><code>&lt;audio-segment&gt;</code></td>
+<td><code>make_audio_segment()</code></td>
+</tr>
+<tr>
+<td><code>VideoSegment</code></td>
+<td><code>&lt;video-segment&gt;</code></td>
+<td><code>make_video_segment()</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;resource&gt;</code> is the most frequent of them. The others are <a href="../file-formats/xml-data-file/#dsp-base-resources-and-base-properties-to-be-used-directly-in-the-xml-file">explained 
+here</a>. </p>
+<h4 id="resource-id">Resource ID</h4>
+<p>Special care is needed when the ID of a resource is created. Every resource must have an ID that is unique in the file,
+and it must meet the constraints of xsd:ID. You can simply achieve this if you use the function <code>make_xsd_id_compatible()</code>.</p>
+<p>If later, another resource would like to set a resptr-link to the resource that you are coding now, you must store the 
+ID in a dict, so that you can retrieve it later. The example script contains an example of such a dict. </p>
+<h3 id="7-append-the-properties">7. Append the Properties</h3>
+<p>For every property, there is a helper function that explains itself when you hover over it. So you don't need to worry 
+anymore how to construct a certain XML value for a certain property. </p>
+<p>Here's how the docstrings assist you:</p>
+<ul>
+<li>function signature: names of the parameters and accepted types</li>
+<li>short explanation how the function behaves</li>
+<li>usage examples</li>
+<li>link to the DSP-TOOLS documentation of this property</li>
+<li>a short description for every parameter</li>
+<li>short description of the returned object. <ul>
+<li>Note: <code>etree._Element</code> is a type annotation of an underlying library. You don't have to care about it, as long as 
+  you proceed as described (append the returned object to the parent resource).</li>
+</ul>
+</li>
+</ul>
+<p><img alt="docstring example" src="../assets/images/img-excel2xml-module-docstring.png" /></p>
+<h4 id="fine-tuning-with-the-propertyelement">Fine-Tuning With the <code>PropertyElement</code></h4>
+<p>There are two possibilities how to create a property: The value can be passed as it is, or as a <code>PropertyElement</code>. If it
+is passed as it is, the <code>permissions</code> are assumed to be <code>prop-default</code>, texts are assumed to be encoded as <code>utf8</code>, and 
+the value won't have a comment:</p>
+<div class="highlight"><pre><span></span><code><span class="n">make_text_prop</span><span class="p">(</span><span class="s2">&quot;:testproperty&quot;</span><span class="p">,</span> <span class="s2">&quot;first text&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;text-prop</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;:testproperty&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">encoding=</span><span class="s">&quot;utf8&quot;</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-default&quot;</span><span class="nt">&gt;</span>first<span class="w"> </span>text<span class="nt">&lt;/text&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/text-prop&gt;</span>
+</code></pre></div>
+<p>If you want to change these defaults, you have to use a <code>PropertyElement</code> instead:</p>
+<div class="highlight"><pre><span></span><code><span class="n">make_text_prop</span><span class="p">(</span>
+    <span class="s2">&quot;:testproperty&quot;</span><span class="p">,</span> 
+    <span class="n">PropertyElement</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="s2">&quot;first text&quot;</span><span class="p">,</span> 
+        <span class="n">permissions</span><span class="o">=</span><span class="s2">&quot;prop-restricted&quot;</span><span class="p">,</span> 
+        <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;xml&quot;</span><span class="p">,</span>
+        <span class="n">comment</span><span class="o">=</span><span class="s2">&quot;some comment&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;text-prop</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;:testproperty&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">encoding=</span><span class="s">&quot;xml&quot;</span><span class="w"> </span><span class="na">permissions=</span><span class="s">&quot;prop-restricted&quot;</span><span class="w"> </span><span class="na">comment=</span><span class="s">&quot;some comment&quot;</span><span class="nt">&gt;</span>first<span class="w"> </span>text<span class="nt">&lt;/text&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/text-prop&gt;</span>
+</code></pre></div>
+<h4 id="the-special-properties-of-video-segment-and-audio-segment">The Special Properties of <code>&lt;video-segment&gt;</code> and <code>&lt;audio-segment&gt;</code></h4>
+<p><code>&lt;video-segment&gt;</code> and <code>&lt;audio-segment&gt;</code> work differently than normal resources.
+Firstly, because they are knora-base resources that cannot be subclassed in the custom data model.
+So in your JSON file, you must not create a resource class for them. 
+Rather, you use them in your XML file directly.</p>
+<p>Secondly, because they have a dedicated tag (i.e., different from <code>&lt;resource&gt;</code>), 
+and their properties also have dedicated tags.</p>
+<p>Here's how you can create them in your Python script:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dsp_tools</span> <span class="kn">import</span> <span class="n">excel2xml</span>
+
+<span class="n">segment</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_video_segment</span><span class="p">(</span><span class="s2">&quot;label of my video segment&quot;</span><span class="p">,</span> <span class="s2">&quot;segment_1&quot;</span><span class="p">)</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_isSegmentOf_prop</span><span class="p">(</span><span class="s2">&quot;video_resource_id&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasSegmentBounds_prop</span><span class="p">(</span><span class="n">segment_start</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">segment_end</span><span class="o">=</span><span class="mi">1200</span><span class="p">))</span>  <span class="c1"># from 0h 10min to 0h 20min</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasTitle_prop</span><span class="p">(</span><span class="s2">&quot;title of the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasComment_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;1st&lt;/strong&gt; comment to the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasComment_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;2nd&lt;/strong&gt; comment to the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasDescription_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;1st&lt;/strong&gt; description of the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasDescription_prop</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;2nd&lt;/strong&gt; description of the segment&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasKeyword_prop</span><span class="p">(</span><span class="s2">&quot;keyword 1&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_hasKeyword_prop</span><span class="p">(</span><span class="s2">&quot;keyword 2&quot;</span><span class="p">))</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_relatesTo_prop</span><span class="p">(</span><span class="s2">&quot;id_of_other_resource&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>The audio segment works exactly the same, just with <code>audio</code> instead of <code>video</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">segment</span> <span class="o">=</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_audio_segment</span><span class="p">(</span><span class="s2">&quot;label of my audio segment&quot;</span><span class="p">,</span> <span class="s2">&quot;segment_1&quot;</span><span class="p">)</span>
+<span class="n">segment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">excel2xml</span><span class="o">.</span><span class="n">make_isSegmentOf_prop</span><span class="p">(</span><span class="s2">&quot;audio_resource_id&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Please be aware that the properties have to be provided in exactly this order. 
+It is possible to leave out optional properties, but the present ones must fit the order.</p>
+<p>See also the <a href="../file-formats/xml-data-file/#video-segment-and-audio-segment">documentation of the resulting XML format</a>.</p>
+<h4 id="supported-boolean-formats">Supported Boolean Formats</h4>
+<p>For <code>make_boolean_prop(cell)</code>, the following formats are supported:</p>
+<ul>
+<li>true: True, "true", "True", "1", 1, "yes", "Yes"</li>
+<li>false: False, "false", "False", "0", 0, "no", "No"</li>
+</ul>
+<p>N/A-like values will raise an Error. 
+So if your cell is empty, this function will not count it as false, 
+but will raise an Error. 
+If you want N/A-like values to be counted as false, 
+you may use a construct like this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">excel2xml</span><span class="o">.</span><span class="n">check_notna</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+    <span class="c1"># the cell contains usable content</span>
+    <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_boolean_prop</span><span class="p">(</span><span class="s2">&quot;:hasBoolean&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># the cell is empty: you can decide to count this as &quot;False&quot;</span>
+    <span class="n">excel2xml</span><span class="o">.</span><span class="n">make_boolean_prop</span><span class="p">(</span><span class="s2">&quot;:hasBoolean&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="special-characters-in-text-properties">Special Characters in Text Properties</h4>
+<p>Depending on the encoding of your text, special characters behave differently. 
+Please consult the systematic overview <a href="../file-formats/xml-data-file/#special-characters-overview">here</a> 
+to fully understand the implications.</p>
+<h3 id="8-append-the-resource-to-the-root">8. Append the Resource to the Root</h3>
+<p>At the end of the for-loop, it is important not to forget to append the finished resource to the root. </p>
+<h2 id="9-save-the-file">9. Save the File</h2>
+<p>At the very end, save the file under a name that you can choose yourself.</p>
+<h2 id="other-helper-functions">Other Helper Functions</h2>
+<h3 id="check-if-a-cell-contains-a-usable-value">Check if a Cell Contains a Usable Value</h3>
+<p>The function <code>check_notna(cell)</code> checks a value if it is usable in the context of data archiving. A value is considered 
+usable if it is</p>
+<ul>
+<li>a number (integer or float, but not <code>numpy.nan</code>)</li>
+<li>a boolean</li>
+<li>a string with at least one Unicode letter (matching the regex <code>\\p{L}</code>) or number, or at least one _, !, or ?
+  (The strings "None", "&lt;NA&gt;", "N/A", and "-" are considered invalid.)</li>
+<li>a PropertyElement whose "value" fulfills the above criteria</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">check_notna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>      <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;œ&quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;!&quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">True</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>   <span class="o">==</span> <span class="kc">False</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span><span class="p">)</span>   <span class="o">==</span> <span class="kc">False</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;&lt;NA&gt;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">False</span>
+<span class="n">check_notna</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>    <span class="o">==</span> <span class="kc">False</span>
+</code></pre></div>
+<p>But why not just checking a cell by its boolean value? Like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">cell</span><span class="p">:</span>
+    <span class="n">resource</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_</span><span class="o">*</span><span class="n">_prop</span><span class="p">(</span><span class="n">cell</span><span class="p">))</span>
+</code></pre></div>
+<p>There are many problems that can occur with this simple approach! Often, a cell won't evaluate to the boolean that you 
+might expect:</p>
+<table>
+<thead>
+<tr>
+<th>cell content</th>
+<th>return value of <code>bool(cell)</code></th>
+<th>You might have expected...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+<td>True, because 0 is a valid integer for your integer property</td>
+</tr>
+<tr>
+<td>" "</td>
+<td>True</td>
+<td>False, because an empty string is not usable for a text property</td>
+</tr>
+<tr>
+<td><code>numpy.nan</code></td>
+<td>True</td>
+<td>False, because N/A is not a usable value</td>
+</tr>
+<tr>
+<td><code>pandas.NA</code></td>
+<td>TypeError (*)</td>
+<td>False, because N/A is not a usable value</td>
+</tr>
+<tr>
+<td>"&lt;NA&gt;"</td>
+<td>True</td>
+<td>False, because this is the string representation of N/A</td>
+</tr>
+<tr>
+<td>"-"</td>
+<td>True</td>
+<td>False, because this is a placeholder in an empty text field</td>
+</tr>
+</tbody>
+</table>
+<p>(*) TypeError: boolean value of NA is ambiguous</p>
+<p>In contrast, <code>check_notna(cell)</code> will return the expected value for all cases in the table!</p>
+<h3 id="calendar-date-parsing">Calendar Date Parsing</h3>
+<p>The function <code>find_date_in_string(string)</code> tries to find a calendar date in a string. If successful, it 
+returns the DSP-formatted date string.</p>
+<p>Notes:</p>
+<ul>
+<li>The date can be embedded in text. </li>
+<li>Only the first date found is returned.</li>
+<li>By default, dates are interpreted as CE (Christian era) in the Gregorian calendar.</li>
+<li>The years 0000-2999 are supported, in 4-digit form.</li>
+<li>Dates written with slashes are always interpreted in a European manner: 5/11/2021 is the 5th of November.</li>
+</ul>
+<p>Supported date formats:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0476_09_04</td>
+<td>GREGORIAN:CE:0476-09-04:CE:0476-09-04</td>
+</tr>
+<tr>
+<td>0476-09-04</td>
+<td>GREGORIAN:CE:0476-09-04:CE:0476-09-04</td>
+</tr>
+<tr>
+<td>30.4.2021</td>
+<td>GREGORIAN:CE:2021-04-30:CE:2021-04-30</td>
+</tr>
+<tr>
+<td>5/11/2021</td>
+<td>GREGORIAN:CE:2021-11-05:CE:2021-11-05</td>
+</tr>
+<tr>
+<td>Jan 26, 1993</td>
+<td>GREGORIAN:CE:1993-01-26:CE:1993-01-26</td>
+</tr>
+<tr>
+<td>28.2.-1.12.1515</td>
+<td>GREGORIAN:CE:1515-02-28:CE:1515-12-01</td>
+</tr>
+<tr>
+<td>25.-26.2.0800</td>
+<td>GREGORIAN:CE:0800-02-25:CE:0800-02-26</td>
+</tr>
+<tr>
+<td>1.9.2022-3.1.2024</td>
+<td>GREGORIAN:CE:2022-09-01:CE:2024-01-03</td>
+</tr>
+<tr>
+<td>1848</td>
+<td>GREGORIAN:CE:1848:CE:1848</td>
+</tr>
+<tr>
+<td>1849/1850</td>
+<td>GREGORIAN:CE:1849:CE:1850</td>
+</tr>
+<tr>
+<td>1849/50</td>
+<td>GREGORIAN:CE:1849:CE:1850</td>
+</tr>
+<tr>
+<td>1845-50</td>
+<td>GREGORIAN:CE:1845:CE:1850</td>
+</tr>
+<tr>
+<td>840-850</td>
+<td>GREGORIAN:CE:840:CE:850</td>
+</tr>
+<tr>
+<td>840-1</td>
+<td>GREGORIAN:CE:840:CE:841</td>
+</tr>
+<tr>
+<td>1000-900 av. J.-C.</td>
+<td>GREGORIAN:BC:1000:BC:900</td>
+</tr>
+<tr>
+<td>45 av. J.-C.</td>
+<td>GREGORIAN:BC:45:BC:45</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 26, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.suggest", "search.highlight", "version"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>
