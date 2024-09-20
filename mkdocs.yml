@@ -6,6 +6,7 @@ nav:
   - DSP-API: "!include ./dsp/dsp-api/mkdocs.yml"
   - DSP-TOOLS: "!include ./dsp/dsp-tools/mkdocs.yml"
   - DSP-INGEST: "!include ./dsp/dsp-ingest/mkdocs.yml"
+  - DSP-META: "!include ./dsp/dsp-meta/mkdocs.yml"
   - Developers:
       - Getting Started: developers/getting-started.md
       - Basics:
@@ -67,4 +68,3 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed:
       alternate_style: true
-
