@@ -13,7 +13,7 @@ init-submodules: ## init the documentation from each connected repo; this comman
 
 .PHONY: update-submodules
 update-submodules: ## grab the current documentation from each connected repo
-	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) deploy=false
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) meta=$(META) deploy=false
 	
 .PHONY: openapi-update
 openapi-update: 

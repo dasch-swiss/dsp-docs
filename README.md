@@ -8,6 +8,7 @@ It includes these components:
 - [DSP-APP](https://github.com/dasch-swiss/dsp-das)
 - [DSP-TOOLS](https://github.com/dasch-swiss/dsp-tools)
 - [DSP-INGEST](https://github.com/dasch-swiss/dsp-ingest)
+- [DSP-META](https://github.com/dasch-swiss/dsp-meta)
 
 ## File structure
 
