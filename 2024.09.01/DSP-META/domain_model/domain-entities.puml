@@ -1,0 +1,401 @@
+@startuml Domain Entities
+
+package Entities {
+
+  class Project {
+    The Project.
+    -- Required Fields --
+    .. (1) ..
+    -UUID id
+    -String type
+    -Date createdAt
+    -UUID createdBy
+    +Shortcode shortcode
+    +String name
+    +MultiLanguageText description
+    +String howToCite
+    +Date startDate
+    +URL url
+    +String teaserText
+
+    .. (1 - n) ..
+    +Dataset[] datasets
+    +MultiLanguageText[] keywords
+    +MultiLanguageText|URL[] disciplines
+    +MultiLanguageText|URL[] temporalCoverage
+    +URL[] spatialCoverages
+    +Person[]|Organization[] funders
+
+    -- Optional Fields --
+    .. (0 - 1) ..
+    -ProjectStatus status
+    -Date modifiedAt
+    -UUID modifiedBy
+    -Date deletedAt
+    -UUID deletedBy
+    +DataManagementPlan dataManagementPlan
+    +Date endDate
+    +Person|Organization contactPoint
+    +URL secondaryURL
+
+    .. (0 - n) ..
+    +String[] publications
+    +Grant[] grants
+    +MultiLanguageText[] alternativeNames
+  }
+
+  note left of Project::disciplineTexts
+    `disciplineTexts` and `disciplineRefs`
+    together are `disciplines` (1-n)
+  end note
+
+  note left of Project::temporalCoverageTexts
+    `temporalCoverageTexts` and `temporalCoverageRefs`
+    together are `temporalCoverages` (1-n)
+  end note
+
+  note left of Project::spatialCoverage
+    Must be AuthorityReference
+  end note
+
+  note left of Project::funderPersons
+    `funderPersons` and `funderOrganizations`
+    together are `funders` (1-n)
+  end note
+
+  note left of Project::contactPerson
+    `contactPerson` and `contactOrganization`
+    together are `contactPoint` (0-1)
+  end note
+
+  class Dataset {
+    A Dataset belonging to the project.
+    -- Required Fields --
+    .. (1) ..
+    -UUID id
+    -String type
+    -Date createdAt
+    -UUID createdBy
+    +String title
+    +AccessConditions accessConditions
+    +String howToCite
+    +DatasetStatus status
+
+    .. (1 - n) ..
+    +MultiLanguageText|URL[] abstracts
+    +TypesOfData[] typesOfData
+    +License[] licenses
+    +MultiLanguageText[] languages
+    +Attribution[] attributions
+
+    -- Optional Fields --
+    .. (0 - 1) ..
+    -Date modifiedAt
+    -UUID modifiedBy
+    -Date deletedAt
+    -UUID deletedBy
+    +Date datePublished
+    +Date dateCreated
+    +Date dateModified
+    +URL distribution
+
+    .. (0 - n) ..
+    +MultiLanguageText[] alternativeTitles
+    +URL[] urls
+    +MultiLanguageText|URL[] additional
+  }
+
+  note left of Dataset::abstractTexts
+    `abstractTexts` and `abstractURLs`
+    together are `abstracts` (1-n)
+  end note
+
+  note left of Dataset::documentationTexts
+    `documentationTexts` and `documentationURLs`
+    together are `documentations` (0-n)
+  end note
+
+  class Grant {
+    A financial grant.
+    -- Required Fields --
+    .. (1) ..
+    -UUID id
+    -String type
+    -Date createdAt
+    -UUID createdBy
+
+    .. (1 - n) ..
+    +Person|Organization[] funders
+
+    -- Optional Fields --
+    .. (0 - 1) ..
+    -Date modifiedAt
+    -UUID modifiedBy
+    -Date deletedAt
+    -UUID deletedBy
+    +String number
+    +String name
+    +URL url
+
+  }
+
+  note left of Grant::funderPersons
+    `funderPersons` and `funderOrganizations`
+    together are `funders` (1-n)
+  end note
+
+  class Person {
+    A Person.
+    -- Required --
+    .. (1) ..
+    -UUID id
+    -String type
+    -Date createdAt
+    -UUID createdBy
+    -Email email
+
+    .. (1 - n) ..
+    +String[] jobTitles
+    +String[] givenNames
+    +String[] familyNames
+    +Organization[] affiliation
+
+    -- Optional --
+    .. (0 - 1) ..
+    -Date modifiedAt
+    -UUID modifiedBy
+    -Date deletedAt
+    -UUID deletedBy
+    +Address address
+    +Email secondaryEmail
+
+    .. (0 - n) ..
+    +URL[] authorityRefs
+
+  }
+
+  note left of Person::authorityRefs
+    Must be AuthorityReference
+  end note
+
+  class Organization {
+    An Organization.
+    -- Required --
+    .. (1) ..
+    -UUID id
+    -String type
+    -Date createdAt
+    -UUID createdBy
+    +String name
+
+    -- Optional --
+    .. (0 - 1) ..
+    -Date modifiedAt
+    -UUID modifiedBy
+    -Date deletedAt
+    -UUID deletedBy
+    +URL url
+    +Address address
+    +Email email
+
+    .. (0 - n) ..
+    +MultiLanguageText[] alternativeNames
+    +URL[] authorityRefs
+
+  }
+
+  note left of Organization::authorityRefs
+    Must be AuthorityReference
+  end note
+
+  class Attribution {
+    Entity holding information on how work on a dataset can be attributed to a person.
+    -- Required Fields --
+    .. (1 - n) ..
+    +Person|Organization agent
+    +String[] roles
+
+  }
+  
+}
+
+package valueobject {
+
+  class Shortcode{
+    Valueobject holding a shortcode.
+    -- Fields --
+    +String value
+    -- Methods --
+    .. Static Methods ..
+    {static} +URL newShortcode()
+    {static} +URL zeroShortcode()
+    .. Object Methods ..
+    +String string()
+    +boolean equals()
+  }
+
+  class Email{
+    Valueobject holding an e-mail address.
+    -- Fields --
+    +String value
+    -- Methods --
+    .. Static Methods ..
+    {static} +URL newEmail()
+    {static} +URL zeroEmail()
+    .. Object Methods ..
+    +String string()
+    +boolean equals()
+  }
+
+  class URL{
+    Valueobject holding an e-mail address.
+    -- Fields --
+    +URLType type
+    +String url
+    +String propertyID
+    -- Methods --
+    .. Static Methods ..
+    {static} +URL newURL()
+    {static} +URL zeroURL()
+    .. Object Methods ..
+    +String string()
+    +boolean equals()
+  }
+
+  class Date {
+    Valueobject holding an ISO date.
+    -- Fields --
+    +Date value
+    -- Methods --
+    .. Static Methods ..
+    {static} +URL newDate()
+    {static} +URL zeroDate()
+    .. Object Methods ..
+    +String string()
+    +boolean equals()
+  }
+
+  class MultiLanguageText {
+    Valueobject holding text in multiple different languages.
+    -- Fields --
+    +Map[ISOLanguage,String] value
+    -- Methods --
+    .. Static Methods ..
+    {static} +URL newMultiLanguageText()
+    {static} +URL zeroMultiLanguageText()
+    .. Object Methods ..
+    +String string()
+    +boolean equals()
+  }
+
+  class ISOLanguage {
+    Valueobject holding a two character ISO language tag.
+    -- Fields --
+    +String value
+    -- Methods --
+    .. Static Methods ..
+    {static} +URL newISOLanguage()
+    {static} +URL zeroISOLanguage()
+    .. Object Methods ..
+    +String string()
+    +boolean equals()
+  }
+
+  class License {
+    Value object holding license information.
+    -- Required --
+    .. (1) ..
+    -String type
+    +URL license
+    +Date date
+
+    -- Optional --
+    .. (0 - 1) ..
+    +String details
+  }
+
+  class Address {
+    Value object containing a postal address.
+    -- Required --
+    .. (1) ..
+    -String type
+    +String street
+    +String postalCode
+    +String locality
+    +String country
+
+    -- Optional --
+    .. (0 - 1) ..
+    +String canton
+    +String additional
+
+  }
+
+  class DataManagementPlan {
+    .. (1) ..
+    -String type
+
+    .. (0 - 1) ..
+    +boolean available
+    +URL url
+
+  }
+
+}
+
+package enums {
+
+  enum ProjectStatus {
+    Ongoing
+    Finished
+  }
+
+  enum AccessConditions {
+    Open
+    Restricted
+    Closed
+  }
+
+  enum TypesOfData {
+    XML
+    Text
+    Image
+    Video
+    Audio
+  }
+
+  enum DatasetStatus {
+    In_planning
+    Ongoing
+    On_hold
+    Finished
+  }
+
+  enum URLType {
+    Enum holding different types of URLs:
+    Default is `URL`, however, if a URL points to an authority file supported by DSP,
+    there will be a special for it here.
+    ---
+    URL
+    Geonames
+    Pleiades
+    Skos
+    Periodo
+    Chronontology
+    GND
+    VIAF
+    Grid
+  }
+
+}
+
+
+Project --> Dataset
+Project --> Grant
+Dataset --> Attribution
+Attribution --> Person
+Attribution --> Organization
+Person --> Organization
+
+
+@enduml

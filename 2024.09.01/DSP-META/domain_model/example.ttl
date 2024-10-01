@@ -1,0 +1,231 @@
+@prefix dsp: <http://ns.dasch.swiss/repository#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sdo: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+
+dsp:0000-project a dsp:Project ;
+    dsp:hasShortcode "0000"^^xsd:string ; 
+    dsp:hasName "Test Project Name"^^xsd:string ;
+    dsp:hasDescription "Dies ist ein einfaches Beipiel-Projekt zu Dokumentationszwecken."@de ;
+    dsp:hasDescription "This is a simple example project for documentation purposes."@en ;
+    dsp:hasStartDate "2021-01-01"^^xsd:date ;
+    dsp:hasTeaser "A sample metadata-set for illustration purposes."^^xsd:string ;
+    dsp:hasDataset dsp:dataset-001 ;
+    dsp:hasKeyword "Geschichte."@de ;
+    dsp:hasKeyword "history"@en ;
+    dsp:hasDiscipline [
+        a sdo:URL;
+        sdo:url "http://skos.um.es/unesco6/11" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Logic"
+        ]
+    ] ;
+    dsp:hasDiscipline "Logik"@de ;
+    dsp:hasDiscipline "Logic"@en ;
+    dsp:hasTemporalCoverage [
+        a sdo:URL;
+        sdo:url "http://chronontology.dainst.org/period/Ef9SyESSafJ1" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "17th Century"
+        ]
+    ] ;
+    dsp:hasSpatialCoverage [
+        a sdo:URL;
+        sdo:url "https://www.geonames.org/6255148/europe.html" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Europe"
+        ]
+    ] ;
+    dsp:hasFunder dsp:organization-001 ;
+    dsp:hasURL [
+        a sdo:URL;
+        sdo:url "https://dasch.swiss/someproject" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "DaSCH Some Project"
+        ]
+    ] ;
+    dsp:hasSecondaryURL [
+        a sdo:URL;
+        sdo:url "https://zenodo.org/record/99999999999999" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Soem Project at Zenodo"
+        ]
+    ] ;
+    dsp:hasDataManagementPlan [
+        a dsp:DataManagementPlan ;
+        dsp:isAvailable true ;
+        dsp:hasURL [
+            a sdo:URL;
+            sdo:url "https://dasch.swiss/someproject/dmp" ;
+            sdo:propertyID [
+                a sdo:PropertyValue ;
+                sdo:propertyID "Some Project's DMP"
+            ]
+        ]
+    ] ;
+    dsp:hasEndDate "2022-01-01"^^xsd:date ;
+    dsp:hasContactPoint dsp:organization-001 ;
+    dsp:hasHowToCite "Doe, J. [et al.]: Project AB (ARK: ...)."^^xsd:string ; 
+    dsp:hasPublication "Doe, J. (2020): Some publication. In: Journal for sample publications. Vol. 100.1, p. 1-32."^^xsd:string ; 
+    dsp:hasGrant dsp:grant-001 ;
+    dsp:hasAlternativeName "Beispielprojekt."@de ;
+    dsp:hasAlternativeName "Sample Project"@en .
+
+
+    
+dsp:dataset-001 a dsp:Dataset ;
+    dsp:hasTitle "Dataset 1"^^xsd:string ;
+    dsp:hasAccessConditions "restricted"^^xsd:string ;
+    dsp:hasHowToCite "Dataset XY, in Project AB (ARK: ...)"^^xsd:string ; 
+    dsp:hasStatus "Ongoing"^^xsd:string ;
+    dsp:hasAbstract [
+        a sdo:URL;
+        sdo:url "http://www.project.org/dataset-01/abstract" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Project.org"
+        ]
+    ] ;
+    dsp:hasAbstract "Dies ist ein Datensatz, der ..."@de ;
+    dsp:hasAbstract "This is a dataset which ..."@en ;
+    dsp:hasTypeOfData "XML"^^xsd:string ;
+    dsp:hasTypeOfData "Image"^^xsd:string ;
+    dsp:hasLicense [
+        a dsp:License ;
+        dsp:hasDate "2020-01-01"^^xsd:date ;
+        dsp:hasDetails "All files included in the dataset can be re-used under the CC BY 4.0 license."^^xsd:string ;
+        dsp:hasURL [
+            a sdo:URL;
+            sdo:url "https://creativecommons.org/licenses/by/4.0/" ;
+            sdo:propertyID [
+                a sdo:PropertyValue ;
+                sdo:propertyID "CC-BY 4.0"
+            ]
+        ]
+    ] ;
+    dsp:hasLanguage "Englisch"@de ;
+    dsp:hasLanguage "English"@en ;
+    dsp:hasLanguage "Französisch"@de ;
+    dsp:hasLanguage "French"@en ;
+    dsp:hasQualifiedAttribution [
+        a prov:Attribution ;
+        dsp:hasRole "Project Owner"^^xsd:string ;
+        dsp:hasRole "Principal Investigator"^^xsd:string ;
+        dsp:hasRole "Editor"^^xsd:string ;
+        prov:agent dsp:person-001
+    ] ;
+    dsp:hasDatePublished "2020-01-01"^^xsd:date ;
+    dsp:hasDateCreated "2019-06-01"^^xsd:date ;
+    dsp:hasDateModified "2021-02-01"^^xsd:date ;
+    dsp:hasDistribution [
+        a sdo:DataDownload;
+        sdo:url "https://dasch.swiss/0000-project/download" ;
+    ] ;
+    dsp:hasAlternativeTitle "The most awesome dataset."@en ;
+    dsp:hasURL [
+        a sdo:URL;
+        sdo:url "http://something.something.org" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Something"
+        ]
+    ] ;
+    dsp:hasAdditional [
+        a sdo:URL;
+        sdo:url "https://dasch.swiss/0000-project/dataset-001/docs" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Documentation"
+        ]
+    ] ;
+    dsp:hasAdditional "Bei dem Datenset handelt es sich um..."@de ;
+    dsp:hasAdditional "Enghe dataset is about...lish"@en .
+
+
+
+dsp:person-001 a dsp:Person ;
+    dsp:hasJobTitle "Professor"^^xsd:string ;
+    dsp:hasGivenName "Jane"^^xsd:string ;
+    dsp:hasFamilyName "Doe"^^xsd:string ;
+    dsp:hasAffiliation dsp:organization-001 ;
+    dsp:hasAffiliation dsp:organization-002 ;
+    dsp:hasAddress [
+        a sdo:PostalAddress;
+        sdo:streetAddress "Petersgraben 1"^^xsd:string ;
+        dsp:additional "Postfach"^^xsd:string ;
+        sdo:postalCode "4000"^^xsd:string ;
+        sdo:addressLocality "Basel"^^xsd:string ;
+        sdo:addressRegion "Basel-Stadt"^^xsd:string ;
+        sdo:addressCountry "Switzerland"^^xsd:string 
+    ] ;
+    dsp:hasEmail "jane.doe@dasch.swiss"^^xsd:string ;
+    dsp:hasSecondaryEmail "j.doe@gmail.com"^^xsd:string ;
+    dsp:hasAuthorityFileReference [
+        a sdo:URL;
+        sdo:url "http://viaf.org/viaf/00000000" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "Jane Doe"
+        ]
+    ] .
+
+
+
+
+dsp:organization-001 a dsp:Organization ;
+    dsp:hasName "DaSCH"^^xsd:string ;
+    dsp:hasURL [
+        a sdo:URL;
+        sdo:url "https://dasch.swiss" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "DaSCH.swiss"
+        ]
+    ] ;
+    dsp:hasAddress [
+        a sdo:PostalAddress;
+        sdo:streetAddress "Petersgraben 1"^^xsd:string ;
+        dsp:additional "Postfach"^^xsd:string ;
+        sdo:postalCode "4000"^^xsd:string ;
+        sdo:addressLocality "Basel"^^xsd:string ;
+        sdo:addressCountry "Switzerland"^^xsd:string 
+    ] ;
+    dsp:hasEmail "info@dasch.swiss" ;
+    dsp:hasAlternativeName "Data and Service Center for the Humanities"@en ;
+    dsp:hasAuthorityFileReference [
+        a sdo:URL;
+        sdo:url "https://grid.ac/institutes/grid.6612.3" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "DaSCH"
+        ]
+    ] .
+    
+
+
+dsp:organization-002 a dsp:Organization ;
+    dsp:hasName "SNF"^^xsd:string ;
+    dsp:hasAlternativeName "Swiss National Science Foundation"@en ;
+    dsp:hasAlternativeName "Schweizerischer Nationalfonds"@de .
+
+
+
+dsp:grant-001 a dsp:Grant ;
+    dsp:hasFunder dsp:organization-001 ;
+    dsp:hasNumber "ABCD00001"^^xsd:string ;
+    dsp:hasName "Eccellenca"^^xsd:string ;
+    dsp:hasURL [
+        a sdo:URL;
+        sdo:url "https://www.grants.ch/grant/abcd0001" ;
+        sdo:propertyID [
+            a sdo:PropertyValue ;
+            sdo:propertyID "SNF Eccellenca"
+        ]
+    ] .

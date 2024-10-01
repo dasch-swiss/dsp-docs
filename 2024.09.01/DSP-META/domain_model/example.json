@@ -1,0 +1,298 @@
+{
+  "$schema": "./schema-metadata.json",
+  "project": {
+    "__id": "0000-project",
+    "__type": "Project",
+    "__createdAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000001",
+    "__createdBy": "32141234213412341234234",
+    "__modifiedAt": "2009-11-10 23:30:00 +0000 UTC m=+0.000000003",
+    "__modifiedBy": "32141234213412341234235",
+    "shortcode": "0000",
+    "name": "Test Project Name",
+    "description": {
+      "de": "Dies ist ein einfaches Beipiel-Projekt zu Dokumentationszwecken.",
+      "en": "This is a simple example project for documentation purposes."
+    },
+    "howToCite": "Doe, J. [et al.]: Project AB (ARK: ...).",
+    "startDate": "2021-01-01",
+    "teaserText": "A sample metadata-set for illustration purposes.",
+    "keywords": [
+      {
+        "en": "history",
+        "de": "Geschichte"
+      }
+    ],
+    "disciplines": [
+      {
+        "text": "Logic",
+        "type": "Skos",
+        "url": "http://skos.um.es/unesco6/11",
+        "__type": "URL"
+      }
+    ],
+    "temporalCoverage": [
+      {
+        "text": "17th Century",
+        "type": "Chronontology",
+        "url": "http://chronontology.dainst.org/period/Ef9SyESSafJ1",
+        "__type": "URL"
+      }
+    ],
+    "spatialCoverage": [
+      {
+        "text": "Europe",
+        "type": "Geonames",
+        "url": "https://www.geonames.org/6255148/europe.html",
+        "__type": "URL"
+      }
+    ],
+    "url": {
+      "text": "DaSCH Some Project",
+      "type": "URL",
+      "url": "https://dasch.swiss/someproject",
+      "__type": "URL"
+    },
+    "secondaryURL": {
+      "__type": "URL",
+      "type": "URL",
+      "text": "Some Project at Zenodo",
+      "url": "https://zenodo.org/record/99999999999999"
+    },
+    "dataManagementPlan": {
+      "__type": "DataManagementPlan",
+      "available": true,
+      "url": {
+        "url": "https://dasch.swiss/someproject/dmp",
+        "type": "URL",
+        "__type": "URL"
+      }
+    },
+    "endDate": "2022-01-01",
+    "datasets": [
+      "dataset-001"
+    ],
+    "publications": [
+      "Doe, J. (2020): Some publication. In: Journal for sample publications. Vol. 100.1, p. 1-32."
+    ],
+    "grants": [
+      "grant-001"
+    ],
+    "alternativeNames": [
+      {
+        "de": "Beispielprojekt",
+        "en": "Sample Project"
+      }
+    ],
+    "funders": [
+      "organization-001"
+    ],
+    "contactPoint": "organization-001"
+  },
+  "datasets": [
+    {
+      "__id": "dataset-001",
+      "__type": "Dataset",
+      "__createdAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000001",
+      "__createdBy": "",
+      "title": "Dataset 1",
+      "accessConditions": "restricted",
+      "howToCite": "Dataset XY, in Project AB (ARK: ...)",
+      "status": "Ongoing",
+      "abstracts": [
+        {
+          "url": "http://www.project.org/dataset-01/abstract",
+          "text": "Project.org",
+          "type": "URL",
+          "__type": "URL"
+        },
+        {
+          "de": "Dies ist ein Datensatz, der ...",
+          "en": "This is a dataset which ..."
+        }
+      ],
+      "typeOfData": [
+        "XML",
+        "Image"
+      ],
+      "licenses": [
+        {
+          "__type": "License",
+          "license": {
+            "text": "CC-BY 4.0",
+            "type": "URL",
+            "url": "https://creativecommons.org/licenses/by/4.0/",
+            "__type": "URL"
+          },
+          "date": "2020-01-01",
+          "details": "All files included in the dataset can be re-used under the CC BY 4.0 license."
+        }
+      ],
+      "languages": [
+        {
+          "de": "Englisch",
+          "en": "English"
+        },
+        {
+          "de": "Französisch",
+          "en": "French"
+        }
+      ],
+      "attributions": [
+        {
+          "__type": "Attribution",
+          "agent": "person-001",
+          "roles": [
+            "Project owner",
+            "Principal investigator",
+            "Editor"
+          ]
+        }
+      ],
+      "alternativeTitles": [
+        {
+          "en": "The most awesome dataset."
+        }
+      ],
+      "datePublished": "2020-01-01",
+      "dateCreated": "2019-06-01",
+      "dateModified": "2021-02-01",
+      "distribution": {
+        "url": "https://dasch.swiss/0000-project/download",
+        "type": "URL",
+        "text": "Download",
+        "__type": "URL"
+      },
+      "urls": [
+        {
+          "url": "http://something.something.org",
+          "type": "URL",
+          "text": "Something",
+          "__type": "URL"
+        }
+      ],
+      "additional": [
+        {
+          "url": "https://dasch.swiss/0000-project/dataset-001/docs",
+          "text": "Documentation",
+          "type": "URL",
+          "__type": "URL"
+        },
+        {
+          "de": "Bei dem Datenset handelt es sich um...",
+          "en": "The dataset is about..."
+        }
+      ]
+    }
+  ],
+  "persons": [
+    {
+      "__id": "person-001",
+      "__type": "Person",
+      "__createdAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000001",
+      "__createdBy": "",
+      "jobTitles": [
+        "Professor"
+      ],
+      "givenNames": [
+        "Jane"
+      ],
+      "familyNames": [
+        "Doe"
+      ],
+      "affiliation": [
+        "organization-001",
+        "organization-002"
+      ],
+      "address": {
+        "__type": "Address",
+        "street": "Petersgraben 1",
+        "additional": "Postfach",
+        "postalCode": "4000",
+        "locality": "Basel",
+        "canton": "Basel-Stadt",
+        "country": "Switzerland"
+      },
+      "email": "jane.doe@dasch.swiss",
+      "secondaryEmail": "j.doe@gmail.com",
+      "authorityRefs": [
+        {
+          "url": "http://viaf.org/viaf/00000000",
+          "text": "Jane Doe",
+          "type": "VIAF",
+          "__type": "URL"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "__id": "organization-001",
+      "__type": "Organization",
+      "__createdAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000001",
+      "__createdBy": "",
+      "__modifiedAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000003",
+      "__modifiedBy": "",
+      "name": "DaSCH",
+      "alternativeNames": [
+        {
+          "en": "Data and Service Center for the Humanities"
+        }
+      ],
+      "url": {
+        "url": "https://dasch.swiss",
+        "text": "DaSCH.swiss",
+        "type": "URL",
+        "__type": "URL"
+      },
+      "email": "info@dasch.swiss",
+      "address": {
+        "street": "Petersgraben 1",
+        "additional": "Postfach",
+        "postalCode": "4000",
+        "locality": "Basel",
+        "country": "Switzerland",
+        "__type": "Address"
+      },
+      "authorityRefs": [
+        {
+          "url": "https://grid.ac/institutes/grid.6612.3",
+          "text": "DaSCH",
+          "type": "Grid",
+          "__type": "URL"
+        }
+      ]
+    },
+    {
+      "__id": "organization-002",
+      "__type": "Organization",
+      "__createdAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000001",
+      "__createdBy": "",
+      "name": "SNF",
+      "alternativeNames": [
+        {
+          "de": "Schweizerischer Nationalfonds",
+          "en": "Swiss National Science Foundation"
+        }
+      ]
+    }
+  ],
+  "grants": [
+    {
+      "__id": "grant-001",
+      "__type": "Grant",
+      "__createdAt": "2009-11-10 23:00:00 +0000 UTC m=+0.000000001",
+      "__createdBy": "",
+      "funders": [
+        "organization-001"
+      ],
+      "number": "ABCD00001",
+      "name": "Eccellenca",
+      "url": {
+        "url": "https://www.grants.ch/grant/abcd0001",
+        "text": "SNF Eccellenca",
+        "type": "URL",
+        "__type": "URL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://dasch.swiss/schema/schema-metadata.json",
+  "title": "Metadata Schema",
+  "description": "Schema definition of DSP metadata",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "Schema definition",
+      "type": "string"
+    },
+    "project": {
+      "$ref": "#/definitions/project"
+    },
+    "datasets": {
+      "description": "The datasets of the project",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/dataset"
+      }
+    },
+    "persons": {
+      "description": "",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/person"
+      }
+    },
+    "organizations": {
+      "description": "Organizations relevant to the project.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/organization"
+      }
+    },
+    "grants": {
+      "description": "Grants relevant to the project.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/grant"
+      }
+    }
+  },
+  "required": [
+    "project",
+    "datasets"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "text": {
+      "type": "object",
+      "title": "Text Property (multilingual)",
+      "description": "object of strings in a particular languages (e.g. `'en': 'some text'`).",
+      "patternProperties": {
+        "^[a-z]{2}$": {
+          "type": "string",
+          "description": "Pair of a language iso code (e.g. 'en') and a sting in the language defined by the language code."
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "format": "date",
+      "description": "A date in the format `yyyy-mm-dd`"
+    },
+    "url": {
+      "type": "object",
+      "description": "A URL (general URL or reference to an authority file)",
+      "properties": {
+        "__type": {
+          "description": "Internal Object type",
+          "const": "URL"
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of reference. Default is `URL`, any other type should indicate an authority file supported by the DSP.",
+          "enum": [
+            "URL",
+            "Geonames",
+            "Pleiades",
+            "Skos",
+            "Periodo",
+            "Chronontology",
+            "GND",
+            "VIAF",
+            "Grid",
+            "ORCID",
+            "Creative Commons",
+            "DOI",
+            "ARK"
+          ],
+          "default": "URL"
+        },
+        "url": {
+          "description": "The actual URL.",
+          "type": "string",
+          "format": "uri"
+        },
+        "text": {
+          "type": "string",
+          "description": "A common identifier of where the URL points. Will be used as the display string of the URL."
+        }
+      },
+      "required": [
+        "__type",
+        "type",
+        "url"
+      ],
+      "additionalProperties": false
+    },
+    "project": {
+      "description": "A project on the DSP",
+      "type": "object",
+      "properties": {
+        "__type": {
+          "type": "string",
+          "description": "Type of this object",
+          "const": "Project"
+        },
+        "shortcode": {
+          "type": "string",
+          "description": "The four digit hexadecimal project shortcode, assigned to the project by the DaSCH.",
+          "pattern": "^[0-9A-F]{4}$"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the dataset.",
+          "enum": [
+            "Finished"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the project"
+        },
+        "description": {
+          "description": "A human readable description of the project.",
+          "$ref": "#/definitions/text"
+        },
+        "startDate": {
+          "description": "Start date of the project.",
+          "$ref": "#/definitions/date"
+        },
+        "teaserText": {
+          "type": "string",
+          "description": "Short description of the project for previewing."
+        },
+        "datasets": {
+          "description": "The datasets of which the project consists.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "description": "ID of a dataset."
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "description": "Keywords/Tags describing the project.",
+          "items": {
+            "$ref": "#/definitions/text"
+          }
+        },
+        "disciplines": {
+          "description": "Discipline/field of research of the project.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/text"
+              },
+              {
+                "$ref": "#/definitions/url"
+              }
+            ]
+          }
+        },
+        "temporalCoverage": {
+          "description": "Temporal coverage of the project.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/text"
+              },
+              {
+                "$ref": "#/definitions/url"
+              }
+            ]
+          }
+        },
+        "spatialCoverage": {
+          "description": "Spatial coverage of the project.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/url"
+          }
+        },
+        "funders": {
+          "description": "Funders of the project.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "description": "ID of the funding person or organization."
+          }
+        },
+        "url": {
+          "description": "Primary URL of the project. This should be the project landing page or website hosted by the DaSCH.",
+          "$ref": "#/definitions/url"
+        },
+        "secondaryURL": {
+          "description": "Optional secondary project URL. This can point to any external project website.",
+          "$ref": "#/definitions/url"
+        },
+        "dataManagementPlan": {
+          "$ref": "#/definitions/dataManagementPlan"
+        },
+        "endDate": {
+          "description": "End date of the project.",
+          "$ref": "#/definitions/date"
+        },
+        "contactPoint": {
+          "type": "string",
+          "description": "ID of the person or organization."
+        },
+        "howToCite": {
+          "type": "string",
+          "description": "A string representation of how the project can be cited."
+        },
+        "publications": {
+          "description": "Publications produced during the lifetime of the project.",
+          "type": "array",
+          "items": {
+            "description": "Citation form of a publication.",
+            "type": "object",
+            "$ref": "#/definitions/publication"
+          }
+        },
+        "grants": {
+          "description": "Financial grants of the project.",
+          "type": "array",
+          "items": {
+            "description": "Reference to a grant ID.",
+            "type": "string"
+          }
+        },
+        "alternativeNames": {
+          "description": "Alternative names of the project.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/text"
+          }
+        }
+      },
+      "required": [
+        "__type",
+        "shortcode",
+        "status",
+        "name",
+        "description",
+        "startDate",
+        "teaserText",
+        "datasets",
+        "keywords",
+        "disciplines",
+        "temporalCoverage",
+        "spatialCoverage",
+        "funders",
+        "url",
+        "howToCite"
+      ],
+      "additionalProperties": false
+    },
+    "publication": {
+      "type": "object",
+      "description": "A publication.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The citation form of the publication."
+        },
+        "url": {
+          "description": "The URLs of the publication, preferably PIDs like DOI or ARK.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/url"
+          }
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "grant": {
+      "type": "object",
+      "description": "A financial grant.",
+      "properties": {
+        "__id": {
+          "type": "string",
+          "description": "Unique id of the grant."
+        },
+        "__type": {
+          "type": "string",
+          "const": "Grant"
+        },
+        "funders": {
+          "description": "Legal bodies funding the grant.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "description": "ID of the funding person or organization."
+          }
+        },
+        "number": {
+          "type": "string",
+          "description": "The number or identifier assigned to the grant by the funding body."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name that the type of grant is usually referred to."
+        },
+        "url": {
+          "$ref": "#/definitions/url",
+          "description": "The URL of the grant."
+        }
+      },
+      "required": [
+        "__id",
+        "__type",
+        "funders"
+      ],
+      "additionalProperties": false
+    },
+    "person": {
+      "type": "object",
+      "description": "A person relevant to the project.",
+      "properties": {
+        "__id": {
+          "type": "string",
+          "description": "Unique id of the person."
+        },
+        "__type": {
+          "type": "string",
+          "const": "Person"
+        },
+        "jobTitles": {
+          "type": "array",
+          "description": "The job titles of the person.",
+          "minItems": 1,
+          "items": {
+            "description": "A job title of the person",
+            "type": "string"
+          }
+        },
+        "givenNames": {
+          "type": "array",
+          "description": "The given names of the person.",
+          "minItems": 1,
+          "items": {
+            "description": "Given name of the person",
+            "type": "string"
+          }
+        },
+        "familyNames": {
+          "type": "array",
+          "description": "The family names of the person.",
+          "minItems": 1,
+          "items": {
+            "description": "Family name of the person",
+            "type": "string"
+          }
+        },
+        "affiliation": {
+          "type": "array",
+          "description": "Organizational affiliation of the person.",
+          "minItems": 1,
+          "items": {
+            "description": "ID of an organization",
+            "type": "string"
+          }
+        },
+        "address": {
+          "$ref": "#/definitions/address",
+          "description": "The postal address of the person."
+        },
+        "email": {
+          "description": "primary e-mail address.",
+          "type": "string",
+          "format": "email"
+        },
+        "secondaryEmail": {
+          "description": "primary e-mail address.",
+          "type": "string",
+          "format": "email"
+        },
+        "authorityRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/url"
+          }
+        }
+      },
+      "required": [
+        "__id",
+        "__type",
+        "givenNames",
+        "familyNames"
+      ],
+      "additionalProperties": false
+    },
+    "dataset": {
+      "type": "object",
+      "description": "A dataset belonging to the project.",
+      "properties": {
+        "__id": {
+          "type": "string",
+          "description": "Unique id of the dataset."
+        },
+        "__type": {
+          "type": "string",
+          "const": "Dataset"
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the dataset."
+        },
+        "accessConditions": {
+          "type": "string",
+          "description": "The conditions under which the data of the dataset can be accessed.",
+          "enum": [
+            "open",
+            "restricted",
+            "closed"
+          ]
+        },
+        "howToCite": {
+          "type": "string",
+          "description": "A string representation of how the dataset can be cited."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the dataset.",
+          "enum": [
+            "In planning",
+            "Ongoing",
+            "On hold",
+            "Finished"
+          ]
+        },
+        "abstracts": {
+          "type": "array",
+          "description": "Abstracts describing the dataset.",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/text"
+              },
+              {
+                "$ref": "#/definitions/url"
+              }
+            ]
+          }
+        },
+        "typeOfData": {
+          "type": "array",
+          "description": "The type of data held by the dataset.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "XML",
+              "Text",
+              "Image",
+              "Video",
+              "Audio"
+            ]
+          }
+        },
+        "licenses": {
+          "type": "array",
+          "description": "Licenses under which the dataset is published.",
+          "minItems": 1,
+          "items": {
+            "description": "A reference to a license",
+            "$ref": "#/definitions/license"
+          }
+        },
+        "languages": {
+          "type": "array",
+          "description": "Languages present in the dataset.",
+          "items": {
+            "$ref": "#/definitions/text"
+          }
+        },
+        "attributions": {
+          "type": "array",
+          "description": "Work on the dataset attributed to an individual persons.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/attribution"
+          }
+        },
+        "alternativeTitles": {
+          "type": "array",
+          "description": "Alternative titles of the dataset.",
+          "items": {
+            "$ref": "#/definitions/text"
+          }
+        },
+        "datePublished": {
+          "description": "Publishing date of the dataset.",
+          "$ref": "#/definitions/date"
+        },
+        "dateCreated": {
+          "description": "Creation date of the dataset.",
+          "$ref": "#/definitions/date"
+        },
+        "dateModified": {
+          "description": "Last modification date of the dataset.",
+          "$ref": "#/definitions/date"
+        },
+        "distribution": {
+          "description": "A downloadable form of the dataset.",
+          "$ref": "#/definitions/url"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/url"
+          }
+        },
+        "additional": {
+          "type": "array",
+          "description": "Additional information about the dataset.",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/url"
+              },
+              {
+                "$ref": "#/definitions/text"
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "__id",
+        "__type",
+        "title",
+        "accessConditions",
+        "howToCite",
+        "status",
+        "abstracts",
+        "typeOfData",
+        "licenses",
+        "languages",
+        "attributions"
+      ],
+      "additionalProperties": false
+    },
+    "organization": {
+      "description": "An organization.",
+      "type": "object",
+      "properties": {
+        "__id": {
+          "type": "string",
+          "description": "ID of the organization."
+        },
+        "__type": {
+          "type": "string",
+          "const": "Organization"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the organization."
+        },
+        "url": {
+          "$ref": "#/definitions/url",
+          "description": "The URL of the organization's website."
+        },
+        "address": {
+          "$ref": "#/definitions/address",
+          "description": "The postal address of the organization."
+        },
+        "email": {
+          "description": "E-mail address.",
+          "type": "string",
+          "format": "email"
+        },
+        "alternativeNames": {
+          "type": "array",
+          "description": "Alternative names of the organization.",
+          "items": {
+            "$ref": "#/definitions/text"
+          }
+        },
+        "authorityRefs": {
+          "type": "array",
+          "description": "References to external authority file entries describing the organization.",
+          "items": {
+            "$ref": "#/definitions/url"
+          }
+        }
+      },
+      "required": [
+        "__id",
+        "__type",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "address": {
+      "description": "A postal address.",
+      "type": "object",
+      "properties": {
+        "__type": {
+          "type": "string",
+          "const": "Address"
+        },
+        "street": {
+          "type": "string",
+          "description": "The street."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "The postal code."
+        },
+        "locality": {
+          "type": "string",
+          "description": "The locality/place name."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country."
+        },
+        "canton": {
+          "type": "string",
+          "description": "region or organizational unit (canton, state, ...)"
+        },
+        "additional": {
+          "type": "string",
+          "description": "Additional address information like c/o or post box"
+        }
+      },
+      "required": [
+        "__type",
+        "street",
+        "postalCode",
+        "locality",
+        "country"
+      ],
+      "additionalProperties": false
+    },
+    "dataManagementPlan": {
+      "type": "object",
+      "description": "Data management plan of the project",
+      "properties": {
+        "__type": {
+          "type": "string",
+          "const": "DataManagementPlan"
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        }
+      },
+      "required": [
+        "__type"
+      ],
+      "additionalProperties": false
+    },
+    "attribution": {
+      "type": "object",
+      "description": "Attribution of work to a person or organization, taking in one or more roles.",
+      "properties": {
+        "__type": {
+          "type": "string",
+          "const": "Attribution"
+        },
+        "agent": {
+          "type": "string",
+          "description": "ID of a person/organization."
+        },
+        "roles": {
+          "type": "array",
+          "description": "Roles the person/organization had.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "description": "A role."
+          }
+        }
+      },
+      "required": [
+        "__type",
+        "agent",
+        "roles"
+      ],
+      "additionalProperties": false
+    },
+    "license": {
+      "type": "object",
+      "description": "License information.",
+      "properties": {
+        "__type": {
+          "type": "string",
+          "const": "License"
+        },
+        "license": {
+          "description": "the specific license",
+          "$ref": "#/definitions/url"
+        },
+        "date": {
+          "description": "license date",
+          "$ref": "#/definitions/date"
+        },
+        "details": {
+          "type": "string",
+          "description": "additional information on the license (e.g. the scope of the license, if multiple licenses are used)."
+        }
+      },
+      "required": [
+        "__type",
+        "license",
+        "date"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
