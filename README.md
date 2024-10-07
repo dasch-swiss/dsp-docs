@@ -143,7 +143,7 @@ Whenever a PR with the prefix `deploy: ` is merged into the main branch, a deplo
 So, to deploy a new version of the docs, follow these steps:
 
 - switch to a new branch
-- update the `release.mk` file with the corresponding versions
+- update the `release.mk` file with the corresponding versions (`update-versions.sh` facilitates this step)
 - pull the documentations from the individual software components with `make update-submodules`
 - commit everything (incl. the submodules), and create a PR named `deploy: bump docs to <platform-release>`
   (e.g. `deploy: bump docs to 2024.07.01`)
