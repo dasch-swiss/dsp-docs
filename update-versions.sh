@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-set -eu
+set -euo pipefail
 
 getToolsReleases() {
   curl -s "https://api.github.com/repos/dasch-swiss/dsp-tools/releases"
