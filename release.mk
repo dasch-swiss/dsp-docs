@@ -6,5 +6,4 @@ API := "v30.19.0"
 APP := "v11.20.4"
 TOOLS := "v9.1.0"
 INGEST := "v0.13.0"
-META := "dsp-meta-v2.3.0"
-
+META := "dsp-meta-v2.3.0" 
