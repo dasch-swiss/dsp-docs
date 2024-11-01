@@ -24,6 +24,13 @@ plugins:
   - search
   - neoteroi.mkdocsoad:
       use_pymdownx: true
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: xmllib-generated-api-doc.md
+  - section-index
+  - mkdocstrings
 
 theme:
   name: material
