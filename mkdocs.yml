@@ -26,7 +26,7 @@ plugins:
       use_pymdownx: true
   - gen-files:
       scripts:
-        - scripts/gen_ref_pages.py
+        - dsp/dsp-tools/scripts/gen_ref_pages.py
   - literate-nav:
       nav_file: xmllib-generated-api-doc.md
   - section-index
