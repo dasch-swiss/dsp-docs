@@ -4,6 +4,6 @@
 DSP := "2024.09.01"
 API := "v30.19.0"
 APP := "v11.20.4"
-TOOLS := "c98bda039270b1dbc7fd1fa343f0f7f52a28e351"  # before merging, revert this to proper version tag!
+TOOLS := "9e167c8eef9373773d22ea0d0ea238de941bc295"  # before merging, revert this to proper version tag!
 INGEST := "v0.13.0"
 META := "dsp-meta-v2.3.0" 
