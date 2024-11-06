@@ -6,3 +6,4 @@ mkdocs-git-revision-date-localized-plugin==1.2.4
 mike==2.0.0
 neoteroi-mkdocs==1.0.5
 mkdocstrings==0.26.2
+mkdocstrings-python==1.12.2
