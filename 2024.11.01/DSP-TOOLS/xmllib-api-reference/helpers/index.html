@@ -4349,27 +4349,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../dsp-base-resources/annotation-resource/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AnnotationResource
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../dsp-base-resources/region-resource/" class="md-nav__link">
         
   
@@ -4606,6 +4585,24 @@
   <a href="#xmllib.helpers.make_xsd_compatible_id_with_uuid" class="md-nav__link">
     <span class="md-ellipsis">
       make_xsd_compatible_id_with_uuid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xmllib.helpers.create_list_from_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_list_from_string
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xmllib.helpers.create_non_empty_list_from_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_non_empty_list_from_string
     </span>
   </a>
   
@@ -5577,6 +5574,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#xmllib.helpers.create_list_from_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_list_from_string
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xmllib.helpers.create_non_empty_list_from_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_non_empty_list_from_string
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5722,6 +5737,43 @@ To create a correct XML, you need a dictionary that maps the "labels" to their c
       </tbody>
     </table>
 
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="nt">&quot;lists&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;listName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;List&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Liste&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;n1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Node 1&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Knoten 1&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;n2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Node 2&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;de&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Knoten 2&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">create_label_to_name_list_node_mapping</span><span class="p">(</span>
+    <span class="n">project_json_path</span><span class="o">=</span><span class="s2">&quot;project.json&quot;</span><span class="p">,</span>
+    <span class="n">list_name</span><span class="o">=</span><span class="s2">&quot;listName&quot;</span><span class="p">,</span>
+    <span class="n">language_of_label</span><span class="o">=</span><span class="s2">&quot;de&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># result == {&quot;Knoten 1&quot;: &quot;n1&quot;, &quot;knoten 1&quot;: &quot;n1&quot;, &quot;Knoten 2&quot;: &quot;n2&quot;, &quot;knoten 2&quot;: &quot;n2&quot;}</span>
+</code></pre></div>
+
             <details class="quote">
               <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
@@ -5751,7 +5803,46 @@ To create a correct XML, you need a dictionary that maps the "labels" to their c
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_label_to_name_list_node_mapping</span><span class="p">(</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_label_to_name_list_node_mapping</span><span class="p">(</span>
     <span class="n">project_json_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">list_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">language_of_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5768,6 +5859,45 @@ To create a correct XML, you need a dictionary that maps the "labels" to their c
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a dictionary of the form {label: name}</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```json</span>
+<span class="sd">        &quot;lists&quot;: [</span>
+<span class="sd">            {</span>
+<span class="sd">                &quot;name&quot;: &quot;listName&quot;,</span>
+<span class="sd">                &quot;labels&quot;: {</span>
+<span class="sd">                    &quot;en&quot;: &quot;List&quot;,</span>
+<span class="sd">                    &quot;de&quot;: &quot;Liste&quot;</span>
+<span class="sd">                },</span>
+<span class="sd">                &quot;comments&quot;: { ... },</span>
+<span class="sd">                &quot;nodes&quot;: [</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &quot;name&quot;: &quot;n1&quot;,</span>
+<span class="sd">                        &quot;labels&quot;: {</span>
+<span class="sd">                            &quot;en&quot;: &quot;Node 1&quot;,</span>
+<span class="sd">                            &quot;de&quot;: &quot;Knoten 1&quot;</span>
+<span class="sd">                        }</span>
+<span class="sd">                    },</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &quot;name&quot;: &quot;n2&quot;,</span>
+<span class="sd">                        &quot;labels&quot;: {</span>
+<span class="sd">                            &quot;en&quot;: &quot;Node 2&quot;,</span>
+<span class="sd">                            &quot;de&quot;: &quot;Knoten 2&quot;</span>
+<span class="sd">                        }</span>
+<span class="sd">                    }</span>
+<span class="sd">                ]</span>
+<span class="sd">            }</span>
+<span class="sd">        ]</span>
+<span class="sd">        ```</span>
+
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.create_label_to_name_list_node_mapping(</span>
+<span class="sd">            project_json_path=&quot;project.json&quot;,</span>
+<span class="sd">            list_name=&quot;listName&quot;,</span>
+<span class="sd">            language_of_label=&quot;de&quot;,</span>
+<span class="sd">        )</span>
+<span class="sd">        # result == {&quot;Knoten 1&quot;: &quot;n1&quot;, &quot;knoten 1&quot;: &quot;n1&quot;, &quot;Knoten 2&quot;: &quot;n2&quot;, &quot;knoten 2&quot;: &quot;n2&quot;}</span>
+<span class="sd">        ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">project_json_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">json_file</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -5855,48 +5985,18 @@ which will not be escaped.</a></p>
       </tbody>
     </table>
 
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">escape_reserved_xml_characters</span><span class="p">(</span><span class="s2">&quot;Text &lt;unknownTag&gt;&quot;</span><span class="p">)</span>
+<span class="c1"># result == &quot;Text &amp;lt;unknownTag&amp;gt;&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">escape_reserved_xml_characters</span><span class="p">(</span><span class="s2">&quot;Text &lt;br/&gt; text after&quot;</span><span class="p">)</span>
+<span class="c1"># result == &quot;Text &lt;br/&gt; text after&quot;</span>
+</code></pre></div>
+
             <details class="quote">
               <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
@@ -5904,7 +6004,57 @@ which will not be escaped.</a></p>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
-<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">escape_reserved_xml_characters</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">escape_reserved_xml_characters</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    From richtext strings (encoding=&quot;xml&quot;), escape the reserved characters `&lt;`, `&gt;` and `&amp;`,</span>
 <span class="sd">    but only if they are not part of a standard standoff tag or escape sequence.</span>
@@ -5917,6 +6067,17 @@ which will not be escaped.</a></p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The escaped richtext string</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.escape_reserved_xml_characters(&quot;Text &lt;unknownTag&gt;&quot;)</span>
+<span class="sd">        # result == &quot;Text &amp;lt;unknownTag&amp;gt;&quot;</span>
+<span class="sd">        ```</span>
+
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.escape_reserved_xml_characters(&quot;Text &lt;br/&gt; text after&quot;)</span>
+<span class="sd">        # result == &quot;Text &lt;br/&gt; text after&quot;</span>
+<span class="sd">        ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">allowed_tags</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;a( [^&gt;]+)?&quot;</span><span class="p">,</span>  <span class="c1"># &lt;a&gt; is the only tag that can have attributes</span>
@@ -6066,57 +6227,77 @@ Returns None if no date was found.</p>
       </tbody>
     </table>
 
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">find_date_in_string</span><span class="p">(</span><span class="s2">&quot;1849/1850&quot;</span><span class="p">)</span>
+<span class="c1"># result == &quot;GREGORIAN:CE:1849:CE:1850&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">find_date_in_string</span><span class="p">(</span><span class="s2">&quot;not a valid date&quot;</span><span class="p">)</span>
+<span class="c1"># result == None</span>
+</code></pre></div>
+
             <details class="quote">
               <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">find_date_in_string</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">find_date_in_string</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if a string contains a date value (single date, or date range),</span>
 <span class="sd">    and returns the first found date as DSP-formatted string,</span>
@@ -6156,6 +6337,17 @@ Returns None if no date was found.</p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        DSP-formatted date string, or None</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.find_date_in_string(&quot;1849/1850&quot;)</span>
+<span class="sd">        # result == &quot;GREGORIAN:CE:1849:CE:1850&quot;</span>
+<span class="sd">        ```</span>
+
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.find_date_in_string(&quot;not a valid date&quot;)</span>
+<span class="sd">        # result == None</span>
+<span class="sd">        ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># sanitise input, just in case that the method was called on an empty or N/A cell</span>
@@ -6184,9 +6376,9 @@ Returns None if no date was found.</p>
 
         <p>An xsd:ID may not contain all types of special characters,
 and it must start with a letter or underscore.
-Replace illegal characters with "<em>", and prepend a leading "</em>" if necessary.</p>
+Replace illegal characters with <code>_</code>, and prepend a leading <code>_</code> if necessary.</p>
 <p>The string must contain at least one Unicode letter (matching the regex <code>\p{L}</code>),
-_, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, <code>N/A</code>, or <code>-</code>.</p>
+<code>_</code>, <code>!</code>, <code>?</code>, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, <code>N/A</code>, or <code>-</code>.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6242,40 +6434,52 @@ _, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, 
       </tbody>
     </table>
 
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">make_xsd_compatible_id</span><span class="p">(</span><span class="s2">&quot;0_Universität_Basel&quot;</span><span class="p">)</span>
+<span class="c1"># result == &quot;_0_Universit_t_Basel&quot;</span>
+</code></pre></div>
+
             <details class="quote">
               <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span>
-<span class="normal">366</span>
-<span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_xsd_compatible_id</span><span class="p">(</span><span class="n">input_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_xsd_compatible_id</span><span class="p">(</span><span class="n">input_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An xsd:ID may not contain all types of special characters,</span>
 <span class="sd">    and it must start with a letter or underscore.</span>
-<span class="sd">    Replace illegal characters with &quot;_&quot;, and prepend a leading &quot;_&quot; if necessary.</span>
+<span class="sd">    Replace illegal characters with `_`, and prepend a leading `_` if necessary.</span>
 
 <span class="sd">    The string must contain at least one Unicode letter (matching the regex ``\\p{L}``),</span>
-<span class="sd">    _, !, ?, or number, but must not be `None`, `&lt;NA&gt;`, `N/A`, or `-`.</span>
+<span class="sd">    `_`, `!`, `?`, or number, but must not be `None`, `&lt;NA&gt;`, `N/A`, or `-`.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input_value: input value</span>
@@ -6285,6 +6489,12 @@ _, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, 
 
 <span class="sd">    Returns:</span>
 <span class="sd">        An xsd ID compatible string based on the input value</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.make_xsd_compatible_id(&quot;0_Universität_Basel&quot;)</span>
+<span class="sd">        # result == &quot;_0_Universit_t_Basel&quot;</span>
+<span class="sd">        ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_nonempty_value</span><span class="p">(</span><span class="n">input_value</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The input &#39;</span><span class="si">{</span><span class="n">input_value</span><span class="si">}</span><span class="s2">&#39; cannot be transformed to an xsd:ID&quot;</span><span class="p">)</span>
@@ -6312,11 +6522,11 @@ _, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, 
 
         <p>An xsd:ID may not contain all types of special characters,
 and it must start with a letter or underscore.
-Replace illegal characters with "<em>", and prepend a leading "</em>" if necessary.
+Replace illegal characters with <code>_</code>, and prepend a leading <code>_</code> if necessary.
 Additionally, add a UUID at the end.
 The UUID will be different each time the function is called.</p>
 <p>The string must contain at least one Unicode letter (matching the regex <code>\p{L}</code>),
-_, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, <code>N/A</code>, or <code>-</code>.</p>
+<code>_</code>, <code>!</code>, <code>?</code>, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, <code>N/A</code>, or <code>-</code>.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6372,41 +6582,53 @@ _, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, 
       </tbody>
     </table>
 
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">make_xsd_compatible_id_with_uuid</span><span class="p">(</span><span class="s2">&quot;Universität_Basel&quot;</span><span class="p">)</span>
+<span class="c1"># result == &quot;Universit_t_Basel_88f5cd0b-f333-4174-9030-65900b17773d&quot;</span>
+</code></pre></div>
+
             <details class="quote">
               <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span>
-<span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span>
-<span class="normal">394</span>
-<span class="normal">395</span>
-<span class="normal">396</span>
-<span class="normal">397</span>
-<span class="normal">398</span>
-<span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
-<span class="normal">404</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_xsd_compatible_id_with_uuid</span><span class="p">(</span><span class="n">input_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_xsd_compatible_id_with_uuid</span><span class="p">(</span><span class="n">input_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An xsd:ID may not contain all types of special characters,</span>
 <span class="sd">    and it must start with a letter or underscore.</span>
-<span class="sd">    Replace illegal characters with &quot;_&quot;, and prepend a leading &quot;_&quot; if necessary.</span>
+<span class="sd">    Replace illegal characters with `_`, and prepend a leading `_` if necessary.</span>
 <span class="sd">    Additionally, add a UUID at the end.</span>
 <span class="sd">    The UUID will be different each time the function is called.</span>
 
 <span class="sd">    The string must contain at least one Unicode letter (matching the regex ``\\p{L}``),</span>
-<span class="sd">    _, !, ?, or number, but must not be `None`, `&lt;NA&gt;`, `N/A`, or `-`.</span>
+<span class="sd">    `_`, `!`, `?`, or number, but must not be `None`, `&lt;NA&gt;`, `N/A`, or `-`.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input_value: input value</span>
@@ -6416,11 +6638,405 @@ _, !, ?, or number, but must not be <code>None</code>, <code>&lt;NA&gt;</code>, 
 
 <span class="sd">    Returns:</span>
 <span class="sd">        an xsd ID based on the input value, with a UUID attached.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.make_xsd_compatible_id_with_uuid(&quot;Universität_Basel&quot;)</span>
+<span class="sd">        # result == &quot;Universit_t_Basel_88f5cd0b-f333-4174-9030-65900b17773d&quot;</span>
+<span class="sd">        ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">make_xsd_compatible_id</span><span class="p">(</span><span class="n">input_value</span><span class="p">)</span>
     <span class="n">_uuid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
     <span class="n">res</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">res</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">_uuid</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">return</span> <span class="n">res</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="xmllib.helpers.create_list_from_string" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">create_list_from_string</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a list from a string.
+Trailing and leading whitespaces are removed from the list items.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>string</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>input string</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>separator</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The character that separates the different values in the string.
+For example, a comma or newline.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>list[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The list that results from splitting the input string.
+If the original string is empty or consists only of whitespace characters, the resulting list will be empty.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">create_non_empty_list_from_string</span><span class="p">(</span><span class="s2">&quot; One/  Two</span><span class="se">\n</span><span class="s2">/&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="c1"># result == [&quot;One&quot;, &quot;Two&quot;]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">create_list_from_string</span><span class="p">(</span><span class="s2">&quot;   </span><span class="se">\n</span><span class="s2">    &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># result == []</span>
+</code></pre></div>
+
+            <details class="quote">
+              <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_list_from_string</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">separator</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a list from a string.</span>
+<span class="sd">    Trailing and leading whitespaces are removed from the list items.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        string: input string</span>
+<span class="sd">        separator: The character that separates the different values in the string.</span>
+<span class="sd">            For example, a comma or newline.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The list that results from splitting the input string.</span>
+<span class="sd">            If the original string is empty or consists only of whitespace characters, the resulting list will be empty.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        InputError: If the input value is not a string.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.create_non_empty_list_from_string(&quot; One/  Two\\n/&quot;, &quot;/&quot;)</span>
+<span class="sd">        # result == [&quot;One&quot;, &quot;Two&quot;]</span>
+<span class="sd">        ```</span>
+
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.create_list_from_string(&quot;   \\n    &quot;, &quot;\\n&quot;)</span>
+<span class="sd">        # result == []</span>
+<span class="sd">        ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The input for this function must be a string. Your input is a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">strpd</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">strpd</span> <span class="o">:=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="xmllib.helpers.create_non_empty_list_from_string" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">create_non_empty_list_from_string</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a list from a string.
+Trailing and leading whitespaces are removed from the list items.</p>
+<p>If the resulting list is empty it will raise an <code>InputError</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>string</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>input string</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>separator</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The character that separates the different values in the string.
+For example, a comma or newline.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>resource_id</code>
+            </td>
+            <td>
+                  <code>str | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the ID of the resource is provided, a better error message can be composed</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>prop_name</code>
+            </td>
+            <td>
+                  <code>str | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the name of the property is provided, a better error message can be composed</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>list[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The list that results from splitting the input string.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">create_non_empty_list_from_string</span><span class="p">(</span><span class="s2">&quot;One</span><span class="se">\n</span><span class="s2">Two   &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># result == [&quot;One&quot;, &quot;Two&quot;]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">xmllib</span><span class="o">.</span><span class="n">create_non_empty_list_from_string</span><span class="p">(</span><span class="s2">&quot;   </span><span class="se">\n</span><span class="s2">/    &quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="c1"># raises InputError</span>
+</code></pre></div>
+
+            <details class="quote">
+              <summary>Source code in <code>dsp/dsp-tools/src/dsp_tools/xmllib/helpers.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_non_empty_list_from_string</span><span class="p">(</span>
+    <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">separator</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">resource_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">prop_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a list from a string.</span>
+<span class="sd">    Trailing and leading whitespaces are removed from the list items.</span>
+
+<span class="sd">    If the resulting list is empty it will raise an `InputError`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        string: input string</span>
+<span class="sd">        separator: The character that separates the different values in the string.</span>
+<span class="sd">            For example, a comma or newline.</span>
+<span class="sd">        resource_id: If the ID of the resource is provided, a better error message can be composed</span>
+<span class="sd">        prop_name: If the name of the property is provided, a better error message can be composed</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The list that results from splitting the input string.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        InputError: If the resulting list is empty.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.create_non_empty_list_from_string(&quot;One\\nTwo   &quot;, &quot;\\n&quot;)</span>
+<span class="sd">        # result == [&quot;One&quot;, &quot;Two&quot;]</span>
+<span class="sd">        ```</span>
+
+<span class="sd">        ```python</span>
+<span class="sd">        result = xmllib.create_non_empty_list_from_string(&quot;   \\n/    &quot;, &quot;/&quot;)</span>
+<span class="sd">        # raises InputError</span>
+<span class="sd">        ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="n">create_list_from_string</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">separator</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The input for this function must result in a non-empty list. Your input&quot;</span>
+        <span class="n">details</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">resource_id</span><span class="p">:</span>
+            <span class="n">details</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resource with the ID &#39;</span><span class="si">{</span><span class="n">resource_id</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prop_name</span><span class="p">:</span>
+            <span class="n">details</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;property &#39;</span><span class="si">{</span><span class="n">prop_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="n">details_msg</span> <span class="o">=</span> <span class="s2">&quot;for the &quot;</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span> <span class="n">details</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">details_msg</span> <span class="o">+</span> <span class="s2">&quot;results in an empty list.&quot;</span>
+        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lst</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
