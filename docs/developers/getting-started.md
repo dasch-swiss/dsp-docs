@@ -193,7 +193,7 @@ Scroll down with the `Arrow Down` key and copy the name of the most recent versi
 Then, exit the list view with `q`, and install the version you copied with
 
 ```bash
-sdk install java 17.0.5-tem
+sdk install java 21.0.1-tem
 ```
 
 Technical note:
@@ -250,7 +250,7 @@ make stack-up
 ```
 
 This starts the DSP stack consisting of
-Fuseki, DSP-API, SIPI, and DSP-APP.
+Fuseki, DSP-API, SIPI, INGEST, and DSP-APP.
 If everything worked properly, the Dashboard in Docker Desktop should show those containers running.
 
 Please note that the DSP-APP container that was automatically started from within the DSP-API repo is just for convenience.
