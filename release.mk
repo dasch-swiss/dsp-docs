@@ -4,6 +4,6 @@
 DSP := "2025.01.01"
 API := "v31.2.0"
 APP := "v11.22.5"
-TOOLS := "v10.1.0"
+TOOLS := "v10.1.1"
 INGEST := "v0.17.0"
 META := "dsp-meta-v2.3.3"
