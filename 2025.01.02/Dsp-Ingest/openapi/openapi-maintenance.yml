@@ -1,0 +1,192 @@
+openapi: 3.1.0
+info:
+  title: dsp-ingest-maintenance
+  version: v0.17.0
+servers:
+- url: http://localhost:3340
+  description: Local development server
+- url: https://ingest.dasch.swiss
+  description: Production server
+paths:
+  /maintenance/{name}:
+    post:
+      tags:
+      - maintenance
+      description: 'Authorization: admin scope required.'
+      operationId: postMaintenanceName
+      parameters:
+      - name: name
+        in: path
+        description: The name of the action to be performed
+        required: true
+        schema:
+          $ref: '#/components/schemas/ActionName'
+        example: UpdateAssetMetadata
+      - name: restrictToProjects
+        in: query
+        description: Restrict the action to a list of projects, if no project is given
+          apply the action to all projects.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '202':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conflict'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unhealthy'
+      security:
+      - httpAuth: []
+components:
+  schemas:
+    ActionName:
+      title: ActionName
+      type: string
+      enum:
+      - ImportProjectsToDb
+      - UpdateAssetMetadata
+    Argument:
+      title: Argument
+      type: object
+      required:
+      - argument
+      - reason
+      properties:
+        argument:
+          type: string
+        reason:
+          type: string
+    BadRequest:
+      title: BadRequest
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Argument'
+    Conflict:
+      title: Conflict
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+    DOWN:
+      title: DOWN
+      type: object
+    Forbidden:
+      title: Forbidden
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+    Health:
+      title: Health
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+    InternalServerError:
+      title: InternalServerError
+      type: object
+      required:
+      - errorMessage
+      properties:
+        errorMessage:
+          type: string
+    Map_Health:
+      title: Map_Health
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Health'
+    NotFound:
+      title: NotFound
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    Status:
+      title: Status
+      oneOf:
+      - $ref: '#/components/schemas/DOWN'
+      - $ref: '#/components/schemas/UP'
+    UP:
+      title: UP
+      type: object
+    Unauthorized:
+      title: Unauthorized
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+    Unhealthy:
+      title: Unhealthy
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        components:
+          $ref: '#/components/schemas/Map_Health'
+  securitySchemes:
+    httpAuth:
+      type: http
+      scheme: bearer
