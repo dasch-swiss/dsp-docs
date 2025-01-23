@@ -29,7 +29,7 @@ API := \"\(.value.api)\"
 APP := \"\(.value.app)\"
 TOOLS := \"$tools\"
 INGEST := \"\(.value.ingest)\"
-META := \"$meta\" "
+META := \"$meta\""
 EOF
 
 getDeployReleases | jq 'to_entries[0]' | jq -r "$template" > release.mk
