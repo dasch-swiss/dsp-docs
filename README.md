@@ -146,7 +146,7 @@ So, to deploy a new version of the docs, follow these steps:
 - update the `release.mk` file with the corresponding versions (`update-versions.sh` facilitates this step)
 - pull the documentations from the individual software components with `make update-submodules`
 - commit everything (incl. the submodules), and create a PR named `deploy: bump docs to <platform-release>`
-  (e.g. `deploy: bump docs to 2024.07.01`)
+  (e.g. `deploy: bump docs to 2025.03.01`)
 - in order to merge, the automated tests must pass, and you need a review
 - once the PR is merged, the docs are deployed to [docs.dasch.swiss](https://docs.dasch.swiss/)
 
