@@ -22,8 +22,7 @@ openapi-update:
 	rm -rf ./docs/03-endpoints/generated-openapi
 	mkdir -p ./docs/03-endpoints/generated-openapi
 	## generate openapi yml freshly from the code
-	(cd ./dsp/dsp-api && just docs-openapi-generate)
-	(cd ./dsp/dsp-api && just docs-ingest-openapi-generate)
+	(cd ./dsp/dsp-api && just docs-openapi-generate && just docs-ingest-openapi-generate)
 	## mkdocs cannot resolve relative paths to the generate openapi yml, we need to copy them to the right location
 	cp -r ./dsp/dsp-api/ingest/docs/openapi/*.yml ./docs/openapi/
 	cp -r ./dsp/dsp-api/docs/03-endpoints/generated-openapi/*.yml ./docs/03-endpoints/generated-openapi
