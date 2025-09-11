@@ -36,3 +36,5 @@ jobs:
         run: make openapi-update
       - name: Build docs in strict mode
         run: .venv/bin/mkdocs build --strict --verbose
+      - name: Serve docs locally
+        run: make serve
