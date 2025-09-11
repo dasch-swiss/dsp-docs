@@ -14,7 +14,7 @@ stop() {
 }
 
 usage() {
-	echo "usage: <command> dsp=[main version] api=[api version] app=[app version] tools=[tools version] ingest=[ingest version] meta=[meta version] deploy=[false]"
+	echo "usage: <command> dsp=[main version] api=[api version] app=[app version] tools=[tools version] meta=[meta version] deploy=[false]"
 	echo ${sep}
 }
 
@@ -22,7 +22,6 @@ v=""
 api=""
 app=""
 tools=""
-ingest=""
 meta=""
 
 deploy=false

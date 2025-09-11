@@ -13,19 +13,18 @@ init-submodules: ## init the documentation from each connected repo; this comman
 
 .PHONY: update-submodules
 update-submodules: ## grab the current documentation from each connected repo
-	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) meta=$(META) deploy=false
-	
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) meta=$(META) deploy=false
+
 .PHONY: openapi-update
-openapi-update: 
+openapi-update:
 	rm -rf ./docs/openapi
 	mkdir -p ./docs/openapi/
 	rm -rf ./docs/03-endpoints/generated-openapi
 	mkdir -p ./docs/03-endpoints/generated-openapi
 	## generate openapi yml freshly from the code
-	(cd ./dsp/dsp-api && just dog)
-	(cd ./dsp/dsp-ingest && just dog)
-	## mkdocs cannot resolve relative paths to the generate openapi yml, we need to copy them to the right location 
-	cp -r ./dsp/dsp-ingest/docs/openapi/*.yml ./docs/openapi/
+	(cd ./dsp/dsp-api && just docs-openapi-generate && just docs-ingest-openapi-generate)
+	## mkdocs cannot resolve relative paths to the generate openapi yml, we need to copy them to the right location
+	cp -r ./dsp/dsp-api/ingest/docs/openapi/*.yml ./docs/openapi/
 	cp -r ./dsp/dsp-api/docs/03-endpoints/generated-openapi/*.yml ./docs/03-endpoints/generated-openapi
 
 .PHONY: build
@@ -42,7 +41,7 @@ serve: ## serve docs for local viewing
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
-	@$(MAKE) install-requirements	
+	@$(MAKE) install-requirements
 	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) deploy=true
 
 .PHONY: install-requirements

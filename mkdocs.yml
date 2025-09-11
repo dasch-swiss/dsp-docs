@@ -5,7 +5,7 @@ nav:
   - DSP-APP: "!include ./dsp/dsp-app/mkdocs.yml"
   - DSP-API: "!include ./dsp/dsp-api/mkdocs.yml"
   - DSP-TOOLS: "!include ./dsp/dsp-tools/mkdocs.yml"
-  - DSP-INGEST: "!include ./dsp/dsp-ingest/mkdocs.yml"
+  - DSP-INGEST: "!include ./dsp/dsp-api/ingest/mkdocs.yml"
   - DSP-META: "!include ./dsp/dsp-meta/mkdocs.yml"
   - Developers:
       - Getting Started: developers/getting-started.md
@@ -56,7 +56,7 @@ theme:
     - version
 extra_css:
   - "assets/style/theme.css"
-  - dsp/dsp-ingest/docs/css/mkdocsoad-v1.0.2.css
+  - dsp/dsp-api/ingest/docs/css/mkdocsoad-v1.0.2.css
 
 extra:
   analytics:
