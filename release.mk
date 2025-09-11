@@ -2,8 +2,8 @@
 # for DSP, API (includes INGEST), APP, see https://github.com/dasch-swiss/ops-deploy/blob/main/versions/RELEASE.json
 # for TOOLS, see https://github.com/dasch-swiss/dsp-tools/releases
 # for META, see https://github.com/dasch-swiss/dsp-meta/tags (NB: tags start with 'dsp-meta-')
-DSP := "2025.09.01"
-API := "v32.0.0"
-APP := "v11.42.0"
-TOOLS := "v16.10.0"
+DSP := "2025.09.02"
+API := "v32.1.0"
+APP := "v11.42.1"
+TOOLS := "v16.11.0"
 META := "dsp-meta-v2.3.18"
