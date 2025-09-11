@@ -42,7 +42,7 @@ serve: ## serve docs for local viewing
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
 	@$(MAKE) install-requirements
-	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) ingest=$(INGEST) deploy=true
+	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) deploy=true
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
