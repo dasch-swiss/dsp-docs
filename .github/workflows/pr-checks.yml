@@ -34,7 +34,7 @@ jobs:
           java-version: 21
       - name: Update OpenAPI docs
         run: make openapi-update
-      - name: Build docs in strict mode
+      - name: Build docs with mkdocs in strict mode
         run: .venv/bin/mkdocs build --strict --verbose
-      - name: Serve docs locally
-        run: make serve
+      - name: Call the Make recipe (which uses mike, which is used to publish the docs)
+        run: make build
