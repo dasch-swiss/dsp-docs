@@ -32,12 +32,12 @@ build: ## build docs into the local 'site' folder
 	@$(MAKE) install-requirements
 	@$(MAKE) graphvizfigures
 	@$(MAKE) openapi-update
-	.venv/bin/mike deploy $(DSP) latest --update-aliases
+	uv run mike deploy $(DSP) latest --update-aliases
 
 .PHONY: serve
 serve: ## serve docs for local viewing
 	@$(MAKE) build
-	.venv/bin/mike serve
+	uv run mike serve
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
@@ -46,14 +46,12 @@ deploy: ## build and publish docs to Github Pages with versioning from the relea
 
 .PHONY: install-requirements
 install-requirements: ## install requirements
-	test -d .venv || python3 -m venv .venv
-	.venv/bin/pip3 install --upgrade pip > /dev/null
-	.venv/bin/pip3 install -r requirements.txt > /dev/null
+	uv sync
 
 .PHONY: clean
 clean: ## cleans the project directory
 	@rm -rf site/
-	.venv/bin/mike delete --all
+	uv run mike delete --all
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files

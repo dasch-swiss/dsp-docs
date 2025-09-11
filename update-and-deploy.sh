@@ -5,9 +5,6 @@ set -e
 home=$(pwd)
 sep='---------------------------------'
 
-# Activate the virtual environment
-source .venv/bin/activate
-
 stop() {
 	echo >&2 "$@"
 	exit 0
@@ -67,7 +64,7 @@ else
 	make openapi-update
 
 	echo "Deploy version ${v} to github pages now"
-	mike deploy --push --branch gh-pages --update-aliases "${v}" "${alias}"
+	uv run mike deploy --push --branch gh-pages --update-aliases "${v}" "${alias}"
 
 	echo $sep
 fi
