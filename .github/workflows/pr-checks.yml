@@ -10,19 +10,27 @@ jobs:
     name: Build documentation
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Authenticate with GitHub
+        env:
+          GH_PAT: ${{ secrets.DASCHBOT_PAT }}
+        run: |
+          echo "https://${GH_PAT}:@github.com" > ~/.git-credentials
+          git config --global credential.helper store
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # necessary for git-revision-date-localized-plugin
           submodules: 'recursive'
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.12
+          enable-cache: true
       - name: Install dependencies
-        run: |
-          make install-requirements
-          sudo apt-get install graphviz
+        run: sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
       - name: Install just
@@ -34,5 +42,7 @@ jobs:
           java-version: 21
       - name: Update OpenAPI docs
         run: make openapi-update
-      - name: Build docs in strict mode
-        run: .venv/bin/mkdocs build --strict --verbose
+      - name: Build docs with mkdocs in strict mode
+        run: uv run mkdocs build --strict --verbose
+      - name: Call the Make recipe (which uses mike, which is used to publish the docs)
+        run: make build

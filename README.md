@@ -75,16 +75,11 @@ sdk install java 21.0.3-tem
 
 The documentation is built with [MkDocs](https://www.mkdocs.org),
 which requires [Python](https://www.python.org/).
-You can check if you have it already installed with:
-
-```shell
-python --version
-```
-
-If this command doesn't output a version number, then run
+This repo uses [uv](https://docs.astral.sh/uv/) as Python bootstrapper and virtual environment manager.
+Install `uv`:
 
 ```bash
-brew install python
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ### Graphviz

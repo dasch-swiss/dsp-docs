@@ -1,0 +1,27 @@
+# See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#writing-pyproject-toml
+
+[project]
+name = "dsp-docs"
+version = "0.0.1"
+description = "Repo which collects the docs of all DSP components in order to publish them"
+authors = [
+    { name = "DaSCH - Swiss National Data and Service Center for the Humanities", email = "info@dasch.swiss" }
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocs-monorepo-plugin",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-git-revision-date-localized-plugin",
+    "mike",
+    "neoteroi-mkdocs",
+    "mkdocstrings",
+    "mkdocstrings-python",
+]
+
+
+[project.urls]
+Homepage = "https://docs.dasch.swiss/"
+Repository = "https://github.com/dasch-swiss/dsp-docs.git"
