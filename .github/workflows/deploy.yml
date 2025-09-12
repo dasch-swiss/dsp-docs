@@ -26,14 +26,12 @@ jobs:
         with:
           fetch-depth: 0  # necessary for git-revision-date-localized-plugin
           submodules: 'recursive'
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.12
+          enable-cache: true
       - name: Install dependencies
-        run: |
-          make install-requirements
-          sudo apt-get install graphviz
+        run: sudo apt-get install graphviz
       - name: build graphviz figures
         run: make graphvizfigures
       - name: Install just
