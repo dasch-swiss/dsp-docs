@@ -4,5 +4,3 @@ site/
 env/
 .vscode/
 .venv
-docs/openapi/*
-docs/03-endpoints/generated-openapi/*

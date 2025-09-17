@@ -22,8 +22,6 @@ plugins:
   - monorepo
   - include-markdown
   - search
-  - neoteroi.mkdocsoad:
-      use_pymdownx: true
   - mkdocstrings:
       handlers:
         python:  # this config must be identical to the config in the dsp-tools repo
@@ -56,7 +54,6 @@ theme:
     - version
 extra_css:
   - "assets/style/theme.css"
-  - dsp/dsp-api/ingest/docs/css/mkdocsoad-v1.0.2.css
 
 extra:
   analytics:
