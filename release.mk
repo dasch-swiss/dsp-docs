@@ -2,8 +2,8 @@
 # for DSP, API (includes INGEST), APP, see https://github.com/dasch-swiss/ops-deploy/blob/main/versions/RELEASE.json
 # for TOOLS, see https://github.com/dasch-swiss/dsp-tools/releases
 # for META, see https://github.com/dasch-swiss/dsp-meta/tags (NB: tags start with 'dsp-meta-')
-DSP := "2025.09.02"
-API := "57d3d48f5f9e68410412526747d4941f241a2adc"  # dirty release is just temporary. For next deployment, please take clean release
-APP := "v11.42.1"
-TOOLS := "v16.11.0"
+DSP := "2025.09.03"
+API := "v32.2.0"
+APP := "v11.43.0"
+TOOLS := "v16.12.0"
 META := "dsp-meta-v2.3.18"
