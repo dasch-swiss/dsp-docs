@@ -3,7 +3,7 @@
 # for TOOLS, see https://github.com/dasch-swiss/dsp-tools/releases
 # for META, see https://github.com/dasch-swiss/dsp-meta/tags (NB: tags start with 'dsp-meta-')
 DSP := "2025.09.03"
-API := "v32.2.0"
+API := "845b3d62a045e15702c3c1569715c8fe0387cafb" # dirty release is just temporary. For next deployment, please take clean release
 APP := "v11.43.0"
 TOOLS := "v16.12.0"
 META := "dsp-meta-v2.3.18"
