@@ -15,23 +15,10 @@ init-submodules: ## init the documentation from each connected repo; this comman
 update-submodules: ## grab the current documentation from each connected repo
 	'$(CURRENT_DIR)/update-and-deploy.sh' dsp=$(DSP) api=$(API) app=$(APP) tools=$(TOOLS) meta=$(META) deploy=false
 
-.PHONY: openapi-update
-openapi-update:
-	rm -rf ./docs/openapi
-	mkdir -p ./docs/openapi/
-	rm -rf ./docs/03-endpoints/generated-openapi
-	mkdir -p ./docs/03-endpoints/generated-openapi
-	## generate openapi yml freshly from the code
-	(cd ./dsp/dsp-api && just docs-openapi-generate && just docs-ingest-openapi-generate)
-	## mkdocs cannot resolve relative paths to the generate openapi yml, we need to copy them to the right location
-	cp -r ./dsp/dsp-api/ingest/docs/openapi/*.yml ./docs/openapi/
-	cp -r ./dsp/dsp-api/docs/03-endpoints/generated-openapi/*.yml ./docs/03-endpoints/generated-openapi
-
 .PHONY: build
 build: ## build docs into the local 'site' folder
 	@$(MAKE) install-requirements
 	@$(MAKE) graphvizfigures
-	@$(MAKE) openapi-update
 	uv run mike deploy $(DSP) latest --update-aliases
 
 .PHONY: serve
