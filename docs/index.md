@@ -18,4 +18,4 @@ Our software consists of 3 main components, which are documented here:
 !!! tip "Quick start for researchers"
 
     If you are a researcher, you're probably most interested in the usage of the generic web application.<br/>
-    In this case, have a look at our [DSP-APP user guide](DSP-APP/user-guide/index.md).
+    In this case, have a look at our [DSP-APP user guide](https://dasch.swiss/knowledge-hub/dsp-app).
