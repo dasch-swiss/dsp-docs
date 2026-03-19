@@ -1,6 +1,12 @@
-# How to contribute to the development of the DSP
+# Contributing to the DSP
 
-The DSP software is developed under git version control using [GitHub](https://github.com/dasch-swiss). It includes the 
+## External Issues & Contributions
+
+If you'd like to report an issue or contribute to the DSP, please contact us at [support@dasch.swiss](mailto:support@dasch.swiss) so we can align it with our planning.
+
+## Contribution Guidelines for DaSCH Members
+
+The DSP software is developed under git version control using [GitHub](https://github.com/dasch-swiss). It includes the
 following main repositories:
 
 [![DSP-API](https://img.shields.io/github/v/release/dasch-swiss/dsp-api?include_prereleases&label=DSP-API)](https://github.com/dasch-swiss/dsp-api)
