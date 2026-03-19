@@ -2,7 +2,7 @@
 
 ## External Issues & Contributions
 
-If you'd like to report an issue or contribute to the DSP, please contact us at [info@dasch.swiss](mailto:info@dasch.swiss) so we can align it with our planning.
+If you'd like to report an issue or contribute to the DSP, please contact us at [support@dasch.swiss](mailto:support@dasch.swiss) so we can align it with our planning.
 
 ## Contribution Guidelines for DaSCH Members
 
