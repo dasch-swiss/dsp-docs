@@ -195,9 +195,9 @@ myonto:UnprovenancedObj myonto:isPartOf
 ## Ordered information in RDF
 Ordering of RDF triples has to be specified explicitly: elements can be ordered in a list format. In Turtle an ordered list can be expressed by putting a sequence of objects within brackets (()). If we want to express that the king of Mykene, Agamemnon, was the father of four children, Iphigeneia being the oldest and Orestes being the youngest, we can express that in the following way:
 ````
-Agamemnon myonto:isFatherOf (Iphigeneia,
-                             Elektra, 
-                             Chrysothemis, 
+Agamemnon myonto:isFatherOf (Iphigeneia
+                             Elektra
+                             Chrysothemis
                              Orestes) .
 ````
 
@@ -241,14 +241,14 @@ myonto:BlackFigured rdfs:subClassOf myonto:Ceramics .
 An RDF property describes the relationship between a subject resource and an object resource. 
 
 ### Properties with inferences
-One of the most fundemantal terms in RDFS is `rdfs:subPropertyOf`. It is a transitive property and allows a modeler to describe a hierarchy of related properties. If we want to express that some of the people who work for a museum are permanently employed while others possess only loose contracts we could express this fact with the following triples:
+One of the most fundamental terms in RDFS is `rdfs:subPropertyOf`. It is a transitive property and allows a modeler to describe a hierarchy of related properties. If we want to express that some of the people who work for a museum are permanently employed while others possess only loose contracts we could express this fact with the following triples:
 ````
 myonto:isEmployedBy rdfs:subPropertyOf myonto:worksFor .
 myonto:contractsTo rdfs:subPropertyOf myonto:worksFor .
 ````
 Regardless whether a person is employed by the museum or is a contractor, the person works for the museum.
 
-Other basic properties are `rdfs:range` and `rdfs:domain`. They have meanings inspired by the mathematical use of the words *range* and *domain*: the domain of a function is the set of values for which it is defined, its range is the set of values it can take. Both give informaton about how a property `P` is to be used: `domain` refers to the subject of any triple that uses `P` as its predicate, `range` refers to the object of any such triple.
+Other basic properties are `rdfs:range` and `rdfs:domain`. They have meanings inspired by the mathematical use of the words *range* and *domain*: the domain of a function is the set of values for which it is defined, its range is the set of values it can take. Both give information about how a property `P` is to be used: `domain` refers to the subject of any triple that uses `P` as its predicate, `range` refers to the object of any such triple.
 
 #### `rdfs:domain`
 ````
