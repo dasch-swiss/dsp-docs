@@ -1,0 +1,201 @@
+name: Release health
+
+on:
+  schedule:
+    - cron: '17 7 * * *'   # 07:17 UTC — offset to dodge top-of-hour cron herd
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  health:
+    name: Release health checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint DaSCH Bot App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.DASCH_BOT_APP_ID }}
+          private-key: ${{ secrets.DASCH_BOT_APP_PRIVATE_KEY }}
+          owner: dasch-swiss
+          repositories: |
+            dsp-docs
+            dsp-tools
+          permission-contents: read
+          permission-pull-requests: read
+          permission-issues: write
+
+      - name: Run release-health checks
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          RUN_URL="https://github.com/$REPO/actions/runs/$RUN_ID"
+          NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          # Idempotent label creation
+          for L in release-automation health-check auto-opened severity:warning severity:critical; do
+            gh label create "$L" --color ededed --description "release-health" 2>/dev/null || true
+          done
+
+          alert() {
+            local text="$1"
+            curl -fsSL -X POST -H 'Content-Type: application/json' \
+              -d "$(jq -n --arg text "$text · <$RUN_URL|run>" '{text:$text}')" \
+              "$GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL"
+          }
+
+          # Find-or-create an issue with stable title; refresh body on subsequent ticks.
+          # Posts Chat alert only on first detection (issue creation).
+          ensure_issue() {
+            local title="$1"
+            local body="$2"
+            local existing
+            existing=$(gh issue list --repo dasch-swiss/dsp-docs \
+              --state open \
+              --label auto-opened \
+              --search "\"$title\" in:title" \
+              --json number,title \
+              --jq ".[] | select(.title == \"$title\") | .number" \
+              | head -n1)
+
+            if [[ -z "$existing" ]]; then
+              url=$(gh issue create --repo dasch-swiss/dsp-docs \
+                      --title "$title" --body "$body" \
+                      --label release-automation,health-check,auto-opened,severity:warning)
+              alert "$title"
+              echo "${url##*/}"
+            else
+              gh issue edit "$existing" --repo dasch-swiss/dsp-docs --body "$body"
+              echo "$existing"
+            fi
+          }
+
+          # Close an open issue if no `keep-open` label is present.
+          clear_issue() {
+            local title="$1"
+            local num
+            num=$(gh issue list --repo dasch-swiss/dsp-docs \
+              --state open \
+              --label auto-opened \
+              --search "\"$title\" in:title" \
+              --json number,title \
+              --jq ".[] | select(.title == \"$title\") | .number" \
+              | head -n1)
+            [[ -z "$num" ]] && return 0
+            if ! gh issue view "$num" --repo dasch-swiss/dsp-docs --json labels --jq '.labels[].name' | grep -q '^keep-open$'; then
+              gh issue close "$num" --repo dasch-swiss/dsp-docs --reason completed \
+                --comment "Condition cleared at $NOW (run $RUN_URL). Auto-closed by release-health."
+            fi
+          }
+
+          build_body() {
+            local detail="$1"
+            cat <<EOF
+          <!-- release-health:state -->
+          **Detected at:** $NOW
+          **Run:** $RUN_URL
+
+          $detail
+
+          ---
+          *Body below the marker is rewritten by release-health on each tick. Human edits should go above this marker.*
+          EOF
+          }
+
+          # ---- Inputs: parse release.mk on main ----
+          RELEASE_MK=$(gh api repos/dasch-swiss/dsp-docs/contents/release.mk --jq '.content' | base64 -d)
+          parse_mk() { echo "$RELEASE_MK" | sed -nE "s/^$1[[:space:]]*:?=[[:space:]]*\"?([^\"[:space:]]+)\"?.*$/\1/p"; }
+          MK_DSP=$(parse_mk DSP)
+          MK_TOOLS=$(parse_mk TOOLS)
+
+          # ---- Inputs: latest dsp-tools release ----
+          TOOLS_LATEST=$(gh api repos/dasch-swiss/dsp-tools/releases/latest \
+                           --jq '{tag: .tag_name, published_at: .published_at}')
+          TOOLS_TAG=$(echo "$TOOLS_LATEST" | jq -r .tag)
+          TOOLS_PUBLISHED=$(echo "$TOOLS_LATEST" | jq -r .published_at)
+          TOOLS_AGE_HOURS=$(( ( $(date -u +%s) - $(date -u -d "$TOOLS_PUBLISHED" +%s) ) / 3600 ))
+
+          # ---- Inputs: dsp-tools compose # release: header ----
+          COMPOSE_DSP=$(gh api repos/dasch-swiss/dsp-tools/contents/src/dsp_tools/resources/start-stack/docker-compose.yml \
+                          --jq '.content' | base64 -d \
+                          | sed -nE 's/^# release: ([0-9]{4}\.[0-9]{2}\.[0-9]{2})$/\1/p' | head -1)
+
+          # ---- Inputs: live docs versions.json (defensive parsing) ----
+          LIVE_DSP=""
+          LIVE_TITLE_FETCH="[release-health] versions.json unreachable"
+          LIVE_TITLE_JSON="[release-health] versions.json not JSON"
+          LIVE_TITLE_ALIAS="[release-health] versions.json missing latest alias"
+
+          TMP=$(mktemp)
+          if ! curl -fsSL --max-time 30 -o "$TMP" "https://docs.dasch.swiss/versions.json"; then
+            ensure_issue "$LIVE_TITLE_FETCH" "$(build_body 'curl failed against https://docs.dasch.swiss/versions.json')" >/dev/null
+          elif ! jq empty <"$TMP" 2>/dev/null; then
+            ensure_issue "$LIVE_TITLE_JSON" "$(build_body "got non-JSON body (truncated 200B): $(head -c 200 "$TMP")")" >/dev/null
+          else
+            LIVE_DSP=$(jq -r '
+              map(select((.aliases // []) | index("latest"))) |
+              if length == 0 then "" else .[0].version end
+            ' <"$TMP")
+            if [[ -z "$LIVE_DSP" ]]; then
+              ensure_issue "$LIVE_TITLE_ALIAS" "$(build_body 'no version aliased latest in versions.json')" >/dev/null
+            else
+              clear_issue "$LIVE_TITLE_FETCH"
+              clear_issue "$LIVE_TITLE_JSON"
+              clear_issue "$LIVE_TITLE_ALIAS"
+            fi
+          fi
+          rm -f "$TMP"
+
+          # ---- REQ-6.4: Bump missing ----
+          # dsp-tools published >24h ago but release.mk hasn't caught up AND
+          # dsp-tools's own docker-compose header hasn't advanced (suppresses false-positive
+          # when the upstream INFRA-1176 step itself is the bottleneck).
+          BUMP_MISSING_TITLE="[release-health] Bump missing for dsp-tools $TOOLS_TAG"
+          if [[ "$MK_TOOLS" != "$TOOLS_TAG" && "$COMPOSE_DSP" != "$MK_DSP" && "$TOOLS_AGE_HOURS" -gt 24 ]]; then
+            ensure_issue "$BUMP_MISSING_TITLE" \
+              "$(build_body "dsp-tools $TOOLS_TAG published $TOOLS_AGE_HOURS h ago; release.mk.TOOLS=$MK_TOOLS, release.mk.DSP=$MK_DSP, compose-DSP=$COMPOSE_DSP")" >/dev/null
+          else
+            clear_issue "$BUMP_MISSING_TITLE"
+          fi
+
+          # ---- REQ-6.3: PR stuck (>24h open) ----
+          gh pr list --repo dasch-swiss/dsp-docs --state open --search 'deploy: bump docs' \
+            --json number,title,createdAt,url \
+            | jq -c '.[] | select((now - (.createdAt | fromdate)) > 86400)' \
+            | while read -r pr; do
+                num=$(echo "$pr" | jq -r .number)
+                ptitle=$(echo "$pr" | jq -r .title)
+                purl=$(echo "$pr" | jq -r .url)
+                stuck_title="[release-health] PR stuck: $ptitle (#$num)"
+                ensure_issue "$stuck_title" \
+                  "$(build_body "PR open >24h: $purl")" >/dev/null
+              done
+
+          # ---- REQ-6.5: Publish gap ----
+          GAP_TITLE="[release-health] Publish gap: release.mk DSP vs live"
+          if [[ -n "$LIVE_DSP" && "$MK_DSP" != "$LIVE_DSP" ]]; then
+            ensure_issue "$GAP_TITLE" \
+              "$(build_body "release.mk DSP=$MK_DSP, live=$LIVE_DSP")" >/dev/null
+          else
+            clear_issue "$GAP_TITLE"
+          fi
+
+      - name: Notify on release-health self-failure (internal)
+        if: failure()
+        env:
+          INTERNAL_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          run_url="https://github.com/$REPO/actions/runs/$RUN_ID"
+          curl -fsSL -X POST -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg text "❌ release-health.yml itself failed · <$run_url|view run>" '{text:$text}')" \
+            "$INTERNAL_WEBHOOK"
