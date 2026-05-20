@@ -152,7 +152,7 @@ specific combination of upstream tags. Two equivalent methods:
 1. Open <https://github.com/dasch-swiss/dsp-docs/actions/workflows/bump-release.yml>.
 2. Click **Run workflow ▾** (top-right).
 3. Fill in `dsp`, `api`, `app`, `tools`. Leave `meta` blank to default to the latest
-   dsp-meta release; leave `release_url` blank for a manual run.
+   dsp-meta release; leave `upstream_url` blank for a manual run.
 4. Click **Run workflow**.
 
 **Via CLI:**
@@ -224,6 +224,7 @@ dsp-app, dsp-meta. Workflows mint short-lived (1h) installation tokens; nothing 
 | `secrets.DASCH_BOT_APP_PRIVATE_KEY` | org `dasch-swiss` | PEM, raw newlines, **no base64 wrapping** |
 | `secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL` | org `dasch-swiss` | Public room — DSP Release Announcements |
 | `secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL` | dsp-docs **and** dsp-tools (repo-level, same URL in both) | Internal engineering — failure / health alerts. Rotate in both. |
+| `secrets.DASCHBOT_PAT` | dsp-docs repo | Legacy PAT used by `deploy.yml` for the gh-pages `mike` publish. Flagged for follow-up migration to the DaSCH Bot App. |
 | `vars.BUMP_RELEASE_ENABLED` | dsp-docs repo | Kill switch (true/false) |
 | `vars.DSP_DOCS_DISPATCH_ENABLED` | dsp-tools repo | Symmetric kill switch on the dispatcher |
 

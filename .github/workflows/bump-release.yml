@@ -1,5 +1,9 @@
 name: Bump release
 
+# run-name carries the DSP so the dispatcher's preflight in
+# dsp-tools/publish-release-to-pypi.yml can match in-flight runs by displayTitle.
+run-name: Bump release ${{ inputs.dsp }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -23,7 +27,7 @@ on:
         description: 'dsp-meta tag (defaults to latest release)'
         type: string
         required: false
-      release_url:
+      upstream_url:
         description: 'Triggering dsp-tools release URL (manual: omit)'
         type: string
         required: false
@@ -41,8 +45,15 @@ jobs:
     name: Bump release
     runs-on: ubuntu-latest
     steps:
-      - name: Mint DaSCH Bot App token
-        id: app-token
+      # Two tokens — least-privilege:
+      #   - Token-R: contents+pull-requests READ on 5 repos. Used for checkout (incl.
+      #     submodule fetches), tag-existence `gh api`, releases/latest, `gh pr list`.
+      #   - Token-W: contents+pull-requests WRITE on dsp-docs ONLY. Used for `git push`,
+      #     `gh pr create`, `gh pr merge` (and the stale-branch `git push --delete`).
+      # The 4 submodule repos (dsp-api/dsp-app/dsp-tools/dsp-meta) never receive a
+      # write-capable token via this workflow.
+      - name: Mint App token (read — 5 repos)
+        id: app-token-read
         uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.DASCH_BOT_APP_ID }}
@@ -54,26 +65,38 @@ jobs:
             dsp-app
             dsp-tools
             dsp-meta
+          permission-contents: read
+          permission-pull-requests: read
+
+      - name: Mint App token (write — dsp-docs only)
+        id: app-token-write
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.DASCH_BOT_APP_ID }}
+          private-key: ${{ secrets.DASCH_BOT_APP_PRIVATE_KEY }}
+          owner: dasch-swiss
+          repositories: dsp-docs
           permission-contents: write
           permission-pull-requests: write
 
       - name: Checkout dsp-docs with submodules
         uses: actions/checkout@v6
         with:
-          token: ${{ steps.app-token.outputs.token }}
+          token: ${{ steps.app-token-read.outputs.token }}
           submodules: recursive
           fetch-depth: 0
           persist-credentials: true
 
       - name: Bump release.mk and submodule pointers
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token-read.outputs.token }}
+          GH_TOKEN_WRITE: ${{ steps.app-token-write.outputs.token }}
           DSP_INPUT: ${{ inputs.dsp }}
           API_INPUT: ${{ inputs.api }}
           APP_INPUT: ${{ inputs.app }}
           TOOLS_INPUT: ${{ inputs.tools }}
           META_INPUT: ${{ inputs.meta }}
-          RELEASE_URL: ${{ inputs.release_url }}
+          UPSTREAM_URL: ${{ inputs.upstream_url }}
           RUN_ID: ${{ github.run_id }}
           APP_ID: ${{ secrets.DASCH_BOT_APP_ID }}
           BUMP_ENABLED: ${{ vars.BUMP_RELEASE_ENABLED }}
@@ -128,12 +151,17 @@ jobs:
           branch="deploy/bump-docs-$DSP_INPUT"
           title="deploy: bump docs to $DSP_INPUT"
 
+          # Push URL with Token-W embedded — bypasses the Token-R credentials that
+          # actions/checkout installed for submodule fetches. Token is auto-masked
+          # in logs (create-github-app-token outputs are masked at runtime).
+          push_url="https://x-access-token:${GH_TOKEN_WRITE}@github.com/dasch-swiss/dsp-docs.git"
+
           # 7. Stale-branch preflight: delete orphan remote branches with no open PR
           if git ls-remote --exit-code origin "$branch" >/dev/null 2>&1; then
             open_count=$(gh pr list --head "$branch" --state open --json number --jq 'length')
             if [[ "$open_count" == "0" ]]; then
               echo "::notice::Stale branch $branch with no open PR — deleting"
-              git push origin --delete "$branch"
+              git push "$push_url" --delete "$branch"
             fi
           fi
 
@@ -150,7 +178,7 @@ jobs:
           git add release.mk dsp/
           git commit -m "$title"
           push_failed=0
-          git push origin "$branch" || push_failed=1
+          git push "$push_url" "$branch" || push_failed=1
           if [[ "$push_failed" == "1" ]]; then
             if [[ $(gh pr list --head "$branch" --state open --json number --jq 'length') -gt 0 ]]; then
               echo "::notice::Concurrent run already opened PR on $branch — treating as no-op"
@@ -171,16 +199,18 @@ jobs:
           | TOOLS  | $TOOLS_INPUT |
           | META   | $META |
 
-          Triggered by: ${RELEASE_URL:-manual workflow_dispatch}
+          Triggered by: ${UPSTREAM_URL:-manual workflow_dispatch}
           Run: https://github.com/dasch-swiss/dsp-docs/actions/runs/$RUN_ID
           EOF
           )
 
           # 9c. Create PR (idempotent on "already exists")
+          # Both branches extract the URL via regex — `gh pr create` may emit
+          # warnings on stderr (folded in by 2>&1) ahead of the URL on success.
           pr_url=""
-          if create_out=$(gh pr create --head "$branch" --base main \
+          if create_out=$(GH_TOKEN="$GH_TOKEN_WRITE" gh pr create --head "$branch" --base main \
                             --title "$title" --body "$pr_body" 2>&1); then
-            pr_url="$create_out"
+            pr_url=$(grep -oE 'https://github\.com/[^ ]+' <<<"$create_out" | head -1)
           else
             if grep -q "already exists" <<<"$create_out"; then
               echo "::notice::PR already exists (peer run): $create_out"
@@ -190,9 +220,14 @@ jobs:
               exit 1
             fi
           fi
+          if [[ -z "$pr_url" ]]; then
+            echo "::error::Could not extract PR URL from gh pr create output"
+            echo "$create_out" >&2
+            exit 1
+          fi
 
           # 9d. Enable auto-merge (idempotent)
-          if ! gh pr merge --auto --squash "$pr_url"; then
+          if ! GH_TOKEN="$GH_TOKEN_WRITE" gh pr merge --auto --squash "$pr_url"; then
             echo "::warning::auto-merge enable failed; verifying state"
             gh pr view "$pr_url" --json autoMergeRequest --jq .autoMergeRequest || true
           fi
@@ -210,6 +245,7 @@ jobs:
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.run_id }}
         run: |
+          set -euo pipefail
           run_url="https://github.com/$REPO/actions/runs/$RUN_ID"
           curl -fsSL -X POST -H 'Content-Type: application/json' \
             -d "$(jq -n --arg text "❌ bump-release.yml failed for DSP=$DSP_INPUT · <$run_url|view run>" '{text:$text}')" \

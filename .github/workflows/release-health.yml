@@ -72,7 +72,7 @@ jobs:
               --label auto-opened \
               --search "\"$title\" in:title" \
               --json number,title \
-              --jq ".[] | select(.title == \"$title\") | .number" \
+              | jq -r --arg t "$title" '.[] | select(.title == $t) | .number' \
               | head -n1)
 
             if [[ -z "$existing" ]]; then
@@ -105,7 +105,7 @@ jobs:
               --label auto-opened \
               --search "\"$title\" in:title" \
               --json number,title \
-              --jq ".[] | select(.title == \"$title\") | .number" \
+              | jq -r --arg t "$title" '.[] | select(.title == $t) | .number' \
               | head -n1)
             [[ -z "$num" ]] && return 0
             if ! gh issue view "$num" --repo dasch-swiss/dsp-docs --json labels --jq '.labels[].name' | grep -q '^keep-open$'; then
@@ -141,11 +141,6 @@ jobs:
           TOOLS_PUBLISHED=$(echo "$TOOLS_LATEST" | jq -r .published_at)
           TOOLS_AGE_HOURS=$(( ( $(date -u +%s) - $(date -u -d "$TOOLS_PUBLISHED" +%s) ) / 3600 ))
 
-          # ---- Inputs: dsp-tools compose # release: header ----
-          COMPOSE_DSP=$(gh api repos/dasch-swiss/dsp-tools/contents/src/dsp_tools/resources/start-stack/docker-compose.yml \
-                          --jq '.content' | base64 -d \
-                          | sed -nE 's/^# release: ([0-9]{4}\.[0-9]{2}\.[0-9]{2})$/\1/p' | head -1)
-
           # ---- Inputs: live docs versions.json (defensive parsing) ----
           LIVE_DSP=""
           LIVE_TITLE_FETCH="[release-health] versions.json unreachable"
@@ -173,21 +168,21 @@ jobs:
           rm -f "$TMP"
 
           # ---- REQ-6.4: Bump missing ----
-          # dsp-tools published >24h ago but release.mk hasn't caught up AND
-          # dsp-tools's own docker-compose header hasn't advanced (suppresses false-positive
-          # when the upstream INFRA-1176 step itself is the bottleneck).
+          # dsp-tools published >24h ago but release.mk hasn't caught up.
+          # Trade-off: if the upstream chore(start-stack) step is itself the bottleneck,
+          # this fires a transient false positive that clears on the next cron tick.
           BUMP_MISSING_TITLE="[release-health] Bump missing for dsp-tools $TOOLS_TAG"
-          if [[ "$MK_TOOLS" != "$TOOLS_TAG" && "$COMPOSE_DSP" != "$MK_DSP" && "$TOOLS_AGE_HOURS" -gt 24 ]]; then
+          if [[ "$MK_TOOLS" != "$TOOLS_TAG" && "$TOOLS_AGE_HOURS" -gt 24 ]]; then
             TOOLS_RELEASE_URL="https://github.com/dasch-swiss/dsp-tools/releases/tag/$TOOLS_TAG"
             ensure_issue "$BUMP_MISSING_TITLE" \
-              "dsp-tools $TOOLS_TAG published $TOOLS_AGE_HOURS h ago; release.mk.TOOLS=$MK_TOOLS, release.mk.DSP=$MK_DSP, compose-DSP=$COMPOSE_DSP" \
+              "dsp-tools $TOOLS_TAG published $TOOLS_AGE_HOURS h ago; release.mk.TOOLS=$MK_TOOLS, release.mk.DSP=$MK_DSP" \
               "$TOOLS_RELEASE_URL" "dsp-tools $TOOLS_TAG" >/dev/null
           else
             clear_issue "$BUMP_MISSING_TITLE"
           fi
 
           # ---- REQ-6.3: PR stuck (>24h open) ----
-          gh pr list --repo dasch-swiss/dsp-docs --state open --search 'deploy: bump docs' \
+          gh pr list --repo dasch-swiss/dsp-docs --state open --search '"deploy: bump docs" in:title' \
             --json number,title,createdAt,url \
             | jq -c '.[] | select((now - (.createdAt | fromdate)) > 86400)' \
             | while read -r pr; do
@@ -216,6 +211,7 @@ jobs:
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.run_id }}
         run: |
+          set -euo pipefail
           run_url="https://github.com/$REPO/actions/runs/$RUN_ID"
           curl -fsSL -X POST -H 'Content-Type: application/json' \
             -d "$(jq -n --arg text "❌ release-health.yml itself failed · <$run_url|view run>" '{text:$text}')" \

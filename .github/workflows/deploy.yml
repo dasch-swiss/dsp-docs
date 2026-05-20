@@ -56,11 +56,11 @@ jobs:
         with:
           webhook_url: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
           mention: '<users/all>'
-          text: '📚 *DSP-DOCS* ${{ steps.dsp.outputs.value }} released\n\n<https://docs.dasch.swiss/${{ steps.dsp.outputs.value }}/|Live docs>'
+          text: "📚 *DSP-DOCS* ${{ steps.dsp.outputs.value }} released\n\n<https://docs.dasch.swiss/${{ steps.dsp.outputs.value }}/|Live docs>"
 
   notify-failure:
     name: Notify on deploy failure (internal)
-    needs: [deploy]
+    needs: [deploy, send-chat-notification]
     runs-on: ubuntu-latest
     if: failure()
     steps:
@@ -71,6 +71,7 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           MSG: ${{ github.event.head_commit.message }}
         run: |
+          set -euo pipefail
           run_url="https://github.com/$REPO/actions/runs/$RUN_ID"
           curl -fsSL -X POST -H 'Content-Type: application/json' \
             -d "$(jq -n --arg text "❌ dsp-docs deploy.yml failed for '$MSG' · <$run_url|view run>" '{text:$text}')" \
