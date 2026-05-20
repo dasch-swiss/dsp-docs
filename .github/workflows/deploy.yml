@@ -55,7 +55,9 @@ jobs:
           [[ -n "$dsp" ]] || dsp='(unknown)'
           echo "value=$dsp" >> "$GITHUB_OUTPUT"
       - name: Send notification to google chat room "DSP releases"
-        uses: google-github-actions/send-google-chat-webhook@v0.0.4
+        # SHA-pinned to v0.0.4 — a SemVer tag can be re-pointed by the publisher,
+        # but a commit SHA cannot. Bump in lockstep with upstream releases.
+        uses: google-github-actions/send-google-chat-webhook@71d647dbebfa833dfd4ed3dd47a7f2961ee9e441 # v0.0.4
         with:
           webhook_url: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
           mention: '<users/all>'

@@ -147,27 +147,26 @@ jobs:
           TOOLS_AGE_HOURS=$(( ( $(date -u +%s) - $(date -u -d "$TOOLS_PUBLISHED" +%s) ) / 3600 ))
 
           # ---- Inputs: live docs versions.json (defensive parsing) ----
+          # Single issue carrying the failure mode in its body — ensure_issue refreshes
+          # the body on subsequent ticks, so transitions (unreachable → not-JSON → ...)
+          # update the open issue rather than spawning a new one per mode.
           LIVE_DSP=""
-          LIVE_TITLE_FETCH="[release-health] versions.json unreachable"
-          LIVE_TITLE_JSON="[release-health] versions.json not JSON"
-          LIVE_TITLE_ALIAS="[release-health] versions.json missing latest alias"
+          LIVE_TITLE="[release-health] versions.json health"
 
           TMP=$(mktemp)
           if ! curl -fsSL --max-time 30 -o "$TMP" "https://docs.dasch.swiss/versions.json"; then
-            ensure_issue "$LIVE_TITLE_FETCH" "curl failed against https://docs.dasch.swiss/versions.json" >/dev/null
+            ensure_issue "$LIVE_TITLE" "curl failed against https://docs.dasch.swiss/versions.json" >/dev/null
           elif ! jq empty <"$TMP" 2>/dev/null; then
-            ensure_issue "$LIVE_TITLE_JSON" "got non-JSON body (truncated 200B): $(head -c 200 "$TMP")" >/dev/null
+            ensure_issue "$LIVE_TITLE" "got non-JSON body (truncated 200B): $(head -c 200 "$TMP")" >/dev/null
           else
             LIVE_DSP=$(jq -r '
               map(select((.aliases // []) | index("latest"))) |
               if length == 0 then "" else .[0].version end
             ' <"$TMP")
             if [[ -z "$LIVE_DSP" ]]; then
-              ensure_issue "$LIVE_TITLE_ALIAS" "no version aliased latest in versions.json" >/dev/null
+              ensure_issue "$LIVE_TITLE" "no version aliased latest in versions.json" >/dev/null
             else
-              clear_issue "$LIVE_TITLE_FETCH"
-              clear_issue "$LIVE_TITLE_JSON"
-              clear_issue "$LIVE_TITLE_ALIAS"
+              clear_issue "$LIVE_TITLE"
             fi
           fi
           rm -f "$TMP"

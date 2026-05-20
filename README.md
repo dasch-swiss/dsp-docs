@@ -145,17 +145,7 @@ Where to verify:
 #### 2. Manual override (`workflow_dispatch`)
 
 Use when the dispatcher did not fire (e.g. dsp-tools released out-of-band) or to publish a
-specific combination of upstream tags. Two equivalent methods:
-
-**Via GitHub UI** (recommended for one-off runs):
-
-1. Open <https://github.com/dasch-swiss/dsp-docs/actions/workflows/bump-release.yml>.
-2. Click **Run workflow ▾** (top-right).
-3. Fill in `dsp`, `api`, `app`, `tools`. Leave `meta` blank to default to the latest
-   dsp-meta release; leave `upstream_url` blank for a manual run.
-4. Click **Run workflow**.
-
-**Via CLI:**
+specific combination of upstream tags:
 
 ```bash
 gh workflow run bump-release.yml \
@@ -167,6 +157,9 @@ gh workflow run bump-release.yml \
   # -f meta=dsp-meta-v2.4.16   # optional; defaults to latest dsp-meta release
 ```
 
+The equivalent **Run workflow ▾** form is at
+<https://github.com/dasch-swiss/dsp-docs/actions/workflows/bump-release.yml> — same inputs.
+
 `bump-release.yml` re-runs idempotently — if `release.mk` + submodule pointers already match
 the inputs, the run exits 0 without opening a PR. If a peer run already opened the PR it is a
 no-op too.
@@ -174,17 +167,7 @@ no-op too.
 #### 3. Kill switch
 
 The bump workflow respects a per-repo `vars.BUMP_RELEASE_ENABLED` flag. To pause auto-bumps
-(e.g. during incident recovery), set it to `false`. Two equivalent methods:
-
-**Via GitHub UI:**
-
-1. Open <https://github.com/dasch-swiss/dsp-docs/settings/variables/actions>.
-2. Edit `BUMP_RELEASE_ENABLED` and set the value to `false` (or `true` to re-enable).
-3. Click **Update variable**.
-
-The change takes effect on the next workflow run — no redeploy needed.
-
-**Via CLI:**
+(e.g. during incident recovery):
 
 ```bash
 # Pause
@@ -194,9 +177,12 @@ gh variable set BUMP_RELEASE_ENABLED --body false --repo dasch-swiss/dsp-docs
 gh variable set BUMP_RELEASE_ENABLED --body true --repo dasch-swiss/dsp-docs
 ```
 
+The equivalent UI is at <https://github.com/dasch-swiss/dsp-docs/settings/variables/actions>.
+The change takes effect on the next workflow run.
+
 The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` in the
-`dsp-tools` repo — set it the same way via
-<https://github.com/dasch-swiss/dsp-tools/settings/variables/actions> or `gh variable set`.
+`dsp-tools` repo — set it the same way via `gh variable set` or
+<https://github.com/dasch-swiss/dsp-tools/settings/variables/actions>.
 
 #### 4. Failure modes
 
