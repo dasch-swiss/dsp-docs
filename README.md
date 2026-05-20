@@ -145,7 +145,17 @@ Where to verify:
 #### 2. Manual override (`workflow_dispatch`)
 
 Use when the dispatcher did not fire (e.g. dsp-tools released out-of-band) or to publish a
-specific combination of upstream tags:
+specific combination of upstream tags. Two equivalent methods:
+
+**Via GitHub UI** (recommended for one-off runs):
+
+1. Open <https://github.com/dasch-swiss/dsp-docs/actions/workflows/bump-release.yml>.
+2. Click **Run workflow ▾** (top-right).
+3. Fill in `dsp`, `api`, `app`, `tools`. Leave `meta` blank to default to the latest
+   dsp-meta release; leave `release_url` blank for a manual run.
+4. Click **Run workflow**.
+
+**Via CLI:**
 
 ```bash
 gh workflow run bump-release.yml \
@@ -164,20 +174,29 @@ no-op too.
 #### 3. Kill switch
 
 The bump workflow respects a per-repo `vars.BUMP_RELEASE_ENABLED` flag. To pause auto-bumps
-(e.g. during incident recovery):
+(e.g. during incident recovery), set it to `false`. Two equivalent methods:
+
+**Via GitHub UI:**
+
+1. Open <https://github.com/dasch-swiss/dsp-docs/settings/variables/actions>.
+2. Edit `BUMP_RELEASE_ENABLED` and set the value to `false` (or `true` to re-enable).
+3. Click **Update variable**.
+
+The change takes effect on the next workflow run — no redeploy needed.
+
+**Via CLI:**
 
 ```bash
+# Pause
 gh variable set BUMP_RELEASE_ENABLED --body false --repo dasch-swiss/dsp-docs
-```
 
-To re-enable:
-
-```bash
+# Re-enable
 gh variable set BUMP_RELEASE_ENABLED --body true --repo dasch-swiss/dsp-docs
 ```
 
-The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` in
-`dsp-tools`.
+The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` in the
+`dsp-tools` repo — set it the same way via
+<https://github.com/dasch-swiss/dsp-tools/settings/variables/actions> or `gh variable set`.
 
 #### 4. Failure modes
 
