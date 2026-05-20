@@ -19,7 +19,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ vars.DASCH_BOT_APP_ID }}
+          app-id: ${{ secrets.DASCH_BOT_APP_ID }}
           private-key: ${{ secrets.DASCH_BOT_APP_PRIVATE_KEY }}
           owner: dasch-swiss
           repositories: |

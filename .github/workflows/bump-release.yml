@@ -45,7 +45,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ vars.DASCH_BOT_APP_ID }}
+          app-id: ${{ secrets.DASCH_BOT_APP_ID }}
           private-key: ${{ secrets.DASCH_BOT_APP_PRIVATE_KEY }}
           owner: dasch-swiss
           repositories: |
@@ -75,7 +75,7 @@ jobs:
           META_INPUT: ${{ inputs.meta }}
           RELEASE_URL: ${{ inputs.release_url }}
           RUN_ID: ${{ github.run_id }}
-          APP_ID: ${{ vars.DASCH_BOT_APP_ID }}
+          APP_ID: ${{ secrets.DASCH_BOT_APP_ID }}
           BUMP_ENABLED: ${{ vars.BUMP_RELEASE_ENABLED }}
           INTERNAL_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL }}
         run: |

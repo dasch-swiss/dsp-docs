@@ -220,10 +220,10 @@ dsp-app, dsp-meta. Workflows mint short-lived (1h) installation tokens; nothing 
 
 | Secret / var | Location | Purpose |
 |---|---|---|
-| `vars.DASCH_BOT_APP_ID` | org `dasch-swiss` | App identifier (not secret) |
+| `secrets.DASCH_BOT_APP_ID` | org `dasch-swiss` | App identifier |
 | `secrets.DASCH_BOT_APP_PRIVATE_KEY` | org `dasch-swiss` | PEM, raw newlines, **no base64 wrapping** |
 | `secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL` | org `dasch-swiss` | Public room — DSP Release Announcements |
-| `secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL` | org `dasch-swiss` | Internal engineering — failure / health alerts |
+| `secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL` | dsp-docs **and** dsp-tools (repo-level, same URL in both) | Internal engineering — failure / health alerts. Rotate in both. |
 | `vars.BUMP_RELEASE_ENABLED` | dsp-docs repo | Kill switch (true/false) |
 | `vars.DSP_DOCS_DISPATCH_ENABLED` | dsp-tools repo | Symmetric kill switch on the dispatcher |
 
