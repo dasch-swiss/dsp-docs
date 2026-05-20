@@ -163,7 +163,7 @@ gh workflow run bump-release.yml \
   -f dsp=2026.05.13 \
   -f api=v35.8.1 \
   -f app=v13.3.0 \
-  -f tools=v18.14.0
+  -f tools=v18.14.0 \
   # -f meta=dsp-meta-v2.4.16   # optional; defaults to latest dsp-meta release
 ```
 
@@ -224,7 +224,7 @@ dsp-app, dsp-meta. Workflows mint short-lived (1h) installation tokens; nothing 
 | `secrets.DASCH_BOT_APP_PRIVATE_KEY` | org `dasch-swiss` | PEM, raw newlines, **no base64 wrapping** |
 | `secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL` | org `dasch-swiss` | Public room — DSP Release Announcements |
 | `secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL` | dsp-docs **and** dsp-tools (repo-level, same URL in both) | Internal engineering — failure / health alerts. Rotate in both. |
-| `secrets.DASCHBOT_PAT` | dsp-docs repo | Legacy PAT used by `deploy.yml` for the gh-pages `mike` publish. Flagged for follow-up migration to the DaSCH Bot App. |
+| `secrets.DASCHBOT_PAT` | dsp-docs repo | Legacy PAT used by `deploy.yml` (gh-pages `mike` publish) and `pr-checks.yml` (submodule fetches via `.git-credentials`). Flagged for follow-up migration to the DaSCH Bot App. |
 | `vars.BUMP_RELEASE_ENABLED` | dsp-docs repo | Kill switch (true/false) |
 | `vars.DSP_DOCS_DISPATCH_ENABLED` | dsp-tools repo | Symmetric kill switch on the dispatcher |
 

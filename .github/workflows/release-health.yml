@@ -40,9 +40,14 @@ jobs:
           RUN_URL="https://github.com/$REPO/actions/runs/$RUN_ID"
           NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-          # Idempotent label creation
+          # Idempotent label creation: list existing first, create only the missing.
+          # `gh label create ... || true` would also swallow auth / rate-limit errors,
+          # so we list-then-create to let real failures fall through `set -e`.
+          existing=$(gh api repos/dasch-swiss/dsp-docs/labels --paginate --jq '.[].name')
           for L in release-automation health-check auto-opened severity:warning severity:critical; do
-            gh label create "$L" --color ededed --description "release-health" 2>/dev/null || true
+            if ! grep -qFx "$L" <<<"$existing"; then
+              gh label create "$L" --color ededed --description "release-health"
+            fi
           done
 
           alert() {

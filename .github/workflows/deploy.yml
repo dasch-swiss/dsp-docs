@@ -41,7 +41,10 @@ jobs:
     name: Send google chat notification
     needs: [deploy]
     runs-on: ubuntu-latest
-    if: success() && startsWith(github.event.head_commit.message, 'deploy')
+    # Restrict to canonical bump-docs commits so reverts (e.g. "deploy: revert ...")
+    # don't post "(unknown) released" to the public announcements channel.
+    # Quoted because the embedded colon trips strict YAML parsers (yamllint, PyYAML).
+    if: "success() && startsWith(github.event.head_commit.message, 'deploy: bump docs to')"
     steps:
       - name: Extract DSP from commit subject
         id: dsp
