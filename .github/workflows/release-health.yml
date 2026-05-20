@@ -48,15 +48,24 @@ jobs:
           alert() {
             local text="$1"
             curl -fsSL -X POST -H 'Content-Type: application/json' \
-              -d "$(jq -n --arg text "$text · <$RUN_URL|run>" '{text:$text}')" \
-              "$GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL"
+              -d "$(jq -n --arg text "$text" '{text:$text}')" \
+              "$GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL" >/dev/null
           }
 
           # Find-or-create an issue with stable title; refresh body on subsequent ticks.
-          # Posts Chat alert only on first detection (issue creation).
+          # Posts Chat alert only on first detection (issue creation). The chat message
+          # includes the issue URL, the diagnostic detail, the cron run URL, and an
+          # optional context link (e.g. failing PR or deploy run).
+          # Usage: ensure_issue <title> <detail> [extra_link_url] [extra_link_label]
           ensure_issue() {
             local title="$1"
-            local body="$2"
+            local detail="$2"
+            local extra_url="${3:-}"
+            local extra_label="${4:-}"
+
+            local body
+            body=$(build_body "$detail")
+
             local existing
             existing=$(gh issue list --repo dasch-swiss/dsp-docs \
               --state open \
@@ -67,13 +76,22 @@ jobs:
               | head -n1)
 
             if [[ -z "$existing" ]]; then
-              url=$(gh issue create --repo dasch-swiss/dsp-docs \
+              local issue_url
+              issue_url=$(gh issue create --repo dasch-swiss/dsp-docs \
                       --title "$title" --body "$body" \
                       --label release-automation,health-check,auto-opened,severity:warning)
-              alert "$title"
-              echo "${url##*/}"
+              local issue_num="${issue_url##*/}"
+
+              local links="<$issue_url|Issue #$issue_num> · <$RUN_URL|Health run>"
+              if [[ -n "$extra_url" ]]; then
+                links="$links · <$extra_url|$extra_label>"
+              fi
+              local chat_text
+              chat_text=$(printf '❗ *%s*\n%s\n🔗 %s' "$title" "$detail" "$links")
+              alert "$chat_text"
+              echo "$issue_num"
             else
-              gh issue edit "$existing" --repo dasch-swiss/dsp-docs --body "$body"
+              gh issue edit "$existing" --repo dasch-swiss/dsp-docs --body "$body" >/dev/null
               echo "$existing"
             fi
           }
@@ -136,16 +154,16 @@ jobs:
 
           TMP=$(mktemp)
           if ! curl -fsSL --max-time 30 -o "$TMP" "https://docs.dasch.swiss/versions.json"; then
-            ensure_issue "$LIVE_TITLE_FETCH" "$(build_body 'curl failed against https://docs.dasch.swiss/versions.json')" >/dev/null
+            ensure_issue "$LIVE_TITLE_FETCH" "curl failed against https://docs.dasch.swiss/versions.json" >/dev/null
           elif ! jq empty <"$TMP" 2>/dev/null; then
-            ensure_issue "$LIVE_TITLE_JSON" "$(build_body "got non-JSON body (truncated 200B): $(head -c 200 "$TMP")")" >/dev/null
+            ensure_issue "$LIVE_TITLE_JSON" "got non-JSON body (truncated 200B): $(head -c 200 "$TMP")" >/dev/null
           else
             LIVE_DSP=$(jq -r '
               map(select((.aliases // []) | index("latest"))) |
               if length == 0 then "" else .[0].version end
             ' <"$TMP")
             if [[ -z "$LIVE_DSP" ]]; then
-              ensure_issue "$LIVE_TITLE_ALIAS" "$(build_body 'no version aliased latest in versions.json')" >/dev/null
+              ensure_issue "$LIVE_TITLE_ALIAS" "no version aliased latest in versions.json" >/dev/null
             else
               clear_issue "$LIVE_TITLE_FETCH"
               clear_issue "$LIVE_TITLE_JSON"
@@ -160,8 +178,10 @@ jobs:
           # when the upstream INFRA-1176 step itself is the bottleneck).
           BUMP_MISSING_TITLE="[release-health] Bump missing for dsp-tools $TOOLS_TAG"
           if [[ "$MK_TOOLS" != "$TOOLS_TAG" && "$COMPOSE_DSP" != "$MK_DSP" && "$TOOLS_AGE_HOURS" -gt 24 ]]; then
+            TOOLS_RELEASE_URL="https://github.com/dasch-swiss/dsp-tools/releases/tag/$TOOLS_TAG"
             ensure_issue "$BUMP_MISSING_TITLE" \
-              "$(build_body "dsp-tools $TOOLS_TAG published $TOOLS_AGE_HOURS h ago; release.mk.TOOLS=$MK_TOOLS, release.mk.DSP=$MK_DSP, compose-DSP=$COMPOSE_DSP")" >/dev/null
+              "dsp-tools $TOOLS_TAG published $TOOLS_AGE_HOURS h ago; release.mk.TOOLS=$MK_TOOLS, release.mk.DSP=$MK_DSP, compose-DSP=$COMPOSE_DSP" \
+              "$TOOLS_RELEASE_URL" "dsp-tools $TOOLS_TAG" >/dev/null
           else
             clear_issue "$BUMP_MISSING_TITLE"
           fi
@@ -176,14 +196,15 @@ jobs:
                 purl=$(echo "$pr" | jq -r .url)
                 stuck_title="[release-health] PR stuck: $ptitle (#$num)"
                 ensure_issue "$stuck_title" \
-                  "$(build_body "PR open >24h: $purl")" >/dev/null
+                  "PR open >24h: $purl" \
+                  "$purl" "PR #$num" >/dev/null
               done
 
           # ---- REQ-6.5: Publish gap ----
           GAP_TITLE="[release-health] Publish gap: release.mk DSP vs live"
           if [[ -n "$LIVE_DSP" && "$MK_DSP" != "$LIVE_DSP" ]]; then
             ensure_issue "$GAP_TITLE" \
-              "$(build_body "release.mk DSP=$MK_DSP, live=$LIVE_DSP")" >/dev/null
+              "release.mk DSP=$MK_DSP, live=$LIVE_DSP" >/dev/null
           else
             clear_issue "$GAP_TITLE"
           fi
