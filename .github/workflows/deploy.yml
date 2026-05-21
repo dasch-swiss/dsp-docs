@@ -54,14 +54,16 @@ jobs:
           dsp=$(echo "$MSG" | sed -nE 's/^deploy: bump docs to ([0-9]{4}\.[0-9]{2}\.[0-9]{2}).*$/\1/p')
           [[ -n "$dsp" ]] || dsp='(unknown)'
           echo "value=$dsp" >> "$GITHUB_OUTPUT"
-      - name: Send notification to google chat room "DSP releases"
-        # SHA-pinned to v0.0.4 — a SemVer tag can be re-pointed by the publisher,
-        # but a commit SHA cannot. Bump in lockstep with upstream releases.
-        uses: google-github-actions/send-google-chat-webhook@71d647dbebfa833dfd4ed3dd47a7f2961ee9e441 # v0.0.4
-        with:
-          webhook_url: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
-          mention: '<users/all>'
-          text: "📚 *DSP-DOCS* ${{ steps.dsp.outputs.value }} released\n\n<https://docs.dasch.swiss/${{ steps.dsp.outputs.value }}/|Live docs>"
+      - name: Post release announcement to public Chat room
+        # `<users/all>` in the text body triggers Chat's @all mention.
+        env:
+          PUBLIC_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
+          DSP: ${{ steps.dsp.outputs.value }}
+        run: |
+          set -euo pipefail
+          curl -fsSL -X POST -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg dsp "$DSP" '{text: "<users/all> 📚 *DSP-DOCS* \($dsp) released\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
+            "$PUBLIC_WEBHOOK"
 
   notify-failure:
     name: Notify on deploy failure (internal)
