@@ -55,14 +55,13 @@ jobs:
           [[ -n "$dsp" ]] || dsp='(unknown)'
           echo "value=$dsp" >> "$GITHUB_OUTPUT"
       - name: Post release announcement to public Chat room
-        # `<users/all>` in the text body triggers Chat's @all mention.
         env:
           PUBLIC_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
           DSP: ${{ steps.dsp.outputs.value }}
         run: |
           set -euo pipefail
           curl -fsSL -X POST -H 'Content-Type: application/json' \
-            -d "$(jq -n --arg dsp "$DSP" '{text: "<users/all> 📚 *DSP-DOCS* \($dsp) released\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
+            -d "$(jq -n --arg dsp "$DSP" '{text: "📚 *DSP-DOCS* \($dsp) released\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
             "$PUBLIC_WEBHOOK"
 
   notify-failure:
