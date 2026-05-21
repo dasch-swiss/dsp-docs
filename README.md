@@ -116,8 +116,7 @@ Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentati
 Publication of the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) is fully automated.
 A `dsp-tools` release publish triggers `bump-release.yml`, which opens a `deploy:`-prefixed PR
 against `main`; once `pr-checks.yml` is green, auto-merge fires and `deploy.yml` publishes via
-`mike` to gh-pages. A nightly `release-health.yml` cron audits the chain and opens GitHub issues
-on regression.
+`mike` to gh-pages.
 
 #### 1. Automated path (Wednesday)
 
@@ -138,7 +137,6 @@ What fires:
 Where to verify:
 
 - The bump PR appears at <https://github.com/dasch-swiss/dsp-docs/pulls?q=is:pr+deploy:+bump>.
-- The internal channel receives an L2 info alert as soon as the PR opens.
 - `https://docs.dasch.swiss/versions.json` lists the new DSP under `latest` within a few
   minutes of merge.
 
@@ -189,15 +187,8 @@ The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` 
 | Symptom | Detection | Recovery |
 |---|---|---|
 | `bump-release.yml` itself fails | L1 internal Chat alert + GitHub Actions failure | Re-dispatch manually after fixing inputs / tags |
-| Bump PR opens but `pr-checks.yml` fails (mkdocs `--strict` regression) | PR stays open; nightly L3 issue `[release-health] PR stuck …` after 24h | Push a fix to the bump branch or fix `pr-checks.yml` and re-run |
-| Bump never opens (dispatcher silently failed) | Nightly L3 issue `[release-health] Bump missing for dsp-tools …` after 24h | Manually `gh workflow run bump-release.yml` |
-| Publish gap (release.mk advanced past gh-pages) | Nightly L3 issue `[release-health] Publish gap …` | Check `deploy.yml` run; re-merge `deploy:` commit if needed |
-| `versions.json` unreachable / malformed | L3 issue with one of three titles — fetch unreachable, not JSON, missing latest alias | Investigate gh-pages publish; the issue carries diagnostic detail in its body |
-
-The release-health cron creates one GitHub issue per detection class with a stable title and a
-machine-rewritten body (humans edit *above* the `<!-- release-health:state -->` marker; the
-cron only refreshes content below it). Add the `keep-open` label to an issue to prevent the
-auto-close when the condition clears.
+| Bump PR opens but `pr-checks.yml` fails (mkdocs `--strict` regression) | PR stays open until pushed-fix or close | Push a fix to the bump branch or fix `pr-checks.yml` and re-run |
+| Bump never opens (dispatcher silently failed) | Wednesday checklist + absence of public success ping | Manually `gh workflow run bump-release.yml` |
 
 #### 5. Credentials
 
