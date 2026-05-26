@@ -118,14 +118,29 @@ A `dsp-tools` release publish triggers `bump-release.yml`, which opens a `deploy
 against `main`; once `pr-checks.yml` is green, auto-merge fires and `deploy.yml` publishes via
 `mike` to gh-pages.
 
+#### Repo-level preconditions
+
+Run-time settings the maintainer must keep enabled (see §5 for secrets / vars):
+
+- Branch protection on `main` requires `pr-checks`; **"Allow auto-merge"** enabled at
+  <https://github.com/dasch-swiss/dsp-docs/settings>.
+- **"Automatically delete head branches"** enabled at the same settings page. The bump
+  workflow force-pushes defensively so a previously merged-and-not-deleted bump branch
+  doesn't block a re-dispatch, but auto-delete is the canonical fix.
+- The four submodule repos (`dsp-api`, `dsp-app`, `dsp-tools`, `dsp-meta`) remain publicly
+  readable — `make update-submodules` runs `git fetch` inside each submodule worktree without
+  authentication. If any of those go private, `bump-release.yml` will need a credential
+  helper inside the submodule fetches.
+
 #### 1. Automated path (Wednesday)
 
 What fires:
 
 1. `dsp-tools` publishes a release to PyPI.
 2. The `dispatch-dsp-docs-bump` job in `dsp-tools` mints a DaSCH Bot App token and calls
-   `gh workflow run bump-release.yml` against `dsp-docs`, passing DSP / API / APP / TOOLS parsed
-   from `dsp-tools`'s `docker-compose.yml`.
+   `gh workflow run bump-release.yml` against `dsp-docs`, passing DSP / API / APP parsed from
+   `dsp-tools`'s `src/dsp_tools/resources/start-stack/versions.env` plus TOOLS from the
+   triggering release tag.
 3. `bump-release.yml` renders `release.mk` from `.github/release.mk.tmpl`, runs
    `make update-submodules`, opens a PR titled `deploy: bump docs to <DSP>`, and enables
    auto-merge (squash).
@@ -202,8 +217,12 @@ dsp-app, dsp-meta. Workflows mint short-lived (1h) installation tokens; nothing 
 | `secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL` | org `dasch-swiss` | Public room — DSP Release Announcements |
 | `secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL` | dsp-docs **and** dsp-tools (repo-level, same URL in both) | Internal engineering — failure / health alerts. Rotate in both. |
 | `secrets.DASCHBOT_PAT` | dsp-docs repo | Legacy PAT used by `deploy.yml` (gh-pages `mike` publish) and `pr-checks.yml` (submodule fetches via `.git-credentials`). Flagged for follow-up migration to the DaSCH Bot App. |
-| `vars.BUMP_RELEASE_ENABLED` | dsp-docs repo | Kill switch (true/false) |
+| `vars.BUMP_RELEASE_ENABLED` | dsp-docs repo | Kill switch (true/false, case-insensitive) |
 | `vars.DSP_DOCS_DISPATCH_ENABLED` | dsp-tools repo | Symmetric kill switch on the dispatcher |
+
+Upstream of this chain, `bump-stack-versions.yml` in `dsp-tools` runs
+`scripts/bump_stack_versions.py` to write `versions.env`; it uses the workflow's auto-issued
+`secrets.GITHUB_TOKEN` (no manual setup needed).
 
 Private-key rotation: add the new key in the App settings, update the org secret,
 smoke-test (manual `workflow_dispatch` on `bump-release.yml`), then delete the old key.
