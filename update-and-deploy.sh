@@ -39,7 +39,8 @@ for ARGUMENT in "$@"; do
 		echo "Update submodule dsp-${KEY} ${VALUE}"
 		cd dsp/dsp-${KEY}
 		echo $(pwd)
-		git fetch
+		# --tags ensures release tags applied to non-default-branch commits are still fetched.
+		git fetch --tags origin
 		git checkout ${VALUE}
 		cd "${home}"
 		git add dsp/dsp-${KEY}

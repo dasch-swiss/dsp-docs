@@ -1,0 +1,244 @@
+name: Bump release
+
+# run-name carries the DSP so the dispatcher's preflight in
+# dsp-tools/publish-release-to-pypi.yml can match in-flight runs by displayTitle.
+run-name: Bump release ${{ inputs.dsp }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      dsp:
+        description: 'DSP platform release (YYYY.MM.DD)'
+        type: string
+        required: true
+      api:
+        description: 'dsp-api tag (e.g. v35.8.1)'
+        type: string
+        required: true
+      app:
+        description: 'dsp-app tag (e.g. v13.3.0)'
+        type: string
+        required: true
+      tools:
+        description: 'dsp-tools tag (e.g. v18.14.0)'
+        type: string
+        required: true
+      meta:
+        description: 'dsp-meta tag (defaults to latest release)'
+        type: string
+        required: false
+      upstream_url:
+        description: 'Triggering dsp-tools release URL (manual: omit)'
+        type: string
+        required: false
+
+permissions: {}
+
+# Per-DSP group lets unrelated DSPs run in parallel; same-DSP dispatches serialise.
+concurrency:
+  group: bump-release-${{ inputs.dsp }}
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    name: Bump release
+    runs-on: ubuntu-latest
+    steps:
+      # Validate inputs BEFORE minting App tokens — a malformed dispatch must not
+      # cause the DaSCH Bot App to issue write-capable installation tokens.
+      - name: Validate DSP input format
+        env:
+          DSP_INPUT: ${{ inputs.dsp }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$DSP_INPUT" =~ ^[0-9]{4}\.[0-9]{2}\.[0-9]{2}$ ]]; then
+            echo "::error::Invalid DSP format: $DSP_INPUT"
+            exit 1
+          fi
+
+      # Token-R: contents+pull-requests READ on 5 repos. Used by checkout (incl.
+      # submodule fetches), the META resolver, and the open-PR guard.
+      # SHA-pinned (v3 == bcd2ba4) since this action handles private-key material.
+      - name: Mint App token (read — 5 repos)
+        id: app-token-read
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1  # v3
+        with:
+          app-id: ${{ secrets.DASCH_BOT_APP_ID }}
+          private-key: ${{ secrets.DASCH_BOT_APP_PRIVATE_KEY }}
+          owner: dasch-swiss
+          repositories: |
+            dsp-docs
+            dsp-api
+            dsp-app
+            dsp-tools
+            dsp-meta
+          permission-contents: read
+          permission-pull-requests: read
+
+      # Token-W: contents+pull-requests WRITE on dsp-docs ONLY. Used by git push,
+      # gh pr create, and gh pr merge. The 4 submodule repos never see a
+      # write-capable token via this workflow.
+      # SHA-pinned (v3 == bcd2ba4) since this action handles private-key material.
+      - name: Mint App token (write — dsp-docs only)
+        id: app-token-write
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1  # v3
+        with:
+          app-id: ${{ secrets.DASCH_BOT_APP_ID }}
+          private-key: ${{ secrets.DASCH_BOT_APP_PRIVATE_KEY }}
+          owner: dasch-swiss
+          repositories: dsp-docs
+          permission-contents: write
+          permission-pull-requests: write
+
+      # persist-credentials: false so Token-R isn't carried into later steps;
+      # the write step re-auths via `gh auth setup-git` with Token-W.
+      - name: Checkout dsp-docs with submodules
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+        with:
+          token: ${{ steps.app-token-read.outputs.token }}
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prepare bump (kill-switch, META, render, idempotency, open-PR guard)
+        id: prep
+        env:
+          GH_TOKEN: ${{ steps.app-token-read.outputs.token }}
+          DSP_INPUT: ${{ inputs.dsp }}
+          API_INPUT: ${{ inputs.api }}
+          APP_INPUT: ${{ inputs.app }}
+          TOOLS_INPUT: ${{ inputs.tools }}
+          META_INPUT: ${{ inputs.meta }}
+          BUMP_ENABLED: ${{ vars.BUMP_RELEASE_ENABLED }}
+        run: |
+          set -euo pipefail
+
+          # Normalize case so `False` / `FALSE` typed in the GitHub UI don't silently no-op.
+          if [[ "${BUMP_ENABLED,,}" == "false" ]]; then
+            echo "::notice::BUMP_RELEASE_ENABLED=false, skipping"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          META="$META_INPUT"
+          if [[ -z "$META" ]]; then
+            META=$(gh api repos/dasch-swiss/dsp-meta/releases/latest --jq .tag_name)
+            echo "::notice::Resolved META=$META"
+          fi
+
+          ./scripts/render-release-mk.sh \
+            --dsp "$DSP_INPUT" --api "$API_INPUT" \
+            --app "$APP_INPUT" --tools "$TOOLS_INPUT" --meta "$META" \
+            > release.mk
+          make update-submodules
+
+          if git diff --quiet HEAD --ignore-submodules=dirty -- .; then
+            echo "::notice::No-op — release.mk and submodules already current"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          branch="deploy/bump-docs-$DSP_INPUT"
+          if [[ $(gh pr list --head "$branch" --state open --json number --jq 'length') -gt 0 ]]; then
+            echo "::notice::Open PR already exists on $branch"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "meta=$META" >> "$GITHUB_OUTPUT"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Commit, push, open PR, enable auto-merge
+        if: steps.prep.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token-write.outputs.token }}
+          DSP_INPUT: ${{ inputs.dsp }}
+          API_INPUT: ${{ inputs.api }}
+          APP_INPUT: ${{ inputs.app }}
+          TOOLS_INPUT: ${{ inputs.tools }}
+          META: ${{ steps.prep.outputs.meta }}
+          BRANCH: ${{ steps.prep.outputs.branch }}
+          UPSTREAM_URL: ${{ inputs.upstream_url }}
+          RUN_ID: ${{ github.run_id }}
+          APP_SLUG: ${{ steps.app-token-write.outputs.app-slug }}
+        run: |
+          set -euo pipefail
+
+          # Configure git to use gh as the credential helper (Token-W via GH_TOKEN).
+          gh auth setup-git
+
+          # GitHub's noreply email format for bot users is
+          # <bot-user-id>+<slug>[bot]@users.noreply.github.com where bot-user-id
+          # is the numeric ID of the bot user (NOT the GitHub App's App ID).
+          # Resolving it dynamically keeps the workflow correct if the App is
+          # ever renamed; /users/{login} is public so no extra token scope.
+          bot_user_id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
+          git config user.name  "${APP_SLUG}[bot]"
+          git config user.email "${bot_user_id}+${APP_SLUG}[bot]@users.noreply.github.com"
+
+          title="deploy: bump docs to $DSP_INPUT"
+
+          git checkout -b "$BRANCH"
+          git add release.mk dsp/
+          git commit -m "$title"
+
+          # Force-push protects against an orphan remote branch left behind by a
+          # previously-merged bump PR when "automatically delete head branches"
+          # is off. Safe because: (a) the open-PR guard above confirmed no open
+          # PR exists on $BRANCH, (b) the per-DSP concurrency group serialises
+          # same-DSP dispatches, and (c) $BRANCH lives in the bot's private
+          # deploy/ namespace — no human contributor would push to it.
+          git push --force origin "$BRANCH"
+
+          pr_body=$(cat <<EOF
+          Auto-generated by \`.github/workflows/bump-release.yml\`.
+
+          | Component | Version |
+          |---|---|
+          | DSP    | $DSP_INPUT |
+          | API    | $API_INPUT |
+          | APP    | $APP_INPUT |
+          | TOOLS  | $TOOLS_INPUT |
+          | META   | $META |
+
+          Triggered by: ${UPSTREAM_URL:-manual workflow_dispatch}
+          Run: https://github.com/dasch-swiss/dsp-docs/actions/runs/$RUN_ID
+          EOF
+          )
+
+          # gh pr create is idempotent on "already exists" (peer-run race).
+          if ! create_out=$(gh pr create --head "$BRANCH" --base main \
+                              --title "$title" --body "$pr_body" 2>&1); then
+            if ! grep -q "already exists" <<<"$create_out"; then
+              echo "$create_out" >&2
+              exit 1
+            fi
+            echo "::notice::PR already exists (peer run)"
+          fi
+
+          # Fetch canonical URL from the API instead of parsing gh's stdout —
+          # `gh pr create` can emit warnings ahead of the PR URL.
+          pr_url=$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url // empty')
+          if [[ -z "$pr_url" ]]; then
+            echo "::error::No open PR found for branch $BRANCH after create"
+            exit 1
+          fi
+
+          if ! gh pr merge --auto --squash "$pr_url"; then
+            echo "::warning::auto-merge enable failed; verifying state"
+            gh pr view "$pr_url" --json autoMergeRequest --jq .autoMergeRequest || true
+          fi
+
+      - name: Notify on failure (internal)
+        if: failure()
+        env:
+          INTERNAL_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL }}
+          DSP_INPUT: ${{ inputs.dsp }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          run_url="https://github.com/$REPO/actions/runs/$RUN_ID"
+          curl -fsSL -X POST -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg text "❌ bump-release.yml failed for DSP=$DSP_INPUT · <$run_url|view run>" '{text:$text}')" \
+            "$INTERNAL_WEBHOOK"
