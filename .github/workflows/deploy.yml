@@ -84,7 +84,7 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL -X POST -H 'Content-Type: application/json' \
-            -d "$(jq -n --arg dsp "$DSP" '{text: "📚 *DSP-DOCS* \($dsp) released\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
+            -d "$(jq -n --arg dsp "$DSP" '{text: "📚 *DSP-DOCS* \($dsp) released and deployed\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
             "$PUBLIC_WEBHOOK"
 
   notify-failure:
