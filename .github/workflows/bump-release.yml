@@ -149,6 +149,7 @@ jobs:
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
 
       - name: Commit, push, open PR, enable auto-merge
+        id: pr
         if: steps.prep.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ steps.app-token-write.outputs.token }}
@@ -223,11 +224,26 @@ jobs:
             echo "::error::No open PR found for branch $BRANCH after create"
             exit 1
           fi
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
 
           if ! gh pr merge --auto --squash "$pr_url"; then
             echo "::warning::auto-merge enable failed; verifying state"
             gh pr view "$pr_url" --json autoMergeRequest --jq .autoMergeRequest || true
           fi
+
+      # main requires 1 approving review. The PR is authored by the DaSCH Bot
+      # App, which GitHub forbids from approving its own PR, so the armed
+      # auto-merge would wait forever. The daschbot user (a distinct identity,
+      # admin on dsp-docs) submits the approval that unblocks it. DASCHBOT_PAT
+      # must be available to this repo (org secret scoped to dsp-docs).
+      - name: Approve PR so auto-merge can complete
+        if: steps.prep.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.DASCHBOT_PAT }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          set -euo pipefail
+          gh pr review --approve "$PR_URL"
 
       - name: Notify on failure (internal)
         if: failure()
