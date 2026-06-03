@@ -1,0 +1,69 @@
+name: announce-release
+
+# Posts the public "DSP-DOCS X released and deployed" announcement only once the
+# docs site is actually live. GitHub Pages (deploy-from-branch) emits a
+# `deployment_status` event whenever the github-pages deployment changes state;
+# we act on `success` only, so the announcement and its "Live docs" link are
+# never premature. Event-driven — replaces the polling that used to live in
+# deploy.yml. Note: deployment_status workflows run from the default branch, so
+# this takes effect once merged to main.
+on:
+  deployment_status:
+
+permissions:
+  contents: read  # read versions.json from gh-pages to resolve the DSP version
+
+jobs:
+  announce:
+    name: Announce docs release
+    # Only the github-pages environment, only when it actually went live.
+    if: >-
+      github.event.deployment_status.state == 'success'
+      && github.event.deployment_status.environment == 'github-pages'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve deployed DSP version
+        id: dsp
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.deployment.sha }}
+        run: |
+          set -euo pipefail
+          # `make deploy` runs `mike deploy <DSP> latest --update-aliases`, so on
+          # gh-pages the versions.json entry aliased "latest" is the just-deployed
+          # DSP. Read it at the exact commit this deployment published.
+          dsp=$(gh api "repos/$REPO/contents/versions.json?ref=$SHA" --jq '.content' \
+                | base64 -d \
+                | jq -r 'map(select(.aliases | index("latest"))) | .[0].version // empty')
+          if [[ -z "$dsp" ]]; then
+            echo "::notice::no version aliased 'latest' in versions.json@$SHA; skipping"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "::notice::resolved DSP=$dsp"
+          echo "value=$dsp" >> "$GITHUB_OUTPUT"
+
+      - name: Post release announcement to public Chat room
+        if: steps.dsp.outputs.skip != 'true'
+        env:
+          PUBLIC_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
+          DSP: ${{ steps.dsp.outputs.value }}
+        run: |
+          set -euo pipefail
+          curl -fsSL -X POST -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg dsp "$DSP" '{text: "📚 *DSP-DOCS* \($dsp) released and deployed\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
+            "$PUBLIC_WEBHOOK"
+
+      - name: Notify on failure (internal)
+        if: failure()
+        env:
+          INTERNAL_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          run_url="https://github.com/$REPO/actions/runs/$RUN_ID"
+          curl -fsSL -X POST -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg text "❌ announce-release.yml failed · <$run_url|view run>" '{text:$text}')" \
+            "$INTERNAL_WEBHOOK"

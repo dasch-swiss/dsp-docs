@@ -37,36 +37,13 @@ jobs:
       - name: Deploy docs
         run: make deploy
 
-  send-chat-notification:
-    name: Send google chat notification
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    # Restrict to canonical bump-docs commits so reverts (e.g. "deploy: revert ...")
-    # don't post "(unknown) released" to the public announcements channel.
-    # Quoted because the embedded colon trips strict YAML parsers (yamllint, PyYAML).
-    if: "success() && startsWith(github.event.head_commit.message, 'deploy: bump docs to')"
-    steps:
-      - name: Extract DSP from commit subject
-        id: dsp
-        env:
-          MSG: ${{ github.event.head_commit.message }}
-        run: |
-          dsp=$(echo "$MSG" | sed -nE 's/^deploy: bump docs to ([0-9]{4}\.[0-9]{2}\.[0-9]{2}).*$/\1/p')
-          [[ -n "$dsp" ]] || dsp='(unknown)'
-          echo "value=$dsp" >> "$GITHUB_OUTPUT"
-      - name: Post release announcement to public Chat room
-        env:
-          PUBLIC_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
-          DSP: ${{ steps.dsp.outputs.value }}
-        run: |
-          set -euo pipefail
-          curl -fsSL -X POST -H 'Content-Type: application/json' \
-            -d "$(jq -n --arg dsp "$DSP" '{text: "📚 *DSP-DOCS* \($dsp) released\n\n<https://docs.dasch.swiss/\($dsp)/|Live docs>"}')" \
-            "$PUBLIC_WEBHOOK"
+  # The public release announcement is posted by announce-release.yml, which
+  # triggers on the github-pages `deployment_status == success` event — i.e.
+  # only once the site is actually live. See that workflow for details.
 
   notify-failure:
     name: Notify on deploy failure (internal)
-    needs: [deploy, send-chat-notification]
+    needs: [deploy]
     runs-on: ubuntu-latest
     if: failure()
     steps:

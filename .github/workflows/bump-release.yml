@@ -224,6 +224,9 @@ jobs:
             exit 1
           fi
 
+          # Auto-merge completes without a review because the DaSCH Bot App is a
+          # bypass actor for the required-PR-review rule on main (configured in
+          # branch protection / ruleset). No PAT or self-approval is involved.
           if ! gh pr merge --auto --squash "$pr_url"; then
             echo "::warning::auto-merge enable failed; verifying state"
             gh pr view "$pr_url" --json autoMergeRequest --jq .autoMergeRequest || true
