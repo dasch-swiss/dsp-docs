@@ -54,6 +54,29 @@ jobs:
           dsp=$(echo "$MSG" | sed -nE 's/^deploy: bump docs to ([0-9]{4}\.[0-9]{2}\.[0-9]{2}).*$/\1/p')
           [[ -n "$dsp" ]] || dsp='(unknown)'
           echo "value=$dsp" >> "$GITHUB_OUTPUT"
+      - name: Wait for live docs to be served
+        env:
+          DSP: ${{ steps.dsp.outputs.value }}
+        run: |
+          set -euo pipefail
+          # `make deploy` only pushes the built site to gh-pages. The public
+          # site (docs.dasch.swiss, custom domain) is then re-published by a
+          # separate GitHub Pages build + CDN propagation, which lags by minutes.
+          # Poll the versioned URL until it actually serves so the announcement
+          # and its "Live docs" link are never premature. Fail-closed: on timeout
+          # we exit non-zero, so the public post is skipped and notify-failure
+          # raises an internal alert instead of announcing a dead link.
+          url="https://docs.dasch.swiss/${DSP}/"
+          deadline=$(( $(date +%s) + 300 ))  # 5-minute budget
+          until curl -fsS -o /dev/null -H 'Cache-Control: no-cache' "${url}?cb=$(date +%s)"; do
+            if (( $(date +%s) >= deadline )); then
+              echo "::error::Live docs not serving at $url after 5 min; skipping announcement"
+              exit 1
+            fi
+            echo "waiting for $url ..."
+            sleep 15
+          done
+          echo "Live: $url"
       - name: Post release announcement to public Chat room
         env:
           PUBLIC_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
