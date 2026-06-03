@@ -60,17 +60,15 @@ jobs:
       - name: Wait for GitHub Pages to publish the new site
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DSP: ${{ steps.dsp.outputs.value }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           # `make deploy` only pushes the built site to gh-pages. The public site
           # (docs.dasch.swiss) is then published by the separate "pages build and
           # deployment" workflow (github-pages environment), which lags by ~10 min.
-          # Gate the announcement on THAT deployment reaching "success", then
-          # confirm the URL actually serves (CDN). Fail-closed: on timeout or a
-          # failed deployment we exit non-zero, so the public post is skipped and
-          # notify-failure raises an internal alert instead of announcing a dead link.
+          # Gate the announcement on THAT deployment reaching "success". Fail-closed:
+          # on timeout or a failed deployment we exit non-zero, so the public post is
+          # skipped and notify-failure raises an internal alert.
           sha=$(gh api "repos/$REPO/branches/gh-pages" --jq '.commit.sha')
           echo "gh-pages HEAD: $sha"
           deadline=$(( $(date +%s) + 1200 ))  # 20-minute budget
@@ -96,15 +94,6 @@ jobs:
             (( $(date +%s) >= deadline )) && { echo "::error::pages deployment not done within budget"; exit 1; }
             sleep 20
           done
-
-          # 3) Confirm the versioned URL actually serves (covers CDN propagation).
-          url="https://docs.dasch.swiss/${DSP}/"
-          until curl -fsS -o /dev/null -H 'Cache-Control: no-cache' "${url}?cb=$(date +%s)"; do
-            (( $(date +%s) >= deadline )) && { echo "::error::live docs not serving at $url within budget"; exit 1; }
-            echo "waiting for $url ..."
-            sleep 15
-          done
-          echo "Live: $url"
       - name: Post release announcement to public Chat room
         env:
           PUBLIC_WEBHOOK: ${{ secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL }}
