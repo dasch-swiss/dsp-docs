@@ -41,6 +41,9 @@ jobs:
     name: Send google chat notification
     needs: [deploy]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read      # read gh-pages HEAD sha
+      deployments: read   # poll github-pages deployment status
     # Restrict to canonical bump-docs commits so reverts (e.g. "deploy: revert ...")
     # don't post "(unknown) released" to the public announcements channel.
     # Quoted because the embedded colon trips strict YAML parsers (yamllint, PyYAML).
@@ -54,25 +57,50 @@ jobs:
           dsp=$(echo "$MSG" | sed -nE 's/^deploy: bump docs to ([0-9]{4}\.[0-9]{2}\.[0-9]{2}).*$/\1/p')
           [[ -n "$dsp" ]] || dsp='(unknown)'
           echo "value=$dsp" >> "$GITHUB_OUTPUT"
-      - name: Wait for live docs to be served
+      - name: Wait for GitHub Pages to publish the new site
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DSP: ${{ steps.dsp.outputs.value }}
+          REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          # `make deploy` only pushes the built site to gh-pages. The public
-          # site (docs.dasch.swiss, custom domain) is then re-published by a
-          # separate GitHub Pages build + CDN propagation, which lags by minutes.
-          # Poll the versioned URL until it actually serves so the announcement
-          # and its "Live docs" link are never premature. Fail-closed: on timeout
-          # we exit non-zero, so the public post is skipped and notify-failure
-          # raises an internal alert instead of announcing a dead link.
+          # `make deploy` only pushes the built site to gh-pages. The public site
+          # (docs.dasch.swiss) is then published by the separate "pages build and
+          # deployment" workflow (github-pages environment), which lags by ~10 min.
+          # Gate the announcement on THAT deployment reaching "success", then
+          # confirm the URL actually serves (CDN). Fail-closed: on timeout or a
+          # failed deployment we exit non-zero, so the public post is skipped and
+          # notify-failure raises an internal alert instead of announcing a dead link.
+          sha=$(gh api "repos/$REPO/branches/gh-pages" --jq '.commit.sha')
+          echo "gh-pages HEAD: $sha"
+          deadline=$(( $(date +%s) + 1200 ))  # 20-minute budget
+
+          # 1) Wait for the github-pages deployment for this commit to be created.
+          dep_id=""
+          while [[ -z "$dep_id" ]]; do
+            dep_id=$(gh api "repos/$REPO/deployments?environment=github-pages&sha=$sha&per_page=1" --jq '.[0].id // empty')
+            [[ -n "$dep_id" ]] && break
+            (( $(date +%s) >= deadline )) && { echo "::error::no github-pages deployment for $sha within budget"; exit 1; }
+            echo "waiting for pages deployment to be created ..."
+            sleep 20
+          done
+
+          # 2) Wait for that deployment's latest status to be success.
+          while :; do
+            state=$(gh api "repos/$REPO/deployments/$dep_id/statuses?per_page=1" --jq '.[0].state // "pending"')
+            echo "github-pages deployment state: $state"
+            case "$state" in
+              success)        break ;;
+              error|failure)  echo "::error::github-pages deployment $state"; exit 1 ;;
+            esac
+            (( $(date +%s) >= deadline )) && { echo "::error::pages deployment not done within budget"; exit 1; }
+            sleep 20
+          done
+
+          # 3) Confirm the versioned URL actually serves (covers CDN propagation).
           url="https://docs.dasch.swiss/${DSP}/"
-          deadline=$(( $(date +%s) + 300 ))  # 5-minute budget
           until curl -fsS -o /dev/null -H 'Cache-Control: no-cache' "${url}?cb=$(date +%s)"; do
-            if (( $(date +%s) >= deadline )); then
-              echo "::error::Live docs not serving at $url after 5 min; skipping announcement"
-              exit 1
-            fi
+            (( $(date +%s) >= deadline )) && { echo "::error::live docs not serving at $url within budget"; exit 1; }
             echo "waiting for $url ..."
             sleep 15
           done
