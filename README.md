@@ -115,8 +115,10 @@ Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentati
 
 Publication of the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) is fully automated.
 A `dsp-tools` release publish triggers `bump-release.yml`, which opens a `deploy:`-prefixed PR
-against `main`; once `pr-checks.yml` is green, auto-merge fires and `deploy.yml` publishes via
-`mike` to gh-pages.
+against `main`; once `pr-checks.yml` is green, auto-merge fires (the DaSCH Bot App is a
+review-bypass actor on `main`, so no manual approval is needed) and `deploy.yml` publishes via
+`mike` to gh-pages. Once GitHub Pages serves the new version, `announce-release.yml` posts the
+public release announcement.
 
 #### Repo-level preconditions
 
@@ -124,6 +126,10 @@ Run-time settings the maintainer must keep enabled (see §5 for secrets / vars):
 
 - Branch protection on `main` requires `pr-checks`; **"Allow auto-merge"** enabled at
   <https://github.com/dasch-swiss/dsp-docs/settings>.
+- The **DaSCH Bot App** is listed under **"Allow specified actors to bypass required pull
+  requests"** in `main`'s branch protection. The bump PR is authored by the App, which cannot
+  approve its own PR; the bypass lets its auto-merge complete on green checks without a human
+  review. Without this, the bump PR sits `BLOCKED` on the required review.
 - **"Automatically delete head branches"** enabled at the same settings page. The bump
   workflow force-pushes defensively so a previously merged-and-not-deleted bump branch
   doesn't block a re-dispatch, but auto-delete is the canonical fix.
@@ -146,8 +152,12 @@ What fires:
    auto-merge (squash).
 4. Once `pr-checks.yml` is green the PR squash-merges; the merge commit subject preserves the
    `deploy:` prefix so `deploy.yml`'s gate fires.
-5. `deploy.yml` publishes to gh-pages via `mike` and the `send-chat-notification` job posts
-   `📚 *DSP-DOCS* <DSP> released` to the public release-announcements room.
+5. `deploy.yml` publishes to gh-pages via `mike`. GitHub Pages then builds and serves the new
+   version (the "pages build and deployment" run, ~10 min behind the merge).
+6. When the github-pages deployment reaches `success`, `announce-release.yml` (triggered on the
+   `deployment_status` event) posts `📚 *DSP-DOCS* <DSP> released and deployed` to the public
+   release-announcements room — so the announcement fires only once the site is live. The DSP
+   version is read from the `latest`-aliased entry in gh-pages `versions.json`.
 
 Where to verify:
 
@@ -204,6 +214,9 @@ The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` 
 | `bump-release.yml` itself fails | L1 internal Chat alert + GitHub Actions failure | Re-dispatch manually after fixing inputs / tags |
 | Bump PR opens but `pr-checks.yml` fails (mkdocs `--strict` regression) | PR stays open until pushed-fix or close | Push a fix to the bump branch or fix `pr-checks.yml` and re-run |
 | Bump never opens (dispatcher silently failed) | Wednesday checklist + absence of public success ping | Manually `gh workflow run bump-release.yml` |
+| Bump PR opens but stays `BLOCKED` (never auto-merges) | PR stuck on `Review required` | Confirm the DaSCH Bot App is a bypass actor on `main` (see preconditions) |
+| `deploy.yml` fails (`mike` publish) | internal Chat alert + Actions failure | Re-run `deploy.yml`, or re-dispatch `bump-release.yml` |
+| Docs go live but no announcement | absence of public ping; check `announce-release.yml` run + internal alert | Re-run `announce-release.yml`, or post the announcement manually |
 
 #### 5. Credentials
 
