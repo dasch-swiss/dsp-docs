@@ -224,13 +224,36 @@ jobs:
             exit 1
           fi
 
-          # Auto-merge completes without a review because the DaSCH Bot App is a
-          # bypass actor for the required-PR-review rule on main (configured in
-          # branch protection / ruleset). No PAT or self-approval is involved.
-          if ! gh pr merge --auto --squash "$pr_url"; then
-            echo "::warning::auto-merge enable failed; verifying state"
-            gh pr view "$pr_url" --json autoMergeRequest --jq .autoMergeRequest || true
-          fi
+          # main requires the Build documentation check + 1 review. GitHub
+          # auto-merge is unusable: it ignores bypass allowances and waits for a
+          # real approval that never comes for a bot-authored PR. The App is a
+          # bypass actor for the *review* only — it has no Checks permission, and
+          # required status checks have no per-actor bypass under branch
+          # protection (enforce_admins is on). So a direct `--admin` merge is
+          # rejected by the server until the mkdocs --strict check passes, then
+          # the review bypass lets it through. We retry the merge until it
+          # succeeds: this both waits for the check AND can never merge before it
+          # is green. (`--admin` only skips gh's client-side mergeability refusal;
+          # the server still enforces the check.)
+          echo "::notice::merging once required checks pass (App bypasses the review)"
+          deadline=$(( $(date +%s) + 900 ))  # 15-minute budget
+          until merge_out=$(gh pr merge --squash --admin "$pr_url" 2>&1); do
+            echo "$merge_out"
+            if [[ "$(gh pr view "$pr_url" --json state --jq .state 2>/dev/null)" == "MERGED" ]]; then
+              break
+            fi
+            if (( $(date +%s) >= deadline )); then
+              echo "::error::could not merge $pr_url within budget (check failing or branch blocked)"
+              exit 1
+            fi
+            # Refresh only when the branch is behind base; doing it unconditionally
+            # would re-trigger checks every loop and never converge.
+            if grep -qiE "not up to date|out of date|base branch was modified|behind" <<<"$merge_out"; then
+              echo "::notice::branch behind base; updating"
+              gh pr update-branch "$pr_url" >/dev/null 2>&1 || true
+            fi
+            sleep 20
+          done
 
       - name: Notify on failure (internal)
         if: failure()
