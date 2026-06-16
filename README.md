@@ -216,9 +216,9 @@ The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` 
 | `bump-release.yml` itself fails | L1 internal Chat alert + GitHub Actions failure | Re-dispatch manually after fixing inputs / tags |
 | Bump PR opens but `pr-checks.yml` fails (mkdocs `--strict` regression) | PR stays open until pushed-fix or close | Push a fix to the bump branch or fix `pr-checks.yml` and re-run |
 | Bump never opens (dispatcher silently failed) | Wednesday checklist + absence of public success ping | Manually `gh workflow run bump-release.yml` |
-| Bump PR opens but stays `BLOCKED` (never auto-merges) | PR stuck on `Review required` | Confirm the DaSCH Bot App is a bypass actor on `main` (see preconditions) |
+| Bump PR opens but never merges | `bump-release.yml` blocks/fails at the merge step | Confirm the DaSCH Bot App is a bypass actor on `main` (see preconditions) |
 | `deploy.yml` fails (`mike` publish) | internal Chat alert + Actions failure | Re-run `deploy.yml`, or re-dispatch `bump-release.yml` |
-| Docs go live but no announcement | absence of public ping; check `announce-release.yml` run + internal alert | Re-run `announce-release.yml`, or post the announcement manually |
+| Docs go live but no announcement | absence of public ping; `deploy.yml`'s `send-chat-notification` job failed/timed out + internal alert | Re-run `deploy.yml`, or post the announcement manually |
 
 #### 5. Credentials
 
