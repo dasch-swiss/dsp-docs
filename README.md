@@ -115,21 +115,22 @@ Open up <http://127.0.0.1:8000/> in your browser, and you'll see the documentati
 
 Publication of the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/) is fully automated.
 A `dsp-tools` release publish triggers `bump-release.yml`, which opens a `deploy:`-prefixed PR
-against `main`; once `pr-checks.yml` is green, auto-merge fires (the DaSCH Bot App is a
-review-bypass actor on `main`, so no manual approval is needed) and `deploy.yml` publishes via
-`mike` to gh-pages. Once GitHub Pages serves the new version, `announce-release.yml` posts the
-public release announcement.
+against `main`; once `pr-checks.yml` is green, `bump-release.yml` merges it directly as the
+DaSCH Bot App (a review-bypass actor on `main`, so no human approval is needed) and `deploy.yml`
+publishes via `mike` to gh-pages. Once GitHub Pages serves the new version, `deploy.yml`'s
+`send-chat-notification` job posts the public release announcement.
 
 #### Repo-level preconditions
 
 Run-time settings the maintainer must keep enabled (see §5 for secrets / vars):
 
-- Branch protection on `main` requires `pr-checks`; **"Allow auto-merge"** enabled at
-  <https://github.com/dasch-swiss/dsp-docs/settings>.
+- Branch protection on `main` requires the `pr-checks` / `Build documentation` status check.
 - The **DaSCH Bot App** is listed under **"Allow specified actors to bypass required pull
   requests"** in `main`'s branch protection. The bump PR is authored by the App, which cannot
-  approve its own PR; the bypass lets its auto-merge complete on green checks without a human
-  review. Without this, the bump PR sits `BLOCKED` on the required review.
+  approve its own PR, and GitHub auto-merge does **not** honour bypass allowances — so
+  `bump-release.yml` instead waits for the required checks to pass and then **merges the PR
+  directly** as the App (`gh pr merge --admin`), which the bypass authorizes. Without this entry
+  the merge is rejected and the PR sits `BLOCKED` on the required review.
 - **"Automatically delete head branches"** enabled at the same settings page. The bump
   workflow force-pushes defensively so a previously merged-and-not-deleted bump branch
   doesn't block a re-dispatch, but auto-delete is the canonical fix.
@@ -148,16 +149,17 @@ What fires:
    `dsp-tools`'s `src/dsp_tools/resources/start-stack/versions.env` plus TOOLS from the
    triggering release tag.
 3. `bump-release.yml` renders `release.mk` from `.github/release.mk.tmpl`, runs
-   `make update-submodules`, opens a PR titled `deploy: bump docs to <DSP>`, and enables
-   auto-merge (squash).
-4. Once `pr-checks.yml` is green the PR squash-merges; the merge commit subject preserves the
-   `deploy:` prefix so `deploy.yml`'s gate fires.
+   `make update-submodules`, and opens a PR titled `deploy: bump docs to <DSP>`.
+4. `bump-release.yml` waits for the required checks to pass, then squash-merges the PR directly
+   as the App (`gh pr merge --admin`, authorized by the bypass allowance). The merge commit
+   subject preserves the `deploy:` prefix so `deploy.yml`'s gate fires.
 5. `deploy.yml` publishes to gh-pages via `mike`. GitHub Pages then builds and serves the new
    version (the "pages build and deployment" run, ~10 min behind the merge).
-6. When the github-pages deployment reaches `success`, `announce-release.yml` (triggered on the
-   `deployment_status` event) posts `📚 *DSP-DOCS* <DSP> released and deployed` to the public
-   release-announcements room — so the announcement fires only once the site is live. The DSP
-   version is read from the `latest`-aliased entry in gh-pages `versions.json`.
+6. `deploy.yml`'s `send-chat-notification` job polls the github-pages deployment until it reaches
+   `success`, then posts `📚 *DSP-DOCS* <DSP> released and deployed` to the public
+   release-announcements room — so the announcement fires only once the site is live. (Polling,
+   not a `deployment_status` trigger: that event is emitted by `github-pages[bot]` via
+   `GITHUB_TOKEN`, which GitHub suppresses from triggering workflows.)
 
 Where to verify:
 
