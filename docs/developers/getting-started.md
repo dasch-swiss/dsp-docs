@@ -83,7 +83,7 @@ This command upgrades DSP-TOOLS to the latest version.
 
 Now that you have DSP-TOOLS installed,
 you can use it to run DSP-API and DSP-APP
-according to [these instructions](https://docs.dasch.swiss/latest/DSP-TOOLS/start-stack/).
+according to [these instructions](https://docs.dasch.swiss/DSP-TOOLS/developers/start-stack/).
 
 ### Test project *Rosetta*
 
