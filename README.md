@@ -117,8 +117,22 @@ Publication of the documentation to [docs.dasch.swiss](https://docs.dasch.swiss/
 A `dsp-tools` release publish triggers `bump-release.yml`, which opens a `deploy:`-prefixed PR
 against `main`; once `pr-checks.yml` is green, `bump-release.yml` merges it directly as the
 DaSCH Bot App (a review-bypass actor on `main`, so no human approval is needed) and `deploy.yml`
-publishes via `mike` to gh-pages. Once GitHub Pages serves the new version, `deploy.yml`'s
-`send-chat-notification` job posts the public release announcement.
+publishes to gh-pages via `mkdocs gh-deploy --force --no-history`, which rewrites the branch as a
+single commit each time rather than accumulating one. Once GitHub Pages serves the new version,
+`deploy.yml`'s `send-chat-notification` job posts the public release announcement.
+
+docs.dasch.swiss serves a single, unversioned site — there is no version dropdown and no version
+history. Two URL shapes from the old versioned site are kept resolving permanently, because they
+are referenced from software and documents this repo doesn't control (released `dsp-tools`/PyPI
+artefacts, `dsp-api`'s OpenAPI spec, external manuals):
+
+- `/latest/...` — a generated stub page per built page (`scripts/mkdocs_hooks.py`), answering
+  200 with a redirect to the flat equivalent.
+- `/<YYYY.MM.DD>/...` (any old version, `-rc`, or `prerelease`) — a client-side redirect in the
+  themed 404 page (`overrides/404.html`).
+
+Both are permanent infrastructure, not a migration step; see the comments in those two files for
+why.
 
 #### Repo-level preconditions
 
@@ -153,8 +167,9 @@ What fires:
 4. `bump-release.yml` waits for the required checks to pass, then squash-merges the PR directly
    as the App (`gh pr merge --admin`, authorized by the bypass allowance). The merge commit
    subject preserves the `deploy:` prefix so `deploy.yml`'s gate fires.
-5. `deploy.yml` publishes to gh-pages via `mike`. GitHub Pages then builds and serves the new
-   version (the "pages build and deployment" run, ~10 min behind the merge).
+5. `deploy.yml` publishes to gh-pages via `mkdocs gh-deploy --force --no-history`. GitHub Pages
+   then builds and serves the new version (the "pages build and deployment" run, ~10 min behind
+   the merge).
 6. `deploy.yml`'s `send-chat-notification` job polls the github-pages deployment until it reaches
    `success`, then posts `📚 *DSP-DOCS* <DSP> released and deployed` to the public
    release-announcements room — so the announcement fires only once the site is live. (Polling,
@@ -164,8 +179,7 @@ What fires:
 Where to verify:
 
 - The bump PR appears at <https://github.com/dasch-swiss/dsp-docs/pulls?q=is:pr+deploy:+bump>.
-- `https://docs.dasch.swiss/versions.json` lists the new DSP under `latest` within a few
-  minutes of merge.
+- `https://docs.dasch.swiss/version.json` shows the new DSP within a few minutes of merge.
 
 #### 2. Manual override (`workflow_dispatch`)
 
@@ -217,7 +231,7 @@ The symmetric switch on the dispatcher side is `vars.DSP_DOCS_DISPATCH_ENABLED` 
 | Bump PR opens but `pr-checks.yml` fails (mkdocs `--strict` regression) | PR stays open until pushed-fix or close | Push a fix to the bump branch or fix `pr-checks.yml` and re-run |
 | Bump never opens (dispatcher silently failed) | Wednesday checklist + absence of public success ping | Manually `gh workflow run bump-release.yml` |
 | Bump PR opens but never merges | `bump-release.yml` blocks/fails at the merge step | Confirm the DaSCH Bot App is a bypass actor on `main` (see preconditions) |
-| `deploy.yml` fails (`mike` publish) | internal Chat alert + Actions failure | Re-run `deploy.yml`, or re-dispatch `bump-release.yml` |
+| `deploy.yml` fails (gh-pages publish) | internal Chat alert + Actions failure | Re-run `deploy.yml`, or re-dispatch `bump-release.yml` |
 | Docs go live but no announcement | absence of public ping; `deploy.yml`'s `send-chat-notification` job failed/timed out + internal alert | Re-run `deploy.yml`, or post the announcement manually |
 
 #### 5. Credentials
@@ -231,7 +245,7 @@ dsp-app, dsp-meta. Workflows mint short-lived (1h) installation tokens; nothing 
 | `secrets.DASCH_BOT_APP_PRIVATE_KEY` | org `dasch-swiss` | PEM, raw newlines, **no base64 wrapping** |
 | `secrets.GOOGLE_CHAT_DSP_RELEASES_WEBHOOK_URL` | org `dasch-swiss` | Public room — DSP Release Announcements |
 | `secrets.GOOGLE_CHAT_DSP_RELEASE_INTERNAL_WEBHOOK_URL` | dsp-docs **and** dsp-tools (repo-level, same URL in both) | Internal engineering — failure / health alerts. Rotate in both. |
-| `secrets.DASCHBOT_PAT` | dsp-docs repo | Legacy PAT used by `deploy.yml` (gh-pages `mike` publish) and `pr-checks.yml` (submodule fetches via `.git-credentials`). Flagged for follow-up migration to the DaSCH Bot App. |
+| `secrets.DASCHBOT_PAT` | dsp-docs repo | Legacy PAT used by `deploy.yml` (gh-pages publish) and `pr-checks.yml` (submodule fetches via `.git-credentials`). Flagged for follow-up migration to the DaSCH Bot App. |
 | `vars.BUMP_RELEASE_ENABLED` | dsp-docs repo | Kill switch (true/false, case-insensitive) |
 | `vars.DSP_DOCS_DISPATCH_ENABLED` | dsp-tools repo | Symmetric kill switch on the dispatcher |
 
@@ -253,9 +267,9 @@ If a bump publishes broken docs:
    `deploy.yml`'s commit-message gate will not fire.
 3. The PR body should revert `release.mk` to the previous DSP / API / APP / TOOLS / META
    values and revert the four submodule pointers.
-4. Merge with `gh pr merge --squash <PR>`. `deploy.yml` fires; `mike` redeploys the prior
-   version.
-5. Verify `https://docs.dasch.swiss/versions.json` advertises the prior DSP under `latest`.
+4. Merge with `gh pr merge --squash <PR>`. `deploy.yml` fires; `mkdocs gh-deploy` republishes
+   the flat site at the prior version.
+5. Verify `https://docs.dasch.swiss/version.json` shows the prior DSP.
 6. Post a manual notice to the public release-announcements room explaining the revert.
 
 ### Help for the `make` commands

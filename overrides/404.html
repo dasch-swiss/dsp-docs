@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{# mkdocs renders this template with page=None, so main.html's default
+   content block (which reads page.content) comes out empty. Hard-code the
+   body instead, matching material's own 404.html. #}
+{% block content %}
+  <h1>404 - Not found</h1>
+{% endblock %}
+
+{% block extrahead %}
+  <script>
+    // Permanent compat shim, not a migration step: version-pinned links
+    // (bookmarks, old mail, external documents) still arrive years after a
+    // version stops being served, since docs.dasch.swiss no longer keeps any
+    // version history. Strip a leading /latest/, /prerelease/, or
+    // /YYYY.MM.DD[-rc]/ segment and forward to the flat equivalent page (or
+    // the homepage if that segment was the whole path). Unlike /latest/
+    // (see scripts/mkdocs_hooks.py), a 404 status here is acceptable: nothing
+    // automated depends on these paths, only humans following old links.
+    // Terminates by construction: after the redirect the leading path
+    // segment is a real page name, which no longer matches this pattern, so
+    // a page that is genuinely missing falls through to this same themed
+    // 404 instead of looping.
+    (function () {
+      var m = location.pathname.match(/^\/(latest|prerelease|\d{4}\.\d{2}\.\d{2}(-rc)?)(\/.*)?$/);
+      if (m) {
+        location.replace((m[3] || "/") + location.search + location.hash);
+      }
+    })();
+  </script>
+{% endblock %}

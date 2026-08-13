@@ -1,5 +1,8 @@
 site_name: DaSCH Service Platform Documentation
 
+hooks:
+  - scripts/mkdocs_hooks.py
+
 nav:
   - Overview: index.md
   - DSP-APP: "!include ./dsp/dsp-app/mkdocs.yml"
@@ -18,7 +21,6 @@ nav:
 
 plugins:
   - git-revision-date-localized
-  - mike
   - monorepo
   - include-markdown
   - search
@@ -51,7 +53,6 @@ theme:
     - navigation.tabs
     - search.suggest
     - search.highlight
-    - version
 extra_css:
   - "assets/style/theme.css"
 
@@ -59,8 +60,6 @@ extra:
   analytics:
     provider: fathom
     data_site: BWXVRNXV
-  version:
-    provider: mike
 
 markdown_extensions:
   - admonition

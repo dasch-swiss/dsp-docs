@@ -48,13 +48,6 @@ for ARGUMENT in "$@"; do
 	fi
 done
 
-# set alias: default is latest, rc is prerelease
-alias="latest"
-if [[ $v == *"-rc"* ]]; then
-	echo "This version is a release candidate"
-	alias="prerelease"
-fi
-
 if [ "${deploy}" = false ]; then
 	stop "do not deploy"
 else
@@ -62,7 +55,7 @@ else
 	make graphvizfigures
 
 	echo "Deploy version ${v} to github pages now"
-	uv run mike deploy --push --branch gh-pages --update-aliases "${v}" "${alias}"
+	uv run mkdocs gh-deploy --force --no-history --ignore-version --remote-branch gh-pages
 
 	echo $sep
 fi
