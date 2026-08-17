@@ -19,12 +19,13 @@ update-submodules: ## grab the current documentation from each connected repo
 build: ## build docs into the local 'site' folder
 	@$(MAKE) install-requirements
 	@$(MAKE) graphvizfigures
-	uv run mike deploy $(DSP) latest --update-aliases
+	uv run mkdocs build
 
 .PHONY: serve
 serve: ## serve docs for local viewing
-	@$(MAKE) build
-	uv run mike serve
+	@$(MAKE) install-requirements
+	@$(MAKE) graphvizfigures
+	uv run mkdocs serve
 
 .PHONY: deploy
 deploy: ## build and publish docs to Github Pages with versioning from the release.mk file
@@ -38,7 +39,6 @@ install-requirements: ## install requirements
 .PHONY: clean
 clean: ## cleans the project directory
 	@rm -rf site/
-	uv run mike delete --all
 
 .PHONY: graphvizfigures
 graphvizfigures: $(PNG_FIGURES) ## to generate images from dot files

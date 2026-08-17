@@ -35,5 +35,13 @@ jobs:
         run: make graphvizfigures
       - name: Build docs with mkdocs in strict mode
         run: uv run mkdocs build --strict --verbose
-      - name: Call the Make recipe (which uses mike, which is used to publish the docs)
-        run: make build
+      - name: Verify the /latest/ redirect-stub tree covers every built page
+        # A stub tree that silently stops covering newly added pages looks
+        # identical to a healthy build, so assert coverage, not just presence.
+        # See scripts/mkdocs_hooks.py for why this tree exists.
+        run: |
+          test -f site/version.json
+          grep -q 'location.replace' site/404.html
+          pages=$(find site -name index.html -not -path 'site/latest/*' | wc -l)
+          stubs=$(find site/latest -name index.html | wc -l)
+          test "$pages" -eq "$stubs"
