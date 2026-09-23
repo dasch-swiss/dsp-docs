@@ -1,0 +1,9426 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Balduin Landolt">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/logo_bw.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Gravsearch prequery pattern ordering — spike write-up - DaSCH Service Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../assets/style/theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+    <script src="https://cdn.usefathom.com/script.js" data-site="BWXVRNXV" data-include-domains="docs.dasch.swiss" defer></script>
+
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gravsearch-prequery-pattern-ordering-spike-write-up" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DaSCH Service Platform Documentation" class="md-header__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DaSCH Service Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gravsearch prequery pattern ordering — spike write-up
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../DSP-APP/" class="md-tabs__link">
+          
+  
+  
+  DSP-APP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  DSP-API
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../DSP-TOOLS/" class="md-tabs__link">
+          
+  
+  
+  DSP-TOOLS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Dsp-Ingest/openapi/" class="md-tabs__link">
+          
+  
+  
+  DSP-INGEST
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../DSP-META/" class="md-tabs__link">
+          
+  
+  
+  DSP-META
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../developers/getting-started/" class="md-tabs__link">
+          
+  
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DaSCH Service Platform Documentation" class="md-nav__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    DaSCH Service Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-APP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-APP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/contribution/docs-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/contribution/release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/0001-library-taxonomy-and-dependency-direction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0001: Library taxonomy and enforced dependency direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/0002-the-barrel-is-the-public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0002: The barrel is the only public interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/0003-feature-state-is-component-provided/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0003: Feature state is component-provided, with one writer per value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/0004-cross-feature-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0004: Cross-feature access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/0005-what-shared-means/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0005: What shared/ means, and what it does not
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-APP/adr/0006-the-e2e-suite-is-its-own-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0006: The end-to-end suite is its own project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/what-is-dsp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is DSP?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/file-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Formats in DSP-API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/standoff-rdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standoff/RDF Text Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/legal-info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Information for Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/example-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    An Example Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP Ontologies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP Ontologies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-dsp-ontologies/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-dsp-ontologies/project-data-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Data Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-dsp-ontologies/knora-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Knora Base Ontology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-dsp-ontologies/salsah-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The SALSAH GUI Ontology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API Endpoints
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API Endpoints
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API V2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API V2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/reading-and-searching-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading and Searching Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/reading-user-permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading the User's Permissions on Resources and Values
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/getting-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/query-language/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravsearch - Virtual Graph Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/editing-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating and Editing Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/editing-values/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating and Editing Values
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/ontology-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Querying, Creating, and Updating Ontologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_10" id="__nav_3_3_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Textual Data in DSP-API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Textual Data in DSP-API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/text/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/text/standard-standoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Standoff Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/text/custom-standoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Standoff Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/text/tei-xml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEI XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/permalinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permalinks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v2/knora-iris/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IRIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Admin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Groups Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lists Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Files Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/stores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stores Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-admin/sparql-passthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPARQL Passthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API V3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API V3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v3/project-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Migration Export/Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-v3/project-data-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Data Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_5" id="__nav_3_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Util API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/api-util/version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_6" id="__nav_3_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrumentation API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instrumentation API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/instrumentation/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/instrumentation/health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Health Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-endpoints/instrumentation/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing and Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Publishing and Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-publishing-deployment/publishing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-publishing-deployment/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Observability
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/using-grafana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Grafana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/gravsearch-trace-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravsearch Trace Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/traceql-recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TraceQL Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/instrumentation-recipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrumentation Recipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions (ADR)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0001 Record Architectural Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0002-change-cache-service-manager-from-akka-actor-to-zlayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0002 Change Cache Service Manager from Akka-Actor to ZLayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0003-change-iiif-service-manager-and-sipi-implementation-to-zlayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0003 Change IIIF Service Manager and Sipi implementation to zlayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0004-change-triplestore-service-manager-and-fuseki-implementation-to-zlayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0004 Change Triplestore Service Manager and Fuseki implementation to ZLayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0005-change-respondermanager-to-a-simple-case-class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0005 Change ResponderManager to a simple case class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0006-use-zio-http/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0006 Gradually Replace Akka-HTTP with ZIO-HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0007-zio-fication-of-responders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0007 ZIO-fication of Responders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0008-replace-akka-with-pekko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0008 Replace Akka with Pekko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0009-api-v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0009 API `v3` for client-optimized endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0010-api-v3-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0010 API `v3` basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0011-cross-context-access-ports-and-adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0011 Cross-context access through consumer-defined ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP Internals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP Internals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1" id="__nav_3_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1_1" id="__nav_3_7_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API Design Principles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API Design Principles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/principles/design-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/principles/store-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/principles/triplestore-updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triplestore Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/principles/consistency-checking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/principles/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/principles/rdf-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDF Processing API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1_2" id="__nav_3_7_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API V2 Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API V2 Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API v2 Design Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/ontology-schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/smart-iris/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart IRIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/content-wrappers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Wrappers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/json-ld/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON-LD Parsing and Formatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/ontology-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/sipi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API and Sipi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/gravsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravsearch Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/standoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standoff Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/ark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archival Resource Key (ARK)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-v2/query-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPARQL Query Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/api-admin/administration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin API Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1_4" id="__nav_3_7_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP Domain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP Domain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/domain/domain-entities-and-relations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Entities and Relations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/domain/system-instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/design/domain/class-and-property-hierarchies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class and Property Hierarchies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/building-and-running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Running
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/vscode-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Visual Studio Code for development of DSP-API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/docker-cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Cheat Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/docker-compose/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Starting the DSP-Stack inside Docker Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/updating-repositories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Updating Repositories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-internals/development/third-party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Third-Party Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIPI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIPI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-sipi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-sipi/sipi-and-dsp-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction between Sipi and DSP-API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lucene
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lucene
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-lucene/lucene-query-parser-syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lucene Query Parser Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-migration-guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Guides and Deprecations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-TOOLS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-TOOLS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/permissions-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/local-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running a Local Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Modelling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Modelling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON project file
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JSON project file
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-model/json-project/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-model/json-project/ontologies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-model/json-project/caveats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caveats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-model/excel2json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command excel2json
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-model/data-model-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commands to Interact With a Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data for Mass-Upload
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data for Mass-Upload
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xmllib documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xmllib documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/xmlroot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLRoot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_4" id="__nav_4_5_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP base resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP base resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/region-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RegionResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/link-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/video-segment-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VideoSegmentResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/audio-segment-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioSegmentResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_6" id="__nav_4_5_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licenses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Licenses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/licenses/recommended/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/licenses/other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/placeholder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placeholder Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_8" id="__nav_4_5_1_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Processing Functions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Processing Functions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/general-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/value-checkers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Checkers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/value-converters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Converters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/config-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/date_formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Date Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/xmllib-docs/advanced-set-up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Set-Up Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-file/xml-data-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML data file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-file/data-file-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/data-file/excel2xml-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprecated excel2xml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/special-workflows/workflow-xmlupload/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special Workflows xmlupload
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/special-workflows/migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/special-workflows/update-legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update legal info in XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/special-workflows/env-set-up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    .env Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Information for developers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Information for developers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/start-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running DSP locally
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/decision-log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architectural Decision Records
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7_4" id="__nav_4_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architectural Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architectural Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/architecture/xml-parsing-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML Parsing and Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/architecture/create-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/architecture/migration-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/architecture/error-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/packaging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies, packaging & distribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/user-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs and Link Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7_8" id="__nav_4_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code quality tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code quality tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/code-quality-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/general-formatting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General formatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/python-formatting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python formatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/python-docstring-formatting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python docstring formatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/python-type-checking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python type checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/python-linting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python linting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/developers/code-quality-tools/python-see-also/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    See also
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-TOOLS/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-INGEST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-INGEST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/ingest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingesting Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Service documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/service-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Dsp-Ingest/service-filesystem-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filesystem Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-META
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-META
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-META
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metadata
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/data/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/data/v1-datamodel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Model v1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/data/v2-datamodel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Model v2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/data/adding-metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/code/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/code/front-end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Front End
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/code/back-end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back End
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DSP-META/code/observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability & Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Basics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/rdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/sipi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sipi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/libraries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-fuseki-actually-does-with-written-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Fuseki actually does with written order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-harness-floor-and-why-every-fast-case-is-re-expressed-net-of-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The harness floor, and why every fast case is re-expressed net of it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#censored-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Censored measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-set-equivalence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Result-set equivalence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-case-is-not-a-pure-permutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One case is not a pure permutation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s1-project-class-type-versus-attachedtoproject-as-the-leading-anchor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S1 — project-class type versus attachedToProject as the leading anchor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s2-technical-resource-closure-type-values-versus-attachedtoproject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S2 — technical (Resource-closure) type VALUES versus attachedToProject
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3-which-bound-iri-statement-leads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S3 — which bound-IRI statement leads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s4-list-node-method-sanity-check-against-the-known-stage-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S4 — list node (method sanity check against the known stage matrix)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s5-bound-literal-as-an-anchor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S5 — bound literal as an anchor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s6-bound-iri-versus-attachedtoproject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S6 — bound IRI versus attachedToProject
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s7-is-a-leads-to-a-filter-preference-worth-adding-inside-the-plain-tier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S7 — is a "leads to a FILTER" preference worth adding inside the plain tier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s8-anchorless-link-query-and-whether-a-technical-type-statement-may-lead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S8 — anchorless link query, and whether a technical type statement may lead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s9-a-built-in-standoff-class-as-a-component-leader-mini-spike-round-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S9 — a built-in standoff class as a component leader (mini spike, round 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s10-a-built-in-knora-basevaluehas-predicate-driving-a-sort-by-date-join-mini-spike-round-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S10 — a built-in knora-base:valueHas* predicate driving a sort-by-date join (mini spike, round 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s9c-does-it-matter-where-in-the-block-the-property-path-is-emitted-mini-spike-round-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S9c — does it matter where in the block the property path is emitted (mini spike, round 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tier-table-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tier table (measured)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tier table (measured)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-changes-against-the-d4-working-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two changes against the D4 working hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-amendment-to-t2-on-the-engine-facts-rather-than-on-a-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One amendment to T2, on the engine facts rather than on a measurement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-renumbering-mapping-the-plans-numbers-to-this-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tier renumbering: mapping the plan's numbers to this table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-the-spike-forces-in-the-ordering-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change the spike forces in the ordering algorithm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threats-to-validity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Threats to validity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gravsearch-prequery-pattern-ordering-spike-write-up">Gravsearch prequery pattern ordering — spike write-up</h1>
+<p>Phase 3 of the prequery-ordering work (DEV-7287). The spike measures, on the <strong>stage</strong> triplestore, how the
+written order of a prequery's patterns affects Fuseki's wall-clock time, and turns the result into the tier
+table that the <code>PrequeryPatternOrdering</code> pass is built from.</p>
+<p>Everything here was measured through <code>dsp vre sparql query -s stage --timeout 120 --accept csv --query-file
+&lt;f&gt;</code>. No local Fuseki and no dump was used for any measurement or discovery. Stage is a copy of prod on the
+prod Fuseki version (TDB2, no <code>stats.opt</code>).</p>
+<p>This document was revised after review checkpoint 3. Five follow-up measurements were added in response
+(<code>F0</code>, <code>S8w</code>, <code>S8w-D</code>, <code>S2big</code>, and the net-time re-expression); two of them changed a conclusion, and the
+changes are called out where they occur.</p>
+<p>Raw material is not tracked in the repository (decision at ship time, 2026-09-18: the per-case tables in this
+document are the record). It is kept on Balduin's machine under <code>~/Desktop/gravsearch-ordering-measurements/</code> as <code>spike-assets/</code>:</p>
+<ul>
+<li><code>generate.py</code> — generates every layout file, so that the layouts of one case are provably identical except
+  for pattern order.</li>
+<li><code>S&lt;n&gt;-&lt;letter&gt;.rq</code> — the 31 layout files.</li>
+<li><code>stage.sh</code> — runs one layout once and appends <code>case,layout,run,seconds,rows</code> to <code>results.csv</code>.</li>
+<li><code>run-case.py</code> — the protocol driver: one discarded warm-up round, then five timed round-robin rounds.</li>
+<li><code>results.csv</code> — every measurement, including the discarded variants.</li>
+<li><code>resource-closure.txt</code> — the 891 classes of the <code>knora-base:Resource</code> subclass closure on stage.</li>
+</ul>
+<h2 id="what-fuseki-actually-does-with-written-order">What Fuseki actually does with written order</h2>
+<p>The plan and the ticket are sometimes phrased as "Fuseki executes patterns in written order". That is not
+quite what Fact 1 of <code>docs/development/dsp-api-fuseki-query-execution.md</code> says, and the difference matters for
+reading the results below.</p>
+<p>Fact 1: TDB2 <strong>does</strong> reorder triple patterns for selectivity within a single basic graph pattern, but
+without a stats file it does so only by <strong>counting bound terms</strong>. It never moves a pattern across an
+<code>OPTIONAL</code>, <code>UNION</code>, <code>MINUS</code>, property-path or subquery boundary, and patterns of equal shape tie — and ties
+keep document order.</p>
+<p>So written order decides execution in exactly three situations, and all eight cases below sit in one of them:</p>
+<ol>
+<li><strong>Across a barrier.</strong> S4 contains a property path; S1, S2, S5 and S7 contain a <code>VALUES</code> table. The
+   optimiser cannot hoist across those, so the position of the barrier <em>is</em> the plan.</li>
+<li><strong>Among equal-shape patterns.</strong> In S3, S6 and S8 almost every statement has exactly two bound terms, so
+   the heuristic ties them all and document order decides.</li>
+<li><strong>Where the heuristic counts the wrong thing.</strong> Fact 1's corollary: <code>?s ?p &lt;bound&gt;</code> has one bound term and
+   loses to any two-bound-term pattern, however unselective the latter is.</li>
+</ol>
+<p>This is why the spike measures anything at all: if TDB2 had statistics, most of these differences would be
+optimised away. It also bounds the result — <strong>the tier table is a heuristic that compensates for a missing
+cost model, not a cost model.</strong></p>
+<h2 id="discovery">Discovery</h2>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Value on stage (2026-09-17)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>project IRI for 0812 (ekws)</td>
+<td><code>http://rdfh.ch/projects/Wacpqk4-SfujXYw5EeUoCw</code> (111 939 <code>ekws:Object</code>)</td>
+</tr>
+<tr>
+<td>project IRI for 0102 (tanner)</td>
+<td><code>http://rdfh.ch/projects/0102</code> (17 949 <code>scenario-tanner#Page</code>)</td>
+</tr>
+<tr>
+<td><code>scenario-tanner#Document</code> closure</td>
+<td>7 classes: <code>Document</code>, <code>Correspondence</code>, <code>CriticalReception</code>, <code>InterviewArchive</code>, <code>Production</code>, <code>Promotion</code>, <code>Script</code></td>
+</tr>
+<tr>
+<td><code>knora-base:Resource</code> closure</td>
+<td>891 classes (<code>resource-closure.txt</code>)</td>
+</tr>
+<tr>
+<td><code>ekws:hasConcept</code> distinct targets</td>
+<td>2 719; in-degree from 3 360 down to 1</td>
+</tr>
+<tr>
+<td><code>ekws:hasConcept</code> target of median in-degree</td>
+<td><code>http://rdfh.ch/0812/HF06nlmuSyyOIkqLCgeF7Q</code> (in-degree 8)</td>
+</tr>
+<tr>
+<td>class of every <code>ekws:hasConcept</code> target</td>
+<td><code>ekws:Concept</code> (118 667 statements, no other class)</td>
+</tr>
+<tr>
+<td><code>hasShelfNumber</code> literal with exactly one hit</td>
+<td><code>"CH_CS_CSL-020-01-08-01-01"^^xsd:string</code></td>
+</tr>
+<tr>
+<td>list node</td>
+<td><code>http://rdfh.ch/lists/0812/JS06AyiJR-qRce2laMtF1w</code> — 19 614 matching <code>ekws:hasMedium</code> values</td>
+</tr>
+<tr>
+<td><code>standoff:StandoffParagraphTag</code> instances (round 7, for S9)</td>
+<td>185 479</td>
+</tr>
+<tr>
+<td><code>knora-base:StandoffDateTag</code> instances (round 7)</td>
+<td><strong>0</strong> — no project on stage stores date standoff, which is why S9 substitutes two small tag classes</td>
+</tr>
+<tr>
+<td>top standoff-bearing text property (round 7)</td>
+<td><code>0801/beol#hasText</code>, 376 598 values</td>
+</tr>
+<tr>
+<td>S9's enumerating classes (round 7)</td>
+<td><code>beol:StandoffMarginalTag</code> (120) and <code>standoff:StandoffCiteTag</code> (3)</td>
+</tr>
+<tr>
+<td><code>knora-base:valueHasStartJDN</code> statements (round 7, for S10)</td>
+<td>363 410 store-wide; the largest project date property is <code>0812/ekws#hasDate</code> (69 182), S10 uses <code>081C/hdm#hasDate</code> (8 941)</td>
+</tr>
+</tbody>
+</table>
+<p>Note the two class counts above are <strong>per class</strong>, not project totals: 17 949 is the number of
+<code>scenario-tanner#Page</code> instances in 0102, and 111 939 the number of <code>ekws:Object</code> instances in 0812. Neither
+project's total resource count was measured, so no quantitative claim below depends on one.</p>
+<p>Two substitutions the discovery forced, both recorded here because they change the plan's literal text:</p>
+<ol>
+<li><strong>S8's link property.</strong> The plan's <code>ekws:hasCreator</code> / <code>ekws:Person</code> pair returns <strong>zero</strong> rows on stage.
+   The plan's own fallback applies: the top ekws link property by count is <code>ekws:hasConcept</code> (118 667, with
+   <code>hasConceptValue</code> at 118 681), whose targets are all <code>ekws:Concept</code>. S8 uses <code>hasConcept</code> /
+   <code>hasConceptValue</code> / <code>Concept</code>.</li>
+<li><strong>S2's filter literal.</strong> <code>FILTER regex(?l, "^Brief", "i")</code> matches nothing in project 0102, which is a
+   French corpus. <code>"^Types"</code> matches only five <code>knora-base:ListNode</code>s, and list nodes are not in the Resource
+   closure, so that variant is empty too. <code>"^Le"</code> matches 93 resources and is what S2 uses. Both zero-row
+   variants are kept in <code>results.csv</code> under the case ids <code>S2norows</code> (<code>^Brief</code>) and <code>S2zero</code> (<code>^Types</code>), and
+   <strong>all three variants rank the three layouts identically</strong>.</li>
+</ol>
+<h2 id="method">Method</h2>
+<p>Per case: one warm-up round over all layouts (discarded), then five timed rounds, each round running the
+case's layouts round-robin in letter order, so drift in stage's load hits all layouts of a case alike.</p>
+<h3 id="the-harness-floor-and-why-every-fast-case-is-re-expressed-net-of-it">The harness floor, and why every fast case is re-expressed net of it</h3>
+<p>Wall-clock time is measured around the <code>dsp</code> invocation, so every number includes CLI startup and one HTTPS
+round trip to the stage ingress. The first version of this write-up guessed that overhead at "about 0.10 s"
+and never measured it, which review checkpoint 3 correctly flagged as decisive for the sub-second cases:
+adding a constant to both sides of a ratio shrinks the ratio and manufactures ties.</p>
+<p>It is now measured. Case <code>F0</code> runs <code>SELECT (1 AS ?x) WHERE {}</code> through the identical harness:</p>
+<table>
+<thead>
+<tr>
+<th>runs</th>
+<th>median</th>
+<th>min</th>
+<th>max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><strong>0.13</strong></td>
+<td>0.13</td>
+<td>0.14</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The floor is 0.13 s</strong>, which is larger than the entire spread of three cases. Every table below therefore
+carries a <code>net</code> column (<code>median − 0.13</code>), and D13 is applied to the net figures. Three consequences:</p>
+<ul>
+<li><strong>S5-A's net time is 0.00 s</strong> — that layout costs nothing measurable beyond the round trip.</li>
+<li><strong>S3 and S7 are decided below the harness's resolution.</strong> Their net medians (0.01–0.06 s) are within a few
+  multiples of the floor's own jitter (±0.01 s). Both are reported as ties, which is what they were called
+  before, but the reason is now "not resolvable" rather than "measured equal".</li>
+<li>The large-effect cases (S1, S2, S4, S6, S8) are unaffected: their net ratios move by less than a percent.</li>
+</ul>
+<p>An independent estimate of cross-session drift falls out for free: <code>S7-A</code> is byte-identical to <code>S1-A</code> by
+construction (<code>generate.py</code>), and the two were measured in separate sessions at 0.19 s and 0.20 s. So
+session-to-session drift is about ±0.01 s, the same order as the floor's jitter.</p>
+<h3 id="censored-measurements">Censored measurements</h3>
+<p><code>run-case.py</code> stops re-running a layout after two timeouts and writes <code>120,-1</code> for the remaining rounds.
+Those rows are <strong>synthetic</strong>, not measurements. Every <code>120</code> in the tables below is therefore shown as
+<code>≥120 (censored)</code> and never treated as an equality. The direction is conservative — it understates how bad
+the timing-out layout is — so no conclusion depends on it. Layout <code>S8w-D</code>'s timeout was additionally
+confirmed by hand with stderr visible: it is a genuine client-side 120 s timeout, not a masked network or
+session error.</p>
+<h3 id="result-set-equivalence">Result-set equivalence</h3>
+<p>Layouts of one case were verified to return the same result set: the sorted CSV bodies are byte-identical for
+every case except <code>S8-C</code>, whose rows carry the same <code>?mainRes</code> values and the same <code>GROUP_CONCAT</code> <em>elements</em>
+in a different order. <code>GROUP_CONCAT</code> element order is unspecified in SPARQL and depends on the join order, so
+this is not a defect in the layout file.</p>
+<h3 id="one-case-is-not-a-pure-permutation">One case is not a pure permutation</h3>
+<p><strong>S5-C is not a permutation of S5-A/S5-B.</strong> A and B carry the literal in statement-object position; C carries
+the variable form plus an equality <code>FILTER</code>, which is the form the pipeline emits today. C is a baseline, and
+S5's D13 decision is taken on A versus B alone.</p>
+<h2 id="results">Results</h2>
+<p>Decision rule is D13: a layout wins its case when its median over five runs is at least 20% faster than the
+runner-up <strong>and</strong> its minimum is not slower than the runner-up's median. Otherwise the case is a tie and
+resolves to the D4 working hypothesis. All times in seconds; <code>net</code> is median minus the 0.13 s harness floor.</p>
+<h3 id="s1-project-class-type-versus-attachedtoproject-as-the-leading-anchor">S1 — project-class type versus <code>attachedToProject</code> as the leading anchor</h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>VALUES+type, project, label, shelf, valueHasString</td>
+<td>0.20</td>
+<td><strong>0.07</strong></td>
+<td>0.20</td>
+<td>0.22</td>
+<td>1</td>
+</tr>
+<tr>
+<td>D</td>
+<td>VALUES+type, label, shelf, valueHasString, project</td>
+<td>0.20</td>
+<td><strong>0.07</strong></td>
+<td>0.19</td>
+<td>0.22</td>
+<td>1</td>
+</tr>
+<tr>
+<td>B</td>
+<td>project, VALUES+type, label, shelf, valueHasString</td>
+<td>0.99</td>
+<td>0.86</td>
+<td>0.97</td>
+<td>1.01</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C</td>
+<td>project, label, shelf, valueHasString, VALUES+type</td>
+<td>1.53</td>
+<td>1.40</td>
+<td>1.52</td>
+<td>1.56</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>A and D tie with each other and beat the project-first layouts by 12× to 20× net. <strong>The project-class type
+unit must lead; where the <code>attachedToProject</code> statement then goes is immaterial for this shape.</strong></p>
+<p>Per D13 this tie resolves to the working hypothesis. Note the traceability caveat: D13 names S1's fallback as
+"T3 project-class type above T4 project", which the <em>winning</em> layouts already demonstrate. The A-versus-D tie
+answers a different question — where <code>attachedToProject</code> sits among plain statements — and that question has
+no measured answer anywhere in the spike (see the tier table's provenance column).</p>
+<h3 id="s2-technical-resource-closure-type-values-versus-attachedtoproject">S2 — technical (Resource-closure) type VALUES versus <code>attachedToProject</code></h3>
+<p>Project 0102 (the original case):</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>VALUES+type, project, label</td>
+<td><strong>6.06</strong></td>
+<td>5.93</td>
+<td>6.04</td>
+<td>6.21</td>
+<td>25</td>
+</tr>
+<tr>
+<td>C</td>
+<td>project, VALUES+type, label</td>
+<td>97.77</td>
+<td>97.64</td>
+<td>97.59</td>
+<td>98.48</td>
+<td>25</td>
+</tr>
+<tr>
+<td>A</td>
+<td>project, label, VALUES+type</td>
+<td>≥120 (censored)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Project 0812, added after review checkpoint 3 as case <code>S2big</code> (identical layouts, 0812's project IRI and a
+matching label filter):</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>VALUES+type, project, label</td>
+<td><strong>6.95</strong></td>
+<td>6.82</td>
+<td>6.94</td>
+<td>7.02</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A</td>
+<td>project, label, VALUES+type</td>
+<td>≥120 (censored)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C</td>
+<td>project, VALUES+type, label</td>
+<td>≥120 (censored)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B wins outright in both projects</strong>, by 16× on 0102 and by at least 17× on 0812. The review raised the
+reasonable objection that S2's mechanism scales with the ratio between project size and store size, which is
+a <em>data</em> property and so does not transfer from stage to prod the way an engine property does. <code>S2big</code> tests
+exactly that: 0812 has 111 939 <code>ekws:Object</code> against 0102's 17 949 <code>Page</code>, and on the larger project both
+project-first layouts get <em>worse</em> (past the timeout), not better. The conclusion is not a small-project
+artefact.</p>
+<p>The mechanism is Fact 1's barrier rule, not selectivity. The Resource closure is not selective at all — it
+enumerates every resource class in the store. But a <code>VALUES</code> block is a barrier the optimiser cannot reorder
+across, so its written position is the plan: leading with it makes the table drive one index scan per listed
+class, while burying it makes the same table a multiplier over everything already matched. The same mechanism
+explains the tanner pathology in the plan's problem statement (VALUES-first 0.3–0.7 s, label-first ~53 s).</p>
+<p><strong>There is no early-termination confound.</strong> Per Fact 6, <code>GROUP BY</code> materialises its full input, so the
+<code>LIMIT 25</code> cannot short-circuit any layout. The data confirms it directly: <code>S2-B</code> (25 rows) and <code>S2zero-B</code>
+(0 rows) are indistinguishable at 6.06 s and 6.16 s.</p>
+<p><strong>A caveat this case must carry forward.</strong> Fact 7 says a large <code>VALUES</code> closure <em>poisons</em> join order — 591
+Resource subclasses turned a 2.1 s query into a &gt;60 s timeout — and that <code>VALUES</code> is meant for small anchoring
+sets. T5 below is therefore the least-bad ordering of a query shape that should not exist; it is a mitigation,
+not an endorsement. Separately, Fact 5 notes that scoping to <code>GRAPH &lt;projectDataGraph&gt;</code> <em>replaces</em> the
+<code>attachedToProject</code> join outright and took a class-browsing prequery from 1.66 s to 310 ms — meaning the whole
+T5-versus-T6 debate is about a join a later ticket should delete. Neither is in scope here; both belong in the
+follow-up.</p>
+<h3 id="s3-which-bound-iri-statement-leads">S3 — which bound-IRI statement leads</h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>rdf:object, hasConceptValue, hasConcept, type LinkValue, type Object</td>
+<td>0.14</td>
+<td>0.01</td>
+<td>0.14</td>
+<td>0.16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>A</td>
+<td>hasConcept, hasConceptValue, rdf:object, type LinkValue, type Object</td>
+<td>0.15</td>
+<td>0.02</td>
+<td>0.14</td>
+<td>0.16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>C (today)</td>
+<td>type Object, hasConcept, hasConceptValue, type LinkValue, rdf:object</td>
+<td>0.70</td>
+<td>0.57</td>
+<td>0.68</td>
+<td>0.71</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A and B are not distinguishable by this harness</strong>: their net medians are 0.02 s and 0.01 s against a floor
+that itself jitters by 0.01 s. Reported as a tie; the honest statement is "below resolution", not "equal".
+Both beat today's layout by roughly 30× net, reproducing the ticket's 0.67 s → 0.11 s figure.</p>
+<p>The tie-break between two T2 units is therefore unconstrained by measurement and resolves to the working
+hypothesis: the lexical key on the rendered statement.</p>
+<h3 id="s4-list-node-method-sanity-check-against-the-known-stage-matrix">S4 — list node (method sanity check against the known stage matrix)</h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>path, valueHasListNode, hasMedium, type</td>
+<td><strong>0.48</strong></td>
+<td>0.35</td>
+<td>0.48</td>
+<td>0.60</td>
+<td>25</td>
+</tr>
+<tr>
+<td>A (today)</td>
+<td>type, hasMedium, valueHasListNode, path</td>
+<td>4.11</td>
+<td>3.98</td>
+<td>4.03</td>
+<td>4.22</td>
+<td>25</td>
+</tr>
+<tr>
+<td>C</td>
+<td>path, type, hasMedium, valueHasListNode</td>
+<td>10.87</td>
+<td>10.74</td>
+<td>10.75</td>
+<td>10.94</td>
+<td>25</td>
+</tr>
+<tr>
+<td>D</td>
+<td>path, valueHasListNode, type, hasMedium</td>
+<td>≥120 (censored, 1 run)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B wins outright</strong> (11× over today, net). The harness reproduces the numbers recorded in the ticket
+(4.2–5.2 s emitted, 0.39 s anchor-first), which is the sanity check this case exists for.</p>
+<p>The interesting rows are C and D. Both hoist the property-path anchor to the front — the single change the
+ticket asks for — and both are <strong>worse than today</strong>: C by 2.7× net, D catastrophically. <strong>A tier-only sort
+that ignores connectivity is not merely suboptimal, it is a regression.</strong></p>
+<p>Two readings of C are available and the data cannot separate them, because C is a transposition of B rather
+than a single move: relative to B, the type statement moves up to position 2 <em>and</em> <code>valueHasListNode</code> — the
+only unit that joins anything to the path's <code>?lnv</code> — moves down to last. So C is consistent both with "a
+disconnected type statement right after the anchor is a cartesian product" and with "the anchor's only
+connector was demoted, so nothing joins to the path until the end". They are not separable by a permutation
+(it is a swap), and they argue for slightly different rules: the first for "connected non-type before
+connected type", the second for "keep the anchor's connector adjacent to it". The algorithm's rule 3a
+satisfies both, which is why this ambiguity does not block Phase 4 — but the write-up should not claim C
+isolates the first mechanism, and no longer does.</p>
+<h3 id="s5-bound-literal-as-an-anchor">S5 — bound literal as an anchor</h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>literal statement, hasShelfNumber, VALUES+type, label</td>
+<td><strong>0.13</strong></td>
+<td><strong>0.00</strong></td>
+<td>0.13</td>
+<td>0.14</td>
+<td>1</td>
+</tr>
+<tr>
+<td>B</td>
+<td>VALUES+type, hasShelfNumber, literal statement, label</td>
+<td>0.17</td>
+<td>0.04</td>
+<td>0.17</td>
+<td>0.18</td>
+<td>1</td>
+</tr>
+<tr>
+<td>C (today, not a permutation)</td>
+<td>VALUES+type, label, hasShelfNumber, valueHasString + FILTER</td>
+<td>0.18</td>
+<td>0.05</td>
+<td>0.18</td>
+<td>0.19</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A wins under D13</strong> — median 23.5% below B's, minimum not slower than B's median, and the two distributions
+do not overlap at all. Net of the floor, layout A's query costs nothing measurable while B costs 40 ms. So a
+<strong>bound-literal tier is added</strong>.</p>
+<p>It is the weakest conclusion in the spike and is scoped accordingly:</p>
+<ul>
+<li><strong>The effect is 40 ms.</strong> It will not rescue a pathological query the way S2's or S4's ordering does.</li>
+<li><strong>Only its existence is measured, not its rank.</strong> S5 compares a bound literal against a project-class type
+  unit and nothing else. Its position relative to T2 (bound IRI) and to T6 (<code>attachedToProject</code>) is
+  hypothesis.</li>
+<li><strong>It is nearly unreachable today.</strong> Layout C is the form the pipeline currently emits — a variable plus an
+  equality <code>FILTER</code> — and it is the slowest of the three. The tier only pays off for queries that already
+  produce a literal-object statement. Turning <code>FILTER(?x = literal)</code> into an inlined statement object is a
+  separate optimisation, out of scope here, and on this evidence worth more than the tier itself.</li>
+</ul>
+<h3 id="s6-bound-iri-versus-attachedtoproject">S6 — bound IRI versus <code>attachedToProject</code></h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>hasConcept, hasConceptValue, rdf:object, project, types</td>
+<td><strong>0.13</strong></td>
+<td><strong>0.00</strong></td>
+<td>0.13</td>
+<td>0.13</td>
+<td>8</td>
+</tr>
+<tr>
+<td>B</td>
+<td>project, hasConcept, hasConceptValue, rdf:object, types</td>
+<td>1.19</td>
+<td>1.06</td>
+<td>1.19</td>
+<td>1.26</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A wins outright.</strong> Net of the floor, A's query is free and B's costs 1.06 s. Bound-IRI anchors rank above
+<code>attachedToProject</code>, as hypothesised.</p>
+<h3 id="s7-is-a-leads-to-a-filter-preference-worth-adding-inside-the-plain-tier">S7 — is a "leads to a FILTER" preference worth adding inside the plain tier</h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>VALUES+type, project, hasShelfNumber, valueHasString, label</td>
+<td>0.18</td>
+<td>0.05</td>
+<td>0.18</td>
+<td>0.19</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A</td>
+<td>VALUES+type, project, label, hasShelfNumber, valueHasString</td>
+<td>0.19</td>
+<td>0.06</td>
+<td>0.19</td>
+<td>0.19</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>A tie, and below the harness's resolution either way. <strong>No FILTER preference is added</strong>; ties inside the
+plain tier stay lexical.</p>
+<h3 id="s8-anchorless-link-query-and-whether-a-technical-type-statement-may-lead">S8 — anchorless link query, and whether a technical type statement may lead</h3>
+<p>The table below is case <code>S8w</code>, measured after review checkpoint 3. The original <code>S8</code> run recorded layout C's
+<em>warm-up</em> invocation — the first and coldest query of the case — against warm medians for A and B, because
+the protocol's run-once exemption skips the timed rounds. <code>S8w</code> runs all layouts warm and inside the
+round-robin. Layout D was added to separate the two factors that <code>S8-C</code> changes at once.</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>type Object, hasConcept, hasConceptValue, rdf:object, type Concept, type LinkValue</td>
+<td><strong>4.80</strong></td>
+<td>4.67</td>
+<td>4.77</td>
+<td>4.81</td>
+<td>25</td>
+</tr>
+<tr>
+<td>B</td>
+<td>hasConcept, hasConceptValue, rdf:object, type Object, type Concept, type LinkValue</td>
+<td><strong>5.02</strong></td>
+<td>4.89</td>
+<td>4.99</td>
+<td>5.08</td>
+<td>25</td>
+</tr>
+<tr>
+<td>C</td>
+<td>type LinkValue, rdf:object, hasConceptValue, hasConcept, type Object, type Concept</td>
+<td>26.55</td>
+<td>26.42</td>
+<td>26.41</td>
+<td>26.65</td>
+<td>25</td>
+</tr>
+<tr>
+<td>D</td>
+<td>type LinkValue, hasConcept, hasConceptValue, rdf:object, type Object, type Concept</td>
+<td>≥120 (censored)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>A and B tie (4.5% apart), so the leader choice between a project-class type unit and the first plain statement
+is unconstrained and resolves to the working hypothesis (the project-class type unit leads).</p>
+<p><strong>C and D settle the question the review raised.</strong> <code>S8-C</code> changes two things relative to A — it leads with
+<code>?lv a knora-base:LinkValue</code> <em>and</em> traverses the link chain backwards — so on its own it could not attribute
+the cost. Layout D leads with the same type statement but keeps A's forward chain, isolating the leader
+choice: <strong>D is at least 120 s, at least 25× worse than A</strong>, against C's 5.5×. Leading with the <code>LinkValue</code>
+type statement is the dominant cost, and the cold-run objection is moot because C is now warm over five runs.
+<strong>The <code>?lv a knora-base:LinkValue</code> statement must never lead a component.</strong></p>
+<h3 id="s9-a-built-in-standoff-class-as-a-component-leader-mini-spike-round-7">S9 — a built-in <code>standoff</code> class as a component leader (mini spike, round 7)</h3>
+<p>Added after review checkpoint 5, which found that <code>typeTier</code> ranks every non-<code>knora-base</code> type object as a
+project class, so <code>standoff:StandoffParagraphTag</code> leads the <code>standoffTagHasStartAncestor</code> prequery. The case
+reproduces that golden's emitted shape on stage with prod-like internal IRIs (project 0801, <code>beol</code>):
+<code>beol:hasText</code> for the text property, and <code>{beol:StandoffMarginalTag, standoff:StandoffCiteTag}</code> for the
+enumerating <code>VALUES</code> (one project class and one built-in class, as in the golden, 123 instances between them).
+The golden's two <code>valueHasStartJDN</code> / <code>valueHasEndJDN</code> statements and its date <code>FILTER</code> are substituted by
+<code>standoffTagHasStart</code> / <code>standoffTagHasEnd</code> and a permissive integer <code>FILTER</code>, because stage holds <strong>zero</strong>
+<code>knora-base:StandoffDateTag</code> instances; the substitution keeps the pattern count and shape and is identical in
+both layouts.</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A (emitted today)</td>
+<td>type StandoffParagraphTag, startParent*, tagHasEnd, tagHasStart, valueHasStandoff, hasText, VALUES+type</td>
+<td>28.27</td>
+<td>28.14</td>
+<td>28.19</td>
+<td>28.46</td>
+<td>25</td>
+</tr>
+<tr>
+<td>B (fixed)</td>
+<td>VALUES+type, startParent*, tagHasEnd, tagHasStart, valueHasStandoff, hasText, type StandoffParagraphTag</td>
+<td><strong>0.17</strong></td>
+<td>0.04</td>
+<td>0.16</td>
+<td>0.20</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B wins by 166× gross (28.27 vs 0.17).</strong> Sorted result sets are byte-identical. This is the largest single
+effect in the whole spike and it is not close to the D13 threshold: A's minimum is 140× B's median. The
+mechanism is Fact 3 exactly as predicted at the checkpoint — stage holds 185 479 <code>standoff:StandoffParagraphTag</code>
+instances, so layout A scans all of them and walks the <code>standoffTagHasStartParent*</code> closure from each, while
+layout B anchors the same path at the 123-instance end.</p>
+<h3 id="s10-a-built-in-knora-basevaluehas-predicate-driving-a-sort-by-date-join-mini-spike-round-7">S10 — a built-in <code>knora-base:valueHas*</code> predicate driving a sort-by-date join (mini spike, round 7)</h3>
+<p>The second checkpoint-5 Critical: <code>rank</code>'s lexical tie-break puts <code>?date knora-base:valueHasStartJDN ?j</code> ahead
+of <code>?thing &lt;projectProp&gt; ?date</code> merely because <code>?date</code> sorts before <code>?thing</code>. Measured on
+<code>081C/hdm#hasDate</code> (8 941 statements) against the store-wide <code>knora-base:valueHasStartJDN</code> extent
+(363 410 statements), in the <code>dateNonOptionalSortCriterion</code> golden's shape verbatim.</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Order</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A (emitted today)</td>
+<td><code>?date valueHasStartJDN ?j</code>, <code>?thing hdm:hasDate ?date</code></td>
+<td>2.00</td>
+<td>1.87</td>
+<td>1.95</td>
+<td>2.02</td>
+<td>25</td>
+</tr>
+<tr>
+<td>B (fixed)</td>
+<td><code>?thing hdm:hasDate ?date</code>, <code>?date valueHasStartJDN ?j</code></td>
+<td><strong>0.32</strong></td>
+<td>0.19</td>
+<td>0.31</td>
+<td>0.35</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B wins by 6.3× gross, 9.8× net.</strong> Sorted result sets are byte-identical, and A's minimum (1.95) is far
+above B's median, so D13 is satisfied with room. The two statements are the same <code>(var, TERM, var)</code> shape, so
+by Fact 1's corollary TDB2's <code>ReorderFixed</code> heuristic ties them and keeps document order: the ordering pass,
+not the optimizer, picks the join driver here.</p>
+<h3 id="s9c-does-it-matter-where-in-the-block-the-property-path-is-emitted-mini-spike-round-7">S9c — does it matter where in the block the property path is emitted (mini spike, round 7)</h3>
+<p>Raised as a Critical at the checkpoint-5 re-run: the order the pass actually emits for the standoff shape is
+<strong>not</strong> S9's layout B. S9-B put the <code>standoffTagHasStartParent*</code> statement immediately after the anchoring
+<code>VALUES</code> + type unit; the shipped golden puts it second to last, because the pass's T7 tie-break emits
+non-path statements before property-path statements, so the two start/end statements, <code>valueHasStandoff</code> and
+<code>hasText</code> all precede the path. By Fact 3 the path splits the BGP, so what sits in the segment before that
+split is exactly the kind of detail that mattered elsewhere in this spike. The objection was that the
+equivalence to S9-B was asserted, not demonstrated.</p>
+<p>Measured directly, both layouts anchored at the <code>VALUES</code> end, differing <strong>only</strong> in the path statement's
+position:</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Path statement position</th>
+<th>median</th>
+<th>net</th>
+<th>min</th>
+<th>max</th>
+<th>rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>position 3, immediately after the <code>VALUES</code> + type unit (S9-B's order)</td>
+<td>0.15</td>
+<td>0.02</td>
+<td>0.15</td>
+<td>0.16</td>
+<td>25</td>
+</tr>
+<tr>
+<td>B</td>
+<td>position 7, after the other four connected statements (the order the pass emits)</td>
+<td>0.16</td>
+<td>0.03</td>
+<td>0.15</td>
+<td>0.17</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A dead tie, and both are at the harness floor.</strong> The spread (0.01 s) is the floor's own jitter, and both
+result sets are byte-identical to each other and to S9-B's. So the path statement's position within an
+already-anchored block is not measurable here, and the shipped order keeps S9's ~180x win over the order the
+pass emitted before the fix (28.27 s). The Critical is refuted: the T7 non-path-before-path sub-rule stays
+unmeasured in general, but it is now measured <em>not to cost anything</em> on the one shape where the concern was
+raised. It remains true that a case could exist where the pre-path segment matters; nothing in this corpus
+exhibits one.</p>
+<p><strong>Both mini-spike cases are decisive wins for the fixed order, so neither is a D13 tie</strong> and the fix does not
+have to be justified from Fact 1 alone. Raw rows are in <code>results.csv</code> under case ids <code>S9</code> and <code>S10</code>; the
+uninterleaved first probes of each layout are also kept there, under <code>S9smoke</code> and <code>S10smoke</code>.</p>
+<h2 id="tier-table-measured">Tier table (measured)</h2>
+<p>Lower is better. This is the ordered list <code>PrequeryPatternOrdering</code> is built from. The provenance column
+distinguishes what the spike <strong>measured</strong> from what it <strong>carries forward on the D4 working hypothesis</strong> —
+several rows are the latter, and treating the whole table as empirical would be wrong.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Unit</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Lucene: a statement with predicate <code>text:query</code>, or a <code>GroupPattern</code> containing one at any depth</td>
+<td><strong>hypothesis</strong> — no case measures it</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Bound IRI: a non-type statement with an <code>IriRef</code> subject or object (property paths included) whose predicate is a <strong>bound IRI</strong> other than <code>knora-base:attachedToProject</code>; also an <code>rdf:type</code> statement with an <code>IriRef</code> subject</td>
+<td><strong>measured</strong> above types and project (S4, S6); the choice <em>within</em> T2 is below resolution (S3)</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Bound literal: a non-type statement with an <code>XsdLiteral</code> object</td>
+<td><strong>existence measured</strong> (S5, 40 ms, one shape); <strong>rank relative to T2 and T6 is hypothesis</strong></td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Project-class type unit, meaning the type object is a class in a <strong>project-data ontology</strong> (an internal ontology IRI carrying a project shortcode, <code>http://www.knora.org/ontology/&lt;shortcode&gt;/&lt;name&gt;#...</code>). A built-in vocabulary (<code>knora-base</code>, <code>standoff</code>, <code>salsah-gui</code>, <code>knora-admin</code>, and the <code>shared</code> ontologies) is not a project-data ontology</td>
+<td><strong>measured</strong> above plain statements and above project (S1, S8); the <strong>exclusion of built-in vocabularies other than <code>knora-base</code> is measured by S9</strong> (166×)</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Enumerating technical type unit: an <code>rdf:type</code> statement whose object variable is bound by a <code>VALUES</code> block that still contains a knora-base class</td>
+<td><strong>measured</strong> above project (S2, S2big); <strong>T4-versus-T5 is hypothesis</strong> — no case contains both</td>
+</tr>
+<tr>
+<td>T6</td>
+<td><code>?x knora-base:attachedToProject &lt;iri&gt;</code></td>
+<td><strong>measured</strong> below T2, T4 and T5 (S1, S2, S2big, S6); <strong>T6 above T7 is hypothesis</strong> — the only layout pair that varies it (S1-A vs S1-D) is a dead tie</td>
+</tr>
+<tr>
+<td>T7</td>
+<td>Plain: everything else; within T7, non-path statements before property-path statements</td>
+<td>the tier is the residue; the <strong>path sub-rule is unmeasured</strong> (no case varies it)</td>
+</tr>
+</tbody>
+</table>
+<p>Tie-break inside a tier: more bound terms first (IRIs, literals, and variables already in the bound set),
+then a statement whose <strong>predicate is in a project-data ontology</strong> ahead of one whose predicate is built-in
+(<strong>measured by S10</strong>, 6.3×), then lexical order of <code>pattern.toSparql</code>. No "leads to a FILTER" preference (S7).
+The lexical key stays the final total order, so the whole comparison remains permutation-invariant; falling
+back to the statement's input index for exact ties is excluded, because it would re-couple the emitted order
+to the upstream pattern order that DEV-7288 decoupled.</p>
+<p>A bare built-in type unit (a type object in a built-in vocabulary that is not on the unselective-by-name
+list) is not promoted to T4 and ranks T7, so it never leads a component while any other unit can. The
+unselective-technical ban stays a <strong>by-name</strong> list (<code>knora-base:LinkValue</code>, <code>knora-base:Resource</code>) and must
+not be widened into a namespace test: checkpoint-3 finding W4 established by measurement that several
+<code>knora-base</code> classes (<code>Region</code>, <code>Annotation</code>, <code>StillImageRepresentation</code>, <code>ListNode</code>, <code>DeletedResource</code>) are
+selective and must remain able to lead.</p>
+<h3 id="two-changes-against-the-d4-working-hypothesis">Two changes against the D4 working hypothesis</h3>
+<ol>
+<li><strong><code>attachedToProject</code> drops below the type tiers</strong>, from the hypothesis's T4 to T6. S2 is the decisive
+   case (16×), reproduced on a second, much larger project by <code>S2big</code> (≥17×); S1 is consistent (12× net) and
+   S6 confirms it against bound IRIs.</li>
+<li><strong>A bound-literal tier is added</strong> at T3 (S5), with the three scope limits recorded under S5.</li>
+</ol>
+<h3 id="one-amendment-to-t2-on-the-engine-facts-rather-than-on-a-measurement">One amendment to T2, on the engine facts rather than on a measurement</h3>
+<p>The plan's T2 reads "variable predicate allowed". <strong>That must be removed.</strong> Fact 1's corollary is explicit
+that <code>?s ?p &lt;bound&gt;</code> has a single bound term, is a scan rather than a probe, and loses to any two-bound-term
+pattern — it needed a forced subquery barrier to go from 1801 ms to 317 ms in DEV-6885. Promoting that shape
+to rank 2 would institutionalise the exact pathology the facts doc warns about. No spike case contains a
+variable-predicate statement, so this is a reasoned exclusion, not a measured one: <strong>a non-type statement
+whose predicate is a variable ranks T7</strong>, alongside the existing <code>rdfs:subClassOf*</code> / <code>rdfs:subPropertyOf*</code>
+exclusions.</p>
+<h3 id="tier-renumbering-mapping-the-plans-numbers-to-this-table">Tier renumbering: mapping the plan's numbers to this table</h3>
+<p>The plan's "Ordering algorithm" section numbers tiers T1–T6 under the working hypothesis. This table has
+seven tiers and reuses the names differently, so plan sentences such as "a T6-only component loses to a
+project-class type unit at T3" and "T4 beats T6" now read as the opposite of what they mean. Phase 4 must
+implement from <strong>this</strong> table. The mapping:</p>
+<table>
+<thead>
+<tr>
+<th>Plan (working hypothesis)</th>
+<th>This table (measured)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1 Lucene</td>
+<td>T1 Lucene</td>
+</tr>
+<tr>
+<td>T2 bound IRI</td>
+<td>T2 bound IRI (minus the variable-predicate case)</td>
+</tr>
+<tr>
+<td>—</td>
+<td>T3 bound literal (new)</td>
+</tr>
+<tr>
+<td>T3 project-class type</td>
+<td>T4 project-class type</td>
+</tr>
+<tr>
+<td>T4 <code>attachedToProject</code></td>
+<td>T6 <code>attachedToProject</code> (moved down)</td>
+</tr>
+<tr>
+<td>T5 technical type</td>
+<td>T5 enumerating technical type</td>
+</tr>
+<tr>
+<td>T6 plain</td>
+<td>T7 plain</td>
+</tr>
+</tbody>
+</table>
+<h2 id="change-the-spike-forces-in-the-ordering-algorithm">Change the spike forces in the ordering algorithm</h2>
+<p>The plan's rule 3c reads: when a new component must be started, choose the minimum by (tier, key) over the
+remaining non-type units <strong>and project-class type units</strong>, because "a technical type unit can never lead".</p>
+<p>S2 shows that rule produces the worst available layout for the classless-plus-project shape. The units there
+are the technical closure type unit, the <code>attachedToProject</code> statement and the <code>rdfs:label</code> statement; no
+project-class type unit exists, so the plan's 3c would lead with <code>attachedToProject</code> — measured at 98 s to
+timeout on 0102 and past the timeout on 0812, against 6.06 s and 6.95 s for leading with the type unit.</p>
+<p>S8's layouts C and D show the rule cannot simply be dropped: leading with <code>?lv a knora-base:LinkValue</code> costs
+5.5× with a reversed chain and at least 25× with the forward chain.</p>
+<p>The distinction the two cases draw is <strong>not</strong> project-class versus technical, and it is <strong>not</strong> the
+knora-base namespace. The first version of this document proposed a namespace test, which review checkpoint 3
+showed over-fires: it would also ban <code>kb:Region</code>, <code>kb:Annotation</code>, <code>kb:StillImageRepresentation</code>,
+<code>kb:ListNode</code> and <code>kb:DeletedResource</code> from leading, several of which are selective, re-creating the S4-C trap
+in mirror image. The property that actually separates the measured cases is whether the type unit restricts
+anything at all:</p>
+<ul>
+<li><code>?mainRes a ?resTypes</code> with a <code>VALUES</code> block — four beol classes or 891 closure classes alike — is a
+  <strong>barrier the optimiser cannot move and a table that can drive the scan</strong>. Leading with it is one index
+  scan per listed class; burying it makes the same table a multiplier.</li>
+<li><code>?lv a knora-base:LinkValue</code> — a bare type statement against a class that matches <em>every link value in the
+  store</em>, on a variable that exists only because a link property was expanded — restricts nothing and drives
+  nothing.</li>
+</ul>
+<p>Rule 3c is therefore restated for Phase 4 as:</p>
+<blockquote>
+<p><strong>3c. New component.</strong> The minimum by (tier, key) over the remaining non-type units and all type units
+<strong>except unselective-technical ones</strong>. A type unit is <em>unselective-technical</em> when its object is a single
+<code>IriRef</code> naming a class that matches essentially the whole store — concretely <code>knora-base:LinkValue</code> and
+<code>knora-base:Resource</code>, listed by name rather than by namespace. Such a unit ranks T7 and may never lead a
+component. Every other type unit may lead: at T4 when it is project-class, at T5 when its object variable
+is bound by a <code>VALUES</code> enumeration.</p>
+</blockquote>
+<p>Listing the two classes by name is deliberate. It is narrow enough to be justified by what was measured
+(<code>LinkValue</code> in S8, the <code>Resource</code> closure in S2), and it fails safe: a class wrongly omitted from the list
+can lead a component, which the spike never measured as catastrophic, whereas a class wrongly included is
+banned from leading, which S2 measured at 16× to 20×.</p>
+<p><strong>This changes no golden file in the PR-1 corpus.</strong> Every corpus shape either has a T1/T2 anchor or a
+project-class type unit, so no technical type unit is ever a candidate leader there. The same holds for the
+<code>attachedToProject</code> move from T4 to T6: in the one corpus shape that contains it, the remaining units are all
+plain, so it still precedes them. Both changes alter production behaviour without moving a single expected
+corpus sequence — which is what keeps the Phase 5 diff readable.</p>
+<h2 id="threats-to-validity">Threats to validity</h2>
+<ul>
+<li><strong>The premise is Fact 1, not "written order".</strong> See the opening section. Every case here sits behind a
+  barrier or among equal-shape ties, which is why order matters at all; a tier decision that the optimiser
+  would normalise away is dead code, and a decision that holds only because a <code>VALUES</code> or path barrier
+  happens to sit where it does will stop holding if the barrier moves. The spike did not dump the optimised
+  algebra (<code>arq.qparse --explain --print=opt</code>) for any case; doing so for one pure-BGP pair (S6-A versus
+  S6-B, 8× apart) would convert this from an argument into a check, and is the single highest-value
+  follow-up.</li>
+<li><strong>Several tiers are hypothesis, not measurement.</strong> T1, the T4/T5 split, T6-above-T7, T3's rank and T7's
+  path sub-rule are all unmeasured; the provenance column says which. The tier table should not be cited as
+  wholly empirical.</li>
+<li><strong>S5's tier rests on a 40 ms difference in one shape</strong>, in a form the pipeline does not currently emit. It
+  is the conclusion most worth revisiting.</li>
+<li><strong>S3 and S7 are decided below the harness's resolution</strong> (net medians of 0.01–0.06 s against a 0.13 s floor
+  that jitters ±0.01 s). Both resolve to the working hypothesis, so nothing turns on them, but neither is
+  evidence <em>for</em> the hypothesis either.</li>
+<li><strong>Two layouts are censored after two timeouts</strong> and three of their five rows are synthetic. Marked as
+  <code>≥120 (censored)</code> throughout; the direction is conservative.</li>
+<li><strong>One dataset, one point in time.</strong> The engine behaviour generalises (it is a property of the TDB2
+  configuration); the magnitudes do not. <code>S2big</code> was added precisely because S2's conclusion depended on a
+  data property rather than an engine property, and it held on a project six times larger — but two projects
+  are still two projects.</li>
+<li><strong>The tier table is a heuristic compensating for a missing cost model.</strong> It has no statistics behind it and
+  cannot beat a real optimiser. It targets the pathological shapes in the ticket, not optimality.</li>
+<li><strong>The harness masks error causes.</strong> <code>stage.sh</code> records any non-zero exit as <code>120,-1</code> and discards stderr,
+  so a network blip would be indistinguishable from a timeout. The one row where this mattered (<code>S8w-D</code>) was
+  re-checked by hand and is a genuine client-side timeout; <code>S2zero-C</code>'s single 120 s row against a 98 s
+  median was not, and is treated as suspect rather than as data.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><code>docs/development/dsp-api-fuseki-query-execution.md</code> — Fact 1 (BGP-local heuristic reordering and its
+  bound-object corollary), Fact 5 (<code>GRAPH</code> scoping replaces the <code>attachedToProject</code> join), Fact 6 (<code>GROUP BY</code>
+  materialises, so <code>LIMIT</code> cannot short-circuit), Fact 7 (large <code>VALUES</code> tables poison join order), Fact 8
+  (isolating plan cost from response cost). These are relied on and not re-derived.</li>
+<li><code>docs/development/dsp-api-sparql-queries.md</code> — how SPARQL is written and tested in this repo.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 18, 2026 12:58:49 UTC">September 18, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
