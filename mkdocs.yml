@@ -19,6 +19,11 @@ nav:
           - Libraries: developers/libraries.md
       - Contribution: developers/contribution.md
 
+# dsp-api excludes these files in its own mkdocs.yml,
+# but the monorepo plugin does not apply the exclude_docs of included configs.
+exclude_docs: |
+  DSP-API/contexts/
+
 plugins:
   - git-revision-date-localized
   - monorepo
