@@ -88,6 +88,11 @@ squashed. Otherwise, PRs with bad titles won't be added to the automatically gen
 Thus, every PR title has to follow the commit message convention mentioned [above](#git-commit-guidelines), with small 
 modifications. 
 
+Some repositories, such as dsp-api, rebase-merge pull requests instead of squashing them. There every commit lands on
+`main` unchanged, so each commit message, not only the PR title, has to follow the convention. Check the repository's
+own commit guidelines, for dsp-api
+[`docs/development/commit-conventions.md`](https://github.com/dasch-swiss/dsp-api/blob/main/docs/development/commit-conventions.md).
+
 #### PR Title Format
 
 ```text
