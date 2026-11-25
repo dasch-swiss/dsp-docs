@@ -160,8 +160,8 @@ What fires:
 1. `dsp-tools` publishes a release to PyPI.
 2. The `dispatch-dsp-docs-bump` job in `dsp-tools` mints a DaSCH Bot App token and calls
    `gh workflow run bump-release.yml` against `dsp-docs`, passing DSP / API / APP parsed from
-   `dsp-tools`'s `src/dsp_tools/resources/start-stack/versions.env` plus TOOLS from the
-   triggering release tag.
+   `dsp-tools`'s `packages/dsp-tools/src/dsp_tools/resources/start-stack/versions.env`
+   plus TOOLS from the triggering release tag.
 3. `bump-release.yml` renders `release.mk` from `.github/release.mk.tmpl`, runs
    `make update-submodules`, and opens a PR titled `deploy: bump docs to <DSP>`.
 4. `bump-release.yml` waits for the required checks to pass, then squash-merges the PR directly
