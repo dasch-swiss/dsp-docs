@@ -1,0 +1,9040 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/logo_bw.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Execution Journal: 02-feat-move-ingest-into-webapi-plan - DaSCH Service Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../assets/style/theme.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+    <script src="https://cdn.usefathom.com/script.js" data-site="BWXVRNXV" data-include-domains="docs.dasch.swiss" defer></script>
+
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#execution-journal-02-feat-move-ingest-into-webapi-plan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="DaSCH Service Platform Documentation" class="md-header__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DaSCH Service Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Execution Journal: 02-feat-move-ingest-into-webapi-plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DSP-APP/" class="md-tabs__link">
+          
+  
+  
+  DSP-APP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  DSP-API
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DSP-TOOLS/" class="md-tabs__link">
+          
+  
+  
+  DSP-TOOLS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Dsp-Ingest/openapi/" class="md-tabs__link">
+          
+  
+  
+  DSP-INGEST
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DSP-META/" class="md-tabs__link">
+          
+  
+  
+  DSP-META
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../developers/getting-started/" class="md-tabs__link">
+          
+  
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DaSCH Service Platform Documentation" class="md-nav__button md-logo" aria-label="DaSCH Service Platform Documentation" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logo_bw.svg" alt="logo">
+
+    </a>
+    DaSCH Service Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-APP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-APP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/docs-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/contribution/bazel-baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build Baselines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0001-library-taxonomy-and-dependency-direction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0001: Library taxonomy and enforced dependency direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0002-the-barrel-is-the-public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0002: The barrel is the only public interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0003-feature-state-is-component-provided/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0003: Feature state is component-provided, with one writer per value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0004-cross-feature-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0004: Cross-feature access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0005-what-shared-means/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0005: What shared/ means, and what it does not
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0006-the-e2e-suite-is-its-own-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0006: The end-to-end suite is its own project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-APP/adr/0007-bazel-builds-the-repository/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0007: Bazel builds the repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/what-is-dsp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is DSP?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/file-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Formats in DSP-API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/standoff-rdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standoff/RDF Text Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/legal-info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Information for Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-introduction/example-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    An Example Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP Ontologies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP Ontologies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/project-data-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Data Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/knora-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Knora Base Ontology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-dsp-ontologies/salsah-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The SALSAH GUI Ontology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API Endpoints
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API Endpoints
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API V2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API V2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/reading-and-searching-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading and Searching Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/reading-user-permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading the User's Permissions on Resources and Values
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/getting-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/query-language/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravsearch - Virtual Graph Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/editing-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating and Editing Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/editing-values/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating and Editing Values
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/ontology-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Querying, Creating, and Updating Ontologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2_10" id="__nav_3_3_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Textual Data in DSP-API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Textual Data in DSP-API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/text/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/text/standard-standoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Standoff Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/text/custom-standoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Standoff Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/text/tei-xml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEI XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/permalinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permalinks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v2/knora-iris/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IRIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Admin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Groups Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lists Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Files Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/stores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stores Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/sparql-passthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPARQL Passthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-admin/maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintenance Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API V3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API V3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v3/project-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Migration Export/Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-v3/project-data-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Data Import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/ingest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_6" id="__nav_3_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Util API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/api-util/version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_7" id="__nav_3_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrumentation API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instrumentation API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/instrumentation/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/instrumentation/health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Health Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-endpoints/instrumentation/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics Endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing and Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Publishing and Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-publishing-deployment/publishing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-publishing-deployment/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Observability
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/using-grafana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Grafana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/gravsearch-trace-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravsearch Trace Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/traceql-recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TraceQL Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/instrumentation-recipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrumentation Recipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions (ADR)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions (ADR)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0001 Record Architectural Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0002-change-cache-service-manager-from-akka-actor-to-zlayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0002 Change Cache Service Manager from Akka-Actor to ZLayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0003-change-iiif-service-manager-and-sipi-implementation-to-zlayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0003 Change IIIF Service Manager and Sipi implementation to zlayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0004-change-triplestore-service-manager-and-fuseki-implementation-to-zlayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0004 Change Triplestore Service Manager and Fuseki implementation to ZLayer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0005-change-respondermanager-to-a-simple-case-class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0005 Change ResponderManager to a simple case class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0006-use-zio-http/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0006 Gradually Replace Akka-HTTP with ZIO-HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0007-zio-fication-of-responders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0007 ZIO-fication of Responders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0008-replace-akka-with-pekko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0008 Replace Akka with Pekko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0009-api-v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0009 API `v3` for client-optimized endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0010-api-v3-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0010 API `v3` basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0011-cross-context-access-ports-and-adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0011 Cross-context access through consumer-defined ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0012-graph-scoped-lucene-text-lookups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0012 Graph-scoped Lucene text lookups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0013-authorization-policy-enforcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0013 Authorization policy enforcement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../adr/0014-service-identity-for-exports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0014 Service identity for exports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP Internals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP Internals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1" id="__nav_3_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1_1" id="__nav_3_7_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API Design Principles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API Design Principles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/design-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/store-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/triplestore-updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triplestore Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/consistency-checking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/principles/rdf-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDF Processing API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1_2" id="__nav_3_7_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API V2 Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-API V2 Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API v2 Design Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/ontology-schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/smart-iris/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart IRIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/content-wrappers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Wrappers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/json-ld/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON-LD Parsing and Formatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/ontology-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/sipi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-API and Sipi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/gravsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravsearch Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/standoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standoff Markup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/ark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archival Resource Key (ARK)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-v2/query-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPARQL Query Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/api-admin/administration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin API Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_1_4" id="__nav_3_7_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP Domain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP Domain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/domain/domain-entities-and-relations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Entities and Relations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/domain/system-instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/design/domain/class-and-property-hierarchies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class and Property Hierarchies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/building-and-running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Running
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/vscode-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Visual Studio Code for development of DSP-API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/docker-cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Cheat Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/docker-compose/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Starting the DSP-Stack inside Docker Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/updating-repositories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Updating Repositories
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-internals/development/third-party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Third-Party Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIPI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIPI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-sipi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06-sipi/sipi-and-dsp-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interaction between Sipi and DSP-API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lucene
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lucene
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07-lucene/lucene-query-parser-syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lucene Query Parser Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08-faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09-release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../10-migration-guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Guides and Deprecations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-TOOLS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-TOOLS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/permissions-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/production-account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Account
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/local-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running a Local Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Modelling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Modelling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON project file
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JSON project file
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-model/json-project/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-model/json-project/ontologies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-model/json-project/caveats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caveats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-model/excel2json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command excel2json
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-model/data-model-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commands to Interact With a Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data for Mass-Upload
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data for Mass-Upload
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xmllib documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xmllib documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/xmlroot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLRoot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_4" id="__nav_4_5_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP base resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP base resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/region-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RegionResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/link-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/video-segment-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VideoSegmentResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/dsp-base-resources/audio-segment-resource/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AudioSegmentResource
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source Provenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/geolocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geolocation Coordinates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_8" id="__nav_4_5_1_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licenses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Licenses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/licenses/recommended/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/licenses/other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/placeholder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placeholder Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_10" id="__nav_4_5_1_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Processing Functions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Processing Functions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/general-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/value-checkers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Checkers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/value-converters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Converters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/config-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/date_formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Date Formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/xmllib-docs/advanced-set-up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Set-Up Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-file/xml-data-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML data file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-file/data-file-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI-Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/data-file/excel2xml-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprecated excel2xml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/special-workflows/workflow-xmlupload/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special Workflows xmlupload
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/special-workflows/migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/special-workflows/update-legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update legal info in XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/special-workflows/env-set-up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    .env Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Information for developers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Information for developers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/start-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running DSP locally
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7_3" id="__nav_4_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architectural Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architectural Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/architecture/xml-parsing-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML Parsing and Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/architecture/create-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/architecture/migration-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Command
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/architecture/error-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/packaging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies, packaging & distribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/user-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/developers/mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs and Link Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-TOOLS/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-INGEST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-INGEST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dsp-Ingest/openapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dsp-Ingest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dsp-Ingest/ingest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingesting Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dsp-Ingest/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Service documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dsp-Ingest/service-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dsp-Ingest/service-filesystem-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filesystem Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-META
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSP-META
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSP-META
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metadata
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/data/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadata API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/data/v1-datamodel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Model v1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/data/v2-datamodel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Model v2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/data/adding-metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/code/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/code/front-end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Front End
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/code/back-end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back End
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DSP-META/code/observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability & Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Basics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/rdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/sipi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sipi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/libraries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../developers/contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chunk-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunk queue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chunks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deferrals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deferrals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deviations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deviations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side findings
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="execution-journal-02-feat-move-ingest-into-webapi-plan">Execution Journal: 02-feat-move-ingest-into-webapi-plan</h1>
+<h2 id="repos">Repos</h2>
+<table>
+<thead>
+<tr>
+<th>repo</th>
+<th>base_commit</th>
+<th>branch</th>
+<th>merge_strategy</th>
+<th>status</th>
+<th>pr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dsp-api</td>
+<td>ce8c74195</td>
+<td>feat/serve-ingest-from-dsp-api</td>
+<td>squash</td>
+<td>in-progress</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="phases">Phases</h2>
+<table>
+<thead>
+<tr>
+<th>phase</th>
+<th>status</th>
+<th>phase_base</th>
+<th>review_fix_rounds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>reviewed</td>
+<td>dsp-api@a898b467d</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>reviewed</td>
+<td>dsp-api@1c0547439</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>reviewed</td>
+<td>dsp-api@19ed77e85</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>reviewed</td>
+<td>dsp-api@c35b1375d</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>reviewed</td>
+<td>dsp-api@2de395c9d</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>reviewed</td>
+<td>dsp-api@04710ed5e</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chunk-queue">Chunk queue</h2>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>repo</th>
+<th>files</th>
+<th>depends_on</th>
+<th>checkboxes</th>
+<th>acceptance</th>
+<th>context</th>
+<th>replaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>dsp-api</td>
+<td>modules/ingest/src/main/scala/swiss/dasch/{domain/MaintenanceActions.scala,api/MaintenanceEndpoints.scala,api/MaintenanceEndpointsHandler.scala}</td>
+<td>—</td>
+<td>"Remove MaintenanceActions.importProjectsToDb and ActionName.ImportProjectsToDb"</td>
+<td>ImportProjectsToDb is no longer an action; ingest compiles and tests pass</td>
+<td>MaintenanceActions.scala § importProjectsToDb; MaintenanceEndpoints.scala § enum ActionName</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>dsp-api</td>
+<td>modules/ingest/src/main/scala/swiss/dasch/{infrastructure/DbHealthIndicator.scala,infrastructure/HealthCheckService.scala,Main.scala}, modules/ingest/src/test/scala/swiss/dasch/api/MonitoringEndpointsSpec.scala</td>
+<td>—</td>
+<td>"Delete infrastructure/DbHealthIndicator.scala and build HealthCheckServiceLive from FileSystemHealthIndicator alone"; "Add a MonitoringEndpointsSpec case: the health body has no db entry"</td>
+<td>/health over the real HealthCheckServiceLive is 200 {"status":"UP"} with a healthy FS and lists only "folders" when unhealthy</td>
+<td>HealthCheckService.scala § HealthCheckServiceLive.layer; MonitoringEndpointsSpec § healthEndpointsSuite</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>dsp-api</td>
+<td>modules/ingest/src/main/scala/swiss/dasch/{db/*,domain/ProjectRepositoryLive.scala,domain/Project.scala,domain/ProjectService.scala,domain/BulkIngestService.scala,config/Configuration.scala,Main.scala,MigrateSizes.scala,MigrateMimeTypes.scala}, modules/ingest/src/main/resources/{application.conf,db/migration/V1_0_0__create_project_table.sql}, modules/ingest/BUILD.bazel, modules/ingest/docs/service-configuration.md, modules/ingest/src/test/scala/swiss/dasch/{util/TestUtils.scala,domain/ProjectRepositoryLiveSpec.scala, specs providing ProjectRepositoryLive/testDbLayer}</td>
+<td>1.1, 1.2</td>
+<td>Delete Db/DbMigrator; delete migration SQL; delete ProjectRepositoryLive + Project/ProjectId; ProjectService folder-only; remove SQLException; remove DbConfig/db block; remove DB layers from mains; remove three maven deps from BUILD; delete ProjectRepositoryLiveSpec and DB test setup</td>
+<td>ingest module has no database code or SQLite/Flyway/HikariCP dependency; bazel test //modules/ingest:test passes</td>
+<td>ProjectService.scala § findOrCreateProject/deleteProject/addProjectToDb; Configuration.scala § ApplicationConf; BUILD.bazel § ingest/ingest_classes deps</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>dsp-api</td>
+<td>MODULE.bazel, maven_install.json</td>
+<td>1.3</td>
+<td>"Remove the three artifacts from maven.install in MODULE.bazel and re-pin"</td>
+<td>the three coordinates are absent from MODULE.bazel and maven_install.json; build resolves</td>
+<td>MODULE.bazel § "-- dsp-ingest db (Java) --"</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>dsp-api</td>
+<td>— (verification)</td>
+<td>1.4</td>
+<td>"Run bazel test //modules/ingest:test"; "Run just test-ingest-integration"; "Run just check"</td>
+<td>all three pass on the phase's last commit</td>
+<td>plan Phase 1 tail</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>dsp-api</td>
+<td>— (measurement)</td>
+<td>—</td>
+<td>"Record the baseline size of daschswiss/knora-api:latest"</td>
+<td>baseline size recorded from an image built at 1c0547439</td>
+<td>plan Phase 2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>dsp-api</td>
+<td>modules/webapi/BUILD.bazel, modules/sipi/BUILD.bazel</td>
+<td>2.0</td>
+<td>"Add runtime_fs to the tars of image_amd64/image_arm64"; "Add //modules/webapi:<strong>pkg</strong> to the runtime_fs visibility"; "Note in the webapi oci_image comment that the image runs as root"</td>
+<td>both webapi images layer runtime_fs; bazel build of both images succeeds</td>
+<td>webapi BUILD.bazel § knora-api image; sipi BUILD.bazel § Sipi runtime bits</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>dsp-api</td>
+<td>— (verification)</td>
+<td>2.1</td>
+<td>"Run just docker-build-dsp-api-image, then sipi/ffmpeg/ffprobe"; "Run /bin/sh oom_score_adj"; "Compare the image size"; "Run just check"</td>
+<td>each command exits 0, prints 1000, growth within the runtime_fs layer, check passes</td>
+<td>plan Phase 2 tail</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>dsp-api</td>
+<td>modules/ingest/{BUILD.bazel,src/main/resources/(application→ingest).conf,src/main/resources/logback.xml,src/main/scala/swiss/dasch/{Main,Endpoints,FetchAssetPermissions,MigrateSizes,MigrateMimeTypes}.scala,config/Configuration.scala,infrastructure/{IngestApiServer,Logger,Metrics,OtelSetup,CommandExecutorLive}.scala}, ingest tests (ConfigurationSpec, ProjectsEndpointSpec, SpecConfigurations, CommandExecutorLiveSpec), modules/webapi/BUILD.bazel</td>
+<td>—</td>
+<td>ingest.conf; Configuration.scala; localDevImage; delete standalone sources; FetchAssetPermissions trait only + spec mock; Migrate bootstrap; ingest BUILD targets; ConfigurationSpec; webapi dep //modules/ingest</td>
+<td>ingest is a library reading ingest.conf/INGEST_*; bazel build //... and //modules/ingest:test pass</td>
+<td>Configuration.scala § layer; BUILD.bazel § ingest_classes/app/image</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>dsp-api</td>
+<td>modules/webapi/.../slice/admin/domain/service/IngestFetchAssetPermissions.scala + spec</td>
+<td>3.1</td>
+<td>"Add IngestFetchAssetPermissions"; "Add IngestFetchAssetPermissionsSpec"</td>
+<td>granted/denied/anonymous/invalid token covered</td>
+<td>AssetPermissionsCache.getAssetAccess; Authenticator.authenticate(jwt)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>dsp-api</td>
+<td>modules/webapi/.../slice/ingest/IngestServerEndpoints.scala + spec</td>
+<td>3.1</td>
+<td>"Add IngestServerEndpoints"; "Add IngestServerEndpointsSpec"</td>
+<td>every handler endpoint under /ingest/, path template starts with /ingest/</td>
+<td>ingest api/*EndpointsHandler.endpoints</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>dsp-api</td>
+<td>DspIngestClient.scala, slice/ingest/IngestModule.scala, core/LayersLive.scala, slice/api/Endpoints.scala, slice/infrastructure/MetricsServer.scala, store/iiif/impl/AssetInfoServiceLayer.scala (delete), testkit E2EZSpec/TestContainerLayers ingest config, DspIngestClientLiveSpec, IngestModuleSpec</td>
+<td>3.2, 3.3</td>
+<td>rewrite DspIngestClientLive; add IngestModule; wire in LayersLive + remainingLayer param; register in Endpoints; pass testkit ingest config; replace DspIngestClientLiveSpec; add IngestModuleSpec</td>
+<td>dsp-api serves /ingest/ in-process; webapi tests pass</td>
+<td>LayersLive § remainingLayer; DspIngestClient.scala</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>dsp-api</td>
+<td>config/AppConfig.scala, application.conf, AppConfigSpec, JwtServiceLiveSpec, FairResourcesLiveSpec, testkit (DspIngestTestContainer delete, TestContainerLayers(+Spec), TestDspIngestClient, TestClientsModule), specs using the removed container/config</td>
+<td>3.4</td>
+<td>remove baseUrl/assetDir; delete DspIngestTestContainer; TestDspIngestClient → /ingest/; update specs (setup only)</td>
+<td>no ingest base URL setting; testkit has no ingest container</td>
+<td>AppConfig § DspIngestConfig</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td>dsp-api</td>
+<td>modules/test-e2e/.../slice/ingest/IngestEndpointsE2ESpec.scala</td>
+<td>3.5</td>
+<td>"Add IngestEndpointsE2ESpec"</td>
+<td>upload &gt;1 MiB, 401s, health, ImportProjectsToDb 400, original 200/403</td>
+<td>backup 57e49e996</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>dsp-api</td>
+<td>modules/test-ingest-integration/ (delete), tools/{license,lint}/BUILD.bazel, .bazelignore, justfile, docker-compose.yml, .github/workflows/{build-and-test,docker-publish}.yml, modules/sipi/BUILD.bazel</td>
+<td>3.4</td>
+<td>remove standalone run path (7 checkboxes)</td>
+<td>no target/recipe/workflow builds dsp-ingest; compose has no ingest service</td>
+<td>justfile § docker-*; compose § ingest</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3.8</td>
+<td>dsp-api</td>
+<td>— (verification)</td>
+<td>3.1–3.7</td>
+<td>git grep; bazel build //...; test-unit; test-it; test-e2e; stack-start curl; just check</td>
+<td>all pass</td>
+<td>plan Phase 3 Checks</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>dsp-api</td>
+<td>modules/ingest/src/{main,test}/scala/swiss/dasch/infrastructure/IngestExecutor(Spec).scala</td>
+<td>—</td>
+<td>"Add IngestExecutor.scala"; "Add IngestExecutorSpec"</td>
+<td><code>ingest-&lt;n&gt;</code> pool, forkDaemon inherits it, withPermit bounded; ingest:test passes</td>
+<td>backup e19fe71fd (no FiberRef guard)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>dsp-api</td>
+<td>ingest CommandExecutorLive.scala, CommandExecutorLiveSpec, specs building CommandExecutorLive, SpecConfigurations, webapi IngestModule(+Spec)</td>
+<td>4.1</td>
+<td>"Take a permit around the process in CommandExecutorLive.execute"; "Extend CommandExecutorLiveSpec"; part of "Provide an IngestExecutor in the ingest specs"</td>
+<td>wrapper present outside local-dev only; Linux case prints 1000</td>
+<td>backup cfa61c4f9</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>dsp-api</td>
+<td>ingest ProjectService.scala, ImportService.scala, Migrate*.scala, specs building ProjectService/ImportService, webapi DspIngestClientLiveSpec</td>
+<td>4.2</td>
+<td>"Take a permit around BagIt creation/validation/extraction"; rest of "Provide an IngestExecutor in the ingest specs"</td>
+<td>BagIt create/readAndValidateZip under a permit; tests pass</td>
+<td>backup 7ef3dd29c</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>dsp-api</td>
+<td>ingest IngestServiceSpec, BulkIngestServiceSpec, api/SipiClientMock.scala</td>
+<td>4.3</td>
+<td>"Add an IngestServiceSpec case with one permit"; "Add an IngestServiceSpec case where a failing SipiClient fails only that ingest"</td>
+<td>one-permit ingest/export/import complete; failing transcode isolated</td>
+<td>backup e63626fcf</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>dsp-api</td>
+<td>webapi slice/ingest/IngestServerEndpoints.scala(+Spec), IngestModule.scala, DspIngestClient.scala</td>
+<td>4.2</td>
+<td>"In IngestServerEndpoints, run the server logic ... on the ingest pool"; "Add an IngestServerEndpointsSpec case"</td>
+<td>non-monitoring logic and forked bulk job on ingest- threads; health not</td>
+<td>plan Phase 4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>dsp-api</td>
+<td>— (verification)</td>
+<td>4.1–4.5</td>
+<td>"Run bazel test ingest+webapi"; "Run just test-e2e"; "Run just check"</td>
+<td>all pass</td>
+<td>plan Phase 4 tail</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>dsp-api</td>
+<td>webapi ResourceMetadataRules.scala, FairResourcesLive.scala, ExportService.scala, slice/fair/ports/FairResources.scala; specs ResourceMetadataRulesSpec, FairResourcesLiveSpec, ExportServiceSpec(+__oai.txt golden)</td>
+<td>—</td>
+<td>"Change ResourceMetadataRules.originalFileUrl"; "Pass KnoraApi.externalKnoraApiBaseUrl from FairResourcesLive"; "Pass KnoraApi.externalKnoraApiBaseUrl from ExportService"; "Update FairResourcesLiveSpec, ExportServiceSpec and golden files"</td>
+<td>links are <code>&lt;api external base&gt;/ingest/projects/&lt;sc&gt;/assets/&lt;id&gt;/original</code>; golden diff changes only host and path</td>
+<td>ResourceMetadataRules § originalFileUrl; ExportService § fileLinkOf</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>dsp-api</td>
+<td>webapi AppConfig.scala (DspIngestConfig), application.conf, AppConfigSpec, JwtServiceLiveSpec</td>
+<td>5.1</td>
+<td>"Remove externalBaseUrl from DspIngestConfig and external-base-url from application.conf"</td>
+<td>DspIngestConfig has only audience; no external-base-url key</td>
+<td>AppConfig § DspIngestConfig</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>dsp-api</td>
+<td>test-e2e FairEndpointsE2ESpec</td>
+<td>5.1</td>
+<td>"Update the E2E specs asserting original-file links"</td>
+<td>FAIR JSON-LD E2E asserts the API-host /ingest/ original link</td>
+<td>FairEndpointsE2ESpec § JSON-LD test</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>dsp-api</td>
+<td>— (verification)</td>
+<td>5.1–5.3</td>
+<td>"Run bazel test //modules/webapi:test"; "Run just test-e2e"; "Run just check"</td>
+<td>all pass</td>
+<td>plan Phase 5 tail</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>dsp-api</td>
+<td>docs/03-endpoints/ingest.md (new), mkdocs.yml</td>
+<td>—</td>
+<td>"Add one docs/03-endpoints/ingest.md page ... add it to the nav"</td>
+<td>page covers /ingest/ prefix, <code>ingest.&lt;domain&gt;</code> compatibility, Content-Length over 1 MiB, pointer to API docs; in nav</td>
+<td>plan Phase 6; Dependencies &amp; Risks (proxy, Swagger UI)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>dsp-api</td>
+<td>docs/04-publishing-deployment/configuration.md</td>
+<td>—</td>
+<td>"Document the INGEST_* settings ... MigrateSizes/MigrateMimeTypes"</td>
+<td>INGEST_* table, only audience left under app.dsp-ingest (base-url row gone), mounts, root, backfill command</td>
+<td>plan Configuration mapping; Dependencies &amp; Risks</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>dsp-api</td>
+<td>docs/05-internals/development/third-party.md, docs/03-endpoints/api-v3/{project-migration,project-data-import}.md, docs/03-endpoints/api-v2/editing-values.md, docs/03-endpoints/api-admin/{overview,files}.md</td>
+<td>6.1</td>
+<td>"Update the passages ... that describe dsp-ingest as a separate service or URL"</td>
+<td>no passage presents ingest as a separate service or URL</td>
+<td>grep dsp-ingest in each file</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>dsp-api</td>
+<td>modules/ingest/{README.md,CLAUDE.md,docs/*,mkdocs.yml}, justfile (docs-ingest-build)</td>
+<td>6.1</td>
+<td>"Update modules/ingest/README.md, CLAUDE.md and docs/ ..."</td>
+<td>ingest docs describe a library served under /ingest/; docs-ingest-build kept only if the ingest site is still published</td>
+<td>modules/ingest/docs; justfile § docs-build</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>dsp-api</td>
+<td>CLAUDE.md, CONVENTIONS.md, docs/contexts/assets/CONTEXT.md, docs/development/dsp-api-rbe.md, flake.nix, tools/oci/defs.bzl (+ MODULE.bazel, modules/fuseki comments naming the dsp-ingest image)</td>
+<td>—</td>
+<td>"Update CLAUDE.md, CONVENTIONS.md, ... comments that name the dsp-ingest image or service"</td>
+<td>no comment names a dsp-ingest image/service as current</td>
+<td>grep dsp-ingest</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>dsp-api</td>
+<td>ARCH-MAP.md</td>
+<td>6.1–6.5</td>
+<td>"Run dune:dune-map to refresh stale ARCH-MAP entries"; "record //modules/webapi as build-time consumer of runtime_fs"</td>
+<td>ingest is a library of the API deployable; DspIngestClient in-process; sipi Used by + visibility rule name webapi</td>
+<td>ARCH-MAP.md § ingest, sipi, webapi image, test-it/test-e2e</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>dsp-api</td>
+<td>grafana-dashboards/dsp-api/dsp-backend.json</td>
+<td>—</td>
+<td>"Load eng:grafana-dashboards and remove or re-point the dsp-ingest panels"</td>
+<td>no panel queries a dsp-ingest job/service</td>
+<td>dsp-backend.json § DSP-INGEST row</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6.8</td>
+<td>dsp-api</td>
+<td>— (verification)</td>
+<td>6.1–6.7</td>
+<td>git grep; grep docs/specs links; just docs-build; just check</td>
+<td>all pass</td>
+<td>plan Phase 6 tail</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chunks">Chunks</h2>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>repo</th>
+<th>status</th>
+<th>commit(s)</th>
+<th>summary</th>
+<th>blocker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>aa1a0d115</td>
+<td>Removed the ImportProjectsToDb action; spec pins it as an unknown action (400)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>1acda15d7</td>
+<td>Dropped DbHealthIndicator; HealthCheckServiceLive built from the FS indicator; spec runs the real health service (200 UP, 503 lists only folders)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>488801b68</td>
+<td>Removed the SQLite project table, repository, Flyway/Hikari setup, db config and the three maven deps from both ingest library targets; ProjectService is folder-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>4d45a81a2</td>
+<td>Removed sqlite-jdbc, flyway-core and HikariCP from maven.install and re-pinned (deletions only)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>—</td>
+<td>Verification: bazel test //modules/ingest:test and test-ingest-integration pass (integration needed TESTCONTAINERS_RYUK_DISABLED=true locally); just check fails only on markdownlint of the 03/04/05 plan journals, so its checkbox stays open</td>
+<td>none</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>—</td>
+<td>Baseline daschswiss/knora-api:latest built at 1c0547439 (arm64): 589,137,905 bytes</td>
+<td>none</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>14c6401c1</td>
+<td>Both webapi images layer //modules/sipi:runtime_fs_{arch} first; runtime_fs visible to //modules/webapi; root rationale noted in the oci_image comment</td>
+<td>none</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>—</td>
+<td>Image 933,837,104 bytes (+344,699,199 = the 345 MB runtime_fs_arm64 layer); /sbin/sipi --help, ffmpeg -version, ffprobe -version exit 0; oom_score_adj prints 1000; runs as uid 0; image_amd64 builds; just check passes</td>
+<td>none</td>
+</tr>
+<tr>
+<td>2.R1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>71094adfc</td>
+<td>Review fix: runtime_fs repacks sbin/ as usr/sbin/ (new image_rootfs_extract <code>rewrites</code> attr) so the temurin /sbin -&gt; usr/sbin link survives; /sbin/sipi still resolves; runtime_fs comment names both consumers</td>
+<td>none</td>
+</tr>
+<tr>
+<td>2.R2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>b3aa9c377</td>
+<td>Review fix: <code>rewrites</code> doc and the runtime_fs call site state that <code>paths</code>/<code>top_level</code> use pre-rewrite names; runtime_fs header names both images</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>b63a6d3e0</td>
+<td>ingest reads ingest.conf (INGEST_*; localDevImage, cpu-share validated); standalone Main/server/logger/metrics/otel, HTTP FetchAssetPermissions, app/image/ingest_classes targets and test-ingest-integration deleted; webapi depends on //modules/ingest; ConfigurationSpec (canary: dropping the validation and renaming a variable both fail it)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>b3b6af07c</td>
+<td>IngestFetchAssetPermissions over AssetPermissionsCache + Authenticator; spec covers granted, denied, anonymous, invalid token (canary: inverted decision fails it)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>ff655f607</td>
+<td>IngestServerEndpoints (prependSecurityIn("ingest")) landed with 3.4: its spec needs IngestModule's layers; spec pins all 20 standalone routes under /ingest/ and /info is 404</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>ff655f607</td>
+<td>IngestModule split into services layer (AssetInfoService, DspIngestClient, opaque Internals) and endpointsLayer (needs AssetPermissionsCache+Authenticator) to break the AdminModule layer cycle; in-process DspIngestClientLive; PrometheusPublisher shared with MetricsServer; AssetInfoServiceLayer deleted; testkit ingest config passed from E2EZSpec; wiremock test dep dropped; webapi:test 2638 pass (canary: inverted erase gate fails DspIngestClientLiveSpec)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>25e5ad6e8</td>
+<td>DspIngestConfig is (externalBaseUrl, audience); AppConfigSpec asserts ConfigFactory.load() has no ingest key; DspIngestTestContainer deleted; TestDspIngestClient posts to the test API's /ingest/; listed specs needed no source change (compile and pass); MetadataEndpoints, KnoraSipiIntegrationV2IT and LegalInfo E2E pass in-process</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>31e8ceadd</td>
+<td>IngestEndpointsE2ESpec ported from backup 57e49e996 to ingest's own AssetInfoResponse, plus the ImportProjectsToDb 400 case; 6 tests pass locally</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>774ac97b3</td>
+<td>justfile (load/test-ingest-integration/build/publish recipes, service lists), compose (no ingest service/volume; api rw /opt/images + /opt/temp, INGEST_ALLOW_ERASE_PROJECTS, 14G), CI ingest-integration job and wording, sipi runtime_fs visibility + comment, test-it/test-e2e BUILD comments; plan grep leaves only Phase 6 docs</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.8</td>
+<td>dsp-api</td>
+<td>partial</td>
+<td>—</td>
+<td>Verification: test-unit pass; test-it pass (local Docker env flags); stack-start + curl upload/asset-info/health pass; just check pass; test-e2e 1025/1026 pass, the failure (ValueHasXmlOnValueWriteE2ESpec 6000-tag POST /v2/values client timeout) fails identically on phase base 19ed77e85, so its checkbox stays open</td>
+<td>pre-existing E2E failure</td>
+</tr>
+<tr>
+<td>3.R1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>cfd200eb7</td>
+<td>Review fix (scala-zio Warning; also the keep-alive bug found on backup e78a54f17): Connection: close on /ingest/ rejections with an unread &gt;1 MiB body; IngestEarlyRejectionSpec failed before the fix</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.R2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>49c5b4675</td>
+<td>Review fix (consistency/simplicity Warning, dune DUNE-001 wording): DspIngestConfig scaladoc and IngestModule doc comment made true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>3.R3</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>690df10d6</td>
+<td>Review fix round 2 (re-review: consistency naming/comment Warnings, dune DUNE-001 path idiom): closeConnectionIfBodyUnread, shared ingest prefix constant, spec asserts isIngestRoute on every ingest endpoint, comment rewrap</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>040d36540</td>
+<td>IngestExecutor (<code>ingest-&lt;n&gt;</code> pool over ExecutorConfig, scoped shutdown, semaphore permits, size logged) in swiss.dasch.infrastructure; IngestExecutorSpec (canary: default executor and zero-permit sections fail 4 cases)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>7f62b09e3</td>
+<td>CommandExecutorLive takes a permit around the process and wraps it in the oom_score_adj shell outside local-dev; IngestModule provides IngestExecutor.layer from ExecutorConfig; CommandExecutorLiveSpec pins the wrapper (canary: unwrapped command fails it), Linux-only case prints 1000 (not run on macOS); ingest:test 219 pass</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>60aebd0d9</td>
+<td>BagIt.create in ProjectService.zipProject and BagIt.readAndValidateZip (validate + extract) in ImportService.importZipFile under a permit; backfill mains, ingest specs and DspIngestClientLiveSpec provide an IngestExecutor; ingest:test 219 pass</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>1ee9a4c62</td>
+<td>IngestServiceSpec: one-permit ingest/export/import complete (canary: nested withPermit in zipProject times out) and a failing transcode fails only its ingest; BulkIngestServiceSpec: failed transcode counted in IngestResult.failed, run continues (canary: never-failing mock fails both); SipiClientMock.failTranscoding</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.4a</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>135cedb18</td>
+<td>Format fix for 1ee9a4c62 (import order; its lint result was masked by a pipe)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>2ad0ec52b</td>
+<td>Server logic of every non-monitoring ingest endpoint on IngestExecutor.run (security logic unchanged); DspIngestClientLive export/import/erase on the executor; IngestExecutor in IngestModule's shared services; spec: forked bulk job logs on an ingest thread, health resumes on none (canary: swapped wrapping fails both)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.R1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>ed62ff19e</td>
+<td>Review fix round 1 (consistency + scala-zio Warnings): IngestExecutor doc names the bounded work only; one-permit test name states Sipi is mocked; bulk-ingest log poll spaced 20 ms</td>
+<td>none</td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>dsp-api</td>
+<td>partial</td>
+<td>—</td>
+<td>Verification: ingest:test 222 and webapi:test 2642 pass; just check passes after ed62ff19e; test-e2e 1024/1025 pass, the failure is the pre-existing ValueHasXmlOnValueWriteE2ESpec 6000-tag timeout (fails on the Phase 3 base too), so its checkbox stays open</td>
+<td>pre-existing E2E failure</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>eca5d18a3</td>
+<td>originalFileUrl builds <code>&lt;api external base&gt;/ingest/projects/&lt;sc&gt;/assets/&lt;id&gt;/original</code>; FairResourcesLive takes KnoraApi (no DspIngestConfig); ExportService uses appConfig.knoraApi; specs and the OAI golden change only host and path (canary: dropping <code>/ingest</code> fails ResourceMetadataRulesSpec and 6 ExportServiceSpec cases)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>61916359f</td>
+<td>DspIngestConfig(audience) only; external-base-url and its env var removed from application.conf; AppConfigSpec and JwtServiceLiveSpec adjusted; webapi:test passes</td>
+<td>none</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>8923d3f93</td>
+<td>FairEndpointsE2ESpec JSON-LD case asserts <code>&lt;api external base&gt;/ingest/projects/0803/assets/</code> (canary: the pre-5.1 link builder fails it); MetadataEndpointsE2ESpec asserts no file link, so it needed no change</td>
+<td>none</td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>—</td>
+<td>Verification: webapi:test passes; just check passes; test-e2e 1024/1026 (the failures are the pre-existing ValueHasXmlOnValueWriteE2ESpec 6000-tag timeout and the JUnit listener NPE reporting it, as in Phase 4), so its checkbox is ticked with that note</td>
+<td>none</td>
+</tr>
+<tr>
+<td>5.R1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>07be06831</td>
+<td>Review fix round 1 (scala-zio/dune DUNE-002/consistency Warning: stale <code>app.dsp-ingest.external-base-url</code> row in docs/04-publishing-deployment/configuration.md removed; dune DUNE-003: originalFileUrl scaladoc and IngestServerEndpoints' <code>prefix</code> name each other)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>1ddf22082</td>
+<td>docs/03-endpoints/ingest.md (prefix, <code>ingest.&lt;domain&gt;</code> forwarding, bearer token and scopes, Content-Length over 1 MiB, pointer to the OpenAPI docs) added to the Endpoints nav</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>09b813dcd</td>
+<td>configuration.md: stale app.dsp-ingest.base-url row removed, audience-only note, Ingest section (INGEST_* table, mounts, use-local-dev, cpu-share, ignored old variables, root user) and the MigrateSizes/MigrateMimeTypes command</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>3d154dbd8</td>
+<td>third-party, project-migration, project-data-import, editing-values (upload section now names POST /ingest/.../assets/ingest/{filename}), admin overview and files (original channel read by ingest in-process) no longer present dsp-ingest as a separate service</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>d3187d7ef</td>
+<td>ingest README, CLAUDE.md and docs/ (index, openapi, ingest, authentication, service-configuration rewritten to INGEST_*) describe the library served under /ingest/; docs-ingest-build kept because dsp-docs includes the ingest site; ingest mkdocs --strict builds</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>4e7267f7b</td>
+<td>CLAUDE.md (three images, no ingest image recipes), CONVENTIONS.md (test locations, fuseki versioning), assets CONTEXT.md (term Ingest: library served under /ingest/), dsp-api-rbe.md, flake.nix, tools/oci/defs.bzl, plus MODULE.bazel and modules/fuseki comments naming dsp-ingest</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>56a555a1d</td>
+<td>ARCH-MAP (dune-map update, by hand per the skill, no user confirmation possible): ingest entry rewritten (library + slice/ingest, in-process consumers, executor rule; slice/ingest files mapped); sipi Used by + visibility rule name webapi; webapi-app/admin/export/sipi-client/fair/testkit/test-it/test-e2e/conventions drop remote-owned ingest notes; schema 1 -&gt; 2, fingerprints for ingest, sipi, webapi-security only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>fcab091f9</td>
+<td>dsp-backend.json: DSP-INGEST row and its two panels (service=DSP_iiif_ingest) removed, description/tags and two cross-referencing panel descriptions updated; JSON parses and every element has one layout reference; no expression changed; Git Sync apply not verifiable (no push)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.8</td>
+<td>dsp-api</td>
+<td>partial</td>
+<td>—</td>
+<td>Verification: the dsp-ingest:latest/test-ingest-integration/ingest:3340 git grep returns nothing; just docs-build succeeds (mkdocs and graphviz provisioned outside the dev shell; output identical to the phase base apart from timings); just check passes. The docs/specs grep returns CLAUDE.md lines 19-40, the specs policy text itself (present on the phase base too, no link into a spec), so its checkbox stays open</td>
+<td>CLAUDE.md specs policy matches its own flatten grep</td>
+</tr>
+<tr>
+<td>6.R1</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>8e8ed9835</td>
+<td>Review fix round 1 (dune DUNE-001 Warning: ingest cycle and the library's no-webapi-import rule, enforcement structure, in Conventions; DUNE-004; consistency Warning: DSP_iiif_ingest marked historical in grafana-dashboards/CLAUDE.md; audience is an identifier, not an address)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6.R2</td>
+<td>dsp-api</td>
+<td>complete</td>
+<td>d248534fc</td>
+<td>Review fix round 2 (dune re-review DUNE-001 Warning: cycle confinement labelled review and the two adapters named, library rule stays structure; simplicity Warning: DSP_iiif_ingest note shortened to legacy series)</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deferrals">Deferrals</h2>
+<ul>
+<li>
+<p>2026-10-27: Phases 2-4 of the previous plan shape (slice move, rebuilt API layer, executor) were discarded by owner
+  decision (minimal diff; <code>modules/ingest</code> keeps its structure). Their commits are preserved on branch
+  <code>backup/docs/move-ingest-into-webapi-brief</code> (tip <code>11c2df207</code>); the Phases table rows 2-3 recorded there are reset,
+  and Phase 2 onwards restarts from the rewritten plan at <code>99963d79e</code>.</p>
+</li>
+<li>
+<p>2026-10-27 (Phase 2 review): <code>ARCH-MAP.md</code> still says <code>//modules/ingest</code> is the only consumer of <code>//modules/sipi:runtime_fs_*</code> (sipi "Used by" and visibility boundary rule). Deferred to Phase 6's dune-map refresh; added as a Phase 6 checkbox.</p>
+</li>
+<li>
+<p>2026-10-27 (Phase 2 review, after the 2-round cap): dune re-review suggests making the sbin -&gt; usr/sbin mapping structural (e.g. a build assertion that the runtime_fs tar has no <code>sbin/</code> member and has <code>usr/sbin/sipi</code>) instead of a documented <code>rewrites</code> string. Left as documented; for the session's final review.</p>
+</li>
+<li>2026-10-27 (Phase 3 review, after the 2-round cap): dune re-review suggests replacing the path-template route check (<code>IngestServerEndpoints.isIngestRoute</code>) and the passthrough's attribute check with one shared "closes connection on early rejection" endpoint attribute in <code>slice/common/api</code>; untested: early-close on a 415/decode failure of an ingest route. For the session's final review.</li>
+<li>2026-10-27 (Phase 4 review, deferred for the diff budget): dune DUNE-001 (Warning) suggests a grep or architecture test asserting that <code>BagIt.create</code>/<code>readAndValidateZip</code> and the process call appear only inside <code>IngestExecutor.withPermit</code>, so a copied call site cannot escape the bound; DUNE-002 suggests one wrapper for <code>DspIngestClientLive</code>'s <code>executor.run</code> calls. Not applied: owner asks to defer findings over growing the diff. For the session's final review.</li>
+<li>2026-10-27 (Phase 4): the phase measures +402/−30 (<code>git diff --shortstat c35b1375d..HEAD -- . ':!docs/specs'</code>) against an estimate of +220/−10, more than half over; most of it is tests (one-permit, failing Sipi, thread-recording endpoint cases). The plan asks for an owner check before Phase 5.</li>
+<li>2026-10-28 (Phase 5 re-review, advisory, kept out for the diff budget): dune DUNE-002 and consistency suggest one shared <code>ingest</code> prefix (expose <code>IngestServerEndpoints.prefix</code> to <code>originalFileUrl</code>) or a test that fails when the route prefix changes alone; today the two literals are linked by comments only, and IngestEndpointsE2ESpec catches a route rename but not the stale link. For the session's final review.</li>
+<li>2026-10-28 (Phase 6 review, kept out for the diff budget): dune DUNE-002 (Warning) suggests narrowing
+  <code>//modules/ingest</code> visibility and a CI import-path check so only <code>slice/ingest</code>, the two webapi-admin adapters,
+  webapi-export, <code>FairAssetsLive</code> and <code>LayersLive</code> may import <code>swiss.dasch</code>; the map labels that rule <code>review</code>, which is
+  true today. A BUILD change, outside this documentation phase. For the session's final review.</li>
+<li>2026-10-28 (Phase 6, dune DUNE-003): ARCH-MAP.md moved to schema 2 with fingerprints only for ingest, sipi and
+  webapi-security; the other components changed on main since the 2026-09-13 verification and stay stale until a
+  full <code>/dune:dune-map update</code> (follow-up, beyond this phase's budget).</li>
+<li>2026-10-28 (Phase 6): the <code>grep -rn "docs/specs/" ... CLAUDE.md ...</code> checkbox stays open: it matches CLAUDE.md's
+  own specs policy text (lines 19-40, unchanged since the phase base), not a link into a spec; a grep for real spec
+  paths (<code>docs/specs/20</code>) returns nothing. The session decides whether the check is met.</li>
+<li>2026-10-28 (Phase 6): the phase measures +319/-442 (<code>git diff --shortstat 04710ed5e..HEAD -- . ':!docs/specs'</code>)
+  against an estimate of +200/-200, more than half over: -226 is the removed dashboard row, about +115/-105 the
+  ARCH-MAP refresh. The plan asks for an owner check.</li>
+</ul>
+<h2 id="deviations">Deviations</h2>
+<ul>
+<li>Proposed, not committed (Phase 4 review, scala-zio Warning): the plan's wrapper <code>/bin/sh -c 'echo 1000 &gt; /proc/self/oom_score_adj &amp;&amp; exec "$0" "$@"'</code> fails closed: if the write to <code>/proc/self/oom_score_adj</code> fails (no <code>/proc</code>, or a runtime that refuses it) the Sipi/ffmpeg/ffprobe command never runs and the ingest fails. Proposed: <code>echo 1000 &gt; /proc/self/oom_score_adj 2&gt;/dev/null; exec "$0" "$@"</code> (fail open). Decided behaviour kept as committed in 7f62b09e3; the owner decides. Owner (2026-10-28): keep <code>&amp;&amp;</code> (fail closed). Phase 4 diff overshoot (+406/−30 vs +220/−10, mostly tests) accepted by the owner (2026-10-28).</li>
+</ul>
+<h2 id="side-findings">Side findings</h2>
+<ul>
+<li>Phase 1 review (consistency, code-simplicity, dune, scala-zio; sonnet): no verified Critical or Warning. Refuted: BulkIngestServiceSpec folder check vacuous (canary: making findOrCreateProject a no-op fails the test, the spec deletes the folder before each case); ImportProjectsToDb 400 could have another cause (canary: with the action restored the test fails); findOrCreateProject name misleading (createProjectFolder is idempotent, so it finds or creates). Out of scope, covered by later phases: DB_JDBC_URL in docker-compose.yml and both DspIngestTestContainer helpers, ingest-db volume (Phases 5/8), stale ARCH-MAP SQLite/ProjectRepository entries (Phase 9).</li>
+<li>Suggestions not applied: HealthCheckServiceLive.layer could build HealthCheckServiceLive(Chunk(fs)) directly; MonitoringEndpointsSpec duplicates part of its layer list across two provide blocks.</li>
+<li>just check fails on the branch because of markdownlint MD060/MD033 errors in the 03/04/05 plan journals (other executors' files); scalafmt, license headers and every other markdown file pass.</li>
+<li>ImportProjectsToDb removal is API-visible: an ops script calling POST /maintenance/ImportProjectsToDb now gets 400.</li>
+<li>test-ingest-integration fails locally with "Could not connect to Ryuk"; passes with --test_env=TESTCONTAINERS_RYUK_DISABLED=true (environment, not this diff).</li>
+<li>Phase 2 review (consistency, code-simplicity, dune, devops; sonnet): verified Warning fixed in 71094adfc (the runtime_fs layer replaced the base's /sbin -&gt; usr/sbin symlink with a directory holding only sipi; measured in the built image). Refuted: the NFS-root clause in the webapi image comment is rationale only (the plan's checkbox requires that note); +345 MB image growth is unused until Phase 3 (accepted in the plan's risk table). Not applied: a shared macro for the per-arch runtime_fs selection; comment only on the amd64 tars entry (matches the ingest BUILD style).</li>
+<li>A Sipi base digest bump now rebuilds and changes the knora-api image too (Renovate Sipi bumps touch the API image).</li>
+<li>Phase 2 re-review (consistency, code-simplicity, dune): refuted anchoring the rewrite as <code>^sbin/</code> (the bare <code>sbin</code> directory entry would then stay and replace the base's /sbin link again); refuted reverting the webapi comment re-wrap (it fixes an over-long line from 14c6401c1). Measured: /usr/sbin in the layer is 0755 root, same as the base.</li>
+<li>Phase 3: <code>IngestModule</code> is two layers (<code>layer</code> for AssetInfoService/DspIngestClient/opaque Internals, <code>endpointsLayer</code> for IngestServerEndpoints), not the plan's single <code>ZLayer.makeSome</code>: AdminModule needs DspIngestClient while the endpoints need AdminModule's AssetPermissionsCache and Authenticator, a layer cycle. Both share one ingest service set.</li>
+<li>Phase 3: <code>just test-e2e</code> fails one case, ValueHasXmlOnValueWriteE2ESpec "6000 standoff tags" (client timeout on POST /v2/values); it fails identically on phase base 19ed77e85, so it is not this diff. The other 1025 E2E tests pass, including EndpointsE2ESpec and the export/import round trips. The checkbox stays open.</li>
+<li>Phase 3 review (consistency, code-simplicity, dune, scala-zio, devops, security; sonnet): fixed in cfd200eb7 (verified first: the spec failed before the fix) and 49c5b4675. Refuted or decided: <code>/ingest/metrics</code> serving the whole API registry (plan: the same data as :3339/metrics; security reviewer suggests the owner confirm public exposure of dsp-api's metrics); 401 bodies echoing expected issuer/audience (owner: standalone bodies); ingest's own token check accepting logged-out tokens (owner decision; dune DUNE-002 recommends an ADR); dropped <code>smokeTestOrDie</code> startup check (plan risk table: not carried over); <code>external-base-url</code> default still on :3340 (unchanged default; Phase 5 replaces the links); importProject read error is a defect, not logged (the HTTP client also failed on a file read); concurrent exports of one project share a temp zip path (pre-existing in ingest's handler).</li>
+<li>Phase 3 review suggestions not applied: banned-import check / narrower Bazel visibility for <code>swiss.dasch</code> outside <code>slice/ingest</code> (DUNE-001; several pre-existing importers); <code>disableAuth</code> log messages naming the removed JWT_DISABLE_AUTH; field-by-field AssetInfoResponse copy; health check in the compose api service probing /ingest/health; stale <code>dsp-ingest</code> comments in MODULE.bazel, tools/oci/defs.bzl, modules/fuseki and flake.nix (Phase 6 scope); note that <code>bazel run //modules/ingest:migrate-sizes</code> now needs INGEST_STORAGE_ASSET_DIR.</li>
+<li>Phase 3: the local dsp-app config (<code>app-config.dev.json</code> ingestUrl :3340) no longer has a service on :3340 until the dsp-app plan lands.</li>
+<li>Phase 4 review (consistency, code-simplicity, dune, scala-zio; sonnet): fixed in ed62ff19e (overstated IngestExecutor doc; one-permit test name overstated coverage, since Sipi is mocked and CommandExecutorLive's permit is never taken there; hot-spinning log poll). Refuted: the health-off-pool supervisor test passing for the wrong reason (measured: wrapping monitoring instead of the other handlers fails both the health and the bulk-ingest case); inlining the wrapper literal in CommandExecutorLiveSpec as <code>oomExpendable</code> (the literal pins the plan's command form). Fail-closed <code>&amp;&amp;</code> wrapper recorded under Deviations.</li>
+<li>Phase 4 review suggestions not applied: kill the child process on interruption (<code>attemptBlockingIO(cmd !&lt; logger)</code> leaves an orphan running outside the permit bound; pre-existing); <code>onExecutor</code> does not shift back when not locked, so the caller's continuation after <code>IngestExecutor.run</code> (tapir response encoding, webapi code after <code>DspIngestClientLive</code> calls) stays on an <code>ingest-</code> thread until the next yield, <code>&lt;* ZIO.yieldNow</code> would hand it back; <code>pool.shutdown()</code> does not wait for running daemon jobs; the "Executing command" log now includes the <code>/bin/sh -c</code> prefix; trim duplicated failing-Sipi tests and IngestExecutorSpec cases (the plan's checkboxes ask for both Sipi cases).</li>
+<li>Phase 4: <code>just test-e2e</code> 1024/1025 real cases pass; the one failure is the pre-existing ValueHasXmlOnValueWriteE2ESpec "6000 standoff tags" timeout (plus a JUnit listener NPE reporting it), so the checkbox stays open as in Phase 3. The Linux-only <code>oom_score_adj</code> spec case does not run on macOS.</li>
+<li>Phase 5 review (consistency, code-simplicity, dune, scala-zio; sonnet): fixed in 07be06831. Not applied: the <code>:443</code> in the test base URL (<code>externalKnoraApiBaseUrl</code> omits only port 80; http/80 would change the golden's scheme, which the owner rule forbids); named args for the <code>KnoraApi</code> fixture; one val instead of <code>api</code>/<code>apiBase</code>; drop the weaker <code>/original</code> E2E assertion; a shared prefix constant instead of cross-reference comments (adds a resources -&gt; ingest dependency); FairResourcesLive taking the whole <code>KnoraApi</code> (FairRestService does the same); old-shape <code>ingest.example.org</code> URLs in fair domain/writer fixtures (opaque pass-through strings). Deferred to Phase 6: stale <code>app.dsp-ingest.base-url</code> row in configuration.md (removed in Phase 3) and the ARCH-MAP fingerprints (DUNE-001).</li>
+<li>Phase 5 measures +50/−42 (<code>git diff --shortstat 2de395c9d..HEAD -- . ':!docs/specs'</code>) against an estimate of +40/−40, within half.</li>
+<li>Phase 6 review (consistency, code-simplicity, dune, observability; sonnet): fixed in the 6.R1 and 6.R2 commits.
+  Refuted or kept: the INGEST_* table appears in both configuration.md and the ingest docs site (the plan asks for
+  both; dsp-docs publishes the ingest site on its own); the removed-variable lists are the deployment contract for
+  ops-deploy, not history; the 413 for chunked uploads over 1 MiB rests on <code>DspApiServer</code>'s documented Hybrid
+  streaming and the body-buffering learning, not a test. Not applied: name <code>includes ingest</code> in the API CPU and
+  memory panel descriptions (the dashboard description says it); no dashboard covers ingest request metrics
+  (pre-existing gap).</li>
+<li>Phase 6: user-facing error text still names dsp-ingest (<code>ValueMessagesV2.scala:725</code> "not found in dsp-ingest", also
+  :2038, <code>E2EZSpec.scala:51</code>, <code>PlaceholderFileValueE2ESpec</code>); code, outside this docs phase. <code>modules/ingest/BUILD.bazel</code>
+  comments and the <code>/ingest/info</code> name <code>dsp-ingest</code> are kept (the name is pinned by IngestEndpointsE2ESpec).</li>
+<li>Phase 6: dsp-docs includes the ingest site from <code>./dsp/dsp-api/ingest/mkdocs.yml</code>, a path from before the
+  <code>modules/</code> move; it breaks on dsp-docs' next submodule bump (cross-repo). <code>docs-ingest-build</code> is kept.</li>
+<li>Phase 6: four webapi files are mapped by no ARCH-MAP component (<code>messages/Geolocation.scala</code> and three specs, all
+  from main); <code>Agent-context layer</code> globs match ARCH-MAP.md itself, against the map format. Both for the full
+  dune-map update. The default <code>app.dsp-ingest.audience</code> stays <code>http://localhost:3340</code> (an identifier only).</li>
+<li>Phase 6: <code>just docs-build</code> needs mkdocs and graphviz, which the Nix dev shell does not provide; provisioned locally
+  in a scratch venv and via <code>nix build nixpkgs#graphviz</code>.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 2, 2026 12:16:23 UTC">November 2, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
