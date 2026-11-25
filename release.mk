@@ -1,7 +1,7 @@
 # Auto-managed by .github/workflows/bump-release.yml. Do not edit by hand.
-# release: 2026.11.04
-DSP=2026.11.04
-API=v40.7.0
-APP=v14.1.4
-TOOLS=v19.3.4
+# release: 2026.11.05
+DSP=2026.11.05
+API=v41.0.0
+APP=v14.2.0
+TOOLS=v19.4.0
 META=dsp-meta-v2.4.16

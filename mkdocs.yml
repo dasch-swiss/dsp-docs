@@ -32,7 +32,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:  # this config must be identical to the config in the dsp-tools repo
-          paths: [dsp/dsp-tools/src/dsp_tools/]
+          paths: [dsp/dsp-tools/packages/dsp-tools/src/dsp_tools/]
           options:
             members_order: source
             show_labels: false
